@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <fenv.h>
+#pragma STDC FENV_ACCESS ON
 
-// Affichage d'un matrice 
+// Print a matrix
 
 void aff_m(float *t, int m, int n)
 {
@@ -17,6 +19,8 @@ void aff_m(float *t, int m, int n)
     }
 }
 
+// Print a vector
+
 void aff(float *t, int n)
 {
     int i;
@@ -30,6 +34,11 @@ void aff(float *t, int n)
 
 
 int main() {
+
+    // Rounding mode 
+    fesetround(FE_UPWARD);         // FE_UPWARD    FE_DOWNWARD
+
+    // Start
     int n ;
     printf("Size of vector = ");
     scanf("%d", &n);
@@ -78,3 +87,7 @@ int main() {
 
     return 0;
 }
+
+
+
+// Compile with -lm
