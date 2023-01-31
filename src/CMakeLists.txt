@@ -1,0 +1,3 @@
+add_subdirectory(generation)
+add_subdirectory(rounding_error)
+add_subdirectory(dot_product)
