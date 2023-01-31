@@ -1,3 +1,4 @@
+#include<vector>
 
 template < class T >
 void TwoSum(T a, T b, T& x, T& y);

@@ -15,12 +15,16 @@ void TwoSum(T a, T b, T& x, T& y);
 template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K);
 
-template < class T >
-void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al);
+template void Split<double>(std::vector<double> a, int n, std::vector<double> ah, std::vector<double> al);
+
+template void TwoProd <double> (std::vector<double> a, std::vector<double> b, int n, std::vector<double> x,std::vector<double> y);
+
+
 
 template < class T >
-void TwoProd(std::vector<T> a, std::vector<T> b, int n, std::vector<T> x,std::vector<T> y);
-
+T inline round(T x){
+	return ((x)>0)? (int((x)+0.5)):(int((x)-0.5));
+}
 
 
 // Two sum function
@@ -49,6 +53,7 @@ T SumK(std::vector<T> p, unsigned int n, unsigned int K){
   }
 }
 
+
 // Split function
 template < class T >
 void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
@@ -57,9 +62,8 @@ void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
   // f = 2^p/2 +1
   double f;
   double p;
-  p = 32;
+  p = 2;
   f = pow(2.0,ceil(p/2.0)) + 1;
-  printf("%lf",f);
   for (unsigned int i=0;i<n;i++) {
     c[i] = f*a[i];
   }
