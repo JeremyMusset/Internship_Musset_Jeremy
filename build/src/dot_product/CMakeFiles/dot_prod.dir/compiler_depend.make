@@ -974,7 +974,7 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
   /usr/include/c++/11/cassert \
   /usr/include/assert.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
-  ../include/gen_random_number.h
+  ../include/error_free.h
 
 
 ../src/dot_product/error_free.cc:

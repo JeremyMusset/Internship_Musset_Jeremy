@@ -23,13 +23,11 @@ int main() {
     class std::vector<double> tp1(n);
     class std::vector<double> tp2(n);
 
-
     for (unsigned int i=0;i<n;i++) {
         a[i] = 0.2;
         b[i] = 0.3;
         c[i] = 0.6*n;
     }
-    printf("%lf",ceil(1.3));
     TwoProd(a,b,n,tp1,tp2);
 
 

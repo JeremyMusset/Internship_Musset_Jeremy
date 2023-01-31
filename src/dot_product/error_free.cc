@@ -2,11 +2,12 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <math.h>
 #include <vector>
 #include <algorithm>
 #include <cassert>
 #include <float.h>
-#include "../../include/gen_random_number.h"
+#include "../../include/error_free.h"
 
 template < class T >
 void TwoSum(T a, T b, T& x, T& y);
@@ -15,10 +16,10 @@ template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K);
 
 template < class T >
-void Split(T& a, int n, T&ah, T&al);
+void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al);
 
 template < class T >
-void TwoProd(T& a, T&b, int n, T& x, T& y);
+void TwoProd(std::vector<T> a, std::vector<T> b, int n, std::vector<T> x,std::vector<T> y);
 
 
 
@@ -50,7 +51,7 @@ T SumK(std::vector<T> p, unsigned int n, unsigned int K){
 
 // Split function
 template < class T >
-void Split(T& a, int n, T&ah, T&al)
+void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
 {
   class std::vector<double> c(n);
   // f = 2^p/2 +1
@@ -73,7 +74,7 @@ void Split(T& a, int n, T&ah, T&al)
 
 // Two prod function
 template < class T >
-void TwoProd(T& a, T&b, int n, T& x, T& y)
+void TwoProd(std::vector<T> a, std::vector<T> b, int n, std::vector<T> x, std::vector<T> y)
 {
   for (unsigned int i=0;i<n;i++) {
     x[i] = a[i] * b[i];
