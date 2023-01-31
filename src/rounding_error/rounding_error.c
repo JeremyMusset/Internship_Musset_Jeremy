@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <fenv.h>
-#pragma STDC FENV_ACCESS ON
 
 // Print a matrix
 
@@ -34,9 +32,6 @@ void aff(float *t, int n)
 
 
 int main() {
-
-    // Rounding mode 
-    fesetround(FE_UPWARD);         // FE_UPWARD    FE_DOWNWARD
 
     // Start
     int n ;

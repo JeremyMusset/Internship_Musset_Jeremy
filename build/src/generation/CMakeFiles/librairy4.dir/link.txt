@@ -1,0 +1,1 @@
+/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblibrairy4.so -o liblibrairy4.so CMakeFiles/librairy4.dir/vec.cpp.o 

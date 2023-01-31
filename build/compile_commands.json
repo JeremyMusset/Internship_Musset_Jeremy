@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/generation",
+  "command": "/usr/bin/g++ -Dgen_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/gen.dir/vec.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/vec.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/vec.cpp"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/generation",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/gen_vec.dir/gen_vector.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/generation",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/gen_vec.dir/gen_random_number.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/generation",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/gen_vec.dir/vec.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/vec.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/vec.cpp"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
+  "command": "/usr/bin/g++ -Dlibrairy_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/librairy.dir/rounding_error.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
+  "command": "/usr/bin/gcc -Dlibrairy2_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/librairy2.dir/rounding_error.c.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/rounding_error_cpp.dir/rounding_error.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
+  "command": "/usr/bin/gcc  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -lm -o CMakeFiles/rounding_error_c.dir/rounding_error.c.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++ -Ddot_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/dot.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/error_free.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/error_free.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/error_free.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp"
+}
+]
