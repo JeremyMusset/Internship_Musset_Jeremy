@@ -14,9 +14,11 @@ using namespace std;
 
 
 template < class T >
-int import_vec( std::vector<T> a, std::vector<T> b, char *fic)
+int import_vec( std::vector<T> a, std::vector<T> b, string fic)
 {
     int n;
+    std::vector<T> a2 ;
+    std::vector<T> b2;
     int k = 0;
     n = 10;
     ifstream fichier("../data/vec1.txt", ios::in);
@@ -29,29 +31,33 @@ int import_vec( std::vector<T> a, std::vector<T> b, char *fic)
 
             if (k==0){                  // First line
                 n = stoi(ligne);
-                printf(" i = %d",k);
-                k = 1;
-                printf(" i = %d",k);
+                printf("n = %d\n",n);
+                 cout << std::stof(ligne) << endl;
+                printf(" k = %d \n",k);
+                
+                printf(" k = %d \n",k);
 
             }
             if (k>=1 && k<=n){           // Vector a
-                a[k] = std::stof(ligne);
-                k = k+1;
+                a[k-1] = stof(ligne);
+                printf("Passe dans boucle a avec k = %d   ",k);
+                cout << std::stof(ligne) << endl;
             }
             if (k>n){                   // Vector b
-                b[k] = std::stof(ligne);
-                k = k+1;
+                b[k-n-1] = std::stof(ligne);
+                printf("Passe dans boucle b avec k = %d   ",k);
+                 cout << std::stof(ligne) << endl;
             }
 
                 cout << std::stof(ligne) << endl;  // on l'affiche
-                
+        k = k+1;        
         }
     }
     else {
         cerr << "Impossible d'ouvrir le fichier !" << endl;
     }
     printf("n = %d",n);
-    return n;
+    return a,b,n;
 }
 
 
@@ -68,7 +74,7 @@ int main() {
     class std::vector<double> b(n);
     class std::vector<double> tp1(n);
     class std::vector<double> tp2(n);
-    n = import_vec(a,b,"../data/vec1.txt");
+    a,b,n = import_vec(a,b,"../data/vec1.txt");
     printf("\n READ FILE \n");
     printf("n = %d\n",n);
     for (unsigned int i=0;i<n;i++){
