@@ -13,7 +13,7 @@ int main() {
     double cond;
     double c;
     int n;
-    n = 3;
+    n = 8;
     sum = 150;
     cond = 5;
   
@@ -27,7 +27,21 @@ int main() {
         b[i] = 0.3;
     }
     c = 0.6 * n;
+    // Use MPFR_dot product 
+    printf("\n \nCORRECT ROUNDING : ");
+    c = 0.0
+    c = common_dot_prod(a,b,n,1,1);
+    printf("%.15f",c);
+    
+    // Test the common dot product
+    printf("\n \nCOMMON PROD : ");
+    c = 0.0
+    c = common_dot_prod(a,b,n,1,1);
+    printf("%.15f",c);
+    printf("\n \n");
+
     TwoProd(a,b,n,tp1,tp2);
+    printf("\n TWO PROD : \n");
     for (unsigned int i=0;i<n;i++){
         printf("%.15f \n",a[i]);
     }
@@ -43,6 +57,5 @@ int main() {
         printf("%.15f \n",tp2[i]);
     }
     
-
     return 0;
 }

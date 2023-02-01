@@ -25,7 +25,12 @@ void dot_prod_mpfr(int n, mpfr_t *a, mpfr_t *b, mpfr_t c){
 }
 
 // Importation des matrices
-int import_vec(mpfr_t **A, mpfr_t **b, char *fic)
+/// @brief read file and create mpfr vector
+/// @param a mpfr vector 
+/// @param b mpfr vector
+/// @param fic data file
+/// @return size
+int import_vec(mpfr_t **a, mpfr_t **b, char *fic)
 {
     FILE *f;
     char str[MAX_LEN];
@@ -38,14 +43,14 @@ int import_vec(mpfr_t **A, mpfr_t **b, char *fic)
     fgets(str, MAX_LEN, f);
     n = atoi(str);
     printf("%d",n);
-    *A = (mpfr_t *)malloc(n * sizeof(mpfr_t));
+    *a = (mpfr_t *)malloc(n * sizeof(mpfr_t));
     *b = (mpfr_t *)malloc(n * sizeof(mpfr_t));
 
     for (i = 0; i < n ; i++)
     {
-        mpfr_init2((*A)[i], P);
+        mpfr_init2((*a)[i], P);
         fgets(str, MAX_LEN, f);
-        mpfr_set_str((*A)[i], str, 10, MPFR_RNDN);
+        mpfr_set_str((*a)[i], str, 10, MPFR_RNDN);
     }
 
     for (i = 0; i < n; i++)
