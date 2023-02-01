@@ -26,10 +26,6 @@ int main() {
         c_comp[i] = a[i] * b[i];
         printf("%.55f \n",c_comp[i]);
     }
-    printf("\n a = \n");
-    for (int i = 0 ; i<n;i++) {
-        printf("%.55f \n",a[i]);
-    }
 
     printf("Somme attendu : %.55f \n",sum);
 

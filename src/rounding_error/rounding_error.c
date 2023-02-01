@@ -77,7 +77,7 @@ int main() {
 
 
     // Print the correct rounding of the result
-    printf("result = %.15f \n",result);
+    printf("correct rounding = %.15f \n",result);
 
 
     return 0;
