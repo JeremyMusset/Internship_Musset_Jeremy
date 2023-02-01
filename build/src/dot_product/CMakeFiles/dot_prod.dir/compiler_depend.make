@@ -726,7 +726,18 @@ src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: ../src/dot_product/do
   /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  ../include/error_free.h
+  ../include/error_free.h \
+  /usr/include/mpfr.h \
+  /usr/include/x86_64-linux-gnu/gmp.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+  /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h
 
 src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/error_free.cc \
   /usr/include/stdc-predef.h \
@@ -974,12 +985,35 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
   /usr/include/c++/11/cassert \
   /usr/include/assert.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
-  ../include/error_free.h
+  ../include/error_free.h \
+  /usr/include/mpfr.h \
+  /usr/include/x86_64-linux-gnu/gmp.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+  /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h
 
 
 /usr/include/c++/11/math.h:
 
 ../src/dot_product/error_free.cc:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
+
+/usr/include/mpfr.h:
 
 ../src/dot_product/dot_product.cpp:
 
@@ -994,6 +1028,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
 /usr/include/c++/11/bits/cxxabi_forced.h:
+
+/usr/include/linux/limits.h:
 
 /usr/include/c++/11/bits/basic_string.h:
 
@@ -1097,6 +1133,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
 /usr/include/c++/11/string:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
@@ -1118,6 +1156,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/11/tr1/special_function_util.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
 
 /usr/include/c++/11/debug/debug.h:
 
@@ -1319,6 +1359,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
 
 /usr/include/x86_64-linux-gnu/bits/select2.h:
 
+/usr/include/x86_64-linux-gnu/gmp.h:
+
 /usr/include/alloca.h:
 
 /usr/include/c++/11/cwctype:
@@ -1458,6 +1500,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/erro
 /usr/include/c++/11/bits/stl_bvector.h:
 
 /usr/include/c++/11/bits/vector.tcc:
+
+/usr/include/limits.h:
 
 /usr/include/c++/11/bits/stl_relops.h:
 

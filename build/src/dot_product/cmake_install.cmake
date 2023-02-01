@@ -61,3 +61,7 @@ endif()
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Internship_Musset_Jeremy" TYPE FILE FILES "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.h")
+endif()
+

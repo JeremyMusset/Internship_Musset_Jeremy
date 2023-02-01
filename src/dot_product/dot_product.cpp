@@ -13,7 +13,7 @@ int main() {
     double cond;
     double c;
     int n;
-    n = 10;
+    n = 3;
     sum = 150;
     cond = 5;
   
@@ -28,7 +28,21 @@ int main() {
     }
     c = 0.6 * n;
     TwoProd(a,b,n,tp1,tp2);
-
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",a[i]);
+    }
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",b[i]);
+    }
+    printf("RES : \n");
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",tp1[i]);
+    }
+    printf("\n");
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",tp2[i]);
+    }
+    
 
     return 0;
 }

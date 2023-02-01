@@ -1,7 +1,9 @@
 #include<vector>
+#include<mpfr.h>
 
-template < class T >
-void TwoSum(T a, T b, T& x, T& y);
+void dot_prod_mpfr(int n, mpfr_t * a, mpfr_t * b, mpfr_t c);
+
+template < class T > void TwoSum(T a, T b, T& x, T& y);
 
 template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K);
