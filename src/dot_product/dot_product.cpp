@@ -14,14 +14,12 @@ using namespace std;
 
 
 template < class T >
-int import_vec( std::vector<T> a, std::vector<T> b, string fic)
-{
+std::vector<T> import_vec( std::vector<T> a, std::vector<T> b, string fic){
     int n;
-    std::vector<T> a2 ;
-    std::vector<T> b2;
     int k = 0;
     n = 10;
-    ifstream fichier("../data/vec1.txt", ios::in);
+    std::vector<T> vec(1000);
+    ifstream fichier(fic, ios::in);
     if(fichier){
         string ligne;
         while(getline(fichier, ligne))  // tant que l'on peut acceder à la ligne
@@ -31,33 +29,23 @@ int import_vec( std::vector<T> a, std::vector<T> b, string fic)
 
             if (k==0){                  // First line
                 n = stoi(ligne);
-                printf("n = %d\n",n);
-                 cout << std::stof(ligne) << endl;
-                printf(" k = %d \n",k);
-                
-                printf(" k = %d \n",k);
+                std::vector<T> vec(n);
 
             }
             if (k>=1 && k<=n){           // Vector a
-                a[k-1] = stof(ligne);
-                printf("Passe dans boucle a avec k = %d   ",k);
-                cout << std::stof(ligne) << endl;
+                vec[k] = stod(ligne);
             }
             if (k>n){                   // Vector b
-                b[k-n-1] = std::stof(ligne);
-                printf("Passe dans boucle b avec k = %d   ",k);
-                 cout << std::stof(ligne) << endl;
+                vec[k] = stod(ligne);
             }
-
-                cout << std::stof(ligne) << endl;  // on l'affiche
         k = k+1;        
         }
     }
     else {
         cerr << "Impossible d'ouvrir le fichier !" << endl;
     }
-    printf("n = %d",n);
-    return a,b,n;
+    vec[0] = n;
+    return vec;
 }
 
 
@@ -66,22 +54,36 @@ int main() {
     double cond;
     double c;
     int n;
-    n = 8;
+    n = 3;
     sum = 150;
     cond = 5;
-  
+    class std::vector<double> vec(2*n+1);
     class std::vector<double> a(n);
     class std::vector<double> b(n);
     class std::vector<double> tp1(n);
     class std::vector<double> tp2(n);
-    a,b,n = import_vec(a,b,"../data/vec1.txt");
-    printf("\n READ FILE \n");
-    printf("n = %d\n",n);
-    for (unsigned int i=0;i<n;i++){
-        printf("%.15f \n",a[i]);
+
+    // Data importation
+    vec = import_vec(a,b,"../data/vec1.txt");
+    printf("\nREAD FILE \n");
+    printf("VEC = \n");
+    for (unsigned int i=0;i<2*n+1;i++){
+        printf("%.35f \n",vec[i]);
     }
+
+    n = vec[0];
+    printf("\nn = %d\n",n);
+
+    printf("\na = \n");
     for (unsigned int i=0;i<n;i++){
-        printf("%.15f \n",b[i]);
+        a[i] = vec[i+1];
+        printf("%.35f \n",a[i]);
+    }
+
+    printf("\nb = \n");
+    for (unsigned int i=0;i<n;i++){
+        b[i] = vec[n+1+i];
+        printf("%.35f \n",b[i]);
     }
 
 
@@ -107,7 +109,7 @@ int main() {
     TwoProd(a,b,n,tp1,tp2);
     printf("\n TWO PROD : \n");
     for (unsigned int i=0;i<n;i++){
-        printf("%.15f \n",a[i]);
+        printf("%.50f \n",a[i]);
     }
     for (unsigned int i=0;i<n;i++){
         printf("%.15f \n",b[i]);
