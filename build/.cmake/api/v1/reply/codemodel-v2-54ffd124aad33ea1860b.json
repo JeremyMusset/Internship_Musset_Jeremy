@@ -77,7 +77,7 @@
 				{
 					"build" : "src/dot_product",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-src.dot_product-Release-45abbf288398a8e73752.json",
+					"jsonFile" : "directory-src.dot_product-Release-6e6bfb99e7dd56692ff4.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.2"

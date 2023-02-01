@@ -173,8 +173,8 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/math.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/algorithm \
@@ -199,4 +199,13 @@ src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: \
  /usr/include/c++/11/bits/erase_if.h \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/cassert \
  /usr/include/assert.h /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/../../include/gen_random_number.h
+ /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/../../include/error_free.h \
+ /usr/include/mpfr.h /usr/include/x86_64-linux-gnu/gmp.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h

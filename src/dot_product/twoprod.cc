@@ -2,11 +2,12 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <math.h>
 #include <vector>
 #include <algorithm>
 #include <cassert>
 #include <float.h>
-#include "../../include/gen_random_number.h"
+#include "../../include/error_free.h"
 
 template < class T >
 void TwoSum(T a, T b, T& x, T& y);
@@ -14,15 +15,25 @@ void TwoSum(T a, T b, T& x, T& y);
 template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K);
 
-template < class T >
-void Split(T& a, int n, T&ah, T&al);
+template void Split<double>(std::vector<double> a, int n, std::vector<double> ah, std::vector<double> al);
+
+template void TwoProd <double> (std::vector<double> a, std::vector<double> b, int n, std::vector<double> x,std::vector<double> y);
+
+
 
 template < class T >
-void TwoProd(T& a, T&b, int n, T& x, T& y);
-
+T inline round(T x){
+	return ((x)>0)? (int((x)+0.5)):(int((x)-0.5));
+}
 
 
 // Two sum function
+/// @brief function Twosum
+/// @tparam T Float or Double
+/// @param a Vector a 
+/// @param b Vector b
+/// @param x Result
+/// @param y Result
 template < class T >
 void TwoSum(T a, T b, T& x, T& y)
 {
@@ -33,6 +44,12 @@ void TwoSum(T a, T b, T& x, T& y)
 }
 
 // Sum K function
+/// @brief K * Twosum
+/// @tparam T Float or Double
+/// @param p Vector
+/// @param n size
+/// @param K Number of repetition
+/// @return 
 template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K){
   std::vector<T> tmp = p;
@@ -48,17 +65,23 @@ T SumK(std::vector<T> p, unsigned int n, unsigned int K){
   }
 }
 
+
 // Split function
+/// @brief Function Split
+/// @tparam T Float or Double
+/// @param a Vector
+/// @param n Size
+/// @param ah Result
+/// @param al Result
 template < class T >
-void Split(T& a, int n, T&ah, T&al)
+void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
 {
   class std::vector<double> c(n);
   // f = 2^p/2 +1
   double f;
   double p;
-  p = 32;
+  p = 2;
   f = pow(2.0,ceil(p/2.0)) + 1;
-  printf("%lf",f);
   for (unsigned int i=0;i<n;i++) {
     c[i] = f*a[i];
   }
@@ -72,8 +95,15 @@ void Split(T& a, int n, T&ah, T&al)
 
 
 // Two prod function
+/// @brief Transform a prod in a sum
+/// @tparam T Float or Double
+/// @param a Vector
+/// @param b Vector
+/// @param n Size
+/// @param x Result
+/// @param y Result
 template < class T >
-void TwoProd(T& a, T&b, int n, T& x, T& y)
+void TwoProd(std::vector<T> a, std::vector<T> b, int n, std::vector<T> x, std::vector<T> y)
 {
   for (unsigned int i=0;i<n;i++) {
     x[i] = a[i] * b[i];
