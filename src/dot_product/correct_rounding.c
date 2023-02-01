@@ -30,7 +30,7 @@ void dot_prod_mpfr(int n, mpfr_t *a, mpfr_t *b, mpfr_t c){
 /// @param b mpfr vector
 /// @param fic data file
 /// @return size
-int import_vec(mpfr_t **a, mpfr_t **b, char *fic)
+int import_vec_mpfr(mpfr_t **a, mpfr_t **b, char *fic)
 {
     FILE *f;
     char str[MAX_LEN];
@@ -68,7 +68,7 @@ int main(void)
     // Importation des vecteurs et de DIM leurs dimension
     int n;
     mpfr_t *a, *b;
-    n = import_vec(&a, &b, "../data/vec1.txt");
+    n = import_vec_mpfr(&a, &b, "../data/vec1.txt");
 
     // Definition et initialisation de toutes les variables
     mpfr_t res;

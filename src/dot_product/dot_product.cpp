@@ -6,7 +6,54 @@
 #include <cmath>
 #include <iomanip>
 #include <ios>
+#include <iostream>
+#include <string>
+#include <fstream>
 #include "../../include/error_free.h"
+using namespace std;
+
+
+template < class T >
+int import_vec( std::vector<T> a, std::vector<T> b, char *fic)
+{
+    int n;
+    int k = 0;
+    n = 10;
+    ifstream fichier("../data/vec1.txt", ios::in);
+    if(fichier){
+        string ligne;
+        while(getline(fichier, ligne))  // tant que l'on peut acceder à la ligne
+        {   
+            char caractere;  
+            fichier.get(caractere);
+
+            if (k==0){                  // First line
+                n = stoi(ligne);
+                printf(" i = %d",k);
+                k = 1;
+                printf(" i = %d",k);
+
+            }
+            if (k>=1 && k<=n){           // Vector a
+                a[k] = std::stof(ligne);
+                k = k+1;
+            }
+            if (k>n){                   // Vector b
+                b[k] = std::stof(ligne);
+                k = k+1;
+            }
+
+                cout << std::stof(ligne) << endl;  // on l'affiche
+                
+        }
+    }
+    else {
+        cerr << "Impossible d'ouvrir le fichier !" << endl;
+    }
+    printf("n = %d",n);
+    return n;
+}
+
 
 int main() {
     double sum;
@@ -21,6 +68,16 @@ int main() {
     class std::vector<double> b(n);
     class std::vector<double> tp1(n);
     class std::vector<double> tp2(n);
+    n = import_vec(a,b,"../data/vec1.txt");
+    printf("\n READ FILE \n");
+    printf("n = %d\n",n);
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",a[i]);
+    }
+    for (unsigned int i=0;i<n;i++){
+        printf("%.15f \n",b[i]);
+    }
+
 
     for (unsigned int i=0;i<n;i++) {
         a[i] = 0.2;
@@ -29,16 +86,17 @@ int main() {
     c = 0.6 * n;
     // Use MPFR_dot product 
     printf("\n \nCORRECT ROUNDING : ");
-    c = 0.0
+    c = 0.0;
     c = common_dot_prod(a,b,n,1,1);
     printf("%.15f",c);
     
     // Test the common dot product
     printf("\n \nCOMMON PROD : ");
-    c = 0.0
+    c = 0.0;
     c = common_dot_prod(a,b,n,1,1);
     printf("%.15f",c);
     printf("\n \n");
+    printf("___________________________ TEST _______________________ \n \n \n");
 
     TwoProd(a,b,n,tp1,tp2);
     printf("\n TWO PROD : \n");

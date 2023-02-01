@@ -3,7 +3,7 @@
 
 void dot_prod_mpfr(int n, mpfr_t * a, mpfr_t * b, mpfr_t c);
 
-int import_vec(mpfr_t ** a, mpfr_t ** b, char * fic);
+int import_vec_mpfr(mpfr_t ** a, mpfr_t ** b, char * fic);
 
 template < class T > void TwoSum(T a, T b, T& x, T& y);
 
