@@ -9,6 +9,7 @@ include_directories(include)
 #Les fichiers c dans src/rounding_error seront dans ROUND_ERR appel avec $(ROUND_ERR)
 file(GLOB_RECURSE F_GEN src/generation/*.cc)
 # set(F_GEN src/generation/*.cc)
+file(GLOB_RECURSE DATA src/data/*.txt)
 
 
 add_subdirectory(src)

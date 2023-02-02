@@ -1,1 +1,0 @@
-/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblibrairy5.so -o liblibrairy5.so CMakeFiles/librairy5.dir/dot_product.cpp.o 

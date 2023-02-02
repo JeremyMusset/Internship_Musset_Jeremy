@@ -11,7 +11,7 @@ file(
   *.h)
 
 
-add_executable(dot_prod ${F_GEN} error_free.cc dot_product.cpp)
+add_executable(dot_prod ${F_GEN} common.cc twoprod.cc dot_product.cpp)
 
 install(FILES ${headers}
   DESTINATION include/${CMAKE_PROJECT_NAME})

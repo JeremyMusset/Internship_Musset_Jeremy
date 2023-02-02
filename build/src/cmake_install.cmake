@@ -47,6 +47,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/generation/cmake_install.cmake")
   include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error/cmake_install.cmake")
   include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product/cmake_install.cmake")
+  include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/data/cmake_install.cmake")
 
 endif()
 

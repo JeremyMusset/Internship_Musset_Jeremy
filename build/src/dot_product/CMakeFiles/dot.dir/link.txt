@@ -1,1 +1,1 @@
-/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libdot.so -o libdot.so CMakeFiles/dot.dir/dot_product.cpp.o 
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libdot.so -o libdot.so CMakeFiles/dot.dir/dot_product.cpp.o 

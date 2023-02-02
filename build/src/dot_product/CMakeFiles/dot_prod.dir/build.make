@@ -73,63 +73,78 @@ src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o: sr
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o: ../src/generation/gen_random_number.cc
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o -MF CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o.d -o CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o -MF CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o.d -o CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc
 
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.i"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc > CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.i
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc > CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.i
 
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.s"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc -o CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.s
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_number.cc -o CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.s
 
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o: ../src/generation/gen_vector.cc
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o -MF CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o.d -o CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o -MF CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o.d -o CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc
 
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.i"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc > CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.i
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc > CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.i
 
 src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.s"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc -o CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.s
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_vector.cc -o CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.s
 
-src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
-src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: ../src/dot_product/error_free.cc
-src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o -MF CMakeFiles/dot_prod.dir/error_free.cc.o.d -o CMakeFiles/dot_prod.dir/error_free.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/error_free.cc
+src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
+src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o: ../src/dot_product/common.cc
+src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o -MF CMakeFiles/dot_prod.dir/common.cc.o.d -o CMakeFiles/dot_prod.dir/common.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc
 
-src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/error_free.cc.i"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/error_free.cc > CMakeFiles/dot_prod.dir/error_free.cc.i
+src/dot_product/CMakeFiles/dot_prod.dir/common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/common.cc.i"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc > CMakeFiles/dot_prod.dir/common.cc.i
 
-src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/error_free.cc.s"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/error_free.cc -o CMakeFiles/dot_prod.dir/error_free.cc.s
+src/dot_product/CMakeFiles/dot_prod.dir/common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/common.cc.s"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc -o CMakeFiles/dot_prod.dir/common.cc.s
+
+src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
+src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o: ../src/dot_product/twoprod.cc
+src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o -MF CMakeFiles/dot_prod.dir/twoprod.cc.o.d -o CMakeFiles/dot_prod.dir/twoprod.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/twoprod.cc
+
+src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/twoprod.cc.i"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/twoprod.cc > CMakeFiles/dot_prod.dir/twoprod.cc.i
+
+src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/twoprod.cc.s"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/twoprod.cc -o CMakeFiles/dot_prod.dir/twoprod.cc.s
 
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: ../src/dot_product/dot_product.cpp
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o -MF CMakeFiles/dot_prod.dir/dot_product.cpp.o.d -o CMakeFiles/dot_prod.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o -MF CMakeFiles/dot_prod.dir/dot_product.cpp.o.d -o CMakeFiles/dot_prod.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp
 
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/dot_product.cpp.i"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp > CMakeFiles/dot_prod.dir/dot_product.cpp.i
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp > CMakeFiles/dot_prod.dir/dot_product.cpp.i
 
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/dot_product.cpp.s"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp -o CMakeFiles/dot_prod.dir/dot_product.cpp.s
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp -o CMakeFiles/dot_prod.dir/dot_product.cpp.s
 
 # Object files for target dot_prod
 dot_prod_OBJECTS = \
 "CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o" \
 "CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o" \
-"CMakeFiles/dot_prod.dir/error_free.cc.o" \
+"CMakeFiles/dot_prod.dir/common.cc.o" \
+"CMakeFiles/dot_prod.dir/twoprod.cc.o" \
 "CMakeFiles/dot_prod.dir/dot_product.cpp.o"
 
 # External object files for target dot_prod
@@ -137,11 +152,12 @@ dot_prod_EXTERNAL_OBJECTS =
 
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_random_number.cc.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o
-src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o
+src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o
+src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/build.make
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable dot_prod"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable dot_prod"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dot_prod.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
