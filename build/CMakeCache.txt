@@ -218,6 +218,12 @@ Internship_Musset_Jeremy_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Internship_Musset_Jeremy_SOURCE_DIR:STATIC=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy
 
+//The directory containing a CMake configuration file for MPFR.
+MPFR_DIR:PATH=MPFR_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for mpfr-config.
+mpfr-config_DIR:PATH=mpfr-config_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
