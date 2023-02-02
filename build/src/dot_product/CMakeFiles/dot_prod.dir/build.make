@@ -125,10 +125,24 @@ src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/twoprod.cc.s"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/twoprod.cc -o CMakeFiles/dot_prod.dir/twoprod.cc.s
 
+src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
+src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o: ../src/dot_product/correct_rounding.cc
+src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o -MF CMakeFiles/dot_prod.dir/correct_rounding.cc.o.d -o CMakeFiles/dot_prod.dir/correct_rounding.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.cc
+
+src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot_prod.dir/correct_rounding.cc.i"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.cc > CMakeFiles/dot_prod.dir/correct_rounding.cc.i
+
+src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot_prod.dir/correct_rounding.cc.s"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.cc -o CMakeFiles/dot_prod.dir/correct_rounding.cc.s
+
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot_prod.dir/flags.make
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: ../src/dot_product/dot_product.cpp
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot_prod.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o -MF CMakeFiles/dot_prod.dir/dot_product.cpp.o.d -o CMakeFiles/dot_prod.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp
 
 src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.i: cmake_force
@@ -145,6 +159,7 @@ dot_prod_OBJECTS = \
 "CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o" \
 "CMakeFiles/dot_prod.dir/common.cc.o" \
 "CMakeFiles/dot_prod.dir/twoprod.cc.o" \
+"CMakeFiles/dot_prod.dir/correct_rounding.cc.o" \
 "CMakeFiles/dot_prod.dir/dot_product.cpp.o"
 
 # External object files for target dot_prod
@@ -154,10 +169,11 @@ src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/__/generation/
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o
+src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.o
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/build.make
 src/dot_product/dot_prod: src/dot_product/CMakeFiles/dot_prod.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable dot_prod"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable dot_prod"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dot_prod.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

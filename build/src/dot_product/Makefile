@@ -261,6 +261,30 @@ common.cc.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/common.cc.s
 .PHONY : common.cc.s
 
+correct_rounding.o: correct_rounding.cc.o
+.PHONY : correct_rounding.o
+
+# target to build an object file
+correct_rounding.cc.o:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.o
+.PHONY : correct_rounding.cc.o
+
+correct_rounding.i: correct_rounding.cc.i
+.PHONY : correct_rounding.i
+
+# target to preprocess a source file
+correct_rounding.cc.i:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.i
+.PHONY : correct_rounding.cc.i
+
+correct_rounding.s: correct_rounding.cc.s
+.PHONY : correct_rounding.s
+
+# target to generate assembly for a file
+correct_rounding.cc.s:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/correct_rounding.cc.s
+.PHONY : correct_rounding.cc.s
+
 dot_product.o: dot_product.cpp.o
 .PHONY : dot_product.o
 
@@ -335,6 +359,9 @@ help:
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"
+	@echo "... correct_rounding.o"
+	@echo "... correct_rounding.i"
+	@echo "... correct_rounding.s"
 	@echo "... dot_product.o"
 	@echo "... dot_product.i"
 	@echo "... dot_product.s"

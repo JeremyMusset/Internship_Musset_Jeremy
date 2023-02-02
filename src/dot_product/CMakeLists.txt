@@ -10,8 +10,8 @@ file(
   headers
   *.h)
 
-
-add_executable(dot_prod ${F_GEN} common.cc twoprod.cc dot_product.cpp)
+add_compile_options(-lmpfr)
+add_executable(dot_prod ${F_GEN} common.cc twoprod.cc correct_rounding.cc dot_product.cpp)
 
 install(FILES ${headers}
   DESTINATION include/${CMAKE_PROJECT_NAME})
