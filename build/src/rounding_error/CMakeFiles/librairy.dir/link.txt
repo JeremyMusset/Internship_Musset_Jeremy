@@ -1,1 +1,1 @@
-/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblibrairy.so -o liblibrairy.so CMakeFiles/librairy.dir/rounding_error.cpp.o 
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblibrairy.so -o liblibrairy.so CMakeFiles/librairy.dir/rounding_error.cpp.o 

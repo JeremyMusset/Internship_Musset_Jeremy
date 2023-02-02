@@ -73,15 +73,15 @@ src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o: src/round
 src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o: ../src/rounding_error/rounding_error.c
 src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o: src/rounding_error/CMakeFiles/rounding_error_c.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o -MF CMakeFiles/rounding_error_c.dir/rounding_error.c.o.d -o CMakeFiles/rounding_error_c.dir/rounding_error.c.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.o -MF CMakeFiles/rounding_error_c.dir/rounding_error.c.o.d -o CMakeFiles/rounding_error_c.dir/rounding_error.c.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c
 
 src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/rounding_error_c.dir/rounding_error.c.i"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c > CMakeFiles/rounding_error_c.dir/rounding_error.c.i
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c > CMakeFiles/rounding_error_c.dir/rounding_error.c.i
 
 src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/rounding_error_c.dir/rounding_error.c.s"
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c -o CMakeFiles/rounding_error_c.dir/rounding_error.c.s
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c -o CMakeFiles/rounding_error_c.dir/rounding_error.c.s
 
 # Object files for target rounding_error_c
 rounding_error_c_OBJECTS = \

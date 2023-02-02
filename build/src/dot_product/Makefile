@@ -237,6 +237,30 @@ __/generation/gen_vector.cc.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/__/generation/gen_vector.cc.s
 .PHONY : __/generation/gen_vector.cc.s
 
+common.o: common.cc.o
+.PHONY : common.o
+
+# target to build an object file
+common.cc.o:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/common.cc.o
+.PHONY : common.cc.o
+
+common.i: common.cc.i
+.PHONY : common.i
+
+# target to preprocess a source file
+common.cc.i:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/common.cc.i
+.PHONY : common.cc.i
+
+common.s: common.cc.s
+.PHONY : common.s
+
+# target to generate assembly for a file
+common.cc.s:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/common.cc.s
+.PHONY : common.cc.s
+
 dot_product.o: dot_product.cpp.o
 .PHONY : dot_product.o
 
@@ -264,29 +288,29 @@ dot_product.cpp.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/dot_product.cpp.s
 .PHONY : dot_product.cpp.s
 
-error_free.o: error_free.cc.o
-.PHONY : error_free.o
+twoprod.o: twoprod.cc.o
+.PHONY : twoprod.o
 
 # target to build an object file
-error_free.cc.o:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.o
-.PHONY : error_free.cc.o
+twoprod.cc.o:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.o
+.PHONY : twoprod.cc.o
 
-error_free.i: error_free.cc.i
-.PHONY : error_free.i
+twoprod.i: twoprod.cc.i
+.PHONY : twoprod.i
 
 # target to preprocess a source file
-error_free.cc.i:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.i
-.PHONY : error_free.cc.i
+twoprod.cc.i:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.i
+.PHONY : twoprod.cc.i
 
-error_free.s: error_free.cc.s
-.PHONY : error_free.s
+twoprod.s: twoprod.cc.s
+.PHONY : twoprod.s
 
 # target to generate assembly for a file
-error_free.cc.s:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/error_free.cc.s
-.PHONY : error_free.cc.s
+twoprod.cc.s:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot_prod.dir/build.make src/dot_product/CMakeFiles/dot_prod.dir/twoprod.cc.s
+.PHONY : twoprod.cc.s
 
 # Help Target
 help:
@@ -308,12 +332,15 @@ help:
 	@echo "... __/generation/gen_vector.o"
 	@echo "... __/generation/gen_vector.i"
 	@echo "... __/generation/gen_vector.s"
+	@echo "... common.o"
+	@echo "... common.i"
+	@echo "... common.s"
 	@echo "... dot_product.o"
 	@echo "... dot_product.i"
 	@echo "... dot_product.s"
-	@echo "... error_free.o"
-	@echo "... error_free.i"
-	@echo "... error_free.s"
+	@echo "... twoprod.o"
+	@echo "... twoprod.i"
+	@echo "... twoprod.s"
 .PHONY : help
 
 

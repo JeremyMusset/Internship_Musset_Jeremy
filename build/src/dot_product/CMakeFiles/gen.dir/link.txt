@@ -1,1 +1,0 @@
-/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libgen.so -o libgen.so CMakeFiles/gen.dir/dot_product.cpp.o 

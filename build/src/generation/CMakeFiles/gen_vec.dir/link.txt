@@ -1,1 +1,1 @@
-/usr/bin/g++ -O3 -DNDEBUG -rdynamic CMakeFiles/gen_vec.dir/gen_vector.cc.o CMakeFiles/gen_vec.dir/gen_random_number.cc.o CMakeFiles/gen_vec.dir/vec.cpp.o -o gen_vec 
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/gen_vec.dir/gen_vector.cc.o CMakeFiles/gen_vec.dir/gen_random_number.cc.o CMakeFiles/gen_vec.dir/vec.cpp.o -o gen_vec 

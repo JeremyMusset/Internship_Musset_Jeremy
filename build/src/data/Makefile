@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/codes//CMakeFiles/progress.marks
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/codes/all
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/data//CMakeFiles/progress.marks
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/data/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/codes/clean
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/data/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,12 +148,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/codes/preinstall
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/data/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/codes/preinstall
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/data/preinstall
 .PHONY : preinstall/fast
 
 # clear depends

@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/usr/bin/gcc")
+set(CMAKE_C_COMPILER "/usr/bin/cc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "11.3.0")
@@ -66,7 +66,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/opt/intel/oneapi/vpl/2023.0.0/include;/opt/intel/oneapi/tbb/2021.8.0/include;/opt/intel/oneapi/mpi/2021.8.0/include;/opt/intel/oneapi/mkl/2023.0.0/include;/opt/intel/oneapi/ipp/2021.7.0/include;/opt/intel/oneapi/ippcp/2021.6.3/include;/opt/intel/oneapi/dpl/2022.0.0/linux/include;/opt/intel/oneapi/dpcpp-ct/2023.0.0/include;/opt/intel/oneapi/dnnl/2023.0.0/cpu_dpcpp_gpu_dpcpp/include;/opt/intel/oneapi/dev-utilities/2021.8.0/include;/opt/intel/oneapi/dal/2023.0.0/include;/opt/intel/oneapi/ccl/2021.8.0/include/cpu_gpu_dpcpp;/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "gcc;gcc_s;c;gcc;gcc_s")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/opt/intel/oneapi/vpl/2023.0.0/lib;/opt/intel/oneapi/mpi/2021.8.0/libfabric/lib;/opt/intel/oneapi/mpi/2021.8.0/lib;/opt/intel/oneapi/dnnl/2023.0.0/cpu_dpcpp_gpu_dpcpp/lib;/opt/intel/oneapi/compiler/2023.0.0/linux/lib;/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib;/opt/intel/oneapi/tbb/2021.8.0/lib/intel64/gcc4.8;/opt/intel/oneapi/mpi/2021.8.0/lib/release;/opt/intel/oneapi/mkl/2023.0.0/lib/intel64;/opt/intel/oneapi/ipp/2021.7.0/lib/intel64;/opt/intel/oneapi/ippcp/2021.6.3/lib/intel64;/opt/intel/oneapi/dal/2023.0.0/lib/intel64;/opt/intel/oneapi/compiler/2023.0.0/linux/compiler/lib/intel64_lin;/opt/intel/oneapi/ccl/2021.8.0/lib/cpu_gpu_dpcpp")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

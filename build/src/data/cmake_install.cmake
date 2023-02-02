@@ -1,4 +1,4 @@
-# Install script for directory: /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/codes
+# Install script for directory: /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/data
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
