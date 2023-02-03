@@ -126,22 +126,69 @@ void gen_fpnumber(std::vector<T> &x, int nb_elem, T required_cond, T &sum){
 	while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		x = GenSum(nb_elem,required_cond,cond,sum);
 	}
-		
+  printf("After generation : \nCond = %.30f\nx = \n",cond);
+  for (int i = 0 ; i<nb_elem;i++){
+    printf(" %.30f\n",x[i]);
+  }
+  printf("\n \n");
+
 }
 
-template <class T>
-void gen_vec(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum){
-    //  c = a.*b
-    class std::vector<double> c(nb_elem);
-    gen_fpnumber(c,nb_elem,required_cond,sum);
-    
-    // a = 2.*c   b = 0.5
-    for (int i = 0 ; i<nb_elem;i++) {
-        x[i] = 2*c[i];
-        y[i] = 0.5;
-    }
-}
 
 // Instantiate the GenSum function
 template void gen_fpnumber<float>  (std::vector<float> &x, int nb_elem, float required_cond, float &sum);
 template void gen_fpnumber<double> (std::vector<double> &x, int nb_elem, double required_cond, double &sum);
+
+
+//
+
+/// @brief  Give us 2 vectors of floating point of size nb_elem such as |a| . |b| = sum with the require conditionement
+/// @tparam T Float or Double
+/// @param x Vector a 
+/// @param y Vector b
+/// @param nb_elem 
+/// @param required_cond 
+/// @param sum 
+template <class T>
+void gen_vec(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum){
+
+    T cond;
+    unsigned int i;
+    //  c = a.*b
+    class std::vector<double> c(nb_elem);
+    gen_fpnumber(c,nb_elem,required_cond,sum);
+
+    // While conditionning isn't respect 
+    while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
+		
+      // t random
+      double t = 0;
+      double min = 0;
+      double max = 100;
+      srand( time( NULL ) );
+      t = ((double)(rand() % 1000) +1)/100.0;
+
+      // x = t.*c   y = 1/t
+      for (int i = 0 ; i<nb_elem;i++) {
+          x[i] = t*c[i];
+          y[i] = (1/t);
+      }
+
+      // Compute conditioning
+      cond = 0.;
+      T b = log(required_cond)/log(2.);
+      T k = ceil(b/45.)+1.;
+      sum = SumK<T> (x,nb_elem,k);
+      for(i = 0; i < x.size() ; i++)
+        cond += fabs(x[i]);
+
+      if (sum != 0){
+        cond /= fabs(sum);    
+      }else {
+      cond = 0;  
+      }
+    }
+}
+
+// Instantiate the gen_vec function
+template void gen_vec<double> (std::vector<double> &x, std::vector<double> &y, int nb_elem, double required_cond, double &sum);
