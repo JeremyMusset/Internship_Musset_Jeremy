@@ -4,7 +4,7 @@
 #include <time.h>
 #include "../../include/error_free.h"
 
-#define P 250
+#define P 500
 #define MAX_LEN 10000  //longueur max d'une ligne du fichier binaire
 
 void dot_prod_mpfr(int n, mpfr_t *a, mpfr_t *b, mpfr_t c);
