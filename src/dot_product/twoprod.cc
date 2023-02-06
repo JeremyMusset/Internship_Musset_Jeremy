@@ -9,16 +9,18 @@
 #include <float.h>
 #include "../../include/error_free.h"
 
+// ALL FUNCTIONS
 template < class T >
 void TwoSum(T a, T b, T& x, T& y);
 
 template < class T >
 T SumK(std::vector<T> p, unsigned int n, unsigned int K);
 
-template void Split<double>(std::vector<double> a, int n, std::vector<double> ah, std::vector<double> al);
+template < class T >
+void Split(std::vector<T> a, int n, std::vector<T> &ah, std::vector<T> &al);
 
-template void TwoProd <double> (std::vector<double> a, std::vector<double> b, int n, std::vector<double> x,std::vector<double> y);
-
+template 
+void TwoProd<double>(std::vector<double> a, std::vector<double> b, int n,std::vector<double> &x, std::vector<double> &y);
 
 
 template < class T >
@@ -74,10 +76,9 @@ T SumK(std::vector<T> p, unsigned int n, unsigned int K){
 /// @param ah Result
 /// @param al Result
 template < class T >
-void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
+void Split(std::vector<T> a, int n,std::vector<T> &ah,  std::vector<T> &al)
 {
-  class std::vector<double> c(n);
-  // f = 2^p/2 +1
+  class std::vector<T> c(n);
   double f;
   double p;
   p = 2;
@@ -91,6 +92,7 @@ void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
   for (unsigned int i=0;i<n;i++) {
     al[i] = a[i] - ah[i];
   }
+
 }
 
 
@@ -100,21 +102,27 @@ void Split(std::vector<T> a, int n, std::vector<T> ah, std::vector<T> al)
 /// @param a Vector
 /// @param b Vector
 /// @param n Size
-/// @param x Result
-/// @param y Result
 template < class T >
-void TwoProd(std::vector<T> a, std::vector<T> b, int n, std::vector<T> x, std::vector<T> y)
+void TwoProd(std::vector<T> a, std::vector<T> b, int n,std::vector<T> &x, std::vector<T> &y)
 {
-  for (unsigned int i=0;i<n;i++) {
-    x[i] = a[i] * b[i];
-  }
   class std::vector<double> ah(n);
   class std::vector<double> al(n);
   class std::vector<double> bh(n);
   class std::vector<double> bl(n);
-  Split(a, n, ah, al);
-  Split(b, n, bh, bl);
+  class std::vector<double> tmp(n);
+
+  // x
+  for (unsigned int i=0;i<n;i++) {
+    x[i] = a[i] * b[i];
+  }
+
+  // split
+  Split(a,n,ah,al);
+  Split(b,n,bh,bl);
+
+  // y
   for (unsigned int i=0;i<n;i++) {
     y[i] = al[i] * bl[i] - ((( x[i] - ah[i] * bh[i] ) - al[i] * bh[i] ) - ah[i] * bl[i]);
   }
+  
 }

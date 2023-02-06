@@ -33,8 +33,6 @@ int main() {
             a[i] = 0.2;
             b[i] = 0.3;
         }
-        
-
 
         // On recupere tout dans un vecteur et on l'ecrit dans un fichier binaire
         class std::vector<double> data(2*n+1);
@@ -43,20 +41,14 @@ int main() {
             data[i+1] = a[i];
             data[i+n+1] = b[i];
         }
-        printf("Le vecteur suivant sera enregistré : \n");
-        for (unsigned int j=0;j<2*n+1;j++){
-            printf("%.49f\n",data[j]);
-        }
-
+        
         // Ecriture dans fichier binaire
         FILE * fichier;
         char nom[50];  
         sprintf(nom,"../data/vector%d.bin",l);
-        ofstream f (nom, ios::out | ios::binary);
-    
-        f.write((char*)&data , (2*n+1)*sizeof(double));
-
-        
+        std::ofstream file(nom, std::ios::binary);
+        file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
+        file.close();
     }
     return 0;
 }
