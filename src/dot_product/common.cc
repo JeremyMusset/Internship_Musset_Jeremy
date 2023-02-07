@@ -9,28 +9,28 @@
 #include "../../include/error_free.h"
 
 // template < class T > 
-// T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);
-template double common_dot_prod<double>(std::vector<double> a, std::vector<double> b, int n, int incx, int incy);
+// T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int inca, int incb);
+template double common_dot_prod<double>(std::vector<double> a, std::vector<double> b, int n, int inca, int incb);
 
 /// @brief Common dot product (sdot lapack)
 /// @tparam T Float or Double
-/// @param a Vector of dimension( 1 + ( N - 1 )*abs( incy ) )
-/// @param b Vector of dimension( 1 + ( N - 1 )*abs( incy ) )
+/// @param a Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
+/// @param b Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
 /// @param n Size
-/// @param incx storage spacing between elements of a
-/// @param incy storage spacing between elements of b
+/// @param inca storage spacing between elements of a
+/// @param incb storage spacing between elements of b
 /// @return 
 template < class T > 
-T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy){
+T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int inca, int incb){
    T stemp;
-   int i, ix, iy, m, mp1;
+   int i, ia, ib, m, mp1;
    T sdot;
    stemp = 0.0;
    sdot = 0.0;
    if (n<=0){
       return -9999;
    }
-   if (incx == 1 && incy == 1) {
+   if (inca == 1 && incb == 1) {
       m = n%5;
       if (m != 0) {
          for (i = 0; i<m;i++) {
@@ -49,18 +49,18 @@ T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy)
       }
    }
    else {
-      ix = 1;
-      iy = 1;
-      if (incx < 0) {
-         ix = (-n + 1)*incx + 1;
+      ia = 1;
+      ib = 1;
+      if (inca < 0) {
+         ia = (-n + 1)*inca + 1;
       }
-      if (incy < 0){
-         iy = (-n + 1)*incy + 1;
+      if (incb < 0){
+         ib = (-n + 1)*incb + 1;
       } 
       for (i=0; i<n; i++){
-         stemp = stemp + a[ix]*b[iy];
-         ix = ix + incx;
-         iy = iy + incy;
+         stemp = stemp + a[ia]*b[ib];
+         ia = ia + inca;
+         ib = ib + incb;
       }
    }
    sdot = stemp;

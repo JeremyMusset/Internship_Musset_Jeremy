@@ -221,9 +221,6 @@ Internship_Musset_Jeremy_SOURCE_DIR:STATIC=/home/jerem/Data/M2/Stage/git/Interns
 //The directory containing a CMake configuration file for MPFR.
 MPFR_DIR:PATH=MPFR_DIR-NOTFOUND
 
-//The directory containing a CMake configuration file for mpfr-config.
-mpfr-config_DIR:PATH=mpfr-config_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
@@ -329,7 +326,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

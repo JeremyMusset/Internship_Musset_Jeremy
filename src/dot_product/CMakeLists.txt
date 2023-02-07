@@ -10,8 +10,13 @@ file(
   headers
   *.h)
 
-add_compile_options(-lmpfr)
+find_package(CGAL REQUIRED)
+find_package(MPFR REQUIRED)
+
 add_executable(dot_prod ${F_GEN} common.cc twoprod.cc correct_rounding.cc dot_product.cpp)
+
+
+
 
 install(FILES ${headers}
   DESTINATION include/${CMAKE_PROJECT_NAME})

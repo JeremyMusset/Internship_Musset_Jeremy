@@ -4,7 +4,7 @@
 #include <time.h>
 #include "../../include/error_free.h"
 
-#define P 250
+#define P 5000
 #define MAX_LEN 10000  //longueur max d'une ligne du fichier binaire
 
 void dot_prod_mpfr(int n, mpfr_t *a, mpfr_t *b, mpfr_t c);
@@ -46,8 +46,8 @@ int import_vec_mpfr(mpfr_t **a, mpfr_t **b, char *fic)
 
     // Recuperation du texte
     fgets(str, MAX_LEN, f);
-    mpfr_set_str(nbis, str, 2, MPFR_RNDN);  // NBIS IS OK, BUT A MPFR_T, I JUST NEED TO CONVERT IN INT AND PUT HIM IN n
-    n = 3;
+    mpfr_set_str(nbis, str, 2, MPFR_RNDN);
+    n = mpfr_get_d (nbis,MPFR_RNDN);
     *a = (mpfr_t *)malloc(n * sizeof(mpfr_t));
     *b = (mpfr_t *)malloc(n * sizeof(mpfr_t));
 
