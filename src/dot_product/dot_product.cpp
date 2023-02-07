@@ -41,15 +41,16 @@ int main() {
     
     // Define c++ variables
     double sum;
-    double cond;
+    double required_cond;
     double res_common, res_rare_blas;
     int n;
     sum = 150;
-    cond = 1;
+    required_cond = 2;
     unsigned int nb_gen = 2;
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
+    
     
 
     // On execute "nb_gen" produit scalaire

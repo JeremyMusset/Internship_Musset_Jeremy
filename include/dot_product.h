@@ -7,10 +7,10 @@ template < class T >
 T Rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);
 
 template < class T > 
-void Split_Veltkamp(std::vector<T> x, int n,std::vector<T> xh,std::vector<T> xl);
+void Split_Veltkamp(T x,T &xh,T &xl);
 
 template < class T > 
-T HybridSum(std::vector<T> p, int n);
+std::vector<T> HybridSum(std::vector<T> p, int n);
 
 template < class T > 
-T OnlineExact(std::vector<T> p, int n);
+void OnlineExact(std::vector<T> p, int n,std::vector<T> &Ch, std::vector<T> &Cl);

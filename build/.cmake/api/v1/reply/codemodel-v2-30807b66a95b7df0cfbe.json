@@ -1,0 +1,244 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6,
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src-Release-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/generation",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.generation-Release-b3d38a2b84c59e4c9d85.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/generation",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/rounding_error",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.rounding_error-Release-200c382902fe59033e4a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/rounding_error",
+					"targetIndexes" : 
+					[
+						5,
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "src/dot_product",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.dot_product-Release-0557f229a1ce688e2e9a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/dot_product",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "src/data",
+					"jsonFile" : "directory-src.data-Release-72e9df1050045df1bc7b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/data"
+				},
+				{
+					"build" : "Examples",
+					"jsonFile" : "directory-Examples-Release-53b44bb8d6e8dd08aa8f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Examples"
+				},
+				{
+					"build" : "main",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-main-Release-4220d8be0cdde05869e4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "main",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"name" : "Internship_Musset_Jeremy",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "dot::@8f4766eefd3d9c9459e6",
+					"jsonFile" : "target-dot-Release-17fc263193bb8190087a.json",
+					"name" : "dot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "dot_X::@8f4766eefd3d9c9459e6",
+					"jsonFile" : "target-dot_X-Release-45443fa85262c75a2ded.json",
+					"name" : "dot_X",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "dot_prod::@15c4a824ab2728a3f5e7",
+					"jsonFile" : "target-dot_prod-Release-ae5c7c4553181e555894.json",
+					"name" : "dot_prod",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "dot_product::@15c4a824ab2728a3f5e7",
+					"jsonFile" : "target-dot_product-Release-3ed54d4fa7813d5d6314.json",
+					"name" : "dot_product",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gen_X::@9e3e01a48b10bb7f27ee",
+					"jsonFile" : "target-gen_X-Release-99cf47e2962607f28b7b.json",
+					"name" : "gen_X",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "librairy::@c10ff1f2a053a5de3e8e",
+					"jsonFile" : "target-librairy-Release-ba07b02c4f6bb889a583.json",
+					"name" : "librairy",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "librairy2::@c10ff1f2a053a5de3e8e",
+					"jsonFile" : "target-librairy2-Release-72005704bfc18dbc4f59.json",
+					"name" : "librairy2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "rounding_error_c::@c10ff1f2a053a5de3e8e",
+					"jsonFile" : "target-rounding_error_c-Release-7416ffb8d487c813aa12.json",
+					"name" : "rounding_error_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "rounding_error_cpp::@c10ff1f2a053a5de3e8e",
+					"jsonFile" : "target-rounding_error_cpp-Release-ac023b1654dc93a83f99.json",
+					"name" : "rounding_error_cpp",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build",
+		"source" : "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

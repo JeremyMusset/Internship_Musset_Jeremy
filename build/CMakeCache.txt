@@ -28,7 +28,7 @@ CMAKE_BUILD_TYPE:STRING=
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/g++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -54,7 +54,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+CMAKE_C_COMPILER:STRING=/usr/bin/gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -218,8 +218,11 @@ Internship_Musset_Jeremy_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Internship_Musset_Jeremy_SOURCE_DIR:STATIC=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy
 
-//The directory containing a CMake configuration file for MPFR.
-MPFR_DIR:PATH=MPFR_DIR-NOTFOUND
+//Path to a file.
+MPFR_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+MPFR_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libmpfr.so
 
 
 ########################
@@ -326,7 +329,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -369,4 +372,10 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding MPFR
+FIND_PACKAGE_MESSAGE_DETAILS_MPFR:INTERNAL=[/usr/include][/usr/lib/x86_64-linux-gnu/libmpfr.so][TRUE][v(1.0.0)]
+//ADVANCED property for variable: MPFR_INCLUDE_DIR
+MPFR_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPFR_LIBRARY
+MPFR_LIBRARY-ADVANCED:INTERNAL=1
 

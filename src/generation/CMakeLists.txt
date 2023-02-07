@@ -1,8 +1,8 @@
-add_library(gen
+add_library(gen_X
   SHARED
-  vec.cpp)
+  generation.cpp)
 
-install (TARGETS gen
+install (TARGETS gen_X
          DESTINATION lib2)
          
 file(
@@ -10,8 +10,6 @@ file(
   headers
   *.hpp)
 
-
-add_executable(gen_vec gen_vector.cc gen_random_number.cc vec.cpp)
 
 install(FILES ${headers}
   DESTINATION include/${CMAKE_PROJECT_NAME})

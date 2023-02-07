@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/dot_prod.dir/__/generation/gen_random_vector.cc.o CMakeFiles/dot_prod.dir/common.cc.o CMakeFiles/dot_prod.dir/correct_rounding.cc.o CMakeFiles/dot_prod.dir/eft.cc.o CMakeFiles/dot_prod.dir/dot_product.cpp.o -o dot_prod  -lmpfr 

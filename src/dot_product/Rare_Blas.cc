@@ -12,13 +12,13 @@
 #define PREC 53    // 53 in double 
 
 
-template void Split_Veltkamp<double>(std::vector<double> x, int n,std::vector<double> xh,std::vector<double> xl);
+template void Split_Veltkamp<double>(double x,double &xh, double &xl);
 
-template double HybridSum<double>(std::vector<double> p, int n);
+template std::vector<double> HybridSum<double>(std::vector<double> p, int n);
 
-template double OnlineExact<double>(std::vector<double> p, int n);
+template void OnlineExact<double>(std::vector<double> p, int n,std::vector<double> &Ch, std::vector<double> &Cl);
 
-template double Rare_blas_prod<double>(std::vector<double> a, std::vector<double> b, int n, int inca, int incb);
+template double Rare_blas_dot_prod<double>(std::vector<double> a, std::vector<double> b, int n, int inca, int incb);
 
 
 /// @brief Common dot product (sdot lapack)
@@ -32,25 +32,24 @@ template double Rare_blas_prod<double>(std::vector<double> a, std::vector<double
 template < class T > 
 T Rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int inca, int incb){
 
-    return 0;
+    return 0.0;
 }
 
 // Veltkamp's split function
 /// @brief Function Split Veltkamp
 /// @tparam T Float or Double
-/// @param a Vector
-/// @param n Size
+/// @param a Floatting point
 /// @param ah Result
 /// @param al Result
 template < class T >
-void Split_Veltkamp(T x, int n,T &xh, T &xl)
+void Split_Veltkamp(T x,T &xh, T &xl)
 {
-  T b(n);
-  T c(n);
+  T b;
+  T c;
   double a;
   double p;
 
-  p = PREC:
+  p = PREC;
   a = pow(2.0,ceil(p/2.0)) + 1;
 
     b = a*x;
@@ -74,8 +73,9 @@ std::vector<T> HybridSum(std::vector<T> p, int n)
     T ph;
     T pl;
     int exp;
+    double m;
     for (unsigned int i =0; i<n;i++){
-        Split_Veltkamp(p[i],n,ph,pl);
+        Split_Veltkamp(p[i],ph,pl);
         frexp(ph,&exp);             // exp = E - bias
         C[exp] += ph;
         m = PREC;
@@ -89,22 +89,21 @@ std::vector<T> HybridSum(std::vector<T> p, int n)
 /// @brief Function OnlineExact
 /// @tparam T Float or Double
 /// @param a Vector
-/// @param n Size
+/// @param n Size of a
+/// @param Ch Result of size 2048
+/// @param Cl Result of size 2048
 template < class T >
-std::vector<T> OnlineExact(std::vector<T> p, int n)
+void OnlineExact(std::vector<T> p, int n,std::vector<T> &Ch,std::vector<T> &Cl)
 {
-    class std::vector<T> Ch(2048);
-    class std::vector<T> Cl(2048);
     T ph;
     T pl;
     int exp;
-    double error;
-    double tmp;
+    T error;
+    T tmp;
     for (unsigned int i =0; i<n;i++){
         frexp(ph,&exp);             // exp = E - bias
-        FastTwoSum(Ch[exp], p,n,tmp,error);
+        FastTwoSum(Ch[exp], p[i],tmp,error);
         Ch[exp] = tmp;
         Cl[exp] += error;
     }
-    return C;
 }

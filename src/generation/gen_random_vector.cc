@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include <vector>
+#include <fstream>      
 #include <algorithm>
 #include <cassert>
 #include <float.h>
@@ -10,7 +11,17 @@
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
-// Give us 1 vector of floating point of size nb_elem such as x[1] + x[2] + ... = sum with the require conditionement
+#define SMAX 25      // 20 + a with a such as nb of files = 10^a
+
+// Give us n vector of floating point of size nb_elem such as |x[1]| + |x[2]| + ... = sum with the require conditionement
+template void import_vec<double> (std::vector<double> &vec, unsigned int l);
+
+template void vec_gen<double> (int nb_gen, int size, double cond, double sum);
+
+template void generate_v<double> (std::vector<double> &x, std::vector<double> &y, int nb_elem, double required_cond, double &sum);
+
+template void gen_fpnumber<float>  (std::vector<float> &x, int nb_elem, float required_cond, float &sum);
+template void gen_fpnumber<double> (std::vector<double> &x, int nb_elem, double required_cond, double &sum);
 
 template < class T >
 void TwoSum(T a, T b, T& x, T& y);
@@ -124,25 +135,12 @@ void gen_fpnumber(std::vector<T> &x, int nb_elem, T required_cond, T &sum){
 	T cond = 0;
 	
 	x = GenSum(nb_elem,required_cond,cond,sum);		
-	
+
 	while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		x = GenSum(nb_elem,required_cond,cond,sum);
 	}
-  printf("After generation : \nCond = %.30f\nx = \n",cond);
-  for (int i = 0 ; i<nb_elem;i++){
-    printf(" %.30f\n",x[i]);
-  }
-  printf("\n \n");
-
 }
 
-
-// Instantiate the GenSum function
-template void gen_fpnumber<float>  (std::vector<float> &x, int nb_elem, float required_cond, float &sum);
-template void gen_fpnumber<double> (std::vector<double> &x, int nb_elem, double required_cond, double &sum);
-
-
-//
 
 /// @brief  Give us 2 vectors of floating point of size nb_elem such as |a| . |b| = sum with the require conditionement
 /// @tparam T Float or Double
@@ -152,7 +150,7 @@ template void gen_fpnumber<double> (std::vector<double> &x, int nb_elem, double 
 /// @param required_cond 
 /// @param sum 
 template <class T>
-void gen_vec(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum){
+void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum){
 
     T cond;
     unsigned int i;
@@ -192,5 +190,61 @@ void gen_vec(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond,
     }
 }
 
-// Instantiate the gen_vec function
-template void gen_vec<double> (std::vector<double> &x, std::vector<double> &y, int nb_elem, double required_cond, double &sum);
+
+/// @brief Generate nb_vec files with vectors of size n 
+/// @tparam T Double or Float
+/// @param nb_gen Number of vectors
+/// @param size Size of vectors
+/// @param cond Conditioning required
+/// @param sum Sum of absolute values
+template <class T>
+void vec_gen(int nb_gen,int size, T cond,T sum){
+  // We generate "nb_gen" time
+  for (unsigned int l=0;l<nb_gen;l++){
+
+    // Generate vectors
+    class std::vector<double> a(size);
+    class std::vector<double> b(size);
+    generate_v(a,b,size,cond,sum);
+
+    // Regroup vector
+    class std::vector<double> data(2*size+1);
+    data[0] = size;
+    for (unsigned int i=0;i<size;i++) {
+        data[i+1] = a[i];
+        data[i+size+1] = b[i];
+    }
+
+    // Write into binary file
+    FILE * fichier;
+    char name[50];  
+    sprintf(name,"../src/data/vector%d.bin",l);
+    std::ofstream file(name, std::ios::binary);
+    file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
+    file.close();
+  }
+}
+
+/// @brief Transform binary file into vectors
+/// @tparam T Double or Float
+/// @param vec Vector of size 2*n+1
+/// @param l file number l
+template <class T>
+void import_vec(std::vector<T> &vec, unsigned int l){
+    char nom[SMAX];  
+    sprintf(nom,"../src/data/vector%d.bin",l);
+    std::ifstream input_file(nom, std::ios::binary);
+    if (!input_file) {
+        std::cerr << "Could not open binary_file.bin" << std::endl;
+    }
+    double number;
+    while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
+        vec.push_back(number);
+    }
+    input_file.close(); 
+}
+
+
+
+
+
