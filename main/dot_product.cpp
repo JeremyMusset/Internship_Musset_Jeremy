@@ -25,10 +25,14 @@ int main() {
     double required_cond;
     double res_common, res_rare_blas;
     int n;
+
+    // Variables
     n = 3;
     sum = 10;
     required_cond = 2;
     unsigned int nb_gen = 2;
+
+
     class std::vector<double> a(n);
     class std::vector<double> b(n);
     
@@ -137,7 +141,7 @@ int main() {
         printf("Time : \n%.25f seconds \n", elapsed_rare_blas);
         printf("\n \n");
         
-
+    
 
 
 

@@ -14,3 +14,10 @@ std::vector<T> HybridSum(std::vector<T> p, int n);
 
 template < class T > 
 void OnlineExact(std::vector<T> p, int n,std::vector<T> &Ch, std::vector<T> &Cl);
+
+template < class T >
+void IFastSum(std::vector<T> p, int size, bool allowRec,T &res);
+
+template < class T > 
+T ulp(T x);
+

@@ -6,11 +6,13 @@
 #include <cmath>
 #include <iomanip>
 #include <ios>
+#include <stdbool.h>
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
 #define PREC 53    // 53 in double 
 
+template double ulp<double>(double x);
 
 template void Split_Veltkamp<double>(double x,double &xh, double &xl);
 
@@ -19,6 +21,8 @@ template std::vector<double> HybridSum<double>(std::vector<double> p, int n);
 template void OnlineExact<double>(std::vector<double> p, int n,std::vector<double> &Ch, std::vector<double> &Cl);
 
 template double Rare_blas_dot_prod<double>(std::vector<double> a, std::vector<double> b, int n, int inca, int incb);
+
+template void IFastSum<double>(std::vector<double> p, int size, bool allowRec,double &res);
 
 
 /// @brief Common dot product (sdot lapack)
@@ -59,6 +63,10 @@ void Split_Veltkamp(T x,T &xh, T &xl)
     xh = b + c;
 
     xl = x - xh;
+}
+template < class T >
+T ulp(T x) {
+  return std::nextafter(x, std::numeric_limits<T>::infinity()) - x;
 }
 
 // Hybrid Sum function
@@ -105,5 +113,37 @@ void OnlineExact(std::vector<T> p, int n,std::vector<T> &Ch,std::vector<T> &Cl)
         FastTwoSum(Ch[exp], p[i],tmp,error);
         Ch[exp] = tmp;
         Cl[exp] += error;
+    }
+}
+
+/// @brief Return us the sum of elements of the vector p
+/// @tparam T Float or Double
+/// @param p Vector
+/// @param  allowRec Recursive calls are allowed 
+/// @param res Result
+template < class T >
+void IFastSum(std::vector<T> p, int size, bool allowRec,T &res)
+{
+    res = 0;
+    allowRec = true;
+    int nb_err;             // Non zero errors
+    T St,Smax, maxErr, tmp1,tmp2;
+    while (allowRec == true){
+        nb_err =1;
+        St = 0;             // Sum of this iteration
+        Smax = 0;           // Max intermediate value of St
+        for (unsigned int i=0;i<sizes;i++){
+            TwoSum(St,p[i],tmp1,tmp2);
+            St = tmp1;
+            p[nb_err]=tmp2;
+            Smax = max(Smax,abs(St));
+            if (p[nb_err]!=0) {
+                nb_err += 1;
+            }
+        }
+        maxErr = (nb_err - 1)*ulp(Smax)/2;
+
+
+        // Page 83 ligne 14
     }
 }
