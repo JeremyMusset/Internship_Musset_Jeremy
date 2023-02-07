@@ -20,6 +20,9 @@ template < class T >
 void Split(std::vector<T> a, int n, std::vector<T> &ah, std::vector<T> &al);
 
 template 
+void FastTwoSum<double>(double a,double b, int n, double &s, double &err);
+
+template 
 void TwoProd<double>(std::vector<double> a, std::vector<double> b, int n,std::vector<double> &x, std::vector<double> &y);
 
 
@@ -43,6 +46,23 @@ void TwoSum(T a, T b, T& x, T& y)
   x = a + b;
   z = x - a;
   y = (a - (x - z)) + (b - z);
+}
+
+// Fast two sum
+/// @brief Function Fast two sum
+/// @tparam T Float or Double
+/// @param a T
+/// @param b T
+/// @param n Size
+/// @param s solution
+/// @param err error
+template < class T >
+void FastTwoSum(T a,T b, int n, T &s, T &err)
+{
+  double tmp;
+  s = a + b;
+  tmp = s - a;
+  err = tmp - b;
 }
 
 

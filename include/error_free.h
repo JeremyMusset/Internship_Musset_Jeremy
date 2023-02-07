@@ -16,6 +16,7 @@ void Split(std::vector<T> a, int n,std::vector<T> &ah,  std::vector<T> &al);
 template < class T >
 void TwoProd(std::vector<T> a,  std::vector<T> b, int n,std::vector<T> &x,  std::vector<T> &y);
 
-template < class T > 
-T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);
+template < class T >
+void FastTwoSum(T a,T b, int n, T &s, T &err);
+
 
