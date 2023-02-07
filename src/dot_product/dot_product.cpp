@@ -182,12 +182,14 @@ int main() {
 
 
 
-        printf("___________________________ TEST Twoprod _______________________ \n \n \n");
+        printf("___________________________ TEST_______________________ \n \n \n");
         
         class std::vector<double> tp2(n);
         class std::vector<double> tp1(n);
-        TwoProd(a,b,n,tp1,tp2);
-        
+        double q1,q2;
+        TwoMultFMA(0.5,0.1,q1,q2);
+        printf("%.15f \n",q1);
+        printf("%.15f \n",q2);
 
         printf("\n TWO PROD : \n");
         printf("RES : \n");

@@ -8,22 +8,30 @@
 #include <cassert>
 #include <float.h>
 #include "../../include/error_free.h"
+#include "../../include/dot_product.h"
 
 // ALL FUNCTIONS
-template < class T >
-void TwoSum(T a, T b, T& x, T& y);
+template
+void TwoSum<double>(double a, double b, double & x, double & y);
 
-template < class T >
-T SumK(std::vector<T> p, unsigned int n, unsigned int K);
+template
+double SumK<double>(std::vector<double> p, unsigned int n, unsigned int K);
 
-template < class T >
-void Split(std::vector<T> a, int n, std::vector<T> &ah, std::vector<T> &al);
+template
+void Split<double>(std::vector<double> a, int n, std::vector<double> &ah, std::vector<double> &al);
 
 template 
-void FastTwoSum<double>(double a,double b, int n, double &s, double &err);
+void FastTwoSum<double>(double a,double b, double &s, double &err);
 
 template 
 void TwoProd<double>(std::vector<double> a, std::vector<double> b, int n,std::vector<double> &x, std::vector<double> &y);
+
+template
+double FMA<double>(double a, double b, double c);
+
+template
+void TwoMultFMA<double>(double a, double b, double &p, double &e);
+
 
 
 template < class T >
@@ -57,7 +65,7 @@ void TwoSum(T a, T b, T& x, T& y)
 /// @param s solution
 /// @param err error
 template < class T >
-void FastTwoSum(T a,T b, int n, T &s, T &err)
+void FastTwoSum(T a,T b, T &s, T &err)
 {
   double tmp;
   s = a + b;
@@ -86,6 +94,13 @@ T SumK(std::vector<T> p, unsigned int n, unsigned int K){
       tmp[i] = tmp_res; tmp[i-1] = tmp_err;
     }
   }
+  
+  for(unsigned int i = 0; i < n ; i++)
+    res += tmp[i];
+ 
+  // Reset rounding mode
+  
+  return res;
 }
 
 
@@ -123,6 +138,8 @@ void Split(std::vector<T> a, int n,std::vector<T> &ah,  std::vector<T> &al)
 /// @param a Vector
 /// @param b Vector
 /// @param n Size
+/// @param x Result
+/// @param y Result
 template < class T >
 void TwoProd(std::vector<T> a, std::vector<T> b, int n,std::vector<T> &x, std::vector<T> &y)
 {
@@ -145,5 +162,25 @@ void TwoProd(std::vector<T> a, std::vector<T> b, int n,std::vector<T> &x, std::v
   for (unsigned int i=0;i<n;i++) {
     y[i] = al[i] * bl[i] - ((( x[i] - ah[i] * bh[i] ) - al[i] * bh[i] ) - ah[i] * bl[i]);
   }
-  
+}
+
+// FMA function
+/// @brief FMA function
+template < class T >
+T FMA(T a, T b, T c)
+{
+  return a*b+c; 
+}
+
+// 2MultFMA function
+/// @brief 2MultFMA function
+/// @param a Number
+/// @param b Number
+/// @param p Result
+/// @param e Result
+template < class T >
+void TwoMultFMA(T a, T b, T &p, T &e)
+{
+  p = a*b;
+  e = FMA(a,b,-p);
 }

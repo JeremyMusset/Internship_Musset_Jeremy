@@ -7,6 +7,8 @@
 #include <cassert>
 #include <float.h>
 #include "../../include/gen_random_number.h"
+#include "../../include/error_free.h"
+#include "../../include/dot_product.h"
 
 // Give us 1 vector of floating point of size nb_elem such as x[1] + x[2] + ... = sum with the require conditionement
 

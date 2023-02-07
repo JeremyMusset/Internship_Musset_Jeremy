@@ -9,6 +9,8 @@
 #include <random>
 #include <fstream>
 #include "../../include/gen_random_number.h"
+#include "../../include/error_free.h"
+#include "../../include/dot_product.h"
 
 using namespace std;
 
@@ -18,7 +20,7 @@ int main() {
     int n;
     n = 3;
     sum = 150;
-    cond = 0.1;
+    cond = 1.5;
     int nb_gen = 2;
 
     // On genere "nb_gen" vecteurs
