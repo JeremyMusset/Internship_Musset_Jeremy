@@ -10,6 +10,8 @@ file(
   headers
   *.h)
 
+find_package(CGAL REQUIRED)
+find_package(MPFR REQUIRED)
 
 add_executable(dot_prod ${F_GEN} common.cc twoprod.cc correct_rounding.cc dot_product.cpp)
 

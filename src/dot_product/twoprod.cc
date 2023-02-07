@@ -45,6 +45,7 @@ void TwoSum(T a, T b, T& x, T& y)
   y = (a - (x - z)) + (b - z);
 }
 
+
 // Sum K function
 /// @brief K * Twosum
 /// @tparam T Float or Double
@@ -81,7 +82,7 @@ void Split(std::vector<T> a, int n,std::vector<T> &ah,  std::vector<T> &al)
   class std::vector<T> c(n);
   double f;
   double p;
-  p = 2;
+  p = 53;   // 53 in double 
   f = pow(2.0,ceil(p/2.0)) + 1;
   for (unsigned int i=0;i<n;i++) {
     c[i] = f*a[i];

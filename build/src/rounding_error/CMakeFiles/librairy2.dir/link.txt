@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblibrairy2.so -o liblibrairy2.so CMakeFiles/librairy2.dir/rounding_error.c.o 

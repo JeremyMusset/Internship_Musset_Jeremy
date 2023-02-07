@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG -rdynamic CMakeFiles/rounding_error_c.dir/rounding_error.c.o -o rounding_error_c 
