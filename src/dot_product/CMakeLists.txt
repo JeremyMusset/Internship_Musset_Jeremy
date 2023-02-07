@@ -1,8 +1,8 @@
-add_library(dot
+add_library(dot_X
   SHARED
   dot_product.cpp)
 
-install (TARGETS dot
+install (TARGETS dot_X
          DESTINATION lib3)
          
 file(
@@ -10,13 +10,9 @@ file(
   headers
   *.h)
 
-find_package(CGAL REQUIRED)
-find_package(MPFR REQUIRED)
-
-add_executable(dot_prod ${F_GEN} common.cc twoprod.cc correct_rounding.cc dot_product.cpp)
-
-
-
+add_executable(dot ${F_GEN} ${F_DOT} dot_product.cpp)
 
 install(FILES ${headers}
   DESTINATION include/${CMAKE_PROJECT_NAME})
+
+target_link_libraries(dot ${MPFR_LIBRARY})

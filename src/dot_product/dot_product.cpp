@@ -11,7 +11,10 @@
 #include <fstream>
 #include <mpfr.h>
 #include "../../include/error_free.h"
+#include "../../include/dot_product.h"
+
 using namespace std;
+
 #define P 150
 #define SMAX 25      // 20 + a with a such as nb of files = 10^a
 
@@ -38,15 +41,16 @@ int main() {
     
     // Define c++ variables
     double sum;
-    double cond;
-    double c;
+    double required_cond;
+    double res_common, res_rare_blas;
     int n;
     sum = 150;
-    cond = 1;
+    required_cond = 2;
     unsigned int nb_gen = 2;
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
+    
     
 
     // On execute "nb_gen" produit scalaire
@@ -116,14 +120,14 @@ int main() {
         }  
 
         // Define and initialize result
-        mpfr_t res;
-        mpfr_init2(res,P);
+        mpfr_t res_mpfr;
+        mpfr_init2(res_mpfr,P);
 
         // Dot product
-        dot_prod_mpfr(n,a_mpfr,b_mpfr,res);
+        dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
 
         // Results 
-        mpfr_printf ("%.41Rg \n", res);
+        mpfr_printf ("%.41Rg \n", res_mpfr);
         end_mpfr = clock();                        
         elapsed_mpfr = ((double)end_mpfr - start_mpfr) / CLOCKS_PER_SEC;
         printf("Time : \n%.25f seconds \n", elapsed_mpfr);
@@ -139,13 +143,16 @@ int main() {
         clock_t start_common, end_common;
         double elapsed_common;
         start_common = clock();
-        c = 0.0;
-        c = common_dot_prod(a,b,n,1,1);
-        printf("%.41f\n",c);
+
+        // Dot product 
+        res_common = 0.0;
+        res_common = common_dot_prod(a,b,n,1,1);
+        
+        // Results
+        printf("%.41f\n",res_common);
         end_common = clock();                        
         elapsed_common = ((double)end_common - start_common) / CLOCKS_PER_SEC;
         printf("Time : \n%.25f seconds \n", elapsed_common);
-        printf("\n \n");
 
 
 
@@ -153,12 +160,37 @@ int main() {
         //////////////// RARE-BLAS DOT PRODUCT /////////////////
         ////////////////////////////////////////////////////////
 
-        printf("___________________________ TEST Twoprod _______________________ \n \n \n");
+        printf("\n \nRARE BLAS DOT PROD : \n");
+        // Time
+        clock_t start_rare_blas, end_rare_blas;
+        double elapsed_rare_blas;
+        start_rare_blas = clock();
+        res_rare_blas = 0.0;
+        res_rare_blas = common_dot_prod(a,b,n,1,1);
+        printf("%.41f\n",res_rare_blas);
+        end_rare_blas = clock();                        
+        elapsed_rare_blas = ((double)end_rare_blas - start_rare_blas) / CLOCKS_PER_SEC;
+        printf("Time : \n%.25f seconds \n", elapsed_rare_blas);
+        printf("\n \n");
 
+
+
+
+
+
+
+
+
+
+
+        printf("___________________________ TEST_______________________ \n \n \n");
+        
         class std::vector<double> tp2(n);
         class std::vector<double> tp1(n);
-        TwoProd(a,b,n,tp1,tp2);
-        
+        double q1,q2;
+        TwoMultFMA(0.5,0.1,q1,q2);
+        printf("%.15f \n",q1);
+        printf("%.15f \n",q2);
 
         printf("\n TWO PROD : \n");
         printf("RES : \n");

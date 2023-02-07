@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <ios>
 #include "../../include/error_free.h"
+#include "../../include/dot_product.h"
 
 // template < class T > 
 // T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int inca, int incb);
