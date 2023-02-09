@@ -43,26 +43,32 @@ template void IFastSum<double>(std::vector<double> p, bool allowRec,double &res)
 /// @param res Result of a . b
 template < class T > 
 T Rare_blas_dot_prod_hybrid(std::vector<T> a, std::vector<T> b, int n){
+    int L = 200;
     class std::vector<T> tp1(n);
     class std::vector<T> tp2(n);
     class std::vector<T> err(2048);
     class std::vector<T> res(2048);
+    class std::vector<T> qerr(L);
+    class std::vector<T> qres(L);
+    
     T error, result;
     TwoProd(a,b,n,tp1,tp2);
     res = HybridSum(tp1,n);
     err = HybridSum(tp2,n);
 
+    result = FastSum(res,2048,qres,L,0);
+    error = FastSum(err,2048,qerr,L,0);
 
 
     // Ifastsum
-    error = 0.0;
-    result = 0.0;
-    for (unsigned int i=0;i<2048;i++) {
-        error+=err[i];
-    }
-    for (unsigned int i=0;i<2048;i++) {
-        result+=res[i];
-    }
+    // error = 0.0;
+    // result = 0.0;
+    // for (unsigned int i=0;i<2048;i++) {
+    //     error+=err[i];
+    // }
+    // for (unsigned int i=0;i<2048;i++) {
+    //     result+=res[i];
+    // }
     return error+result;
     
 }

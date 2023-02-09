@@ -142,37 +142,20 @@ int main() {
         elapsed_rare_blas = ((double)end_rare_blas - start_rare_blas) / CLOCKS_PER_SEC;
         printf("Time : \n%.25f seconds \n", elapsed_rare_blas);
         printf("\n \n");
+
+
         
+        // printf("___________________________TEST IFASTSUM_____________________________");
+        // std::vector<double> testifast(2048);
+        //  for (unsigned int i=0;i<2048;i++){
+        //     testifast[i] = 0.2;
+        // }
 
+        // double resifast = 0.0;
 
-
-
-        std::vector<double> va(30000);
-        std::vector<double> vb(30000);
-        double testrare;
-    
-
-        for (unsigned int i=0;i<30000;i++){
-            va[i] = 0.2;
-            vb[i] = 0.3;
-        }
-        
-        testrare = Rare_blas_dot_prod_online(va,vb,30000);
-
-        printf("BON : %.25f\n",0.3*0.2*30000);
-        printf("res : \n%.25f \n",testrare);
-        
-        printf("___________________________TEST IFASTSUM_____________________________");
-        std::vector<double> testifast(2048);
-         for (unsigned int i=0;i<2048;i++){
-            testifast[i] = 0.2;
-        }
-
-        double resifast = 0.0;
-
-        IFastSum(testifast,true,resifast);
-         printf("\nBON : %.25f\n",0.2*2048);
-        printf("res : \n%.25f \n",resifast);
+        // IFastSum(testifast,true,resifast);
+        //  printf("\nBON : %.25f\n",0.2*2048);
+        // printf("res : \n%.25f \n",resifast);
 
         ////////////////////////////////////////////////////////
         //////////////////// OZAKI SCHEME //////////////////////
