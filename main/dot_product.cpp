@@ -144,7 +144,6 @@ int main() {
         printf("\n \n");
 
 
-        
         // printf("___________________________TEST IFASTSUM_____________________________");
         // std::vector<double> testifast(2048);
         //  for (unsigned int i=0;i<2048;i++){
