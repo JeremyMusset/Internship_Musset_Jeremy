@@ -16,11 +16,14 @@
 # export OMP_PROC_BIND=close
 # echo Thread Binding Policy: ${OMP_PROC_BIND}
 
+make -s compile
 # =============== Run with different no of threads
-NTHREADS=(1 2 3 4 6 8 12)
-for i in ${NTHREADS[@]}
-do
-    echo Number of Threads = ${i} 
-    OMP_NUM_THREADS=${i} make -s run
-    echo 
-done
+# NTHREADS=(2 4 6 8 12)
+# for i in ${NTHREADS[@]}
+# do
+#     echo Number of Threads = ${i} 
+#     OMP_NUM_THREADS=${i} make -s run
+#     echo 
+# done
+
+OMP_NUM_THREADS=2 make -s run
