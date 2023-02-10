@@ -59,16 +59,6 @@ T Rare_blas_dot_prod_hybrid(std::vector<T> a, std::vector<T> b, int n){
     result = FastSum(res,2048,qres,L,0);
     error = FastSum(err,2048,qerr,L,0);
 
-
-    // Ifastsum
-    // error = 0.0;
-    // result = 0.0;
-    // for (unsigned int i=0;i<2048;i++) {
-    //     error+=err[i];
-    // }
-    // for (unsigned int i=0;i<2048;i++) {
-    //     result+=res[i];
-    // }
     return error+result;
     
 }
