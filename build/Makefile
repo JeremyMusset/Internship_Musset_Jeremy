@@ -262,7 +262,7 @@ dot_product: cmake_check_build_system
 
 # fast build rule for target.
 dot_product/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/dot_product.dir/build.make main/CMakeFiles/dot_product.dir/build
+	$(MAKE) $(MAKESILENT) -f sequential/CMakeFiles/dot_product.dir/build.make sequential/CMakeFiles/dot_product.dir/build
 .PHONY : dot_product/fast
 
 #=============================================================================
@@ -275,7 +275,7 @@ dot_prod: cmake_check_build_system
 
 # fast build rule for target.
 dot_prod/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/dot_prod.dir/build.make main/CMakeFiles/dot_prod.dir/build
+	$(MAKE) $(MAKESILENT) -f sequential/CMakeFiles/dot_prod.dir/build.make sequential/CMakeFiles/dot_prod.dir/build
 .PHONY : dot_prod/fast
 
 # Help Target

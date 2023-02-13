@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dot.dir/dot_product.cpp.o.d"
   "CMakeFiles/dot.dir/eft.cc.o"
   "CMakeFiles/dot.dir/eft.cc.o.d"
+  "CMakeFiles/dot.dir/parallelisation.cc.o"
+  "CMakeFiles/dot.dir/parallelisation.cc.o.d"
   "dot"
   "dot.pdb"
 )

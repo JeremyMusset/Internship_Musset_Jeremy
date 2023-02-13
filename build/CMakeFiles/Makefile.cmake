@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
-  "../main/CMakeLists.txt"
+  "../sequential/CMakeLists.txt"
   "../src/CMakeLists.txt"
   "../src/data/CMakeLists.txt"
   "../src/dot_product/CMakeLists.txt"
@@ -54,7 +54,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/dot_product/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/data/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Examples/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "main/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "sequential/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -66,6 +66,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/rounding_error/CMakeFiles/rounding_error_c.dir/DependInfo.cmake"
   "src/dot_product/CMakeFiles/dot_X.dir/DependInfo.cmake"
   "src/dot_product/CMakeFiles/dot.dir/DependInfo.cmake"
-  "main/CMakeFiles/dot_product.dir/DependInfo.cmake"
-  "main/CMakeFiles/dot_prod.dir/DependInfo.cmake"
+  "sequential/CMakeFiles/dot_product.dir/DependInfo.cmake"
+  "sequential/CMakeFiles/dot_prod.dir/DependInfo.cmake"
   )

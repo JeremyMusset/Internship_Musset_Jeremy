@@ -336,6 +336,30 @@ eft.cc.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/eft.cc.s
 .PHONY : eft.cc.s
 
+parallelisation.o: parallelisation.cc.o
+.PHONY : parallelisation.o
+
+# target to build an object file
+parallelisation.cc.o:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o
+.PHONY : parallelisation.cc.o
+
+parallelisation.i: parallelisation.cc.i
+.PHONY : parallelisation.i
+
+# target to preprocess a source file
+parallelisation.cc.i:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.i
+.PHONY : parallelisation.cc.i
+
+parallelisation.s: parallelisation.cc.s
+.PHONY : parallelisation.s
+
+# target to generate assembly for a file
+parallelisation.cc.s:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.s
+.PHONY : parallelisation.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -368,6 +392,9 @@ help:
 	@echo "... eft.o"
 	@echo "... eft.i"
 	@echo "... eft.s"
+	@echo "... parallelisation.o"
+	@echo "... parallelisation.i"
+	@echo "... parallelisation.s"
 .PHONY : help
 
 

@@ -1,4 +1,4 @@
-FLAGS = -fopenmp -O3
+FLAGS = -fopenmp -Ofast
 
 exec : 
 	chmod a+x execution.slurm && ./execution.slurm

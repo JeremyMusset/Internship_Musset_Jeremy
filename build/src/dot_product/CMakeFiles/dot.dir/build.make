@@ -139,10 +139,24 @@ src/dot_product/CMakeFiles/dot.dir/eft.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot.dir/eft.cc.s"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/eft.cc -o CMakeFiles/dot.dir/eft.cc.s
 
+src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o: src/dot_product/CMakeFiles/dot.dir/flags.make
+src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o: ../src/dot_product/parallelisation.cc
+src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o: src/dot_product/CMakeFiles/dot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o -MF CMakeFiles/dot.dir/parallelisation.cc.o.d -o CMakeFiles/dot.dir/parallelisation.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc
+
+src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dot.dir/parallelisation.cc.i"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc > CMakeFiles/dot.dir/parallelisation.cc.i
+
+src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dot.dir/parallelisation.cc.s"
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc -o CMakeFiles/dot.dir/parallelisation.cc.s
+
 src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot.dir/flags.make
 src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o: ../src/dot_product/dot_product.cpp
 src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o: src/dot_product/CMakeFiles/dot.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o -MF CMakeFiles/dot.dir/dot_product.cpp.o.d -o CMakeFiles/dot.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp
 
 src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.i: cmake_force
@@ -160,6 +174,7 @@ dot_OBJECTS = \
 "CMakeFiles/dot.dir/common.cc.o" \
 "CMakeFiles/dot.dir/correct_rounding.cc.o" \
 "CMakeFiles/dot.dir/eft.cc.o" \
+"CMakeFiles/dot.dir/parallelisation.cc.o" \
 "CMakeFiles/dot.dir/dot_product.cpp.o"
 
 # External object files for target dot
@@ -170,11 +185,12 @@ src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/Rare_Blas.cc.o
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/common.cc.o
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/correct_rounding.cc.o
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/eft.cc.o
+src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/build.make
 src/dot_product/dot: /usr/lib/x86_64-linux-gnu/libmpfr.so
 src/dot_product/dot: src/dot_product/CMakeFiles/dot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable dot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable dot"
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dot.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

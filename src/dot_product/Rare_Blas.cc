@@ -236,7 +236,7 @@ T FastSum(std::vector<T> x,int n,std::vector<T> q, int L, int cq)
         tmp1 = 0;
         tmp2 = 0;
     }
-    while ((loop < 1000)){
+    while ((loop < 10000)){
         // printf("\nloop = %d\n",loop);
 
         count = n;
