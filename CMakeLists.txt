@@ -13,7 +13,7 @@ file(GLOB_RECURSE F_DOT src/dot_product/*.cc)
 
 add_subdirectory(src)
 add_subdirectory(Examples)
-add_subdirectory(main)
+add_subdirectory(sequential)
 
 
 

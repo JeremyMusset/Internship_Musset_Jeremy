@@ -1,4 +1,16 @@
 #include<vector>
+#include <mpfr.h>
+#include <vector>
+#include <iostream>
+#include <float.h>
+#include <cmath>
+#include <iomanip>
+#include <ios>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
 
 template < class T > 
 T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);

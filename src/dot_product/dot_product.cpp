@@ -1,40 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <vector>
-#include <iostream>
-#include <float.h>
-#include <cmath>
-#include <iomanip>
-#include <ios>
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <mpfr.h>
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
+#include "../include/gen_random_number.h"
+
 
 using namespace std;
 
 #define P 150
 #define SMAX 25      // 20 + a with a such as nb of files = 10^a
+#define NB_EXEC 20   // number of execution of each dot product to compute the performance.
 
-template < class T >
-std::vector<T> import_vec(int l){
-    char nom[SMAX];  
-    sprintf(nom,"../data/vector%d.bin",l);
-    class std::vector<T> vec;
-    std::ifstream input_file(nom, std::ios::binary);
-    if (!input_file) {
-        std::cerr << "Could not open binary_file.bin" << std::endl;
-        return 1;
-    }
-    double number;
-    while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
-        vec.push_back(number);
-    }
-    input_file.close(); 
-    return vec;
-}
+// template std::vector<double> import_vec<double>(unsigned int l);
+
+// template < class T >
+// std::vector<T> import_vec(unsigned int l){
+//     char nom[SMAX];  
+//     sprintf(nom,"../data/vector%d.bin",l);
+//     class std::vector<T> vec;
+//     std::ifstream input_file(nom, std::ios::binary);
+//     if (!input_file) {
+//         std::cerr << "Could not open binary_file.bin" << std::endl;
+//         return 1;
+//     }
+//     double number;
+//     while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
+//         vec.push_back(number);
+//     }
+//     input_file.close(); 
+//     return vec;
+// }
 
 
 int main() {
@@ -50,36 +43,22 @@ int main() {
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
-    
-    
+    // Time 
+    double Time_mpfr, Time_common,Time_rare_blas;
+    Time_mpfr = 0;
+    Time_common = 0;
+    Time_rare_blas = 0;
 
-    // On execute "nb_gen" produit scalaire
+
+    // We execute "nb_gen" dot product
     for (unsigned int l=0;l<nb_gen;l++){
         printf("---------------------- DATA FILE N°%d ----------------------\n",l);
 
         ////////////////////////////////////////////////////////
         /////////////////// Data importation ///////////////////
         ////////////////////////////////////////////////////////
-        //class std::vector<double> vec;
-        // vec = import_vec(l);   
-
-        // BUG WITH IMPORT_VEC SO PUT HIM IN MAIN
-
-        char nom[SMAX];  
-        sprintf(nom,"../data/vector%d.bin",l);
         class std::vector<double> vec;
-        std::ifstream input_file(nom, std::ios::binary);
-        if (!input_file) {
-            std::cerr << "Could not open binary_file.bin" << std::endl;
-            return 1;
-        }
-        double number;
-        while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
-            vec.push_back(number);
-        }
-        input_file.close(); 
-
-        // END
+        import_vec(vec,l);   
 
         // Assign a,b and n
         n = vec[0];
@@ -106,9 +85,10 @@ int main() {
         ////////////////////////////////////////////////////////
         printf("\n \nCORRECT ROUNDING : \n");
         // Time
-        clock_t start_mpfr, end_mpfr;
+        int start_mpfr, end_mpfr;
         double elapsed_mpfr;
-        start_mpfr = clock();
+        elapsed_mpfr = 0;
+        struct timespec tp;
 
         // Vectors importation 
         mpfr_t a_mpfr[n], b_mpfr[n];
@@ -124,12 +104,17 @@ int main() {
         mpfr_init2(res_mpfr,P);
 
         // Dot product
-        dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
+        for (unsigned int T=0; T<NB_EXEC;T++){
+            start_mpfr = clock_gettime(CLOCK_REALTIME,&tp);
+            dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
+            end_mpfr = clock_gettime(CLOCK_REALTIME,&tp);                        
+            elapsed_mpfr += ((double)end_mpfr - start_mpfr);
+        }
+        
 
         // Results 
         mpfr_printf ("%.41Rg \n", res_mpfr);
-        end_mpfr = clock();                        
-        elapsed_mpfr = ((double)end_mpfr - start_mpfr) / CLOCKS_PER_SEC;
+        Time_mpfr += elapsed_mpfr; 
         printf("Time : \n%.25f seconds \n", elapsed_mpfr);
 
 
@@ -140,9 +125,9 @@ int main() {
 
         printf("\n \nCOMMON DOT PROD : \n");
         // Time
-        clock_t start_common, end_common;
+        double start_common, end_common;
         double elapsed_common;
-        start_common = clock();
+        start_common = clock_gettime(CLOCK_REALTIME,&tp);
 
         // Dot product 
         res_common = 0.0;
@@ -150,8 +135,8 @@ int main() {
         
         // Results
         printf("%.41f\n",res_common);
-        end_common = clock();                        
-        elapsed_common = ((double)end_common - start_common) / CLOCKS_PER_SEC;
+        end_common = clock_gettime(CLOCK_REALTIME,&tp);                        
+        elapsed_common = ((double)end_common - start_common) / 1000000000;
         printf("Time : \n%.25f seconds \n", elapsed_common);
 
 
@@ -162,45 +147,18 @@ int main() {
 
         printf("\n \nRARE BLAS DOT PROD : \n");
         // Time
-        clock_t start_rare_blas, end_rare_blas;
+        double start_rare_blas, end_rare_blas;
         double elapsed_rare_blas;
-        start_rare_blas = clock();
+        start_rare_blas = clock_gettime(CLOCK_REALTIME,&tp);
         res_rare_blas = 0.0;
         res_rare_blas = common_dot_prod(a,b,n,1,1);
         printf("%.41f\n",res_rare_blas);
-        end_rare_blas = clock();                        
-        elapsed_rare_blas = ((double)end_rare_blas - start_rare_blas) / CLOCKS_PER_SEC;
+        end_rare_blas = clock_gettime(CLOCK_REALTIME,&tp);                        
+        elapsed_rare_blas = ((double)end_rare_blas - start_rare_blas) / 1000000000;
         printf("Time : \n%.25f seconds \n", elapsed_rare_blas);
         printf("\n \n");
-
-
-
-
-
-
-
-
-
-
-
-        printf("___________________________ TEST_______________________ \n \n \n");
-        
-        class std::vector<double> tp2(n);
-        class std::vector<double> tp1(n);
-        double q1,q2;
-        TwoMultFMA(0.5,0.1,q1,q2);
-        printf("%.15f \n",q1);
-        printf("%.15f \n",q2);
-
-        printf("\n TWO PROD : \n");
-        printf("RES : \n");
-        for (unsigned int i=0;i<n;i++){
-            printf("%.15f \n",tp1[i]);
-        }
-        printf("\n");
-        for (unsigned int i=0;i<n;i++){
-            printf("%.15f \n",tp2[i]);
-        }
     }
-    return 0;
+
 }
+
+

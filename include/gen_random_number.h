@@ -1,4 +1,10 @@
 #include<vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 template <class T>
 void vec_gen (int nb_gen, int size, T cond, T sum);
