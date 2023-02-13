@@ -206,7 +206,13 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
     class std::vector<double> a(size);
     class std::vector<double> b(size);
     generate_v(a,b,size,cond,sum);
-
+    printf("\nLe vecteur suivant a ete generé : \n");
+    for (unsigned int i=0;i<size;i++) {
+        printf("%.30f\n",a[i]);
+    }
+    for (unsigned int i=0;i<size;i++) {
+        printf("%.30f\n",b[i]);
+    }
     // Regroup vector
     class std::vector<double> data(2*size+1);
     data[0] = size;
