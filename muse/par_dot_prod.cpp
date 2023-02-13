@@ -6,14 +6,13 @@
 
 using namespace std;
 
-#define P 150
-#define NB_EXEC 20 // number of execution of each dot product to compute the performance.
+#define P 4000
 
 int main() {
     int n, nb_gen, nb_threads;
     double cond, sum;
-    n = 10;
-    nb_gen = 10;
+    n = 3;
+    nb_gen = 10001;
     nb_threads = 5;
     cond = 2;
     sum = 100;

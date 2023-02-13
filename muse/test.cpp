@@ -20,7 +20,7 @@ int main() {
     n = 10;
     sum = 10;
     required_cond = 2;
-    unsigned int nb_gen = 3;
+    unsigned int nb_gen = 5;
     int nb_threads = 7;
     int start_thread = 0;
        
@@ -44,7 +44,7 @@ int main() {
     n_remaining = n;
     int nb_t_remaining = nb_threads; 
     int size;
-
+    
     // #pragma omp parallel for
     for (unsigned int k=0 ; k < nb_threads; k++){
             double res_common, res_rare_blas;
@@ -57,22 +57,5 @@ int main() {
             n_remaining -= size;
     }     
 
-
-
-
-
-    printf("__________________TEST IMPORT ___________________");
-    vec_gen(nb_gen,n,required_cond,sum);
-    for (unsigned int l=0;l<nb_gen;l++){
-        printf("\n\n---------------------- DATA FILE N°%d ----------------------\n",l);
-        class std::vector<double> vec;
-        
-        import_vec(vec,l);   
-        n = vec[0];
-        omp_set_num_threads(nb_threads);
-        for (unsigned int i = 0; i < 2*n+1; i++){
-            printf("%.30f\n",vec[i]);
-        }
-    }
     return 1;
 }

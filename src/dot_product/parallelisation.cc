@@ -7,7 +7,7 @@
 using namespace std;
 
 #define P 4000
-#define NB_EXEC 20
+#define NB_EXEC 10
 
 template
 void par_dot_prod<double>(int n,double required_cond, int nb_gen, int nb_threads, double sum, std::vector<double> &Time, std::vector<mpfr_t> &Error, int sz);
@@ -70,13 +70,11 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
         //////////////////////////////////////////////////////////////////
       
         class std::vector<double> vec;
-        
-        import_vec(vec,l);   
-        n = vec[0];
+        import_vec(vec,l); 
+        for (unsigned int i=0;i<2*n+1;i++){
+            printf("%.40f\n",vec[i]);
+        }  
         omp_set_num_threads(nb_threads);
-        for (unsigned int i = 0; i < 2*n+1; i++){
-            printf("%.30f\n",vec[i]);
-        }
     //////////////////////// CHECK RESULT ////////////////////////
 
     printf("\n \nCORRECT ROUNDING SEQUENTIAL : \n");
@@ -93,8 +91,6 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
             mpfr_init2(b_mpfr_seq[i], P);
             mpfr_set_d(b_mpfr_seq[i], testb[i], MPFR_RNDN);
         }
-        printf("a = \n");
-        
         
         // Define and initialize result
         mpfr_t pre_res_mpfr;
@@ -104,7 +100,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
         dot_prod_mpfr(n,a_mpfr_seq,b_mpfr_seq,pre_res_mpfr);
 
         // Results 
-        mpfr_printf ("%.41Rg \n", pre_res_mpfr);
+        mpfr_printf ("Result sequential : %.41Rg \n", pre_res_mpfr);
 
         printf("\n \nPARALLEL ENVIRONMENT : \n");
         ///////////////////////////////////////////////////////////////////////////////////
@@ -119,8 +115,8 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
             
             size = ceil((float)n_remaining/(nb_t_remaining));
             // printf("Thread : %d   ",omp_get_thread_num());
-            printf("Thread : %d   ",k);           
-            printf("        Avec nb de t : %d et nb_elem : %d alors   size : %d\n",nb_t_remaining,n_remaining,size);
+            // printf("Thread : %d   ",k);           
+            // printf("        Avec nb de t : %d et nb_elem : %d alors   size : %d\n",nb_t_remaining,n_remaining,size);
             nb_t_remaining -= 1 ;
             n_remaining -= size;
         
@@ -211,8 +207,8 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     final_res_rare_blas = FastSum(result_rare_blas,nb_threads,q2,L,0);
     
     // Print results
-    mpfr_printf ("\n CORRECT ROUNDING : \n%.41Rg \n", final_res_mpfr);
-    printf ("\n COMMON DOT PRODUCT : \n%.41f \n", final_res_common);
+    // mpfr_printf ("\n CORRECT ROUNDING : \n%.41Rg \n", final_res_mpfr);
+    // printf ("\n COMMON DOT PRODUCT : \n%.41f \n", final_res_common);
     printf ("\n RARE BLAS DOT PRODUCT : \n%.41f \n\n", final_res_rare_blas);    
 
     // Error
@@ -231,15 +227,15 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
 
     // Time mpfr
     Time_mpfr = Time_mpfr / (nb_gen*NB_EXEC);
-    printf("TIME CORRECT ROUNDING : %.15f \n",Time_mpfr);
+    // printf("TIME CORRECT ROUNDING : %.15f \n",Time_mpfr);
 
     // Time common
     Time_common =Time_common / (nb_gen*NB_EXEC);
-    printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
+    // printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
 
     // Time rare blas
     Time_rare_blas = Time_rare_blas / (nb_gen*NB_EXEC);
-    printf("TIME RARE BLAS : %.45f \n",Time_rare_blas);
+    // printf("TIME RARE BLAS : %.45f \n",Time_rare_blas);
 
     Time[0] = Time_mpfr;
     Time[1] = Time_common;
