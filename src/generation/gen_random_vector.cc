@@ -218,7 +218,6 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
     FILE * fichier;
     char name[50];  
     sprintf(name,"../src/data/vector%d.bin",l);
-    printf("Nom : %s\n",name);
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
     file.close();

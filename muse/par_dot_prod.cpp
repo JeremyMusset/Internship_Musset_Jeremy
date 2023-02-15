@@ -11,9 +11,9 @@ using namespace std;
 int main() {
     int n, nb_gen, nb_threads;
     double cond, sum;
-    n = 3;
-    nb_gen = 10001;
-    nb_threads = 5;
+    n = 100;
+    nb_gen = 10;
+    nb_threads = 4;
     cond = 2;
     sum = 100;
 

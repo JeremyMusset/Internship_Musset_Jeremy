@@ -105,28 +105,27 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
         printf("\n \nPARALLEL ENVIRONMENT : \n");
         ///////////////////////////////////////////////////////////////////////////////////
 
-        n_remaining = n;
-        nb_t_remaining = nb_threads;
-        start_thread = 0;
-        // #pragma omp parallel for
+
+        int r = n % nb_threads; // reste de la division entière de n par x
+        int s = n / nb_threads; // taille des sous-vecteurs
+
+        #pragma omp parallel for
         for (unsigned int k=0 ; k < nb_threads; k++){
             double res_common, res_rare_blas;
     
-            
-            size = ceil((float)n_remaining/(nb_t_remaining));
-            // printf("Thread : %d   ",omp_get_thread_num());
-            // printf("Thread : %d   ",k);           
-            // printf("        Avec nb de t : %d et nb_elem : %d alors   size : %d\n",nb_t_remaining,n_remaining,size);
-            nb_t_remaining -= 1 ;
-            n_remaining -= size;
+            int id = omp_get_thread_num(); // identifiant du thread
+            int start = id * s + (id < r ? id : r); // début du sous-vecteur
+            int end = start + s + (id < r ? 1 : 0); // fin du sous-vecteur
+            int size = end - start; // taille du sous-vecteur
         
+            printf("Thread : %d         size : %d\n",omp_get_thread_num(),size);
+            
             class std::vector<double> a(size);
             class std::vector<double> b(size);
-            for (unsigned int i=start_thread; i<start_thread + size ;i++){
-                a[i-start_thread] = vec[i+1];
-                b[i-start_thread] = vec[n+1+i];
+            for (unsigned int i=start; i<end ;i++){
+                a[i-start] = vec[i+1];
+                b[i-start] = vec[n+1+i];
             }
-            start_thread += size;
         
 
         //////////////////////////////////////////////////////////////////

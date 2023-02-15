@@ -25,5 +25,4 @@ make -s compile
 #     OMP_NUM_THREADS=${i} make -s run
 #     echo 
 # done
-
 OMP_NUM_THREADS=2 make -s run
