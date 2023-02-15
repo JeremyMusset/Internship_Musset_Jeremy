@@ -31,12 +31,12 @@ int main() {
 
 
     // Print
-    printf("Temps mpfr : %.30f\n",Time[0]);
+    printf("\nTemps mpfr : %.30f\n",Time[0]);
     printf("Temps common dot prod : %.30f \n",Time[1]);
     printf("Temps rare blas dot prod : %.30f\n",Time[2]);
 
     mpfr_printf("\nError dot prod : %.30Rg \n",Error[1]);
-    mpfr_printf("Error rare blas : %.30Rg \n",Error[2]);
+    mpfr_printf("Error rare blas : %.30Rg \n\n",Error[2]);
 
 
 

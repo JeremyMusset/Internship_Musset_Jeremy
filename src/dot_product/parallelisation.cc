@@ -63,7 +63,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     
     // We execute dot product on the nb_gen files
     for (unsigned int l=0;l<nb_gen;l++){
-        printf("\n\n---------------------- DATA FILE N°%d ----------------------\n",l);
+        // printf("\n\n---------------------- DATA FILE N°%d ----------------------\n",l);
 
         //////////////////////////////////////////////////////////////////
         //////////////////////// Data importation ////////////////////////
@@ -71,13 +71,10 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
       
         class std::vector<double> vec;
         import_vec(vec,l); 
-        for (unsigned int i=0;i<2*n+1;i++){
-            printf("%.40f\n",vec[i]);
-        }  
         omp_set_num_threads(nb_threads);
     //////////////////////// CHECK RESULT ////////////////////////
 
-    printf("\n \nCORRECT ROUNDING SEQUENTIAL : \n");
+    // printf("\n \nCORRECT ROUNDING SEQUENTIAL : \n");
         // Vectors importation 
         for (unsigned int i=0;i<n;i++){
             testa[i] = vec[i+1];
@@ -100,9 +97,9 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
         dot_prod_mpfr(n,a_mpfr_seq,b_mpfr_seq,pre_res_mpfr);
 
         // Results 
-        mpfr_printf ("Result sequential : %.41Rg \n", pre_res_mpfr);
+        // mpfr_printf ("Result sequential : %.41Rg \n", pre_res_mpfr);
 
-        printf("\n \nPARALLEL ENVIRONMENT : \n");
+        // printf("\n \nPARALLEL ENVIRONMENT : \n");
         ///////////////////////////////////////////////////////////////////////////////////
 
 
@@ -117,9 +114,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
             int start = id * s + (id < r ? id : r); // début du sous-vecteur
             int end = start + s + (id < r ? 1 : 0); // fin du sous-vecteur
             int size = end - start; // taille du sous-vecteur
-        
-            printf("Thread : %d         size : %d\n",omp_get_thread_num(),size);
-            
+                    
             class std::vector<double> a(size);
             class std::vector<double> b(size);
             for (unsigned int i=start; i<end ;i++){
@@ -194,7 +189,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     mpfr_t final_res_mpfr;
     mpfr_init2(final_res_mpfr,P);
     mpfr_set_d(final_res_mpfr, 0, MPFR_RNDN);
-    printf("\n");
+    // printf("\n");
     for (int i=0;i<nb_threads; i++) {
         mpfr_add(final_res_mpfr,final_res_mpfr,result_mpfr[i],MPFR_RNDN);
     }
@@ -208,7 +203,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     // Print results
     // mpfr_printf ("\n CORRECT ROUNDING : \n%.41Rg \n", final_res_mpfr);
     // printf ("\n COMMON DOT PRODUCT : \n%.41f \n", final_res_common);
-    printf ("\n RARE BLAS DOT PRODUCT : \n%.41f \n\n", final_res_rare_blas);    
+    // printf ("\n RARE BLAS DOT PRODUCT : \n%.41f \n\n", final_res_rare_blas);    
 
     // Error
     mpfr_t tmp;

@@ -1,4 +1,4 @@
-FLAGS = -fopenmp -Ofast
+FLAGS = -fopenmp -Ofast -w
 
 exec : slurmtoexe
 	./execution.slurm
