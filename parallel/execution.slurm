@@ -5,24 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --job-name=dot_product
-#SBATCH --output=dot_product.%j.txt
+#SBATCH --output=output_dot_product.txt
 
-# ================ optional OMP - settings (thread pinning)
-# thread-placement options: cores, threads, sockets
-# export OMP_PLACES=cores 
-# echo Thread Placement: ${OMP_PLACES}
-
-# # thread-binding options: close, spread
-# export OMP_PROC_BIND=close
-# echo Thread Binding Policy: ${OMP_PROC_BIND}
-
-make -s compile
-# =============== Run with different no of threads
-# NTHREADS=(2 4 6 8 12)
-# for i in ${NTHREADS[@]}
-# do
-#     echo Number of Threads = ${i} 
-#     OMP_NUM_THREADS=${i} make -s run
-#     echo 
-# done
-OMP_NUM_THREADS=2 make -s run
+echo "TEST"
+# OMP_NUM_THREADS=2 make -s run
