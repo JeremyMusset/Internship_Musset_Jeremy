@@ -212,8 +212,8 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
     for (unsigned int i=0;i<size;i++) {
         data[i+1] = a[i];
         data[i+size+1] = b[i];
-    }    
-
+    }  
+    
     // Write into binary file
     FILE * fichier;
     char name[50];  

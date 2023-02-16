@@ -59,7 +59,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     class std::vector<double> testb(n);
     
     // Vectors generation
-    vec_gen(nb_gen,n,required_cond,sum);
+    // vec_gen(nb_gen,n,required_cond,sum);
     
     // We execute dot product on the nb_gen files
     for (unsigned int l=0;l<nb_gen;l++){
@@ -71,6 +71,12 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
       
         class std::vector<double> vec;
         import_vec(vec,l); 
+        if(l==0){
+        for (unsigned int i=0; i<2*n+1 ;i++){
+                printf("vec before = %.41f \n",vec[i]);
+            }
+            printf("\n");
+        }
         omp_set_num_threads(nb_threads);
     //////////////////////// CHECK RESULT ////////////////////////
 
@@ -117,9 +123,29 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
                     
             class std::vector<double> a(size);
             class std::vector<double> b(size);
+            if ((l==0) && (omp_get_thread_num()==1)){
+            for (unsigned int i=0; i<2*n+1 ;i++){
+                printf("vec inside = %.41f \n",vec[i]);
+            }
+            printf("\n");
+            }
+            
             for (unsigned int i=start; i<end ;i++){
                 a[i-start] = vec[i+1];
+                 if ((l==0) && (omp_get_thread_num()==2) ) {
+                printf("thread %d        a[%d] prend %.41f pour i = %d \n",omp_get_thread_num(),i-start,vec[i+1],i);
+                printf("thread %d        b[%d] prend %.41f pour i = %d \n",omp_get_thread_num(),i-start,vec[n+i+1],i);
+                 }
                 b[i-start] = vec[n+1+i];
+                if ((l==0) && (omp_get_thread_num()==2) ) {
+                    printf("thread %d    apar = %.41f \n",omp_get_thread_num(),a[i]);
+                }
+            }
+            #pragma omp wait
+            for (unsigned int i=start; i<end ;i++){
+                if ((l==0) && (omp_get_thread_num()==2)) {
+                    printf("thread %d    bpar = %.41f \n",omp_get_thread_num(),b[i]);
+                }
             }
         
 
