@@ -4,7 +4,7 @@ exec : slurmtoexe
 	./execution.slurm
 
 compile : ./dot_product.cpp ../include/*.h ../src/data/*.bin ../src/generation/*.cc ../src/dot_product/*.cc
-	 g++ ../src/generation/*.cc ../src/dot_product/*.cc dot_product.cpp -o dot_prod -lmpfr $(FLAGS)
+	g++ ../src/generation/*.cc ../src/dot_product/*.cc dot_product.cpp -o dot_prod -lmpfr $(FLAGS)
 
 comprun : compile 	
 	./dot_prod

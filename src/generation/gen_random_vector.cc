@@ -15,7 +15,7 @@
 #define SMAX 50      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
 
 // Give us n vector of floating point of size nb_elem such as |x[1]| + |x[2]| + ... = sum with the require conditionement
-template void import_vec<double> (std::vector<double> &vec, unsigned int l);
+template void import_vec<double> (std::vector<double> &vec, unsigned int l,int q);
 
 template void vec_gen<double> (int nb_gen, int size, double cond, double sum);
 
@@ -228,14 +228,23 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
 /// @tparam T Double or Float
 /// @param vec Vector of size 2*n+1
 /// @param l file number l
+/// @param q file position (main/X/ = 2   main/X/Y/ = 1)
 template <class T>
-void import_vec(std::vector<T> &vec, unsigned int l){
-    char nom[SMAX];  
-    sprintf(nom,"../src/data/vector%d.bin",l);
+void import_vec(std::vector<T> &vec, unsigned int l,int q){
+    char nom[SMAX];
+    if (q==1){
+      sprintf(nom,"../data/vector%d.bin",l);
+    } 
+    if (q==2){
+      sprintf(nom,"../src/data/vector%d.bin",l);
+    } 
+    
     std::ifstream input_file(nom, std::ios::binary);
     if (!input_file) {
-        std::cerr << "Could not open binary_file.bin" << std::endl;
+      std::cerr << "Could not open binary_file.bin" << std::endl;
+      
     }
+    
     double number;
     while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
         vec.push_back(number);
