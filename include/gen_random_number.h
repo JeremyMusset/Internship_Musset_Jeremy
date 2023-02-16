@@ -16,4 +16,4 @@ template <class T>
 void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum);
 
 template <class T>
-void import_vec(std::vector<T> &vec, unsigned int l);
+void import_vec(std::vector<T> &vec, unsigned int l,int q);

@@ -7,10 +7,10 @@
 using namespace std;
 
 #define P 4000
-#define NB_EXEC 20
+#define NB_EXEC 10
 
 template
-void par_dot_prod<double>(int n,double required_cond, int nb_gen, int nb_threads, double sum, std::vector<double> &Time, std::vector<mpfr_t> &Error, int sz);
+void par_dot_prod<double>(int n,double required_cond, int nb_gen, int nb_threads, double sum, std::vector<double> &Time, std::vector<mpfr_t> &Error, int q);
 
 /// @brief Execute many dot product and return us average time and error
 /// @tparam T 
@@ -21,9 +21,9 @@ void par_dot_prod<double>(int n,double required_cond, int nb_gen, int nb_threads
 /// @param sum 
 /// @param Time Output
 /// @param Error Output
-/// @param sz Size of output (5)
+/// @param q file position (main/X/ = 2   main/X/Y/ = 1)
 template < class T >
-void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double sum, std::vector<T> &Time, std::vector<mpfr_t> &Error, int sz){
+void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double sum, std::vector<T> &Time, std::vector<mpfr_t> &Error, int q){
 
     // Define c++ variables
     int n_remaining,nb_t_remaining, start_thread;
@@ -59,79 +59,40 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     class std::vector<double> testb(n);
     
     // Vectors generation
-    vec_gen(nb_gen,n,required_cond,sum);
+    // vec_gen(nb_gen,n,required_cond,sum);
     
     // We execute dot product on the nb_gen files
     for (unsigned int l=0;l<nb_gen;l++){
-        printf("\n\n---------------------- DATA FILE N°%d ----------------------\n",l);
+        // printf("\n\n---------------------- DATA FILE N°%d ----------------------\n",l);
 
         //////////////////////////////////////////////////////////////////
         //////////////////////// Data importation ////////////////////////
         //////////////////////////////////////////////////////////////////
       
         class std::vector<double> vec;
-        
-        import_vec(vec,l);   
-        n = vec[0];
+        import_vec(vec,l,q); 
         omp_set_num_threads(nb_threads);
-        for (unsigned int i = 0; i < 2*n+1; i++){
-            printf("%.30f\n",vec[i]);
-        }
-    //////////////////////// CHECK RESULT ////////////////////////
+        int r = n % nb_threads; // reste de la division entière de n par x
+        int s = n / nb_threads; // taille des sous-vecteurs
 
-    printf("\n \nCORRECT ROUNDING SEQUENTIAL : \n");
-        // Vectors importation 
-        for (unsigned int i=0;i<n;i++){
-            testa[i] = vec[i+1];
-            testb[i] = vec[n+1+i];
-        }
-        
-        mpfr_t a_mpfr_seq[n], b_mpfr_seq[n];
-        for (unsigned int i = 0; i < n; i++){
-            mpfr_init2(a_mpfr_seq[i], P);
-            mpfr_set_d(a_mpfr_seq[i], testa[i], MPFR_RNDN);
-            mpfr_init2(b_mpfr_seq[i], P);
-            mpfr_set_d(b_mpfr_seq[i], testb[i], MPFR_RNDN);
-        }
-        printf("a = \n");
-        
-        
-        // Define and initialize result
-        mpfr_t pre_res_mpfr;
-        mpfr_init2(pre_res_mpfr,P);
-
-        // Dot product
-        dot_prod_mpfr(n,a_mpfr_seq,b_mpfr_seq,pre_res_mpfr);
-
-        // Results 
-        mpfr_printf ("%.41Rg \n", pre_res_mpfr);
-
-        printf("\n \nPARALLEL ENVIRONMENT : \n");
-        ///////////////////////////////////////////////////////////////////////////////////
-
-        n_remaining = n;
-        nb_t_remaining = nb_threads;
-        start_thread = 0;
-        // #pragma omp parallel for
+        #pragma omp parallel for 
         for (unsigned int k=0 ; k < nb_threads; k++){
             double res_common, res_rare_blas;
     
-            
-            size = ceil((float)n_remaining/(nb_t_remaining));
-            // printf("Thread : %d   ",omp_get_thread_num());
-            printf("Thread : %d   ",k);           
-            printf("        Avec nb de t : %d et nb_elem : %d alors   size : %d\n",nb_t_remaining,n_remaining,size);
-            nb_t_remaining -= 1 ;
-            n_remaining -= size;
-        
+            int id = omp_get_thread_num(); // identifiant du thread
+            int start = id * s + (id < r ? id : r); // début du sous-vecteur
+            int end = start + s + (id < r ? 1 : 0); // fin du sous-vecteur
+            int size = end - start; // taille du sous-vecteur
+                    
             class std::vector<double> a(size);
             class std::vector<double> b(size);
-            for (unsigned int i=start_thread; i<start_thread + size ;i++){
-                a[i-start_thread] = vec[i+1];
-                b[i-start_thread] = vec[n+1+i];
+
+    
+            for (unsigned int i=start; i<end ;i++){
+                a[i-start] = vec[i+1];
+                b[i-start] = vec[n+1+i]; 
             }
-            start_thread += size;
-        
+
 
         //////////////////////////////////////////////////////////////////
         //////////////////////// MPFR_dot product ////////////////////////
@@ -157,7 +118,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
         mpfr_init2(result_mpfr[k], P);
         mpfr_set(result_mpfr[k],res_mpfr,MPFR_RNDN);
 
-        Time_mpfr = ((double)(end_mpfr.tv_nsec - start_mpfr.tv_nsec)); 
+        Time_mpfr += ((double)(end_mpfr.tv_nsec - start_mpfr.tv_nsec)); 
 
         
         ////////////////////////////////////////////////////////////////////
@@ -199,7 +160,7 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     mpfr_t final_res_mpfr;
     mpfr_init2(final_res_mpfr,P);
     mpfr_set_d(final_res_mpfr, 0, MPFR_RNDN);
-    printf("\n");
+    // printf("\n");
     for (int i=0;i<nb_threads; i++) {
         mpfr_add(final_res_mpfr,final_res_mpfr,result_mpfr[i],MPFR_RNDN);
     }
@@ -211,43 +172,44 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     final_res_rare_blas = FastSum(result_rare_blas,nb_threads,q2,L,0);
     
     // Print results
-    mpfr_printf ("\n CORRECT ROUNDING : \n%.41Rg \n", final_res_mpfr);
-    printf ("\n COMMON DOT PRODUCT : \n%.41f \n", final_res_common);
-    printf ("\n RARE BLAS DOT PRODUCT : \n%.41f \n\n", final_res_rare_blas);    
+    // mpfr_printf ("\n PARALLEL CORRECT ROUNDING : \n%.41Rg \n", final_res_mpfr);
+    // printf ("\n PARALLEL COMMON DOT PRODUCT : \n%.41f \n", final_res_common);
+    // printf ("\n PARALLEL RARE BLAS DOT PRODUCT : \n%.41f \n\n", final_res_rare_blas);    
 
     // Error
-    mpfr_t tmp;
+    mpfr_t tmp,tmp2;
     mpfr_init2(tmp, P);
+    mpfr_init2(tmp2, P);
+
     mpfr_sub_d(tmp,final_res_mpfr,final_res_common,MPFR_RNDN);
-    mpfr_abs(tmp,tmp,MPFR_RNDN);
+    mpfr_div(tmp,tmp,final_res_mpfr,MPFR_RNDN);
     mpfr_add(Err_common, Err_common,tmp,MPFR_RNDN);
+    mpfr_abs(Err_common,Err_common,MPFR_RNDN);
 
     mpfr_sub_d(tmp,final_res_mpfr,final_res_rare_blas,MPFR_RNDN);
-    mpfr_abs(tmp,tmp,MPFR_RNDN);
+    mpfr_div(tmp2,tmp2,final_res_mpfr,MPFR_RNDN);
     mpfr_add(Err_rare_blas, Err_rare_blas,tmp,MPFR_RNDN);
-
-
+    mpfr_abs(Err_rare_blas, Err_rare_blas,MPFR_RNDN);
+ 
     }
 
     // Time mpfr
     Time_mpfr = Time_mpfr / (nb_gen*NB_EXEC);
-    printf("TIME CORRECT ROUNDING : %.15f \n",Time_mpfr);
+    // printf("TIME CORRECT ROUNDING : %.15f \n",Time_mpfr);
 
     // Time common
     Time_common =Time_common / (nb_gen*NB_EXEC);
-    printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
+    // printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
 
     // Time rare blas
     Time_rare_blas = Time_rare_blas / (nb_gen*NB_EXEC);
-    printf("TIME RARE BLAS : %.45f \n",Time_rare_blas);
+    // printf("TIME RARE BLAS : %.45f \n",Time_rare_blas);
 
     Time[0] = Time_mpfr;
     Time[1] = Time_common;
     Time[2] = Time_rare_blas;
     Time[3] = 0;
     Time[4] = 0; 
-
-
 
     mpfr_div_si(Err_common,Err_common,nb_gen,MPFR_RNDN);
     mpfr_div_si(Err_rare_blas,Err_rare_blas,nb_gen,MPFR_RNDN);
@@ -257,7 +219,5 @@ void par_dot_prod(int n,double required_cond, int nb_gen, int nb_threads, double
     mpfr_set(Error[2], Err_rare_blas, MPFR_RNDN);
     mpfr_set(Error[3], Err_ozaki, MPFR_RNDN);
     mpfr_set(Error[4], Err_ex_blas, MPFR_RNDN);
-
-  
 
 }

@@ -3,7 +3,8 @@
 #include <ctime>
 #include <cmath>
 #include <vector>
-#include <fstream>      
+#include <fstream>    
+#include <random>  
 #include <algorithm>
 #include <cassert>
 #include <float.h>
@@ -11,10 +12,10 @@
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
-#define SMAX 25      // 20 + a with a such as nb of files = 10^a
+#define SMAX 50      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
 
 // Give us n vector of floating point of size nb_elem such as |x[1]| + |x[2]| + ... = sum with the require conditionement
-template void import_vec<double> (std::vector<double> &vec, unsigned int l);
+template void import_vec<double> (std::vector<double> &vec, unsigned int l,int q);
 
 template void vec_gen<double> (int nb_gen, int size, double cond, double sum);
 
@@ -152,7 +153,7 @@ void gen_fpnumber(std::vector<T> &x, int nb_elem, T required_cond, T &sum){
 template <class T>
 void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum){
 
-    T cond;
+    T cond = 0;
     unsigned int i;
     //  c = a.*b
     class std::vector<double> c(nb_elem);
@@ -162,12 +163,11 @@ void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_co
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-      double t = 0;
-      double min = 0;
-      double max = 100;
-      srand( time( NULL ) );
-      t = ((double)(rand() % 1000) +1)/100.0;
-
+      double t = 1;
+      std::random_device rd;  // Initialise the distribution
+      std::mt19937 gen(rd()); // Generate random numbers
+      std::uniform_int_distribution<> dis(-1000, 1000); // Uniform distribution between -1000 and 1000
+      t = dis(gen)/100.0;
       // x = t.*c   y = 1/t
       for (int i = 0 ; i<nb_elem;i++) {
           x[i] = t*c[i];
@@ -206,21 +206,14 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
     class std::vector<double> a(size);
     class std::vector<double> b(size);
     generate_v(a,b,size,cond,sum);
-    printf("\nLe vecteur suivant a ete generé : \n");
-    for (unsigned int i=0;i<size;i++) {
-        printf("%.30f\n",a[i]);
-    }
-    for (unsigned int i=0;i<size;i++) {
-        printf("%.30f\n",b[i]);
-    }
     // Regroup vector
     class std::vector<double> data(2*size+1);
     data[0] = size;
     for (unsigned int i=0;i<size;i++) {
         data[i+1] = a[i];
         data[i+size+1] = b[i];
-    }
-
+    }  
+    
     // Write into binary file
     FILE * fichier;
     char name[50];  
@@ -235,14 +228,23 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
 /// @tparam T Double or Float
 /// @param vec Vector of size 2*n+1
 /// @param l file number l
+/// @param q file position (main/X/ = 2   main/X/Y/ = 1)
 template <class T>
-void import_vec(std::vector<T> &vec, unsigned int l){
-    char nom[SMAX];  
-    sprintf(nom,"../src/data/vector%d.bin",l);
+void import_vec(std::vector<T> &vec, unsigned int l,int q){
+    char nom[SMAX];
+    if (q==1){
+      sprintf(nom,"../data/vector%d.bin",l);
+    } 
+    if (q==2){
+      sprintf(nom,"../src/data/vector%d.bin",l);
+    } 
+    
     std::ifstream input_file(nom, std::ios::binary);
     if (!input_file) {
-        std::cerr << "Could not open binary_file.bin" << std::endl;
+      std::cerr << "Could not open binary_file.bin" << std::endl;
+      
     }
+    
     double number;
     while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
         vec.push_back(number);

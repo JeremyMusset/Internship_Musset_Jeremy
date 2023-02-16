@@ -9,25 +9,6 @@ using namespace std;
 #define SMAX 25      // 20 + a with a such as nb of files = 10^a
 #define NB_EXEC 20   // number of execution of each dot product to compute the performance.
 
-// template std::vector<double> import_vec<double>(unsigned int l);
-
-// template < class T >
-// std::vector<T> import_vec(unsigned int l){
-//     char nom[SMAX];  
-//     sprintf(nom,"../data/vector%d.bin",l);
-//     class std::vector<T> vec;
-//     std::ifstream input_file(nom, std::ios::binary);
-//     if (!input_file) {
-//         std::cerr << "Could not open binary_file.bin" << std::endl;
-//         return 1;
-//     }
-//     double number;
-//     while (input_file.read(reinterpret_cast<char*>(&number), sizeof(number))) {
-//         vec.push_back(number);
-//     }
-//     input_file.close(); 
-//     return vec;
-// }
 
 
 int main() {
