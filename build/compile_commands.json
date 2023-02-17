@@ -61,47 +61,12 @@
 },
 {
   "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
+  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot.dir/sequential.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/sequential.cc",
+  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/sequential.cc"
+},
+{
+  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
   "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp",
   "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++ -Ddot_product_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/dot_product.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/sequential/dot_product.cpp",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/sequential/dot_product.cpp"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/generation/gen_random_vector.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_vector.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/generation/gen_random_vector.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/dot_product/Rare_Blas.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/Rare_Blas.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/Rare_Blas.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/dot_product/common.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/dot_product/correct_rounding.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/correct_rounding.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/dot_product/eft.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/eft.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/eft.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/__/src/dot_product/parallelisation.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot_prod.dir/dot_product.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/sequential/dot_product.cpp",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/sequential/dot_product.cpp"
 }
 ]

@@ -252,32 +252,6 @@ dot/fast:
 	$(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/build
 .PHONY : dot/fast
 
-#=============================================================================
-# Target rules for targets named dot_product
-
-# Build rule for target.
-dot_product: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dot_product
-.PHONY : dot_product
-
-# fast build rule for target.
-dot_product/fast:
-	$(MAKE) $(MAKESILENT) -f sequential/CMakeFiles/dot_product.dir/build.make sequential/CMakeFiles/dot_product.dir/build
-.PHONY : dot_product/fast
-
-#=============================================================================
-# Target rules for targets named dot_prod
-
-# Build rule for target.
-dot_prod: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dot_prod
-.PHONY : dot_prod
-
-# fast build rule for target.
-dot_prod/fast:
-	$(MAKE) $(MAKESILENT) -f sequential/CMakeFiles/dot_prod.dir/build.make sequential/CMakeFiles/dot_prod.dir/build
-.PHONY : dot_prod/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -292,8 +266,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... dot"
 	@echo "... dot_X"
-	@echo "... dot_prod"
-	@echo "... dot_product"
 	@echo "... gen_X"
 	@echo "... librairy"
 	@echo "... librairy2"

@@ -39,7 +39,7 @@
 				"src/rounding_error/liblibrairy.so"
 			],
 			"targetId" : "librairy::@c10ff1f2a053a5de3e8e",
-			"targetIndex" : 5,
+			"targetIndex" : 3,
 			"type" : "target"
 		},
 		{
@@ -51,7 +51,7 @@
 				"src/rounding_error/liblibrairy2.so"
 			],
 			"targetId" : "librairy2::@c10ff1f2a053a5de3e8e",
-			"targetIndex" : 6,
+			"targetIndex" : 4,
 			"type" : "target"
 		}
 	],

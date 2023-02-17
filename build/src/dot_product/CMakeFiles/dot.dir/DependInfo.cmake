@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/dot_product.cpp" "src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o" "gcc" "src/dot_product/CMakeFiles/dot.dir/dot_product.cpp.o.d"
   "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/eft.cc" "src/dot_product/CMakeFiles/dot.dir/eft.cc.o" "gcc" "src/dot_product/CMakeFiles/dot.dir/eft.cc.o.d"
   "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/parallelisation.cc" "src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o" "gcc" "src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.o.d"
+  "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/sequential.cc" "src/dot_product/CMakeFiles/dot.dir/sequential.cc.o" "gcc" "src/dot_product/CMakeFiles/dot.dir/sequential.cc.o.d"
   )
 
 # Targets to which this target links.

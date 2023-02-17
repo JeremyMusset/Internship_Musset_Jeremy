@@ -12,8 +12,8 @@ file(GLOB_RECURSE DATA_BIN src/data/*.bin)
 file(GLOB_RECURSE F_DOT src/dot_product/*.cc)
 
 add_subdirectory(src)
-add_subdirectory(Examples)
-add_subdirectory(sequential)
+add_subdirectory(Test)
+add_subdirectory(main)
 
 
 
