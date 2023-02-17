@@ -45,8 +45,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/cmake_install.cmake")
-  include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/Examples/cmake_install.cmake")
-  include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/sequential/cmake_install.cmake")
+  include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/Test/cmake_install.cmake")
+  include("/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/main/cmake_install.cmake")
 
 endif()
 

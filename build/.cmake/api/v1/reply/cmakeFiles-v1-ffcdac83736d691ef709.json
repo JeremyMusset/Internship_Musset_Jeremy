@@ -147,10 +147,10 @@
 			"path" : "src/data/CMakeLists.txt"
 		},
 		{
-			"path" : "Examples/CMakeLists.txt"
+			"path" : "Test/CMakeLists.txt"
 		},
 		{
-			"path" : "sequential/CMakeLists.txt"
+			"path" : "main/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

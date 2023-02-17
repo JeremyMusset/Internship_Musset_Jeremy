@@ -43,7 +43,7 @@
 				{
 					"build" : "src/generation",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-src.generation-Release-b3d38a2b84c59e4c9d85.json",
+					"jsonFile" : "directory-src.generation-Release-90976b6d08379634bbce.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.2"
@@ -53,13 +53,13 @@
 					"source" : "src/generation",
 					"targetIndexes" : 
 					[
-						4
+						2
 					]
 				},
 				{
 					"build" : "src/rounding_error",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-src.rounding_error-Release-200c382902fe59033e4a.json",
+					"jsonFile" : "directory-src.rounding_error-Release-9f752005093fd3039083.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.2"
@@ -69,10 +69,10 @@
 					"source" : "src/rounding_error",
 					"targetIndexes" : 
 					[
+						3,
+						4,
 						5,
-						6,
-						7,
-						8
+						6
 					]
 				},
 				{
@@ -104,32 +104,26 @@
 					"source" : "src/data"
 				},
 				{
-					"build" : "Examples",
-					"jsonFile" : "directory-Examples-Release-53b44bb8d6e8dd08aa8f.json",
+					"build" : "Test",
+					"jsonFile" : "directory-Test-Release-3fc60f65c6de5401f5db.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.2"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
-					"source" : "Examples"
+					"source" : "Test"
 				},
 				{
-					"build" : "sequential",
-					"hasInstallRule" : true,
-					"jsonFile" : "directory-sequential-Release-618ef4d88e02f885cf78.json",
+					"build" : "main",
+					"jsonFile" : "directory-main-Release-c59558c0a3fb20727b44.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.2"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
-					"source" : "sequential",
-					"targetIndexes" : 
-					[
-						2,
-						3
-					]
+					"source" : "main"
 				}
 			],
 			"name" : "Release",
@@ -156,9 +150,7 @@
 						3,
 						4,
 						5,
-						6,
-						7,
-						8
+						6
 					]
 				}
 			],
@@ -167,7 +159,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "dot::@8f4766eefd3d9c9459e6",
-					"jsonFile" : "target-dot-Release-21ca31d6851d41fab129.json",
+					"jsonFile" : "target-dot-Release-712b2ab2e1b9967169fd.json",
 					"name" : "dot",
 					"projectIndex" : 0
 				},
@@ -176,20 +168,6 @@
 					"id" : "dot_X::@8f4766eefd3d9c9459e6",
 					"jsonFile" : "target-dot_X-Release-45443fa85262c75a2ded.json",
 					"name" : "dot_X",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 7,
-					"id" : "dot_prod::@be3cc51c6ccd747f5819",
-					"jsonFile" : "target-dot_prod-Release-db6efad8c48969b8a9cb.json",
-					"name" : "dot_prod",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 7,
-					"id" : "dot_product::@be3cc51c6ccd747f5819",
-					"jsonFile" : "target-dot_product-Release-452c0a042b6069bfa9f7.json",
-					"name" : "dot_product",
 					"projectIndex" : 0
 				},
 				{

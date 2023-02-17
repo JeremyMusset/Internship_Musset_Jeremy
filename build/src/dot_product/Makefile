@@ -360,6 +360,30 @@ parallelisation.cc.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/parallelisation.cc.s
 .PHONY : parallelisation.cc.s
 
+sequential.o: sequential.cc.o
+.PHONY : sequential.o
+
+# target to build an object file
+sequential.cc.o:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/sequential.cc.o
+.PHONY : sequential.cc.o
+
+sequential.i: sequential.cc.i
+.PHONY : sequential.i
+
+# target to preprocess a source file
+sequential.cc.i:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/sequential.cc.i
+.PHONY : sequential.cc.i
+
+sequential.s: sequential.cc.s
+.PHONY : sequential.s
+
+# target to generate assembly for a file
+sequential.cc.s:
+	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/dot_product/CMakeFiles/dot.dir/build.make src/dot_product/CMakeFiles/dot.dir/sequential.cc.s
+.PHONY : sequential.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -395,6 +419,9 @@ help:
 	@echo "... parallelisation.o"
 	@echo "... parallelisation.i"
 	@echo "... parallelisation.s"
+	@echo "... sequential.o"
+	@echo "... sequential.i"
+	@echo "... sequential.s"
 .PHONY : help
 
 
