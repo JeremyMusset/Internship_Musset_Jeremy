@@ -13,8 +13,8 @@ int main() {
     mpfr_set_d(eps, 0.1, MPFR_RNDN);
     // eps = 10^-3
     mpfr_pow_si(eps, eps, 2, MPFR_RNDN);
-    n = 2;
-    nb_gen = 4;
+    n = 10000;
+    nb_gen = 500;
     nb_threads = 7;
     cond = 5;
     sum = 100;
@@ -34,11 +34,13 @@ int main() {
     par_number_rare_online = 0;
 
     for (unsigned int i; i<nb_gen;i++){
-    generate_v(a,b,n,cond,sum);
+        if (i % 100 == 0){
+            printf("\n________________________________ Test number %d ________________________________ \n",i);
+        }
 
-
-    test_seq_dot_prod(a,b,n, cond, seq_number_common,seq_number_rare_hybrid, seq_number_rare_online,sum,i, eps);
-    test_par_dot_prod(a,b,n, cond, par_number_common,par_number_rare_hybrid, par_number_rare_online,nb_threads,sum,i, eps);
+        generate_v(a,b,n,cond,sum);
+        test_seq_dot_prod(a,b,n, cond, seq_number_common,seq_number_rare_hybrid, seq_number_rare_online,sum,i, eps);
+        test_par_dot_prod(a,b,n, cond, par_number_common,par_number_rare_hybrid, par_number_rare_online,nb_threads,sum,i, eps);
     }
 
 

@@ -6,7 +6,7 @@ exec : slurmtoexe
 compile : 
 	 g++ ../../src/generation/*.cc ../../src/dot_product/*.cc ../../src/test/*.cc test.cpp -o test -lmpfr $(FLAGS)
 
-comprun : compile 	
+test : compile 	
 	./test
 
 run :  	
