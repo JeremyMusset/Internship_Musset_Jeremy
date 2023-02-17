@@ -28,7 +28,7 @@ int main() {
         mpfr_init2(Error_seq[i], P);
         mpfr_init2(Error_par[i], P);
     }
-
+    
     vec_gen(nb_gen,n,cond,sum);
 
     seq_dot_prod(n, cond, nb_gen,sum,Time_seq,Error_seq,2);
