@@ -12,7 +12,7 @@
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
-#define SMAX 50      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
+#define SMAX 100      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
 
 // Give us n vector of floating point of size nb_elem such as |x[1]| + |x[2]| + ... = sum with the require conditionement
 template void import_vec<double> (std::vector<double> &vec, unsigned int l,int q);
@@ -216,7 +216,7 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
     
     // Write into binary file
     FILE * fichier;
-    char name[50];  
+    char name[SMAX];  
     sprintf(name,"../src/data/vector%d.bin",l);
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));

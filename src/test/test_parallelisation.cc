@@ -9,8 +9,10 @@ using namespace std;
 
 #define P 4000
 #define NB_EXEC 10
+#define SMAX 500
 
-template void test_par_dot_prod<double>(std::vector<double> a_global, std::vector<double> b_global,int n,double required_cond, int &number, int nb_threads, double sum,mpfr_t eps);
+template void test_par_dot_prod<double>(std::vector<double> a_global, std::vector<double> b_global,int n,double required_cond, int &par_number_common, int &par_number_rare_hybrid, int &par_number_rare_online, int nb_threads, double sum,int l,mpfr_t eps);
+
 
 
 /// @brief Execute test for parallel version
@@ -19,18 +21,22 @@ template void test_par_dot_prod<double>(std::vector<double> a_global, std::vecto
 /// @param b_global vector b
 /// @param n size of a
 /// @param required_cond conditioning
-/// @param number error number
+/// @param par_number_common number of error parallel dot product
+/// @param par_number_rare_hybrid number of error parallel rare blas hybrid dot product
+/// @param par_number_rare_online number of error parallel rare blas online dot product
 /// @param nb_threads number of thread
 /// @param sum sum
 /// @param eps epsilon
 template < class T >
-void test_par_dot_prod(std::vector<T> a_global, std::vector<T> b_global, int n,double required_cond, int &number, int nb_threads, double sum,mpfr_t eps){
+void test_par_dot_prod(std::vector<T> a_global, std::vector<T> b_global, int n,double required_cond, int &par_number_common,int &par_number_rare_hybrid,int &par_number_rare_online, int nb_threads, double sum,int l,mpfr_t eps){
 
     // Define c++ variables
     int n_remaining,nb_t_remaining, start_thread;
 
     // Variables
     int size;
+    class std::vector<double> data(2*n+1);
+    data[0] = n;
     
        
     // Result
@@ -177,5 +183,53 @@ void test_par_dot_prod(std::vector<T> a_global, std::vector<T> b_global, int n,d
     mpfr_add(Err_rare_blas_online, Err_rare_blas_online,tmp3,MPFR_RNDN);
     mpfr_abs(Err_rare_blas_online, Err_rare_blas_online,MPFR_RNDN);
 
+    if (mpfr_cmp(Err_common, eps) >= 0) {
+        par_number_common +=1;
+
+        for (unsigned int i=0;i<n;i++) {
+            data[i+1] = a_global[i];
+            data[i+n+1] = b_global[i];
+        }  
+        // Write into binary file
+        FILE * fichier;
+        char name[SMAX];  
+        sprintf(name,"./Error/parallel/common/vector%d.bin",l);
+        std::ofstream file(name, std::ios::binary);
+        file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
+        file.close();
+
+    }
+    if(mpfr_cmp(Err_rare_blas_hybrid, eps) >= 0 ) {
+        par_number_rare_hybrid +=1;
+
+        for (unsigned int i=0;i<n;i++) {
+            data[i+1] = a_global[i];
+            data[i+n+1] = b_global[i];
+        }  
+        // Write into binary file
+        FILE * fichier;
+        char name[SMAX];  
+        sprintf(name,"./Error/parallel/rare_blas_hybrid/vector%d.bin",l);
+        std::ofstream file(name, std::ios::binary);
+        file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
+        file.close();
+
+    }
+    if( mpfr_cmp(Err_rare_blas_online, eps) >= 0) {
+        par_number_rare_online +=1;
+
+        for (unsigned int i=0;i<n;i++) {
+            data[i+1] = a_global[i];
+            data[i+n+1] = b_global[i];
+        }  
+        // Write into binary file
+        FILE * fichier;
+        char name[SMAX];  
+        sprintf(name,"./Error/parallel/rare_blas_online/vector%d.bin",l);
+        std::ofstream file(name, std::ios::binary);
+        file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
+        file.close();
+
+    }
 
 }

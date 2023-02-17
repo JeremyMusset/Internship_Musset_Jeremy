@@ -14,3 +14,6 @@ run :
 
 slurmtoexe : 
 	chmod a+x execution.slurm 
+
+cleanerr : 
+	rm -r Error && mkdir Error && cd Error && mkdir parallel && mkdir sequential && cd parallel && mkdir common && mkdir rare_blas_hybrid && mkdir rare_blas_online && cd .. && cd sequential && mkdir common && mkdir rare_blas_hybrid && mkdir rare_blas_online && cd ../../
