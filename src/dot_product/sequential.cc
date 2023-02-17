@@ -135,10 +135,10 @@ void seq_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::vect
    
     
     // Print results
-    mpfr_printf ("\n SEQUENTIAL CORRECT ROUNDING : \n%.41Rg \n", res_mpfr);
+    // mpfr_printf ("\n SEQUENTIAL CORRECT ROUNDING : \n%.41Rg \n", res_mpfr);
     // printf ("\n SEQUENTIAL COMMON DOT PRODUCT : \n%.41f \n", res_common);
-    printf ("\n SEQUENTIAL RARE BLAS HYBRID DOT PRODUCT : \n%.41f \n\n", res_rare_blas_hybrid);    
-     printf ("\n SEQUENTIAL RARE BLAS ONLINE DOT PRODUCT : \n%.41f \n\n", res_rare_blas_online);  
+    // printf ("\n SEQUENTIAL RARE BLAS HYBRID DOT PRODUCT : \n%.41f \n\n", res_rare_blas_hybrid);    
+    //  printf ("\n SEQUENTIAL RARE BLAS ONLINE DOT PRODUCT : \n%.41f \n\n", res_rare_blas_online);  
 
     // Error
     mpfr_t tmp,tmp2,tmp3;

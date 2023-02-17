@@ -12,10 +12,10 @@ using namespace std;
 int main() {
     int n, nb_gen, nb_threads;
     double cond, sum;
-    n = 10;
-    nb_gen = 2;
+    n = 1000;
+    nb_gen = 12;
     nb_threads = 4;
-    cond = 2;
+    cond = 5;
     sum = 100;
 
     int sz = 6;
@@ -30,7 +30,6 @@ int main() {
     }
 
     vec_gen(nb_gen,n,cond,sum);
-
 
     seq_dot_prod(n, cond, nb_gen,sum,Time_seq,Error_seq,2);
     par_dot_prod(n, cond, nb_gen,nb_threads,sum,Time_par,Error_par,2);

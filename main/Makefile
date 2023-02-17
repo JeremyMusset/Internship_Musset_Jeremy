@@ -3,7 +3,7 @@ FLAGS = -fopenmp -Ofast -w
 exec : slurmtoexe
 	./execution.slurm
 
-compile : ./dot_product.cpp ../include/*.h ../src/data/*.bin ../src/generation/*.cc ../src/dot_product/*.cc
+compile : 
 	g++ ../src/generation/*.cc ../src/dot_product/*.cc dot_product.cpp -o dot_prod -lmpfr $(FLAGS)
 
 comprun : compile 	
