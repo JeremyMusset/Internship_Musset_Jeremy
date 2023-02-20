@@ -14,8 +14,8 @@ int main() {
     mpfr_set_d(eps, 0.1, MPFR_RNDN);
     // eps = 10^-3
     mpfr_pow_si(eps, eps, 2, MPFR_RNDN);
-    n = 1000000;                         //  n = 10 000 => 800 tests / min      n = 100 000 => 10 tests / min           n = 1 000 000 =>  ? tests / min
-    nb_gen = 500;
+    n = 100000;                         //  n = 10 000 => 800 tests / min      n = 100 000 => 10 tests / min           n = 1 000 000 =>  less than 1 tests / 3 hours
+    nb_gen = 206;
     nb_threads = 7;
     cond = 5;
     sum = 100;

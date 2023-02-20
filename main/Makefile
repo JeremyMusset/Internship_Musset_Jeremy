@@ -14,3 +14,10 @@ run :
 
 slurmtoexe : 
 	chmod a+x execution.slurm 
+
+compilecompare : 
+	g++ ../src/generation/*.cc ../src/dot_product/*.cc ../src/compare/*.cc compare_dot_product.cpp -o comp_dot_prod -lmpfr $(FLAGS)
+
+comprun2 : compilecompare 	
+	./comp_dot_prod
+	
