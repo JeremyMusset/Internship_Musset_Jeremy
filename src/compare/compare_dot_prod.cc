@@ -1,6 +1,6 @@
 #include <cmath>
 #include <mkl.h>
-#include "/home/jerem/app/blaspp/include/blas.hh"
+#include "/home/jerem/app/blaspp/include/blas/dot.hh"
 #include "../../include/compare.h"
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
@@ -26,19 +26,21 @@ void compare_dot_prod<double>(int n,double required_cond, int nb_gen, double sum
 template < class T >
 void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::vector<T> &Time, std::vector<mpfr_t> &Error, int q){
 
-       
     // Error
-    mpfr_t Err_common,Err_mkl,Err_blaspp;
+    mpfr_t Err_bad,Err_common,Err_mkl,Err_blaspp;
+    mpfr_init2(Err_bad, P);
     mpfr_init2(Err_common, P);
     mpfr_init2(Err_mkl, P);
     mpfr_init2(Err_blaspp, P);
+    mpfr_set_d(Err_bad, 0, MPFR_RNDN);
     mpfr_set_d(Err_common, 0, MPFR_RNDN);
     mpfr_set_d(Err_mkl, 0, MPFR_RNDN);
     mpfr_set_d(Err_blaspp, 0, MPFR_RNDN);
 
     // Time 
-    double Time_mpfr,Time_common,Time_mkl,Time_blaspp;
+    double Time_mpfr,Time_bad,Time_common,Time_mkl,Time_blaspp;
     Time_mpfr = 0;
+    Time_bad = 0;
     Time_common = 0;
     Time_mkl = 0;
     Time_blaspp = 0;
@@ -60,8 +62,9 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
         a[i] = vec[i+1];
         b[i] = vec[n+1+i];
     }
+
         
-    double res_common,res_mkl,res_blaspp;
+    double res_bad,res_common,res_mkl,res_blaspp;
     
 
     //////////////////////////////////////////////////////////////////
@@ -86,7 +89,24 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
 
     Time_mpfr += ((double)(end_mpfr.tv_nsec - start_mpfr.tv_nsec)); 
 
+
+    ////////////////////////////////////////////////////////////////////
+    //////////////////////// BAD DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    struct timespec start_bad, end_bad;
         
+    clock_gettime(CLOCK_REALTIME,&start_bad);
+    for (unsigned int t=0; t<NB_EXEC;t++){
+        res_bad = 0.0;
+        for (unsigned int j=0; j<n;j++){
+            res_bad += a[j]*b[j];
+        }
+    }
+    clock_gettime(CLOCK_REALTIME,&end_bad);  
+
+    Time_bad += ((double)(end_bad.tv_nsec - start_bad.tv_nsec) );
+
     ////////////////////////////////////////////////////////////////////
     //////////////////////// COMMON DOT PRODUCT ////////////////////////
     ////////////////////////////////////////////////////////////////////
@@ -147,8 +167,6 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
         bpp[i] = b[i];
     }
 
-    // MKL_INT nmkl,incx,incy;
-
     clock_gettime(CLOCK_REALTIME,&start_blaspp);
     for (unsigned int t=0; t<NB_EXEC;t++){
         res_blaspp = blas::dot(n,app,1,bpp,1);
@@ -157,18 +175,25 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
 
     Time_blaspp += ((double)(end_blaspp.tv_nsec - start_blaspp.tv_nsec));
 
-   
     
     // Print results
-    // mpfr_printf ("\n SEQUENTIAL CORRECT ROUNDING : \n%.41Rg \n", res_mpfr);
-    // printf ("\n SEQUENTIAL COMMON DOT PRODUCT : \n%.41f \n", res_common);
-    // printf ("\n SEQUENTIAL MKL : \n%.41f \n\n", res_mkl);    
+    mpfr_printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.30Rg \n --------------------------------- \n", res_mpfr);
+    printf ("\n BAD DOT PRODUCT : \n%.50f \n", res_bad);
+    printf ("\n SEQUENTIAL COMMON DOT PRODUCT : \n%.50f \n", res_common);
+    printf ("\n SEQUENTIAL MKL : \n%.50f \n", res_mkl);  
+    printf ("\n SEQUENTIAL BLASPP : \n%.50f \n\n", res_blaspp);   
 
     // Error
-    mpfr_t tmp,tmp2,tmp3;
+    mpfr_t tmp,tmp2,tmp3,tmp4;
     mpfr_init2(tmp, P);
     mpfr_init2(tmp2, P);
     mpfr_init2(tmp3, P);
+    mpfr_init2(tmp4, P);
+
+    mpfr_sub_d(tmp4,res_mpfr,res_bad,MPFR_RNDN);
+    mpfr_div(tmp4,tmp4,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp4,tmp4,MPFR_RNDN);
+    mpfr_add(Err_bad, Err_bad,tmp4,MPFR_RNDN);
 
     mpfr_sub_d(tmp,res_mpfr,res_common,MPFR_RNDN);
     mpfr_div(tmp,tmp,res_mpfr,MPFR_RNDN);
@@ -190,6 +215,10 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     Time_mpfr = Time_mpfr / nb_gen;
     // printf("TIME CORRECT ROUNDING : %.15f \n",Time_mpfr);
 
+    // Time bad
+    Time_bad = Time_bad / (nb_gen*NB_EXEC);
+    // printf("TIME BAD DOT PRODUCT : %.45f \n",Time_bad);
+
     // Time common
     Time_common =Time_common / (nb_gen*NB_EXEC);
     // printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
@@ -204,18 +233,21 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
 
 
     Time[0] = Time_mpfr;
-    Time[1] = Time_common;
-    Time[2] = Time_mkl;
-    Time[3] = Time_blaspp;
+    Time[1] = Time_bad;
+    Time[2] = Time_common;
+    Time[3] = Time_mkl;
+    Time[4] = Time_blaspp;
 
+    mpfr_div_si(Err_bad,Err_bad,nb_gen,MPFR_RNDN);
     mpfr_div_si(Err_common,Err_common,nb_gen,MPFR_RNDN);
     mpfr_div_si(Err_mkl,Err_mkl,nb_gen,MPFR_RNDN);
     mpfr_div_si(Err_blaspp,Err_blaspp,nb_gen,MPFR_RNDN);
 
     mpfr_set_d(Error[0], 0, MPFR_RNDN);
-    mpfr_set(Error[1], Err_common, MPFR_RNDN);
-    mpfr_set(Error[2], Err_mkl, MPFR_RNDN);
-    mpfr_set(Error[3], Err_blaspp, MPFR_RNDN);
+    mpfr_set(Error[1], Err_bad, MPFR_RNDN);
+    mpfr_set(Error[2], Err_common, MPFR_RNDN);
+    mpfr_set(Error[3], Err_mkl, MPFR_RNDN);
+    mpfr_set(Error[4], Err_blaspp, MPFR_RNDN);
 
     
 }

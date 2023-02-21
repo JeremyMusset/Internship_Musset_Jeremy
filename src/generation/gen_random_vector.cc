@@ -12,12 +12,12 @@
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
-#define SMAX 100      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
+#define SMAX 50000      // size of name of binairy file   (e.g. 25 if less than 100) if *** Buffer Overflow detected *** just increase SMAX
 
 // Give us n vector of floating point of size nb_elem such as |x[1]| + |x[2]| + ... = sum with the require conditionement
 template void import_vec<double> (std::vector<double> &vec, unsigned int l,int q);
 
-template void vec_gen<double> (int nb_gen, int size, double cond, double sum);
+template void vec_gen<double> (int nb_gen, int size, double cond, double sum,int q);
 
 template void generate_v<double> (std::vector<double> &x, std::vector<double> &y, int nb_elem, double required_cond, double &sum);
 
@@ -197,8 +197,9 @@ void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_co
 /// @param size Size of vectors
 /// @param cond Conditioning required
 /// @param sum Sum of absolute values
+/// @param q file position (main/X/ = 2   main/X/Y/ = 1)
 template <class T>
-void vec_gen(int nb_gen,int size, T cond,T sum){
+void vec_gen(int nb_gen,int size, T cond,T sum,int q){
   // We generate "nb_gen" time
   for (unsigned int l=0;l<nb_gen;l++){
 
@@ -213,15 +214,22 @@ void vec_gen(int nb_gen,int size, T cond,T sum){
         data[i+1] = a[i];
         data[i+size+1] = b[i];
     }  
-    
+   
     // Write into binary file
     FILE * fichier;
     char name[SMAX];  
-    sprintf(name,"../src/data/vector%d.bin",l);
+    if (q==1){
+      sprintf(name,"../data/vector%d.bin",l);
+    } 
+    if (q==2){
+      sprintf(name,"../src/data/vector%d.bin",l);
+    } 
+
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
     file.close();
   }
+
 }
 
 /// @brief Transform binary file into vectors

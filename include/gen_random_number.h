@@ -7,7 +7,7 @@
 
 
 template <class T>
-void vec_gen (int nb_gen, int size, T cond, T sum);
+void vec_gen (int nb_gen, int size, T cond, T sum,int q);
 
 template <class T>
 void gen_fpnumber(std::vector<T> &x, int nb_elem, T required_cond, T &sum);

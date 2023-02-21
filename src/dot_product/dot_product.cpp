@@ -39,7 +39,7 @@ int main() {
         /////////////////// Data importation ///////////////////
         ////////////////////////////////////////////////////////
         class std::vector<double> vec;
-        import_vec(vec,l);   
+        import_vec(vec,l,1);   
 
         // Assign a,b and n
         n = vec[0];

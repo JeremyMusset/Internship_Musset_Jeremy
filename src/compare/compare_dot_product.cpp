@@ -1,7 +1,7 @@
-#include "../include/error_free.h"
-#include "../include/dot_product.h"
-#include "../include/gen_random_number.h"
-#include "../include/compare.h"
+#include "../../include/error_free.h"
+#include "../../include/dot_product.h"
+#include "../../include/gen_random_number.h"
+#include "../../include/compare.h"
 
 
 using namespace std;
@@ -11,10 +11,10 @@ using namespace std;
 int main() {
     int n, nb_gen, nb_threads;
     double cond, sum;
-    n = 1000;
-    nb_gen = 12;
+    n = 5001;
+    nb_gen = 20;
     nb_threads = 4;
-    cond = 5;
+    cond = 5000;
     sum = 100;
 
     int sz = 4;
@@ -25,9 +25,8 @@ int main() {
         mpfr_init2(Error[i], P);
     }
     
-    vec_gen(nb_gen,n,cond,sum);
-
-    compare_dot_prod(n, cond, nb_gen,sum,Time,Error,2);
+    vec_gen(nb_gen,n,cond,sum,1);
+    compare_dot_prod(n, cond, nb_gen,sum,Time,Error,1);
     
     // Print
     printf("\nTime sequential mpfr : %.30f\n",Time[0]);
