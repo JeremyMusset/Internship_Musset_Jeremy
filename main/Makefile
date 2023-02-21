@@ -1,23 +1,12 @@
-FLAGS = -fopenmp -Ofast -w
+FLAGS = -O3 -w
+LIBS = -lmpfr -lgsl -lgslcblas -lm -fopenmp -lopenblas -lblaspp
+INC = ../src/generation/*.cc ../src/dot_product/*.cc ../src/compare/*.cc -L/home/jerem/app/blaspp/lib -I/usr/local/blaspp/include 
 
-exec : slurmtoexe
-	./execution.slurm
+
 
 compile : 
-	g++ ../src/generation/*.cc ../src/dot_product/*.cc dot_product.cpp -o dot_prod -lmpfr $(FLAGS)
+	g++ $(INC) compare_dot_product.cpp -o comp_dot_prod $(LIBS) $(FLAGS)
 
-comprun : compile 	
-	./dot_prod
-
-run :  	
-	./dot_prod
-
-slurmtoexe : 
-	chmod a+x execution.slurm 
-
-compilecompare : 
-	g++ ../src/generation/*.cc ../src/dot_product/*.cc ../src/compare/*.cc compare_dot_product.cpp -o comp_dot_prod -lmpfr $(FLAGS)
-
-comprun2 : compilecompare 	
+comprun2 : compile 	
 	./comp_dot_prod
 	

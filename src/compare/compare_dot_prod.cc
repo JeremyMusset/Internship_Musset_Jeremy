@@ -1,4 +1,6 @@
 #include <cmath>
+#include <mkl.h>
+#include "/home/jerem/app/blaspp/include/blas.hh"
 #include "../../include/compare.h"
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
@@ -26,17 +28,20 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
 
        
     // Error
-    mpfr_t Err_common,Err_mkl;
+    mpfr_t Err_common,Err_mkl,Err_blaspp;
     mpfr_init2(Err_common, P);
     mpfr_init2(Err_mkl, P);
+    mpfr_init2(Err_blaspp, P);
     mpfr_set_d(Err_common, 0, MPFR_RNDN);
     mpfr_set_d(Err_mkl, 0, MPFR_RNDN);
+    mpfr_set_d(Err_blaspp, 0, MPFR_RNDN);
 
     // Time 
-    double Time_mpfr,Time_common,Time_mkl;
+    double Time_mpfr,Time_common,Time_mkl,Time_blaspp;
     Time_mpfr = 0;
     Time_common = 0;
     Time_mkl = 0;
+    Time_blaspp = 0;
 
     class std::vector<double> a(n);
     class std::vector<double> b(n);
@@ -56,7 +61,7 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
         b[i] = vec[n+1+i];
     }
         
-    double res_common,res_mkl;
+    double res_common,res_mkl,res_blaspp;
     
 
     //////////////////////////////////////////////////////////////////
@@ -99,21 +104,58 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
 
 
     ////////////////////////////////////////////////////////////////////
-    ///////////////////// RARE-BLAS DOT PRODUCT ////////////////////////
+    ///////////////////// MKL DOT PRODUCT ////////////////////////
     ////////////////////////////////////////////////////////////////////
 
     struct timespec start_mkl, end_mkl;
     res_mkl = 0.0;
 
+
+    double *amkl;
+    amkl = (double *) malloc(n*sizeof(double)); 
+    double *bmkl;
+    bmkl = (double *) malloc(n*sizeof(double)); 
+    for (unsigned int i = 0; i<n;i++){
+        amkl[i] = a[i];
+        bmkl[i] = b[i];
+    }
+
+    // MKL_INT nmkl,incx,incy;
+
     clock_gettime(CLOCK_REALTIME,&start_mkl);
     for (unsigned int t=0; t<NB_EXEC;t++){
-        res_mkl = Rare_blas_dot_prod_online(a,b,n);
+        res_mkl = cblas_ddot(n,amkl,1,bmkl,1);
     }
     clock_gettime(CLOCK_REALTIME,&end_mkl); 
 
     Time_mkl += ((double)(end_mkl.tv_nsec - start_mkl.tv_nsec));
 
     
+    ////////////////////////////////////////////////////////////////////
+    ///////////////////// BLASPP DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    struct timespec start_blaspp, end_blaspp;
+    res_blaspp = 0.0;
+
+    double *app;
+    app = (double *) malloc(n*sizeof(double)); 
+    double *bpp;
+    bpp = (double *) malloc(n*sizeof(double)); 
+    for (unsigned int i = 0; i<n;i++){
+        app[i] = a[i];
+        bpp[i] = b[i];
+    }
+
+    // MKL_INT nmkl,incx,incy;
+
+    clock_gettime(CLOCK_REALTIME,&start_blaspp);
+    for (unsigned int t=0; t<NB_EXEC;t++){
+        res_blaspp = blas::dot(n,app,1,bpp,1);
+    }
+    clock_gettime(CLOCK_REALTIME,&end_blaspp); 
+
+    Time_blaspp += ((double)(end_blaspp.tv_nsec - start_blaspp.tv_nsec));
 
    
     
@@ -126,6 +168,7 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     mpfr_t tmp,tmp2,tmp3;
     mpfr_init2(tmp, P);
     mpfr_init2(tmp2, P);
+    mpfr_init2(tmp3, P);
 
     mpfr_sub_d(tmp,res_mpfr,res_common,MPFR_RNDN);
     mpfr_div(tmp,tmp,res_mpfr,MPFR_RNDN);
@@ -137,6 +180,11 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     mpfr_abs(tmp2,tmp2,MPFR_RNDN);
     mpfr_add(Err_mkl, Err_mkl,tmp2,MPFR_RNDN);
 
+    mpfr_sub_d(tmp3,res_mpfr,res_blaspp,MPFR_RNDN);
+    mpfr_div(tmp3,tmp3,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp3,tmp3,MPFR_RNDN);
+    mpfr_add(Err_blaspp, Err_blaspp,tmp3,MPFR_RNDN);
+
     }
     // Time mpfr
     Time_mpfr = Time_mpfr / nb_gen;
@@ -146,20 +194,28 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     Time_common =Time_common / (nb_gen*NB_EXEC);
     // printf("TIME COMMON DOT PRODUCT : %.45f \n",Time_common);
 
-    // Time rare blas hybrid
+    // Time MKL
     Time_mkl = Time_mkl / (nb_gen*NB_EXEC);
     // printf("TIME MKL : %.45f \n",Time_mkl);
+
+     // Time blaspp
+    Time_blaspp = Time_blaspp / (nb_gen*NB_EXEC);
+    // printf("TIME BLASPP : %.45f \n",Time_blaspp);
+
 
     Time[0] = Time_mpfr;
     Time[1] = Time_common;
     Time[2] = Time_mkl;
+    Time[3] = Time_blaspp;
 
     mpfr_div_si(Err_common,Err_common,nb_gen,MPFR_RNDN);
     mpfr_div_si(Err_mkl,Err_mkl,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_blaspp,Err_blaspp,nb_gen,MPFR_RNDN);
 
     mpfr_set_d(Error[0], 0, MPFR_RNDN);
     mpfr_set(Error[1], Err_common, MPFR_RNDN);
     mpfr_set(Error[2], Err_mkl, MPFR_RNDN);
+    mpfr_set(Error[3], Err_blaspp, MPFR_RNDN);
 
     
 }

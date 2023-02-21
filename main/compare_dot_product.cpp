@@ -17,7 +17,7 @@ int main() {
     cond = 5;
     sum = 100;
 
-    int sz = 3;
+    int sz = 4;
     class std::vector<double> Time(sz);
     class std::vector<mpfr_t> Error(sz);
 
@@ -33,9 +33,11 @@ int main() {
     printf("\nTime sequential mpfr : %.30f\n",Time[0]);
     printf("Time sequential common dot prod : %.30f \n",Time[1]);
     printf("Time sequential MKL : %.30f\n",Time[2]);
+    printf("Time sequential BLASPP : %.30f\n",Time[3]);
 
     mpfr_printf("\nError sequential common dot prod : %.30Rg \n",Error[1]);
     mpfr_printf("Error sequential MKL : %.30Rg \n",Error[2]);
+    mpfr_printf("Error sequential BLASPP : %.30Rg \n",Error[3]);
 
 
     return 0;
