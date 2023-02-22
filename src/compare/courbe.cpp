@@ -2,9 +2,11 @@
 #include "../../include/dot_product.h"
 #include "../../include/gen_random_number.h"
 #include "../../include/compare.h"
+#include "matplotlibcpp.h"
 
 
 using namespace std;
+namespace plt = matplotlibcpp;
 
 #define P 4000
 
@@ -75,7 +77,7 @@ int main() {
 
     // Error / cond
 
-    int sz_err = 7;
+    int sz_err = 17;
     class std::vector<double> VCond(sz_err);
     class std::vector<double> Error_bad(sz_err);
     class std::vector<double> Error_common(sz_err);
@@ -86,10 +88,19 @@ int main() {
     VCond[1]=500; 
     VCond[2]=1000;
     VCond[3]=5000; 
-    VCond[4]=10000;
+    VCond[4]=20000; 
     VCond[5]=30000; 
     VCond[6]=50000;
     VCond[7]=100000;
+    VCond[8]=200000;
+    VCond[9]=500000;
+    VCond[10]=1000000;
+    VCond[11]=3000000;
+    VCond[12]=5000000;
+    VCond[13]=10000000;
+    VCond[14]=30000000;
+    VCond[15]=500000000;
+    VCond[16]=10000000000;
 
     i = 0;
     for (k = VCond.begin(); k != VCond.end(); k++){
@@ -115,6 +126,16 @@ int main() {
     // for (unsigned int u=0; u<sz_err;u++){
     //     printf("%.30f\n",Error_mkl[u]);
     // }
+
+
+    // Print    
+    plt::semilogx(VCond,Error_blaspp);
+
+    plt::title("Relative error according to conditionning");
+    plt::xlabel("Conditionning");
+    plt::ylabel("Relative error");
+
+    plt::show();
 
     return 0;
 }
