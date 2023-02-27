@@ -20,7 +20,7 @@ int main() {
     int n;
     n = 3;
     sum = 150;
-    cond = 1.5;
+    cond = 10;
     int nb_gen = 2;
     vec_gen(nb_gen,n,cond,sum);
     return 0;
