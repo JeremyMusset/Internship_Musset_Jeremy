@@ -11,14 +11,14 @@ namespace plt = matplotlibcpp;
 #define P 4000
 
 int main() {
-    int nb_gen = 30;
+    int nb_gen = 40;
     double sum = 200;
     int size = 1000;
 
 
-    int sz_err = 12;
+    int sz_err = 20;
     class std::vector<double> VCond(sz_err);
-    VCond = {1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000,20000000, 40000000, 50000000} ; 
+    VCond = {1, 5, 10, 50, 100, 500, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 100000000, 5000000000} ; 
 
     class std::vector<double> Error_standard(sz_err*nb_gen);
     class std::vector<double> Error_common(sz_err*nb_gen);
@@ -122,6 +122,7 @@ int main() {
 
     }
 
+
     // Log
     class std::vector<double> T1(2);
     class std::vector<double> T2(2);
@@ -130,8 +131,37 @@ int main() {
     T2[0] = Error_standard[0];
     T2[1] = Error_standard[sz_err -1];
     plt::loglog(T1,T2,"white");
-    
-    plt::scatter(RCond, Error_standard,4);
+
+    // Stats
+    class std::vector<double> quartile_cond(3);
+    class std::vector<double> quartile_err(3);
+    quartile_cond = {prem_quart_cond, medianne_cond, trois_quart_cond};
+    quartile_err = {prem_quart_err, medianne_err, trois_quart_err};
+
+    class std::vector<double> moy_cond(1);
+    class std::vector<double> moy_err(1);
+    moy_cond = {moyenne_cond};
+    moy_err = {moyenne_err};
+
+
+    // Fct
+    class std::vector<double> x(sz_err);
+    class std::vector<double> y(sz_err);
+    x = {1000, 10000000000000};
+    y = {0.0000000000000005, 0.000005};
+
+
+    plt::scatter(RCond, Error_standard,4,{{"color", "#6BB0D8"}});
+    plt::scatter(quartile_cond, quartile_err,10,{{"color", "r"},{"label", "Quartile"}});
+    plt::scatter(moy_cond, moy_err,10,{{"color", "b"},{"label", "Average"}});
+    plt::plot(x,y,{{"color", "g"},{"label", "y = 5e^-19 * x "}});
+
+
+    plt::title("Relative error according to conditioning");
+    plt::xlabel("Conditioning");
+    plt::ylabel("Relative error");
+
+    plt::legend();
     plt::show();
 
     return 0;
