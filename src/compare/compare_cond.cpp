@@ -11,7 +11,7 @@ namespace plt = matplotlibcpp;
 #define P 4000
 
 int main() {
-    int nb_gen = 40;
+    int nb_gen = 10;
     double sum = 200;
     int size = 1000;
 
@@ -22,6 +22,8 @@ int main() {
 
     class std::vector<double> Error_standard(sz_err*nb_gen);
     class std::vector<double> Error_common(sz_err*nb_gen);
+    class std::vector<double> Error_par_standard(sz_err*nb_gen);
+    class std::vector<double> Error_par_common(sz_err*nb_gen);
     class std::vector<double> Error_mkl(sz_err*nb_gen);
     class std::vector<double> Error_blaspp(sz_err*nb_gen);
 
@@ -29,7 +31,7 @@ int main() {
     class std::vector<double> RCond(nb_gen * sz_err);
 
     
-
+    int nb_threads =4;
     int alpha;
     int i = 0;
     vector<double>::iterator k;
@@ -37,7 +39,7 @@ int main() {
         printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
-        compare_dot_prod_cond(size, *k, nb_gen,sum,Error_standard,Error_common,Error_mkl,Error_blaspp,1,i);    
+        compare_dot_prod_cond(size, *k, nb_gen,sum,Error_standard,Error_common,Error_par_standard,Error_par_common,Error_mkl,Error_blaspp,1,i,nb_threads);    
         i += 1;
     }
 
@@ -133,28 +135,29 @@ int main() {
     plt::loglog(T1,T2,"white");
 
     // Stats
-    class std::vector<double> quartile_cond(3);
-    class std::vector<double> quartile_err(3);
-    quartile_cond = {prem_quart_cond, medianne_cond, trois_quart_cond};
-    quartile_err = {prem_quart_err, medianne_err, trois_quart_err};
 
-    class std::vector<double> moy_cond(1);
-    class std::vector<double> moy_err(1);
-    moy_cond = {moyenne_cond};
-    moy_err = {moyenne_err};
+    // class std::vector<double> quartile_cond(3);
+    // class std::vector<double> quartile_err(3);
+    // quartile_cond = {prem_quart_cond, medianne_cond, trois_quart_cond};
+    // quartile_err = {prem_quart_err, medianne_err, trois_quart_err};
+
+    // class std::vector<double> moy_cond(1);
+    // class std::vector<double> moy_err(1);
+    // moy_cond = {moyenne_cond};
+    // moy_err = {moyenne_err};
 
 
-    // Fct
-    class std::vector<double> x(sz_err);
-    class std::vector<double> y(sz_err);
-    x = {1000, 10000000000000};
-    y = {0.0000000000000005, 0.000005};
+    // // Fct
+    // class std::vector<double> x(sz_err);
+    // class std::vector<double> y(sz_err);
+    // x = {1000, 10000000000000};
+    // y = {0.0000000000000005, 0.000005};
 
 
     plt::scatter(RCond, Error_standard,4,{{"color", "#6BB0D8"}});
-    plt::scatter(quartile_cond, quartile_err,10,{{"color", "r"},{"label", "Quartile"}});
-    plt::scatter(moy_cond, moy_err,10,{{"color", "b"},{"label", "Average"}});
-    plt::plot(x,y,{{"color", "g"},{"label", "y = 5e^-19 * x "}});
+    // plt::scatter(quartile_cond, quartile_err,10,{{"color", "r"},{"label", "Quartile"}});
+    // plt::scatter(moy_cond, moy_err,10,{{"color", "b"},{"label", "Average"}});
+    // plt::plot(x,y,{{"color", "g"},{"label", "y = 5e^-19 * x "}});
 
 
     plt::title("Relative error according to conditioning");

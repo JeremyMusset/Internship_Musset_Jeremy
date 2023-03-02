@@ -11,6 +11,7 @@ LIBS_MKL = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_ilp64 -lmkl_g
 
 
 # EXEC = compare_dot_product
+# EXEC = compare_par
 # EXEC = compare_time
 EXEC = compare_cond
 

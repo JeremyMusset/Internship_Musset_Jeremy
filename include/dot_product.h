@@ -16,6 +16,9 @@ template < class T >
 T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);
 
 template < class T > 
+T par_common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy,int nb_threads);
+
+template < class T > 
 T Rare_blas_dot_prod_hybrid(std::vector<T> a, std::vector<T> b, int n);
 
 template < class T > 
