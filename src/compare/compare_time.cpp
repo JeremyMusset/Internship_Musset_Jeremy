@@ -11,7 +11,7 @@ namespace plt = matplotlibcpp;
 #define P 4000
 
 int main() {
-    int nb_gen = 5;
+    int nb_gen = 8;
     double sum = 200; 
     double cond = 100;
     int sz = 7;
@@ -38,7 +38,7 @@ int main() {
 
 
     // Time / Size
-    int sz_time = 7;
+    int sz_time = 20;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_common(sz_time);
@@ -54,22 +54,21 @@ int main() {
     class std::vector<double> Time_par_standard16(sz_time);
     class std::vector<double> Time_par_common16(sz_time);
 
-    VSize = {5000,10000,50000,100000,500000,1000000,1500000} ;
-
-
+    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
     int i = 0;
     vector<double>::iterator k;
     for (k = VSize.begin(); k != VSize.end(); k++){  
-        printf("\n __________________________________________ SIZE = %f __________________________________________ \n\n",*k);
-
+        // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
-        printf("Generation ..... \n");
-        vec_gen_random(nb_gen,*k,3);
-        printf("Generation clear \n\n");
-        printf("Compute ..... \n");
+        // vec_gen_random(nb_gen,*k,3);
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
 
-       
+        // Gbytes / s
+        double qtt;
+        for (int j=1;j<7 ; j++) {
+            qtt = *k * 2 * 8 ;
+            Time[j] = qtt / Time[j] ;
+        }
 
         // Save result
         Time_standard[i] = Time[1];
@@ -97,22 +96,22 @@ int main() {
 
         i += 1;
 
-        printf("\n ___________________ TIME ____________________\n");
+        // printf("\n ___________________ TIME ____________________\n");
 
-        printf("\nTime sequential standard dot prod : %.30f\n",Time[1]);
-        printf("Time sequential common dot prod : %.30f \n",Time[2]);
-        printf("Time sequential MKL : %.30f\n",Time[5]);
-        printf("Time sequential BLASPP : %.30f\n\n",Time[6]);
-        printf("Time parallel standard dot prod : %.30f\n",Time[3]);
-        printf("Time parallel common dot prod : %.30f\n\n",Time[4]);
+        // printf("\nTime sequential standard dot prod : %.30f\n",Time[1]);
+        // printf("Time sequential common dot prod : %.30f \n",Time[2]);
+        // printf("Time sequential MKL : %.30f\n",Time[5]);
+        // printf("Time sequential BLASPP : %.30f\n\n",Time[6]);
+        // printf("Time parallel standard dot prod : %.30f\n",Time[3]);
+        // printf("Time parallel common dot prod : %.30f\n\n",Time[4]);
 
-        printf("\n ___________________ ERROR ____________________ \n");
-        mpfr_printf("\nError sequential standard dot prod : %.30Rg\n",Error[1]);
-        mpfr_printf("Error sequential common dot prod : %.30Rg \n",Error[2]);
-        mpfr_printf("Error sequential MKL : %.30Rg\n",Error[5]);
-        mpfr_printf("Error sequential BLASPP : %.30Rg\n\n",Error[6]);
-        mpfr_printf("Error parallel standard dot prod : %.30Rg\n",Error[3]);
-        mpfr_printf("Error parallel common dot prod : %.30Rg\n\n",Error[4]);
+        // printf("\n ___________________ ERROR ____________________ \n");
+        // mpfr_printf("\nError sequential standard dot prod : %.30Rg\n",Error[1]);
+        // mpfr_printf("Error sequential common dot prod : %.30Rg \n",Error[2]);
+        // mpfr_printf("Error sequential MKL : %.30Rg\n",Error[5]);
+        // mpfr_printf("Error sequential BLASPP : %.30Rg\n\n",Error[6]);
+        // mpfr_printf("Error parallel standard dot prod : %.30Rg\n",Error[3]);
+        // mpfr_printf("Error parallel common dot prod : %.30Rg\n\n",Error[4]);
     }
 
 
@@ -123,12 +122,12 @@ int main() {
     T1[1] = VSize[sz_time - 1];
     T2[0] = Time_standard[0];
     T2[1] = Time_standard[sz_time -1];
-    plt::loglog(T1,T2,"white");
+    plt::semilogx(T1,T2,"white");
 
     plt::plot(VSize,Time_standard,{{"color", "#09ED1A"},{"label", "Standard"}});
     plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
-    plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
-    plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
+    // plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
+    // plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
     plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
     plt::plot(VSize,Time_blaspp,{{"color", "y"},{"label", "BLASPP"}});
 
@@ -140,14 +139,28 @@ int main() {
     // plt::plot(VSize,Time_par_common16,{{"color", "#00197E"},{"label", "Parallel common 16 threads"}});
     
     
+    // Caches
+    std::vector<double> cachesL1 = {18000, 18000};
+    std::vector<double> cachesL2 = {468750, 468750};
+    std::vector<double> cachesL3 = {750000, 750000};
+    std::vector<double> heights = {0,20};
+    double height = 20;
 
-    plt::title("Time of execution according to size");
+    // Tracé des lignes verticales
+    plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
+    plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
+    plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
+
+
+    // plt::title("Time of execution according to size");
     plt::xlabel("Size of vector");
-    plt::ylabel("Time (in ns)");
-    
+    plt::ylabel("Flow (in Gbytes/s)");
+
 
     plt::legend();    
     plt::show();
+
+    
 
     return 0;
 }

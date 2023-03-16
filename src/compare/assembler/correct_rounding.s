@@ -1,241 +1,237 @@
 	.file	"correct_rounding.cc"
 	.text
-	.p2align 4
 	.globl	_Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_
 	.type	_Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_, @function
 _Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_:
-.LFB978:
+.LFB912:
 	.cfi_startproc
 	endbr64
-	pushq	%r14
-	.cfi_def_cfa_offset 16
-	.cfi_offset 14, -16
-	movl	%edi, %r14d
-	pushq	%r13
-	.cfi_def_cfa_offset 24
-	.cfi_offset 13, -24
-	pushq	%r12
-	.cfi_def_cfa_offset 32
-	.cfi_offset 12, -32
-	movq	%rcx, %r12
 	pushq	%rbp
-	.cfi_def_cfa_offset 40
-	.cfi_offset 6, -40
-	movq	%rdx, %rbp
-	pushq	%rbx
-	.cfi_def_cfa_offset 48
-	.cfi_offset 3, -48
-	movq	%rsi, %rbx
-	movl	$5000, %esi
-	subq	$48, %rsp
-	.cfi_def_cfa_offset 96
-	movq	%fs:40, %rax
-	movq	%rax, 40(%rsp)
-	xorl	%eax, %eax
-	movq	%rsp, %r13
-	movq	%r13, %rdi
-	call	mpfr_init2@PLT
-	xorl	%esi, %esi
-	pxor	%xmm0, %xmm0
-	movq	%r13, %rdi
-	call	mpfr_set_d@PLT
-	xorl	%esi, %esi
-	pxor	%xmm0, %xmm0
-	movq	%r12, %rdi
-	call	mpfr_set_d@PLT
-	testl	%r14d, %r14d
-	jle	.L1
-	leal	-1(%r14), %eax
-	salq	$5, %rax
-	leaq	32(%rbx,%rax), %r14
-	.p2align 4,,10
-	.p2align 3
-.L3:
-	movq	%rbp, %rdx
-	movq	%rbx, %rsi
-	xorl	%ecx, %ecx
-	movq	%r13, %rdi
-	call	mpfr_mul@PLT
-	addq	$32, %rbx
-	xorl	%ecx, %ecx
-	movq	%r13, %rdx
-	movq	%r12, %rsi
-	movq	%r12, %rdi
-	addq	$32, %rbp
-	call	mpfr_add@PLT
-	cmpq	%r14, %rbx
-	jne	.L3
-.L1:
-	movq	40(%rsp), %rax
-	subq	%fs:40, %rax
-	jne	.L8
-	addq	$48, %rsp
-	.cfi_remember_state
-	.cfi_def_cfa_offset 48
-	popq	%rbx
-	.cfi_def_cfa_offset 40
-	popq	%rbp
-	.cfi_def_cfa_offset 32
-	popq	%r12
-	.cfi_def_cfa_offset 24
-	popq	%r13
 	.cfi_def_cfa_offset 16
-	popq	%r14
-	.cfi_def_cfa_offset 8
-	ret
-.L8:
-	.cfi_restore_state
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$96, %rsp
+	movl	%edi, -68(%rbp)
+	movq	%rsi, -80(%rbp)
+	movq	%rdx, -88(%rbp)
+	movq	%rcx, -96(%rbp)
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	leaq	-48(%rbp), %rax
+	movl	$5000, %esi
+	movq	%rax, %rdi
+	call	mpfr_init2@PLT
+	leaq	-48(%rbp), %rdx
+	movl	$0, %esi
+	movq	.LC0(%rip), %rax
+	vmovq	%rax, %xmm0
+	movq	%rdx, %rdi
+	call	mpfr_set_d@PLT
+	movq	-96(%rbp), %rdx
+	movl	$0, %esi
+	movq	.LC0(%rip), %rax
+	vmovq	%rax, %xmm0
+	movq	%rdx, %rdi
+	call	mpfr_set_d@PLT
+	movl	$0, -52(%rbp)
+	jmp	.L2
+.L3:
+	movl	-52(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	movq	%rax, %rdx
+	movq	-88(%rbp), %rax
+	addq	%rax, %rdx
+	movl	-52(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	movq	%rax, %rcx
+	movq	-80(%rbp), %rax
+	leaq	(%rcx,%rax), %rsi
+	leaq	-48(%rbp), %rax
+	movl	$0, %ecx
+	movq	%rax, %rdi
+	call	mpfr_mul@PLT
+	leaq	-48(%rbp), %rax
+	movq	-96(%rbp), %rsi
+	movq	-96(%rbp), %rdi
+	movl	$0, %ecx
+	movq	%rax, %rdx
+	call	mpfr_add@PLT
+	incl	-52(%rbp)
+.L2:
+	movl	-52(%rbp), %eax
+	cmpl	-68(%rbp), %eax
+	jl	.L3
+	nop
+	movq	-8(%rbp), %rax
+	subq	%fs:40, %rax
+	je	.L4
 	call	__stack_chk_fail@PLT
+.L4:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
 	.cfi_endproc
-.LFE978:
+.LFE912:
 	.size	_Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_, .-_Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.rodata
 .LC1:
 	.string	"r+"
 	.text
-	.p2align 4
 	.globl	_Z15import_vec_mpfrPPA1_13__mpfr_structS2_Pc
 	.type	_Z15import_vec_mpfrPPA1_13__mpfr_structS2_Pc, @function
 _Z15import_vec_mpfrPPA1_13__mpfr_structS2_Pc:
-.LFB979:
+.LFB913:
 	.cfi_startproc
 	endbr64
-	pushq	%r15
-	.cfi_def_cfa_offset 16
-	.cfi_offset 15, -16
-	pushq	%r14
-	.cfi_def_cfa_offset 24
-	.cfi_offset 14, -24
-	pushq	%r13
-	.cfi_def_cfa_offset 32
-	.cfi_offset 13, -32
-	pushq	%r12
-	.cfi_def_cfa_offset 40
-	.cfi_offset 12, -40
 	pushq	%rbp
-	.cfi_def_cfa_offset 48
-	.cfi_offset 6, -48
-	pushq	%rbx
-	.cfi_def_cfa_offset 56
-	.cfi_offset 3, -56
-	subq	$4096, %rsp
-	.cfi_def_cfa_offset 4152
-	orq	$0, (%rsp)
-	subq	$4096, %rsp
-	.cfi_def_cfa_offset 8248
-	orq	$0, (%rsp)
-	subq	$1880, %rsp
-	.cfi_def_cfa_offset 10128
-	leaq	16(%rsp), %r13
-	movq	%rdx, %rbp
-	movq	%rdi, %rbx
-	movq	%rsi, %r14
-	movq	%fs:40, %rax
-	movq	%rax, 10056(%rsp)
-	xorl	%eax, %eax
-	movq	%r13, %rdi
-	movl	$5000, %esi
-	call	mpfr_init2@PLT
-	movq	%rbp, %rdi
-	leaq	.LC1(%rip), %rsi
-	leaq	48(%rsp), %rbp
-	call	fopen@PLT
-	movl	$10000, %esi
-	movq	%rbp, %rdi
-	movq	%rax, %rdx
-	movq	%rax, %r12
-	call	fgets@PLT
-	xorl	%ecx, %ecx
-	movl	$2, %edx
-	movq	%r13, %rdi
-	movq	%rbp, %rsi
-	call	mpfr_set_str@PLT
-	xorl	%esi, %esi
-	movq	%r13, %rdi
-	call	mpfr_get_d@PLT
-	cvttsd2sil	%xmm0, %r15d
-	movslq	%r15d, %r13
-	movl	%r15d, 12(%rsp)
-	salq	$5, %r13
-	movq	%r13, %rdi
-	call	malloc@PLT
-	movq	%r13, %rdi
-	movq	%rax, (%rbx)
-	call	malloc@PLT
-	movq	%rax, (%r14)
-	testl	%r15d, %r15d
-	jle	.L10
-	xorl	%r15d, %r15d
-	.p2align 4,,10
-	.p2align 3
-.L11:
-	movq	(%rbx), %rdi
-	movl	$5000, %esi
-	addq	%r15, %rdi
-	call	mpfr_init2@PLT
-	movq	%r12, %rdx
-	movl	$10000, %esi
-	movq	%rbp, %rdi
-	call	fgets@PLT
-	movq	(%rbx), %rdi
-	xorl	%ecx, %ecx
-	movl	$2, %edx
-	movq	%rbp, %rsi
-	addq	%r15, %rdi
-	addq	$32, %r15
-	call	mpfr_set_str@PLT
-	cmpq	%r13, %r15
-	jne	.L11
-	xorl	%ebx, %ebx
-	.p2align 4,,10
-	.p2align 3
-.L12:
-	movq	(%r14), %rdi
-	movl	$5000, %esi
-	addq	%rbx, %rdi
-	call	mpfr_init2@PLT
-	movq	%r12, %rdx
-	movl	$10000, %esi
-	movq	%rbp, %rdi
-	call	fgets@PLT
-	movq	(%r14), %rdi
-	xorl	%ecx, %ecx
-	movl	$2, %edx
-	movq	%rbp, %rsi
-	addq	%rbx, %rdi
-	addq	$32, %rbx
-	call	mpfr_set_str@PLT
-	cmpq	%r13, %rbx
-	jne	.L12
-.L10:
-	movq	%r12, %rdi
-	call	fclose@PLT
-	movq	10056(%rsp), %rax
-	subq	%fs:40, %rax
-	jne	.L17
-	movl	12(%rsp), %eax
-	addq	$10072, %rsp
-	.cfi_remember_state
-	.cfi_def_cfa_offset 56
-	popq	%rbx
-	.cfi_def_cfa_offset 48
-	popq	%rbp
-	.cfi_def_cfa_offset 40
-	popq	%r12
-	.cfi_def_cfa_offset 32
-	popq	%r13
-	.cfi_def_cfa_offset 24
-	popq	%r14
 	.cfi_def_cfa_offset 16
-	popq	%r15
-	.cfi_def_cfa_offset 8
-	ret
-.L17:
-	.cfi_restore_state
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$4096, %rsp
+	orq	$0, (%rsp)
+	subq	$4096, %rsp
+	orq	$0, (%rsp)
+	subq	$1904, %rsp
+	movq	%rdi, -10072(%rbp)
+	movq	%rsi, -10080(%rbp)
+	movq	%rdx, -10088(%rbp)
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	leaq	-10048(%rbp), %rax
+	movl	$5000, %esi
+	movq	%rax, %rdi
+	call	mpfr_init2@PLT
+	movq	-10088(%rbp), %rax
+	leaq	.LC1(%rip), %rdx
+	movq	%rdx, %rsi
+	movq	%rax, %rdi
+	call	fopen@PLT
+	movq	%rax, -10056(%rbp)
+	movq	-10056(%rbp), %rdx
+	leaq	-10016(%rbp), %rax
+	movl	$10000, %esi
+	movq	%rax, %rdi
+	call	fgets@PLT
+	leaq	-10016(%rbp), %rsi
+	leaq	-10048(%rbp), %rax
+	movl	$0, %ecx
+	movl	$2, %edx
+	movq	%rax, %rdi
+	call	mpfr_set_str@PLT
+	leaq	-10048(%rbp), %rax
+	movl	$0, %esi
+	movq	%rax, %rdi
+	call	mpfr_get_d@PLT
+	vcvttsd2sil	%xmm0, %eax
+	movl	%eax, -10060(%rbp)
+	movl	-10060(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	movq	%rax, %rdi
+	call	malloc@PLT
+	movq	%rax, %rdx
+	movq	-10072(%rbp), %rax
+	movq	%rdx, (%rax)
+	movl	-10060(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	movq	%rax, %rdi
+	call	malloc@PLT
+	movq	%rax, %rdx
+	movq	-10080(%rbp), %rax
+	movq	%rdx, (%rax)
+	movl	$0, -10064(%rbp)
+	jmp	.L6
+.L7:
+	movq	-10072(%rbp), %rax
+	movq	(%rax), %rdx
+	movl	-10064(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	addq	%rdx, %rax
+	movl	$5000, %esi
+	movq	%rax, %rdi
+	call	mpfr_init2@PLT
+	movq	-10056(%rbp), %rdx
+	leaq	-10016(%rbp), %rax
+	movl	$10000, %esi
+	movq	%rax, %rdi
+	call	fgets@PLT
+	movq	-10072(%rbp), %rax
+	movq	(%rax), %rdx
+	movl	-10064(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	leaq	(%rdx,%rax), %rdi
+	leaq	-10016(%rbp), %rax
+	movl	$0, %ecx
+	movl	$2, %edx
+	movq	%rax, %rsi
+	call	mpfr_set_str@PLT
+	incl	-10064(%rbp)
+.L6:
+	movl	-10064(%rbp), %eax
+	cmpl	-10060(%rbp), %eax
+	jl	.L7
+	movl	$0, -10064(%rbp)
+	jmp	.L8
+.L9:
+	movq	-10080(%rbp), %rax
+	movq	(%rax), %rdx
+	movl	-10064(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	addq	%rdx, %rax
+	movl	$5000, %esi
+	movq	%rax, %rdi
+	call	mpfr_init2@PLT
+	movq	-10056(%rbp), %rdx
+	leaq	-10016(%rbp), %rax
+	movl	$10000, %esi
+	movq	%rax, %rdi
+	call	fgets@PLT
+	movq	-10080(%rbp), %rax
+	movq	(%rax), %rdx
+	movl	-10064(%rbp), %eax
+	cltq
+	salq	$5, %rax
+	leaq	(%rdx,%rax), %rdi
+	leaq	-10016(%rbp), %rax
+	movl	$0, %ecx
+	movl	$2, %edx
+	movq	%rax, %rsi
+	call	mpfr_set_str@PLT
+	incl	-10064(%rbp)
+.L8:
+	movl	-10064(%rbp), %eax
+	cmpl	-10060(%rbp), %eax
+	jl	.L9
+	movq	-10056(%rbp), %rax
+	movq	%rax, %rdi
+	call	fclose@PLT
+	movl	-10060(%rbp), %eax
+	movq	-8(%rbp), %rdx
+	subq	%fs:40, %rdx
+	je	.L11
 	call	__stack_chk_fail@PLT
+.L11:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
 	.cfi_endproc
-.LFE979:
+.LFE913:
 	.size	_Z15import_vec_mpfrPPA1_13__mpfr_structS2_Pc, .-_Z15import_vec_mpfrPPA1_13__mpfr_structS2_Pc
+	.section	.rodata
+	.align 8
+.LC0:
+	.long	0
+	.long	0
 	.ident	"GCC: (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"

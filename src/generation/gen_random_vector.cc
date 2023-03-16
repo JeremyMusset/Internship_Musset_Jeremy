@@ -489,7 +489,7 @@ void generate_v_print(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requi
 void vec_gen_random(int nb_gen,int size,int q){
   // We generate "nb_gen" time
   for (unsigned int l=0;l<nb_gen;l++){
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~ GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
+    // printf("~~~~~~~~~~~~~~~~~~~~~~~~~ GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
     // Generate vectors
     class std::vector<double> data(2*size+1);
     data[0] = size;
@@ -526,7 +526,7 @@ void vec_gen_random(int nb_gen,int size,int q){
     if (q==4){
       sprintf(name,"../src/data_big/vector%d.bin",l);
     }
-    printf("~~~~~~~~~~~~~~~~~~~~~~~ END GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n",l);
+    // printf("~~~~~~~~~~~~~~~~~~~~~~~ END GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n",l);
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
     file.close();

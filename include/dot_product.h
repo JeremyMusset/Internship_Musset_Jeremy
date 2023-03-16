@@ -13,6 +13,9 @@
 
 
 template < class T > 
+void common_dot_prod_thread(std::vector<T> a, std::vector<T> b, int n, int incx, int incy, double &sdot);
+
+template < class T > 
 T common_dot_prod(std::vector<T> a, std::vector<T> b, int n, int incx, int incy);
 
 template < class T > 

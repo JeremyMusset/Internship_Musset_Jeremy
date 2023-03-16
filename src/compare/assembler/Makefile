@@ -1,7 +1,8 @@
 MKLROOT = /home/jerem/app/intel/oneapi/mkl/2023.0.0
 PLTROOT = /home/jerem/app/matplotlib-cpp
 
-FLAGS = -O3 -w
+FLAGS = -w -march=native #-O3
+
 LIBS = -lmpfr -lgsl -lgslcblas -lopenblas -lpython3.10 -lQt5Widgets -L/home/jerem/app/blaspp/lib -fopenmp   # -lm -lpthread -fopenmp
 BIB =  -I$(PLTROOT)/ -I/usr/include/python3.10 -I/usr/local/blaspp/include 
 INC = ../../generation/*.cc ../../dot_product/*.cc ../../compare/*.cc  
@@ -17,7 +18,7 @@ EXEC = ../compare_par
 
 
 compile : 
-	g++  $(INC) $(BIB) $(BIB_MKL) $(EXEC).cpp -S $(FLAGS) $(LIBS) $(LIBS_MKL) 
+	g++ $(INC) $(BIB) $(BIB_MKL) $(EXEC).cpp -S $(FLAGS) $(LIBS) $(LIBS_MKL) 
 
 comprun : compile 	
 	export OMP_NUM_THREADS=15 && ./$(EXEC)
