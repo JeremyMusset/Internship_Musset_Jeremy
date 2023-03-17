@@ -38,7 +38,7 @@ int main() {
 
 
     // Time / Size
-    int sz_time = 16;
+    int sz_time = 20;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_common(sz_time);
@@ -54,22 +54,21 @@ int main() {
     class std::vector<double> Time_par_standard16(sz_time);
     class std::vector<double> Time_par_common16(sz_time);
 
-    VSize = {5000,10000,30000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
+    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
 
 
     int i = 0;
     vector<double>::iterator k;
     for (k = VSize.begin(); k != VSize.end(); k++){  
-        // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
 
         // Gbytes / s
-        double qtt;
-        for (int j=1;j<7 ; j++) {
-            qtt = *k * 2 * 8 ;
-            Time[j] = qtt / Time[j] ;
-        }
+        // double qtt;
+        // for (int j=1;j<7 ; j++) {
+        //     qtt = *k * 2 * 8 ;
+        //     Time[j] = qtt / Time[j] ;
+        // }
 
         // Save result
         Time_standard[i] = Time[1];
@@ -94,62 +93,6 @@ int main() {
             }
         }
         printf("};\n");
-
-
-        printf("\nVTime_common = \n {");
-        for (a=0; a<sz_time;a++){
-            if(a == sz_time-1){
-                printf("%.10f",Time_common[a]);
-            }
-            else{
-                printf("%.10f, ",Time_common[a]);
-            }
-        }
-        printf("};\n");
-
-        printf("\nVTime_mkl = \n {");
-        for (a=0; a<sz_time;a++){
-            if(a == sz_time-1){
-                printf("%.10f",Time_mkl[a]);
-            }
-            else{
-                printf("%.10f, ",Time_mkl[a]);
-            }
-        }
-        printf("};\n");
-
-        printf("\nVTime_blaspp = \n {");
-        for (a=0; a<sz_time;a++){
-            if(a == sz_time-1){
-                printf("%.10f",Time_blaspp[a]);
-            }
-            else{
-                printf("%.10f, ",Time_blaspp[a]);
-            }
-        }
-        printf("};\n");
-
-        // printf("\nVTime_par_standard = \n {");
-        // for (a=0; a<sz_time;a++){
-        //     if(a == sz_time-1){
-        //         printf("%.10f",Time_par_standard[a]);
-        //     }
-        //     else{
-        //         printf("%.10f, ",Time_par_standard[a]);
-        //     }
-        // }
-        // printf("};\n");
-
-        // printf("\nVTime_par_common = \n {");
-        // for (a=0; a<sz_time;a++){
-        //     if(a == sz_time-1){
-        //         printf("%.10f",Time_par_common[a]);
-        //     }
-        //     else{
-        //         printf("%.10f, ",Time_par_common[a]);
-        //     }
-        // }
-        // printf("};\n");
 
     return 0;
 }

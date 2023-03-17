@@ -5,7 +5,7 @@
 #include "../../include/error_free.h"
 
 #define P 5000
-#define MAX_LEN 10000  //longueur max d'une ligne du fichier binaire
+#define MAX_LEN 100000  //longueur max d'une ligne du fichier binaire
 
 void dot_prod_mpfr(int n, mpfr_t *a, mpfr_t *b, mpfr_t c);
 int import_vec_mpfr(mpfr_t **a, mpfr_t **b, char *fic);

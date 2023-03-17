@@ -64,11 +64,11 @@ int main() {
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
 
         // Gbytes / s
-        double qtt;
-        for (int j=1;j<7 ; j++) {
-            qtt = *k * 2 * 8 ;
-            Time[j] = qtt / Time[j] ;
-        }
+        // double qtt;
+        // for (int j=1;j<7 ; j++) {
+        //     qtt = *k * 2 * 8 ;
+        //     Time[j] = qtt / Time[j] ;
+        // }
 
         // Save result
         Time_standard[i] = Time[1];
@@ -122,10 +122,10 @@ int main() {
     T1[1] = VSize[sz_time - 1];
     T2[0] = Time_standard[0];
     T2[1] = Time_standard[sz_time -1];
-    plt::semilogx(T1,T2,"white");
+    plt::loglog(T1,T2,"white");
 
     plt::plot(VSize,Time_standard,{{"color", "#09ED1A"},{"label", "Standard"}});
-    plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
+    // plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
     // plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
     // plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
     plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
@@ -147,14 +147,14 @@ int main() {
     double height = 20;
 
     // Tracé des lignes verticales
-    plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
-    plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
-    plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
+    // plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
+    // plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
+    // plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
 
 
-    // plt::title("Time of execution according to size");
+    plt::title("Time of execution according to size");
     plt::xlabel("Size of vector");
-    plt::ylabel("Flow (in Gbytes/s)");
+    plt::ylabel("Time (in ns)");
 
 
     plt::legend();    
