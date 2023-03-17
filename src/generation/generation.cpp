@@ -22,6 +22,6 @@ int main() {
     sum = 150;
     cond = 10;
     int nb_gen = 2;
-    vec_gen(nb_gen,n,cond,sum);
+    vec_gen(nb_gen,n,cond,sum,1);
     return 0;
 }

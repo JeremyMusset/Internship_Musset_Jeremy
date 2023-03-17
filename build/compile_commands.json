@@ -6,18 +6,8 @@
 },
 {
   "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
-  "command": "/usr/bin/g++ -Dlibrairy_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/librairy.dir/rounding_error.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
   "command": "/usr/bin/gcc -Dlibrairy2_EXPORTS -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -fPIC -o CMakeFiles/librairy2.dir/rounding_error.c.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c",
   "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.c"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/rounding_error_cpp.dir/rounding_error.cpp.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/rounding_error/rounding_error.cpp"
 },
 {
   "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/rounding_error",

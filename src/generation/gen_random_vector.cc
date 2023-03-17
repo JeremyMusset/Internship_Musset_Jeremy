@@ -212,7 +212,7 @@ void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_co
 /// @param size Size of vectors
 /// @param cond Conditioning required
 /// @param sum Sum of absolute values
-/// @param q file position (main/X/ = 2   main/X/Y/ = 1) + 2 if static data
+/// @param q file position (main/X/ = 4   main/X/Y/ = 3)
 template <class T>
 void vec_gen(int nb_gen,int size, T cond,T sum,int q){
   // We generate "nb_gen" time
@@ -234,16 +234,16 @@ void vec_gen(int nb_gen,int size, T cond,T sum,int q){
     FILE * fichier;
     char name[SMAX];  
     if (q==1){
-      sprintf(name,"../data/vector%d.bin",l);
-    } 
+      sprintf(name,"../data_test/vector%d.bin",l);
+    }
     if (q==2){
-      sprintf(name,"../src/data/vector%d.bin",l);
-    } 
+      sprintf(name,"../src/data_test/vector%d.bin",l);
+    }
     if (q==3){
-      sprintf(name,"../data_big/vector%d.bin",l);
+      sprintf(name,"../data/vector%d.bin",l);
     }
     if (q==4){
-      sprintf(name,"../src/data_big/vector%d.bin",l);
+      sprintf(name,"../src/data/vector%d.bin",l);
     }
 
     std::ofstream file(name, std::ios::binary);
@@ -257,21 +257,21 @@ void vec_gen(int nb_gen,int size, T cond,T sum,int q){
 /// @tparam T Double or Float
 /// @param vec Vector of size 2*n+1
 /// @param l file number l
-/// @param q file position (main/X/ = 2   main/X/Y/ = 1) +2 if static data
+/// @param q file position (main/X/ = 4   main/X/Y/ = 3)
 template <class T>
 void import_vec(std::vector<T> &vec, unsigned int l,int q){
     char name[SMAX];
     if (q==1){
-      sprintf(name,"../data/vector%d.bin",l);
-    } 
+      sprintf(name,"../data_test/vector%d.bin",l);
+    }
     if (q==2){
-      sprintf(name,"../src/data/vector%d.bin",l);
-    } 
+      sprintf(name,"../src/data_test/vector%d.bin",l);
+    }
     if (q==3){
-      sprintf(name,"../data_big/vector%d.bin",l);
+      sprintf(name,"../data/vector%d.bin",l);
     }
     if (q==4){
-      sprintf(name,"../src/data_big/vector%d.bin",l);
+      sprintf(name,"../src/data/vector%d.bin",l);
     }
 
     std::ifstream input_file(name, std::ios::binary);
@@ -288,20 +288,14 @@ void import_vec(std::vector<T> &vec, unsigned int l,int q){
 }
 
 
-
-
-
-
-
-///////////////////////////////////////////////////////////// PRINT ///////////////////////////////////////////
-
+////////////////////////////////////////////////////// Generation with print //////////////////////////////////////////////////////
 /// @brief Generate nb_vec files with vectors of size n 
 /// @tparam T Double or Float
 /// @param nb_gen Number of vectors
 /// @param size Size of vectors
 /// @param cond Conditioning required
 /// @param sum Sum of absolute values
-/// @param q file position (main/X/ = 2   main/X/Y/ = 1) and + 2 for static big data
+/// @param q file position (main/X/ = 4   main/X/Y/ = 3) 
 template <class T>
 void vec_gen_print(int nb_gen,int size, T cond,T sum,int q){
   // We generate "nb_gen" time
@@ -325,16 +319,16 @@ void vec_gen_print(int nb_gen,int size, T cond,T sum,int q){
     FILE * fichier;
     char name[SMAX];  
     if (q==1){
-      sprintf(name,"../data/vector%d.bin",l);
-    } 
+      sprintf(name,"../data_test/vector%d.bin",l);
+    }
     if (q==2){
-      sprintf(name,"../src/data/vector%d.bin",l);
+      sprintf(name,"../src/data_test/vector%d.bin",l);
     }
     if (q==3){
-      sprintf(name,"../data_big/vector%d.bin",l);
+      sprintf(name,"../data/vector%d.bin",l);
     }
     if (q==4){
-      sprintf(name,"../src/data_big/vector%d.bin",l);
+      sprintf(name,"../src/data/vector%d.bin",l);
     }
 
     std::ofstream file(name, std::ios::binary);
@@ -484,12 +478,12 @@ void generate_v_print(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requi
 
 
 
-/////////////////////////// Random without condition  
+////////////////////////////////////////////////////// RANDOM GENERATION WITHOUT CONDITIONS  //////////////////////////////////////////////////////
 
 void vec_gen_random(int nb_gen,int size,int q){
   // We generate "nb_gen" time
   for (unsigned int l=0;l<nb_gen;l++){
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~ GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
+    // printf("~~~~~~~~~~~~~~~~~~~~~~~~~ GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
     // Generate vectors
     class std::vector<double> data(2*size+1);
     data[0] = size;
@@ -514,19 +508,13 @@ void vec_gen_random(int nb_gen,int size,int q){
     // Write into binary file
     FILE * fichier;
     char name[SMAX];  
-    if (q==1){
-      sprintf(name,"../data/vector%d.bin",l);
-    } 
-    if (q==2){
-      sprintf(name,"../src/data/vector%d.bin",l);
-    }
     if (q==3){
-      sprintf(name,"../data_big/vector%d.bin",l);
+      sprintf(name,"../data/vector%d.bin",l);
     }
     if (q==4){
-      sprintf(name,"../src/data_big/vector%d.bin",l);
+      sprintf(name,"../src/data/vector%d.bin",l);
     }
-    printf("~~~~~~~~~~~~~~~~~~~~~~~ END GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n",l);
+    // printf("~~~~~~~~~~~~~~~~~~~~~~~ END GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n",l);
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
     file.close();
@@ -543,7 +531,7 @@ void vec_gen_random(int nb_gen,int size,int q){
 /// @param size Size of vectors
 /// @param cond Conditioning required
 /// @param sum Sum of absolute values
-/// @param q file position (main/X/ = 2   main/X/Y/ = 1) + 2 if static data
+/// @param q file position (main/X/ = 4   main/X/Y/ = 3)
 template <class T>
 void vec_gen_cond(int nb_gen,int size, T cond,T sum,int q,std::vector<T> &RCond, int nb){
   // We generate "nb_gen" time
@@ -564,17 +552,18 @@ void vec_gen_cond(int nb_gen,int size, T cond,T sum,int q,std::vector<T> &RCond,
     FILE * fichier;
     char name[SMAX];  
     if (q==1){
-      sprintf(name,"../data/vector%d.bin",l);
-    } 
+      sprintf(name,"../data_test/vector%d.bin",l);
+    }
     if (q==2){
-      sprintf(name,"../src/data/vector%d.bin",l);
-    } 
+      sprintf(name,"../src/data_test/vector%d.bin",l);
+    }
     if (q==3){
-      sprintf(name,"../data_big/vector%d.bin",l);
+      sprintf(name,"../data/vector%d.bin",l);
     }
     if (q==4){
-      sprintf(name,"../src/data_big/vector%d.bin",l);
+      sprintf(name,"../src/data/vector%d.bin",l);
     }
+
 
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));

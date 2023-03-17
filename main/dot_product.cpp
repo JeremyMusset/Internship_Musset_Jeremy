@@ -3,6 +3,8 @@
 #include "../include/gen_random_number.h"
 #include "../include/parallelisation.h"
 #include "../include/serial.h"
+#include "../include/compare.h"
+
 
 
 using namespace std;
@@ -17,41 +19,38 @@ int main() {
     nb_threads = 4;
     cond = 5;
     sum = 100;
-
-    int sz = 6;
-    class std::vector<double> Time_seq(sz);
-    class std::vector<mpfr_t> Error_seq(sz);
-    class std::vector<double> Time_par(sz);
-    class std::vector<mpfr_t> Error_par(sz);
+    int sz = 7;
+    class std::vector<double> Time(sz);
+    class std::vector<mpfr_t> Error(sz);
 
     for (unsigned int i; i<sz;i++){
-        mpfr_init2(Error_seq[i], P);
-        mpfr_init2(Error_par[i], P);
+        mpfr_init2(Error[i], P);
     }
     
-    vec_gen(nb_gen,n,cond,sum);
+    vec_gen(nb_gen,n,cond,sum,2);
 
-    seq_dot_prod(n, cond, nb_gen,sum,Time_seq,Error_seq,2);
-    par_dot_prod(n, cond, nb_gen,nb_threads,sum,Time_par,Error_par,2);
+    compare_dot_prod(n, cond, nb_gen,sum,Time,Error,2,8);
     
     // Print
-    printf("\nTime sequential mpfr : %.30f\n",Time_seq[0]);
-    printf("Time sequential common dot prod : %.30f \n",Time_seq[1]);
-    printf("Time sequential rare blas hybrid dot prod : %.30f\n",Time_seq[2]);
-    printf("Time sequential rare blas online dot prod : %.30f\n",Time_seq[3]);
+    printf("_________________________ TIME _________________________\n\n");
+    printf("\nTime sequential mpfr : %.30f\n",Time[0]);
+    printf("Time sequential standard dot prod : %.30f \n",Time[1]);
+    printf("Time sequential common dot prod : %.30f \n",Time[2]);
+    printf("Time sequential mkl dot prod : %.30f\n",Time[3]);
+    printf("Time sequential blaspp dot prod : %.30f\n",Time[4]);
 
-    printf("\nTime parallel mpfr : %.30f\n",Time_par[0]);
-    printf("Time parallel common dot prod : %.30f \n",Time_par[1]);
-    printf("Time parallel rare blas hybrid dot prod : %.30f\n",Time_par[2]);
-    printf("Time parallel rare blas online dot prod : %.30f\n\n",Time_par[3]);
+    printf("\nTime parallel standard dot prod : %.30f \n",Time[5]);
+    printf("Time parallel common dot prod : %.30f \n",Time[6]);
 
-    mpfr_printf("\nError sequential common dot prod : %.30Rg \n",Error_seq[1]);
-    mpfr_printf("Error sequential rare blas hybrid dot prod : %.30Rg \n",Error_seq[2]);
-    mpfr_printf("Error sequential rare blas online dot prod : %.30Rg \n",Error_seq[3]);
+    // Error
+     printf("\n_________________________ TIME _________________________\n\n");
+    mpfr_printf("Error sequential standard dot prod : %.30Rg \n",Error[1]);
+    mpfr_printf("Error sequential common dot prod : %.30Rg \n",Error[2]);
+    mpfr_printf("Error sequential mkl dot prod : %.30Rg \n",Error[3]);
+    mpfr_printf("Error sequential blaspp dot prod : %.30Rg \n",Error[4]);
 
-    mpfr_printf("\nError parallel common dot prod : %.30Rg \n",Error_par[1]);
-    mpfr_printf("Error parallel rare blas hybrid dot prod: %.30Rg \n",Error_par[2]);
-    mpfr_printf("Error parallel rare blas online dot prod: %.30Rg \n\n",Error_par[3]);
+    mpfr_printf("\nError parallel standard dot prod : %.30Rg \n",Error[5]);
+    mpfr_printf("Error parallel common dot prod : %.30Rg \n",Error[6]);
 
     return 0;    
 }
