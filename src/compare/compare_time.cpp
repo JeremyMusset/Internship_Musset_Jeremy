@@ -60,7 +60,7 @@ int main() {
     for (k = VSize.begin(); k != VSize.end(); k++){  
         // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
-        // vec_gen_random(nb_gen,*k,3);
+        vec_gen_random(nb_gen,*k,3);
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
 
         // Gbytes / s

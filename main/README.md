@@ -1,0 +1,1 @@
+# Compute the dot product with each method, give us the time and the relative error

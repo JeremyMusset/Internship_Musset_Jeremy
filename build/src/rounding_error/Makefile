@@ -162,20 +162,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/rounding_error/CMakeFiles/librairy.dir/rule:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/rounding_error/CMakeFiles/librairy.dir/rule
-.PHONY : src/rounding_error/CMakeFiles/librairy.dir/rule
-
-# Convenience name for target.
-librairy: src/rounding_error/CMakeFiles/librairy.dir/rule
-.PHONY : librairy
-
-# fast build rule for target.
-librairy/fast:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy.dir/build.make src/rounding_error/CMakeFiles/librairy.dir/build
-.PHONY : librairy/fast
-
-# Convenience name for target.
 src/rounding_error/CMakeFiles/librairy2.dir/rule:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/rounding_error/CMakeFiles/librairy2.dir/rule
 .PHONY : src/rounding_error/CMakeFiles/librairy2.dir/rule
@@ -188,20 +174,6 @@ librairy2: src/rounding_error/CMakeFiles/librairy2.dir/rule
 librairy2/fast:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy2.dir/build.make src/rounding_error/CMakeFiles/librairy2.dir/build
 .PHONY : librairy2/fast
-
-# Convenience name for target.
-src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rule:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rule
-.PHONY : src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rule
-
-# Convenience name for target.
-rounding_error_cpp: src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rule
-.PHONY : rounding_error_cpp
-
-# fast build rule for target.
-rounding_error_cpp/fast:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build.make src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build
-.PHONY : rounding_error_cpp/fast
 
 # Convenience name for target.
 src/rounding_error/CMakeFiles/rounding_error_c.dir/rule:
@@ -244,33 +216,6 @@ rounding_error.c.s:
 	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_c.dir/build.make src/rounding_error/CMakeFiles/rounding_error_c.dir/rounding_error.c.s
 .PHONY : rounding_error.c.s
 
-rounding_error.o: rounding_error.cpp.o
-.PHONY : rounding_error.o
-
-# target to build an object file
-rounding_error.cpp.o:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy.dir/build.make src/rounding_error/CMakeFiles/librairy.dir/rounding_error.cpp.o
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build.make src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rounding_error.cpp.o
-.PHONY : rounding_error.cpp.o
-
-rounding_error.i: rounding_error.cpp.i
-.PHONY : rounding_error.i
-
-# target to preprocess a source file
-rounding_error.cpp.i:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy.dir/build.make src/rounding_error/CMakeFiles/librairy.dir/rounding_error.cpp.i
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build.make src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rounding_error.cpp.i
-.PHONY : rounding_error.cpp.i
-
-rounding_error.s: rounding_error.cpp.s
-.PHONY : rounding_error.s
-
-# target to generate assembly for a file
-rounding_error.cpp.s:
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy.dir/build.make src/rounding_error/CMakeFiles/librairy.dir/rounding_error.cpp.s
-	cd /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build && $(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build.make src/rounding_error/CMakeFiles/rounding_error_cpp.dir/rounding_error.cpp.s
-.PHONY : rounding_error.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -283,13 +228,8 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... librairy"
 	@echo "... librairy2"
 	@echo "... rounding_error_c"
-	@echo "... rounding_error_cpp"
-	@echo "... rounding_error.o"
-	@echo "... rounding_error.i"
-	@echo "... rounding_error.s"
 	@echo "... rounding_error.o"
 	@echo "... rounding_error.i"
 	@echo "... rounding_error.s"

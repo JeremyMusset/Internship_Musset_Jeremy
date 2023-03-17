@@ -175,19 +175,6 @@ gen_X/fast:
 .PHONY : gen_X/fast
 
 #=============================================================================
-# Target rules for targets named librairy
-
-# Build rule for target.
-librairy: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 librairy
-.PHONY : librairy
-
-# fast build rule for target.
-librairy/fast:
-	$(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy.dir/build.make src/rounding_error/CMakeFiles/librairy.dir/build
-.PHONY : librairy/fast
-
-#=============================================================================
 # Target rules for targets named librairy2
 
 # Build rule for target.
@@ -199,19 +186,6 @@ librairy2: cmake_check_build_system
 librairy2/fast:
 	$(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/librairy2.dir/build.make src/rounding_error/CMakeFiles/librairy2.dir/build
 .PHONY : librairy2/fast
-
-#=============================================================================
-# Target rules for targets named rounding_error_cpp
-
-# Build rule for target.
-rounding_error_cpp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rounding_error_cpp
-.PHONY : rounding_error_cpp
-
-# fast build rule for target.
-rounding_error_cpp/fast:
-	$(MAKE) $(MAKESILENT) -f src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build.make src/rounding_error/CMakeFiles/rounding_error_cpp.dir/build
-.PHONY : rounding_error_cpp/fast
 
 #=============================================================================
 # Target rules for targets named rounding_error_c
@@ -267,10 +241,8 @@ help:
 	@echo "... dot"
 	@echo "... dot_X"
 	@echo "... gen_X"
-	@echo "... librairy"
 	@echo "... librairy2"
 	@echo "... rounding_error_c"
-	@echo "... rounding_error_cpp"
 .PHONY : help
 
 
