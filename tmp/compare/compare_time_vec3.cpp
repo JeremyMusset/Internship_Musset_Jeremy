@@ -84,7 +84,7 @@ int main() {
 
 
     int a;
-        printf("\nTime2_standard = \n {");
+        printf("\nTime3_standard = \n {");
         for (a=0; a<sz_time;a++){
             if(a == sz_time-1){
                 printf("%.10f",Time_standard[a]);

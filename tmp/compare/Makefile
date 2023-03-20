@@ -22,6 +22,10 @@ EXEC = compare_time
 EXECVEC = compare_time_vec
 EXECVEC1 = compare_time_vec1
 EXECVEC2 = compare_time_vec2
+EXECVEC3 = compare_time_vec3
+EXECVEC4 = compare_time_vec4
+EXECVEC5 = compare_time_vec5
+EXECVEC6 = compare_time_vec6
 EXECNOVEC = compare_time_novec
 EXECPRINT = compare_time_print
 EXECROOF = roofline
@@ -37,7 +41,11 @@ comprun : compile
 
 FLAGSS = -O3 
 FLAGS1 = -O3 -march=native
-FLAGS2 = -march=native
+FLAGS2 = -march=native 
+FLAGS3 = -O3 -march=native -funsafe-math-optimizations -ffast-math
+FLAGS4 = -O3 -march=native -funsafe-math-optimizations
+FLAGS5 = -ffast-math
+FLAGS6 = -Ofast -march=native -funsafe-math-optimizations -ffast-math
 
 compilenovec : 
 	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECNOVEC).cpp -o $(EXECNOVEC) -w $(LIBS) $(LIBS_MKL)
@@ -63,11 +71,35 @@ compilevec2 :
 comprunvec2 : compilevec2 	
 	./$(EXECVEC2)
 
+compilevec3 : 
+	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECVEC3).cpp -o $(EXECVEC3) -w $(FLAGS3) $(LIBS) $(LIBS_MKL)
+
+comprunvec3 : compilevec3 	
+	./$(EXECVEC3)
+
+compilevec4 : 
+	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECVEC4).cpp -o $(EXECVEC4) -w $(FLAGS4) $(LIBS) $(LIBS_MKL)
+
+comprunvec4 : compilevec4 	
+	./$(EXECVEC4)
+
+compilevec5 : 
+	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECVEC5).cpp -o $(EXECVEC5) -w $(FLAGS5) $(LIBS) $(LIBS_MKL)
+
+comprunvec5 : compilevec5	
+	./$(EXECVEC5)
+
+compilevec6 : 
+	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECVEC6).cpp -o $(EXECVEC6) -w $(FLAGS6) $(LIBS) $(LIBS_MKL)
+
+comprunvec6 : compilevec6 	
+	./$(EXECVEC6)
 
 
 
-test : compilenovec compilevec compilevec1 compilevec2
-	echo "//-------------- NO VEC  -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " && echo "//-------------- VEC : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " &&  echo " // --------------- VEC 2 : $(FLAGS2)-------------- " >> test.txt && ./$(EXECVEC1) >> test.txt
+
+test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4
+	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " && echo "//-------------- VEC : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " &&  echo " // --------------- VEC 2 : $(FLAGS2)-------------- " >> test.txt && ./$(EXECVEC2) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " &&  echo " // --------------- VEC 4 : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " && echo " // -------------- VEC  5 : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " &&  echo " // --------------- VEC 6 : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
 
 
 compileprint : 
