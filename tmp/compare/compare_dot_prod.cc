@@ -63,7 +63,7 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     Min_Time_blaspp = 0;
 
 
-     double Final_Min_Time_standard,Final_Min_Time_common,Final_Min_Time_par_standard,Final_Min_Time_par_common,Final_Min_Time_mkl,Final_Min_Time_blaspp;
+    double Final_Min_Time_standard,Final_Min_Time_common,Final_Min_Time_par_standard,Final_Min_Time_par_common,Final_Min_Time_mkl,Final_Min_Time_blaspp;
     Final_Min_Time_standard = 0;
     Final_Min_Time_common = 0;
     Final_Min_Time_par_standard = 0;
@@ -89,7 +89,6 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
         a[i] = vec[i+1];
         b[i] = vec[n+1+i]; 
     }
-
     double res_standard,res_common,res_par_standard,res_par_common,res_mkl,res_blaspp;
 
     //////////////////////////////////////////////////////////////////
@@ -180,10 +179,10 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     ////////////////// PARALLEL STANDARD DOT PRODUCT ///////////////////
     ////////////////////////////////////////////////////////////////////
 
-    struct timespec start_par_standard, end_par_standard;
+    struct timespec start_par_standard, end_par_standard, Min_start_par_standard, Min_end_par_standard;
 
     omp_set_num_threads(nb_threads);
-    clock_gettime(CLOCK_REALTIME,&start_par_standard);
+    
 
     res_par_standard = 0.0; 
     #pragma omp parallel for reduction(+:res_par_standard)
@@ -191,18 +190,28 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
         res_par_standard += a[j]*b[j];
     }
 
+    clock_gettime(CLOCK_REALTIME,&start_par_standard);
     for (unsigned int t=0; t<NB_EXEC;t++){
         
         res_par_standard = 0.0; 
+        clock_gettime(CLOCK_REALTIME,&Min_start_par_standard);
         #pragma omp parallel for reduction(+:res_par_standard)
         for (unsigned int j=0; j<n;j++){
             res_par_standard += a[j]*b[j];
         }
-        
+        clock_gettime(CLOCK_REALTIME,&Min_end_par_standard);
+        time_tmp = ((Min_end_par_standard.tv_sec - Min_start_par_standard.tv_sec) * 1000000000 + (Min_end_par_standard.tv_nsec - Min_start_par_standard.tv_nsec) );
+         if (t==0){
+            Min_Time_par_standard = time_tmp;
+        }
+        if (time_tmp < Min_Time_par_standard){
+            Min_Time_par_standard = time_tmp;
+        }
     }
     clock_gettime(CLOCK_REALTIME,&end_par_standard);  
-
+    Final_Min_Time_par_standard += Min_Time_par_standard;
     Time_par_standard += ((end_par_standard.tv_sec - start_par_standard.tv_sec) * 1000000000 + (end_par_standard.tv_nsec - start_par_standard.tv_nsec) );
+    
 
     ////////////////////////////////////////////////////////////////////
     /////////////////// PARALLEL COMMON DOT PRODUCT ////////////////////
@@ -395,6 +404,10 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     // printf("Final_Min_Time COMMON DOT PRODUCT : %.45f \n",Final_Min_Time_common);
 
 
+    // Final_Min_Time par_standard
+    Final_Min_Time_par_standard = Final_Min_Time_par_standard / (nb_gen);
+    // printf("Final_Min_Time STANDARD DOT PRODUCT : %.45f \n",Final_Min_Time_par_standard);
+
     // Final_Min_Time MKL
     Final_Min_Time_mkl = Final_Min_Time_mkl / (nb_gen);
     // printf("Final_Min_Time MKL : %.45f \n",Final_Min_Time_mkl);
@@ -419,7 +432,7 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     Time[0] = Time_mpfr;
     Time[1] = Final_Min_Time_standard;
     Time[2] = Final_Min_Time_common;
-    Time[3] = Time_par_standard;
+    Time[3] = Final_Min_Time_par_standard;
     Time[4] = Time_par_common;
     Time[5] = Final_Min_Time_mkl;
     Time[6] = Final_Min_Time_blaspp;

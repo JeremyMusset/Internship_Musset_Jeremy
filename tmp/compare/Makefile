@@ -4,7 +4,7 @@ PLTROOT = /home/jerem/app/matplotlib-cpp
 DEBOG = -g  -fprofile-arcs -ftest-coverage 
 
 FLAGS =  -w -O3 #-march=native
-LIBS = -lmpfr -lgsl -lgslcblas -lopenblas -lpython3.10 -lQt5Widgets -L/home/jerem/app/blaspp/lib # -lm -lpthread -fopenmp
+LIBS = -lmpfr -lgsl -lgslcblas -lopenblas -lpython3.10 -lQt5Widgets -L/home/jerem/app/blaspp/lib -fopenmp # -lm -lpthread -fopenmp
 BIB =  -I$(PLTROOT)/ -I/usr/include/python3.10 -I/usr/local/blaspp/include 
 INC = ../generation/*.cc ../dot_product/*.cc ../compare/*.cc 
 
@@ -41,11 +41,11 @@ comprun : compile
 
 FLAGSS = -O3 
 FLAGS1 = -O3 -march=native
-FLAGS2 = -march=native 
-FLAGS3 = -O3 -march=native -funsafe-math-optimizations -ffast-math
-FLAGS4 = -O3 -march=native -funsafe-math-optimizations
-FLAGS5 = -ffast-math
-FLAGS6 = -Ofast -march=native -funsafe-math-optimizations -ffast-math
+FLAGS2 = -O3 -mavx512f
+FLAGS3 = -O3 -march=native -funsafe-math-optimizations
+FLAGS4 = -O3 -mavx512f -funsafe-math-optimizations 
+FLAGS5 =
+FLAGS6 =
 
 compilenovec : 
 	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECNOVEC).cpp -o $(EXECNOVEC) -w $(LIBS) $(LIBS_MKL)
@@ -96,6 +96,11 @@ comprunvec6 : compilevec6
 	./$(EXECVEC6)
 
 
+compilenovecic : 
+	icx-cc $(EXECNOVEC).cpp -o $(EXECNOVEC)
+
+comprunnovecic : compilenovec	
+	./$(EXECNOVEC)
 
 
 test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4

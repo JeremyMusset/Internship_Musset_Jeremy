@@ -58,7 +58,7 @@ int main() {
     int i = 0;
     vector<double>::iterator k;
     for (k = VSize.begin(); k != VSize.end(); k++){  
-        // printf(" ___________ SIZE = %.20f ________________",*k);
+        printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
         // vec_gen_random(nb_gen,*k,3);
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
@@ -98,11 +98,11 @@ int main() {
 
         // printf("\n ___________________ TIME ____________________\n");
 
-        // printf("\nTime sequential standard dot prod : %.30f\n",Time[1]);
+        printf("\nTime sequential standard dot prod : %.30f\n",Time[1]);
         // printf("Time sequential common dot prod : %.30f \n",Time[2]);
         // printf("Time sequential MKL : %.30f\n",Time[5]);
         // printf("Time sequential BLASPP : %.30f\n\n",Time[6]);
-        // printf("Time parallel standard dot prod : %.30f\n",Time[3]);
+        printf("Time parallel standard dot prod : %.30f\n",Time[3]);
         // printf("Time parallel common dot prod : %.30f\n\n",Time[4]);
 
         // printf("\n ___________________ ERROR ____________________ \n");
@@ -124,12 +124,12 @@ int main() {
     T2[1] = Time_standard[sz_time -1];
     plt::loglog(T1,T2,"white");
 
-    plt::plot(VSize,Time_standard,{{"color", "#09ED1A"},{"label", "Standard"}});
+    plt::plot(VSize,Time_standard,{{"color", "g"},{"label", "Standard"}}); //#09ED1A
     // plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
-    // plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
+    plt::plot(VSize,Time_par_standard,{{"color", "r"},{"label", "Parallel standard"}});      // #A4F99B   #126A09
     // plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
-    plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
-    plt::plot(VSize,Time_blaspp,{{"color", "y"},{"label", "BLASPP"}});
+    // plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
+    // plt::plot(VSize,Time_blaspp,{{"color", "y"},{"label", "BLASPP"}});
 
     // plt::plot(VSize,Time_par_standard4,{{"color", "#1FEC18"},{"label", "Parallel standard 4 threads"}});
     // plt::plot(VSize,Time_par_common4,{{"color", "#318FED"},{"label", "Parallel common 4 threads"}});

@@ -1,876 +1,10 @@
 	.file	"common.cc"
 	.text
-	.local	_ZStL8__ioinit
-	.comm	_ZStL8__ioinit,1,1
-	.section	.text._Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii,"axG",@progbits,_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii,comdat
-	.weak	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
-	.type	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii, @function
-_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii:
-.LFB3629:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$96, %rsp
-	movq	%rdi, -56(%rbp)
-	movq	%rsi, -64(%rbp)
-	movl	%edx, -68(%rbp)
-	movl	%ecx, -72(%rbp)
-	movl	%r8d, -76(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -16(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	cmpl	$0, -68(%rbp)
-	jg	.L2
-	vmovsd	.LC1(%rip), %xmm0
-	jmp	.L3
-.L2:
-	cmpl	$1, -72(%rbp)
-	jne	.L4
-	cmpl	$1, -76(%rbp)
-	jne	.L4
-	movl	-68(%rbp), %edx
-	movslq	%edx, %rax
-	imulq	$1717986919, %rax, %rax
-	shrq	$32, %rax
-	sarl	%eax
-	movl	%edx, %esi
-	sarl	$31, %esi
-	subl	%esi, %eax
-	movl	%eax, %ecx
-	movl	%ecx, %eax
-	sall	$2, %eax
-	addl	%ecx, %eax
-	subl	%eax, %edx
-	movl	%edx, -24(%rbp)
-	cmpl	$0, -24(%rbp)
-	je	.L5
-	movl	$0, -36(%rbp)
-	jmp	.L6
-.L7:
-	movl	-36(%rbp), %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -88(%rbp)
-	movl	-36(%rbp), %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vmovsd	-16(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -16(%rbp)
-	incl	-36(%rbp)
-.L6:
-	movl	-36(%rbp), %eax
-	cmpl	-24(%rbp), %eax
-	jl	.L7
-.L5:
-	cmpl	$4, -68(%rbp)
-	jg	.L8
-	vmovsd	-16(%rbp), %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	vmovsd	-8(%rbp), %xmm0
-	jmp	.L3
-.L8:
-	movl	-24(%rbp), %eax
-	incl	%eax
-	movl	%eax, -20(%rbp)
-	movl	-20(%rbp), %eax
-	decl	%eax
-	movl	%eax, -36(%rbp)
-	jmp	.L9
-.L10:
-	movl	-36(%rbp), %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm3
-	vmovsd	%xmm3, -88(%rbp)
-	movl	-36(%rbp), %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-16(%rbp), %xmm0, %xmm4
-	vmovsd	%xmm4, -88(%rbp)
-	movl	-36(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm5
-	vmovsd	%xmm5, -96(%rbp)
-	movl	-36(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-96(%rbp), %xmm0, %xmm0
-	vaddsd	-88(%rbp), %xmm0, %xmm6
-	vmovsd	%xmm6, -88(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm7
-	vmovsd	%xmm7, -96(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-96(%rbp), %xmm0, %xmm0
-	vaddsd	-88(%rbp), %xmm0, %xmm1
-	vmovsd	%xmm1, -88(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -96(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-96(%rbp), %xmm0, %xmm0
-	vaddsd	-88(%rbp), %xmm0, %xmm3
-	vmovsd	%xmm3, -88(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm4
-	vmovsd	%xmm4, -96(%rbp)
-	movl	-36(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-96(%rbp), %xmm0, %xmm0
-	vaddsd	-88(%rbp), %xmm0, %xmm0
-	vmovsd	%xmm0, -16(%rbp)
-	addl	$5, -36(%rbp)
-.L9:
-	movl	-36(%rbp), %eax
-	cmpl	-68(%rbp), %eax
-	jl	.L10
-	jmp	.L11
-.L4:
-	movl	$1, -32(%rbp)
-	movl	$1, -28(%rbp)
-	cmpl	$0, -72(%rbp)
-	jns	.L12
-	movl	$1, %eax
-	subl	-68(%rbp), %eax
-	imull	-72(%rbp), %eax
-	incl	%eax
-	movl	%eax, -32(%rbp)
-.L12:
-	cmpl	$0, -76(%rbp)
-	jns	.L13
-	movl	$1, %eax
-	subl	-68(%rbp), %eax
-	imull	-76(%rbp), %eax
-	incl	%eax
-	movl	%eax, -28(%rbp)
-.L13:
-	movl	$0, -36(%rbp)
-	jmp	.L14
-.L15:
-	movl	-32(%rbp), %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm5
-	vmovsd	%xmm5, -88(%rbp)
-	movl	-28(%rbp), %eax
-	cltq
-	movq	-64(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vmovsd	-16(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -16(%rbp)
-	movl	-72(%rbp), %eax
-	addl	%eax, -32(%rbp)
-	movl	-76(%rbp), %eax
-	addl	%eax, -28(%rbp)
-	incl	-36(%rbp)
-.L14:
-	movl	-36(%rbp), %eax
-	cmpl	-68(%rbp), %eax
-	jl	.L15
-.L11:
-	vmovsd	-16(%rbp), %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	vmovsd	-8(%rbp), %xmm0
-.L3:
-	vmovq	%xmm0, %rax
-	vmovq	%rax, %xmm0
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3629:
-	.size	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii, .-_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
-	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
-	.weak	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
-	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii, @function
-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii:
-.LFB3630:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	addq	$-128, %rsp
-	movq	%rdi, -104(%rbp)
-	movq	%rsi, -112(%rbp)
-	movl	%edx, -116(%rbp)
-	movl	%ecx, -120(%rbp)
-	movl	%r8d, -124(%rbp)
-	movl	%r9d, -128(%rbp)
-	movq	%fs:40, %rax
-	movq	%rax, -8(%rbp)
-	xorl	%eax, %eax
-	movl	-128(%rbp), %eax
-	movl	%eax, %edi
-	call	omp_set_num_threads@PLT
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -80(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -72(%rbp)
-	cmpl	$0, -116(%rbp)
-	jg	.L17
-	vmovsd	.LC1(%rip), %xmm0
-	jmp	.L18
-.L17:
-	cmpl	$1, -120(%rbp)
-	jne	.L19
-	cmpl	$1, -124(%rbp)
-	jne	.L19
-	movl	-116(%rbp), %edx
-	movslq	%edx, %rax
-	imulq	$1717986919, %rax, %rax
-	shrq	$32, %rax
-	sarl	%eax
-	movl	%edx, %esi
-	sarl	$31, %esi
-	subl	%esi, %eax
-	movl	%eax, %ecx
-	movl	%ecx, %eax
-	sall	$2, %eax
-	addl	%ecx, %eax
-	subl	%eax, %edx
-	movl	%edx, -88(%rbp)
-	cmpl	$0, -88(%rbp)
-	je	.L20
-	vmovsd	-80(%rbp), %xmm0
-	vmovsd	%xmm0, -48(%rbp)
-	movl	-88(%rbp), %eax
-	movl	%eax, -40(%rbp)
-	movq	-104(%rbp), %rax
-	movq	%rax, -64(%rbp)
-	movq	-112(%rbp), %rax
-	movq	%rax, -56(%rbp)
-	leaq	-64(%rbp), %rax
-	movl	$0, %ecx
-	movl	$0, %edx
-	movq	%rax, %rsi
-	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0(%rip), %rax
-	movq	%rax, %rdi
-	call	GOMP_parallel@PLT
-	vmovsd	-48(%rbp), %xmm0
-	vmovsd	%xmm0, -80(%rbp)
-.L20:
-	cmpl	$4, -116(%rbp)
-	jg	.L21
-	vmovsd	-80(%rbp), %xmm0
-	vmovsd	%xmm0, -72(%rbp)
-	vmovsd	-72(%rbp), %xmm0
-	jmp	.L18
-.L21:
-	movl	-88(%rbp), %eax
-	incl	%eax
-	movl	%eax, -84(%rbp)
-	vmovsd	-80(%rbp), %xmm0
-	vmovsd	%xmm0, -48(%rbp)
-	movl	-84(%rbp), %eax
-	movl	%eax, -36(%rbp)
-	movl	-116(%rbp), %eax
-	movl	%eax, -40(%rbp)
-	movq	-104(%rbp), %rax
-	movq	%rax, -64(%rbp)
-	movq	-112(%rbp), %rax
-	movq	%rax, -56(%rbp)
-	leaq	-64(%rbp), %rax
-	movl	$0, %ecx
-	movl	$0, %edx
-	movq	%rax, %rsi
-	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1(%rip), %rax
-	movq	%rax, %rdi
-	call	GOMP_parallel@PLT
-	vmovsd	-48(%rbp), %xmm0
-	vmovsd	%xmm0, -80(%rbp)
-	jmp	.L22
-.L19:
-	movl	$1, -96(%rbp)
-	movl	$1, -92(%rbp)
-	cmpl	$0, -120(%rbp)
-	jns	.L23
-	movl	$1, %eax
-	subl	-116(%rbp), %eax
-	imull	-120(%rbp), %eax
-	incl	%eax
-	movl	%eax, -96(%rbp)
-.L23:
-	cmpl	$0, -124(%rbp)
-	jns	.L24
-	movl	$1, %eax
-	subl	-116(%rbp), %eax
-	imull	-124(%rbp), %eax
-	incl	%eax
-	movl	%eax, -92(%rbp)
-.L24:
-	vmovsd	-80(%rbp), %xmm0
-	vmovsd	%xmm0, -48(%rbp)
-	movl	-124(%rbp), %eax
-	movl	%eax, -32(%rbp)
-	movl	-120(%rbp), %eax
-	movl	%eax, -36(%rbp)
-	movl	-116(%rbp), %eax
-	movl	%eax, -40(%rbp)
-	movq	-104(%rbp), %rax
-	movq	%rax, -64(%rbp)
-	movq	-112(%rbp), %rax
-	movq	%rax, -56(%rbp)
-	movl	-96(%rbp), %eax
-	movl	%eax, -28(%rbp)
-	movl	-92(%rbp), %eax
-	movl	%eax, -24(%rbp)
-	leaq	-64(%rbp), %rax
-	movl	$0, %ecx
-	movl	$0, %edx
-	movq	%rax, %rsi
-	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2(%rip), %rax
-	movq	%rax, %rdi
-	call	GOMP_parallel@PLT
-	vmovsd	-48(%rbp), %xmm0
-	vmovsd	%xmm0, -80(%rbp)
-	movl	-28(%rbp), %eax
-	movl	%eax, -96(%rbp)
-	movl	-24(%rbp), %eax
-	movl	%eax, -92(%rbp)
-.L22:
-	vmovsd	-80(%rbp), %xmm0
-	vmovsd	%xmm0, -72(%rbp)
-	vmovsd	-72(%rbp), %xmm0
-.L18:
-	vmovq	%xmm0, %rax
-	movq	-8(%rbp), %rdx
-	subq	%fs:40, %rdx
-	je	.L25
-	call	__stack_chk_fail@PLT
-.L25:
-	vmovq	%rax, %xmm0
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3630:
-	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
-	.section	.text._Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd,"axG",@progbits,_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd,comdat
-	.weak	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
-	.type	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd, @function
-_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd:
-.LFB3631:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$96, %rsp
-	movq	%rdi, -40(%rbp)
-	movq	%rsi, -48(%rbp)
-	movl	%edx, -52(%rbp)
-	movl	%ecx, -56(%rbp)
-	movl	%r8d, -60(%rbp)
-	movq	%r9, -72(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	movq	-72(%rbp), %rax
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, (%rax)
-	cmpl	$0, -52(%rbp)
-	jle	.L41
-	cmpl	$1, -56(%rbp)
-	jne	.L29
-	cmpl	$1, -60(%rbp)
-	jne	.L29
-	movl	-52(%rbp), %edx
-	movslq	%edx, %rax
-	imulq	$1717986919, %rax, %rax
-	shrq	$32, %rax
-	sarl	%eax
-	movl	%edx, %esi
-	sarl	$31, %esi
-	subl	%esi, %eax
-	movl	%eax, %ecx
-	movl	%ecx, %eax
-	sall	$2, %eax
-	addl	%ecx, %eax
-	subl	%eax, %edx
-	movl	%edx, -16(%rbp)
-	cmpl	$0, -16(%rbp)
-	je	.L30
-	movl	$0, -28(%rbp)
-	jmp	.L31
-.L32:
-	movl	-28(%rbp), %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -80(%rbp)
-	movl	-28(%rbp), %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-80(%rbp), %xmm0, %xmm0
-	vmovsd	-8(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	incl	-28(%rbp)
-.L31:
-	movl	-28(%rbp), %eax
-	cmpl	-16(%rbp), %eax
-	jl	.L32
-.L30:
-	cmpl	$4, -52(%rbp)
-	jg	.L33
-	movq	-72(%rbp), %rax
-	vmovsd	-8(%rbp), %xmm0
-	vmovsd	%xmm0, (%rax)
-	jmp	.L26
-.L33:
-	movl	-16(%rbp), %eax
-	incl	%eax
-	movl	%eax, -12(%rbp)
-	movl	-12(%rbp), %eax
-	decl	%eax
-	movl	%eax, -28(%rbp)
-	jmp	.L34
-.L35:
-	movl	-28(%rbp), %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm3
-	vmovsd	%xmm3, -80(%rbp)
-	movl	-28(%rbp), %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-80(%rbp), %xmm0, %xmm0
-	vaddsd	-8(%rbp), %xmm0, %xmm4
-	vmovsd	%xmm4, -80(%rbp)
-	movl	-28(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm5
-	vmovsd	%xmm5, -88(%rbp)
-	movl	-28(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm6
-	vmovsd	%xmm6, -80(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm7
-	vmovsd	%xmm7, -88(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm1
-	vmovsd	%xmm1, -80(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -88(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm3
-	vmovsd	%xmm3, -80(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm4
-	vmovsd	%xmm4, -88(%rbp)
-	movl	-28(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	addl	$5, -28(%rbp)
-.L34:
-	movl	-28(%rbp), %eax
-	cmpl	-52(%rbp), %eax
-	jl	.L35
-	jmp	.L36
-.L29:
-	movl	$1, -24(%rbp)
-	movl	$1, -20(%rbp)
-	cmpl	$0, -56(%rbp)
-	jns	.L37
-	movl	$1, %eax
-	subl	-52(%rbp), %eax
-	imull	-56(%rbp), %eax
-	incl	%eax
-	movl	%eax, -24(%rbp)
-.L37:
-	cmpl	$0, -60(%rbp)
-	jns	.L38
-	movl	$1, %eax
-	subl	-52(%rbp), %eax
-	imull	-60(%rbp), %eax
-	incl	%eax
-	movl	%eax, -20(%rbp)
-.L38:
-	movl	$0, -28(%rbp)
-	jmp	.L39
-.L40:
-	movl	-24(%rbp), %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm5
-	vmovsd	%xmm5, -80(%rbp)
-	movl	-20(%rbp), %eax
-	cltq
-	movq	-48(%rbp), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-80(%rbp), %xmm0, %xmm0
-	vmovsd	-8(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -8(%rbp)
-	movl	-56(%rbp), %eax
-	addl	%eax, -24(%rbp)
-	movl	-60(%rbp), %eax
-	addl	%eax, -20(%rbp)
-	incl	-28(%rbp)
-.L39:
-	movl	-28(%rbp), %eax
-	cmpl	-52(%rbp), %eax
-	jl	.L40
-.L36:
-	movq	-72(%rbp), %rax
-	vmovsd	-8(%rbp), %xmm0
-	vmovsd	%xmm0, (%rax)
-	jmp	.L26
-.L41:
-	nop
-.L26:
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3631:
-	.size	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd, .-_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
-	.section	.text._ZNSt6vectorIdSaIdEEixEm,"axG",@progbits,_ZNSt6vectorIdSaIdEEixEm,comdat
-	.align 2
-	.weak	_ZNSt6vectorIdSaIdEEixEm
-	.type	_ZNSt6vectorIdSaIdEEixEm, @function
-_ZNSt6vectorIdSaIdEEixEm:
-.LFB3759:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	movq	%rdi, -8(%rbp)
-	movq	%rsi, -16(%rbp)
-	movq	-8(%rbp), %rax
-	movq	(%rax), %rdx
-	movq	-16(%rbp), %rax
-	salq	$3, %rax
-	addq	%rdx, %rax
-	popq	%rbp
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3759:
-	.size	_ZNSt6vectorIdSaIdEEixEm, .-_ZNSt6vectorIdSaIdEEixEm
-	.text
-	.type	_Z41__static_initialization_and_destruction_0ii, @function
-_Z41__static_initialization_and_destruction_0ii:
-.LFB3966:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$16, %rsp
-	movl	%edi, -4(%rbp)
-	movl	%esi, -8(%rbp)
-	cmpl	$1, -4(%rbp)
-	jne	.L46
-	cmpl	$65535, -8(%rbp)
-	jne	.L46
-	leaq	_ZStL8__ioinit(%rip), %rax
-	movq	%rax, %rdi
-	call	_ZNSt8ios_base4InitC1Ev@PLT
-	leaq	__dso_handle(%rip), %rax
-	movq	%rax, %rdx
-	leaq	_ZStL8__ioinit(%rip), %rax
-	movq	%rax, %rsi
-	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rax
-	movq	%rax, %rdi
-	call	__cxa_atexit@PLT
-.L46:
-	nop
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3966:
-	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
-	.type	_GLOBAL__sub_I_common.cc, @function
-_GLOBAL__sub_I_common.cc:
-.LFB3967:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	movl	$65535, %esi
-	movl	$1, %edi
-	call	_Z41__static_initialization_and_destruction_0ii
-	popq	%rbp
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3967:
-	.size	_GLOBAL__sub_I_common.cc, .-_GLOBAL__sub_I_common.cc
-	.section	.init_array,"aw"
-	.align 8
-	.quad	_GLOBAL__sub_I_common.cc
 	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
+	.p2align 4
 	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0, @function
 _Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0:
-.LFB3968:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	pushq	%r12
-	pushq	%rbx
-	subq	$32, %rsp
-	.cfi_offset 12, -24
-	.cfi_offset 3, -32
-	movq	%rdi, -40(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -24(%rbp)
-	movq	-40(%rbp), %rax
-	movl	24(%rax), %eax
-	movl	%eax, -28(%rbp)
-	movl	-28(%rbp), %r12d
-	call	omp_get_num_threads@PLT
-	movl	%eax, %ebx
-	call	omp_get_thread_num@PLT
-	movl	%eax, %esi
-	movl	%r12d, %eax
-	cltd
-	idivl	%ebx
-	movl	%eax, %ecx
-	movl	%r12d, %eax
-	cltd
-	idivl	%ebx
-	movl	%edx, %eax
-	cmpl	%eax, %esi
-	jl	.L49
-.L53:
-	imull	%ecx, %esi
-	movl	%esi, %edx
-	addl	%edx, %eax
-	leal	(%rax,%rcx), %ebx
-	cmpl	%ebx, %eax
-	jge	.L50
-	movl	%eax, -32(%rbp)
-.L51:
-	movl	-32(%rbp), %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -48(%rbp)
-	movl	-32(%rbp), %eax
-	cltq
-	movq	-40(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-48(%rbp), %xmm0, %xmm0
-	vmovsd	-24(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -24(%rbp)
-	incl	-32(%rbp)
-	cmpl	%ebx, -32(%rbp)
-	jl	.L51
-.L50:
-	movq	-40(%rbp), %rax
-	leaq	16(%rax), %rcx
-	movq	(%rcx), %rdx
-.L52:
-	vmovq	%rdx, %xmm0
-	vaddsd	-24(%rbp), %xmm0, %xmm0
-	vmovq	%xmm0, %rsi
-	movq	%rdx, %rax
-	lock cmpxchgq	%rsi, (%rcx)
-	movq	%rdx, %rsi
-	movq	%rax, %rdx
-	cmpq	%rsi, %rax
-	jne	.L52
-	jmp	.L54
-.L49:
-	movl	$0, %eax
-	incl	%ecx
-	jmp	.L53
-.L54:
-	addq	$32, %rsp
-	popq	%rbx
-	popq	%r12
-	popq	%rbp
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE3968:
-	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0
-	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
-	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1, @function
-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1:
-.LFB3969:
+.LFB4035:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -881,207 +15,247 @@ _Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1:
 	pushq	%r13
 	pushq	%r12
 	pushq	%rbx
-	subq	$72, %rsp
 	.cfi_offset 13, -24
 	.cfi_offset 12, -32
 	.cfi_offset 3, -40
-	movq	%rdi, -72(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -40(%rbp)
-	movq	-72(%rbp), %rax
-	movl	28(%rax), %eax
-	movl	%eax, -48(%rbp)
-	movq	-72(%rbp), %rax
-	movl	24(%rax), %eax
-	movl	%eax, -44(%rbp)
-	movl	-48(%rbp), %eax
-	leal	-1(%rax), %r12d
-	movl	-44(%rbp), %r13d
+	movq	%rdi, %rbx
+	andq	$-64, %rsp
 	call	omp_get_num_threads@PLT
-	movl	%eax, %ebx
+	movl	%eax, %r12d
 	call	omp_get_thread_num@PLT
-	movl	%eax, %edi
-	leal	4(%r13), %eax
-	subl	%r12d, %eax
-	movslq	%eax, %rdx
-	imulq	$1717986919, %rdx, %rdx
-	shrq	$32, %rdx
-	sarl	%edx
-	sarl	$31, %eax
-	movl	%edx, %esi
-	subl	%eax, %esi
-	movl	%esi, %eax
+	movl	%eax, %esi
+	movl	24(%rbx), %eax
 	cltd
-	idivl	%ebx
+	idivl	%r12d
+	cmpl	%edx, %esi
+	jl	.L2
+.L11:
+	imull	%eax, %esi
+	vxorpd	%xmm0, %xmm0, %xmm0
+	leal	(%rdx,%rsi), %r9d
+	leal	(%rax,%r9), %r8d
+	cmpl	%r8d, %r9d
+	jge	.L3
+	movq	(%rbx), %rcx
+	movq	(%rcx), %r13
+	movq	8(%rbx), %rcx
+	movq	(%rcx), %r12
+	leal	-1(%rax), %ecx
+	cmpl	$6, %ecx
+	jbe	.L13
+	movslq	%edx, %rcx
+	movslq	%esi, %rdi
+	vxorpd	%xmm0, %xmm0, %xmm0
+	movl	%eax, %r10d
+	addq	%rcx, %rdi
+	shrl	$3, %r10d
+	xorl	%ecx, %ecx
+	salq	$3, %rdi
+	salq	$6, %r10
+	leaq	0(%r13,%rdi), %r11
+	addq	%r12, %rdi
+	.p2align 4,,10
+	.p2align 3
+.L5:
+	vmovupd	(%r11,%rcx), %zmm3
+	vfmadd231pd	(%rdi,%rcx), %zmm3, %zmm0
+	addq	$64, %rcx
+	cmpq	%r10, %rcx
+	jne	.L5
+	vextractf64x4	$0x1, %zmm0, %ymm1
 	movl	%eax, %ecx
-	movl	%esi, %eax
-	cltd
-	idivl	%ebx
-	movl	%edx, %eax
-	cmpl	%eax, %edi
-	jl	.L56
-.L60:
-	imull	%ecx, %edi
-	movl	%edi, %edx
-	addl	%edx, %eax
-	leal	(%rax,%rcx), %edx
+	vaddpd	%ymm0, %ymm1, %ymm0
+	andl	$-8, %ecx
+	addl	%ecx, %r9d
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	%eax, %ecx
+	je	.L19
+.L4:
+	subl	%ecx, %eax
+	leal	-1(%rax), %edi
+	cmpl	$2, %edi
+	jbe	.L8
+	movslq	%edx, %rdx
+	movslq	%esi, %rsi
+	addq	%rsi, %rdx
+	addq	%rcx, %rdx
+	vmovupd	0(%r13,%rdx,8), %ymm6
+	vmulpd	(%r12,%rdx,8), %ymm6, %ymm1
+	movl	%eax, %edx
+	andl	$-4, %edx
+	addl	%edx, %r9d
+	vextractf128	$0x1, %ymm1, %xmm2
+	vaddpd	%xmm1, %xmm2, %xmm2
+	vunpckhpd	%xmm2, %xmm2, %xmm1
+	vaddpd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
 	cmpl	%edx, %eax
-	jge	.L57
-	movl	%eax, %ecx
-	sall	$2, %ecx
-	addl	%ecx, %eax
-	addl	%r12d, %eax
-	movl	%eax, -52(%rbp)
-	movl	%edx, %eax
-	sall	$2, %eax
-	addl	%edx, %eax
-	leal	(%rax,%r12), %ebx
-.L58:
-	movl	-52(%rbp), %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm1
-	vmovsd	%xmm1, -80(%rbp)
-	movl	-52(%rbp), %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-80(%rbp), %xmm0, %xmm0
-	vaddsd	-40(%rbp), %xmm0, %xmm2
-	vmovsd	%xmm2, -80(%rbp)
-	movl	-52(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm3
-	vmovsd	%xmm3, -88(%rbp)
-	movl	-52(%rbp), %eax
-	incl	%eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm4
-	vmovsd	%xmm4, -80(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm5
-	vmovsd	%xmm5, -88(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$2, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm6
-	vmovsd	%xmm6, -80(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm7
-	vmovsd	%xmm7, -88(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$3, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm1
-	vmovsd	%xmm1, -80(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -88(%rbp)
-	movl	-52(%rbp), %eax
-	addl	$4, %eax
-	cltq
-	movq	-72(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-88(%rbp), %xmm0, %xmm0
-	vaddsd	-80(%rbp), %xmm0, %xmm0
-	vmovsd	%xmm0, -40(%rbp)
-	addl	$5, -52(%rbp)
-	cmpl	%ebx, -52(%rbp)
-	jl	.L58
-.L57:
-	movq	-72(%rbp), %rax
-	leaq	16(%rax), %rcx
-	movq	(%rcx), %rdx
-.L59:
-	vmovq	%rdx, %xmm0
-	vaddsd	-40(%rbp), %xmm0, %xmm0
-	vmovq	%xmm0, %rsi
+	je	.L19
+.L8:
+	movslq	%r9d, %rax
+	vmovsd	0(%r13,%rax,8), %xmm7
+	leaq	0(,%rax,8), %rdx
+	vfmadd231sd	(%r12,%rax,8), %xmm7, %xmm0
+	leal	1(%r9), %eax
+	cmpl	%eax, %r8d
+	jle	.L19
+	leal	2(%r9), %eax
+	vmovsd	8(%r12,%rdx), %xmm7
+	vfmadd231sd	8(%r13,%rdx), %xmm7, %xmm0
+	cmpl	%eax, %r8d
+	jle	.L19
+	vmovsd	16(%r13,%rdx), %xmm7
+	vfmadd231sd	16(%r12,%rdx), %xmm7, %xmm0
+	vzeroupper
+.L3:
+	movq	16(%rbx), %rdx
+	leaq	16(%rbx), %rcx
+.L10:
+	vmovq	%rdx, %xmm5
 	movq	%rdx, %rax
+	vaddsd	%xmm5, %xmm0, %xmm4
+	vmovq	%xmm4, %rsi
 	lock cmpxchgq	%rsi, (%rcx)
-	movq	%rdx, %rsi
-	movq	%rax, %rdx
-	cmpq	%rsi, %rax
-	jne	.L59
-	jmp	.L61
-.L56:
-	movl	$0, %eax
-	incl	%ecx
-	jmp	.L60
-.L61:
-	addq	$72, %rsp
+	jne	.L23
+	leaq	-24(%rbp), %rsp
 	popq	%rbx
 	popq	%r12
 	popq	%r13
 	popq	%rbp
+	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
+	.p2align 4,,10
+	.p2align 3
+.L19:
+	.cfi_restore_state
+	vzeroupper
+	jmp	.L3
+	.p2align 4,,10
+	.p2align 3
+.L2:
+	addl	$1, %eax
+	xorl	%edx, %edx
+	jmp	.L11
+	.p2align 4,,10
+	.p2align 3
+.L13:
+	xorl	%ecx, %ecx
+	jmp	.L4
+.L23:
+	movq	%rax, %rdx
+	jmp	.L10
 	.cfi_endproc
-.LFE3969:
+.LFE4035:
+	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0
+	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
+	.p2align 4
+	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1, @function
+_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1:
+.LFB4036:
+	.cfi_startproc
+	endbr64
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	pushq	%rbp
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	.cfi_offset 3, -32
+	movl	28(%rdi), %eax
+	movq	%rdi, %rbx
+	leal	-1(%rax), %r12d
+	call	omp_get_num_threads@PLT
+	movl	%eax, %ebp
+	call	omp_get_thread_num@PLT
+	movl	%eax, %ecx
+	movl	24(%rbx), %eax
+	leal	4(%rax), %edx
+	subl	%r12d, %edx
+	movslq	%edx, %rax
+	sarl	$31, %edx
+	imulq	$1717986919, %rax, %rax
+	sarq	$33, %rax
+	subl	%edx, %eax
+	cltd
+	idivl	%ebp
+	cmpl	%edx, %ecx
+	jl	.L25
+.L29:
+	imull	%eax, %ecx
+	vxorpd	%xmm2, %xmm2, %xmm2
+	addl	%ecx, %edx
+	addl	%edx, %eax
+	cmpl	%eax, %edx
+	jge	.L26
+	leal	(%rax,%rax,4), %edi
+	movq	(%rbx), %rax
+	addl	%r12d, %edi
+	movq	(%rax), %rsi
+	movq	8(%rbx), %rax
+	movq	(%rax), %rcx
+	leal	(%rdx,%rdx,4), %eax
+	addl	%r12d, %eax
+	cltq
+	.p2align 4,,10
+	.p2align 3
+.L27:
+	vmovsd	8(%rsi,%rax,8), %xmm1
+	vmovsd	24(%rsi,%rax,8), %xmm0
+	vmulsd	8(%rcx,%rax,8), %xmm1, %xmm1
+	vmovsd	(%rsi,%rax,8), %xmm3
+	vmulsd	24(%rcx,%rax,8), %xmm0, %xmm0
+	vfmadd231sd	(%rcx,%rax,8), %xmm3, %xmm1
+	vmovsd	16(%rsi,%rax,8), %xmm4
+	vfmadd231sd	16(%rcx,%rax,8), %xmm4, %xmm0
+	vmovsd	32(%rsi,%rax,8), %xmm5
+	vfmadd231sd	32(%rcx,%rax,8), %xmm5, %xmm2
+	addq	$5, %rax
+	vaddsd	%xmm1, %xmm0, %xmm0
+	vaddsd	%xmm2, %xmm0, %xmm2
+	cmpl	%eax, %edi
+	jg	.L27
+.L26:
+	movq	16(%rbx), %rdx
+	leaq	16(%rbx), %rcx
+.L28:
+	vmovq	%rdx, %xmm7
+	movq	%rdx, %rax
+	vaddsd	%xmm7, %xmm2, %xmm6
+	vmovq	%xmm6, %rsi
+	lock cmpxchgq	%rsi, (%rcx)
+	jne	.L36
+	popq	%rbx
+	.cfi_remember_state
+	.cfi_def_cfa_offset 24
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L25:
+	.cfi_restore_state
+	addl	$1, %eax
+	xorl	%edx, %edx
+	jmp	.L29
+.L36:
+	movq	%rax, %rdx
+	jmp	.L28
+	.cfi_endproc
+.LFE4036:
 	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1
 	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
+	.p2align 4
 	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2, @function
 _Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2:
-.LFB3970:
+.LFB4037:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1089,115 +263,877 @@ _Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
 	pushq	%r12
 	pushq	%rbx
-	subq	$48, %rsp
-	.cfi_offset 12, -24
-	.cfi_offset 3, -32
-	movq	%rdi, -56(%rbp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovsd	%xmm0, -24(%rbp)
-	movq	-56(%rbp), %rax
-	movl	32(%rax), %eax
-	movl	%eax, -36(%rbp)
-	movq	-56(%rbp), %rax
-	movl	28(%rax), %eax
-	movl	%eax, -32(%rbp)
-	movq	-56(%rbp), %rax
-	movl	24(%rax), %eax
-	movl	%eax, -28(%rbp)
-	movl	-28(%rbp), %r12d
+	.cfi_offset 15, -24
+	.cfi_offset 14, -32
+	.cfi_offset 13, -40
+	.cfi_offset 12, -48
+	.cfi_offset 3, -56
+	movq	%rdi, %rbx
+	andq	$-64, %rsp
+	subq	$64, %rsp
 	call	omp_get_num_threads@PLT
-	movl	%eax, %ebx
+	movl	%eax, %r12d
 	call	omp_get_thread_num@PLT
-	movl	%eax, %esi
-	movl	%r12d, %eax
-	cltd
-	idivl	%ebx
 	movl	%eax, %ecx
-	movl	%r12d, %eax
+	movl	24(%rbx), %eax
 	cltd
-	idivl	%ebx
-	movl	%edx, %eax
-	cmpl	%eax, %esi
-	jl	.L63
-.L67:
-	imull	%ecx, %esi
-	movl	%esi, %edx
-	addl	%edx, %eax
-	leal	(%rax,%rcx), %ebx
-	cmpl	%ebx, %eax
-	jge	.L64
-	movl	%eax, -40(%rbp)
-.L65:
-	movq	-56(%rbp), %rax
-	movl	36(%rax), %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm2
-	vmovsd	%xmm2, -64(%rbp)
-	movq	-56(%rbp), %rax
-	movl	40(%rax), %eax
-	cltq
-	movq	-56(%rbp), %rdx
-	movq	8(%rdx), %rdx
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSt6vectorIdSaIdEEixEm
-	vmovsd	(%rax), %xmm0
-	vmulsd	-64(%rbp), %xmm0, %xmm0
-	vmovsd	-24(%rbp), %xmm1
-	vaddsd	%xmm0, %xmm1, %xmm0
-	vmovsd	%xmm0, -24(%rbp)
-	movq	-56(%rbp), %rax
-	movl	36(%rax), %edx
-	movl	-32(%rbp), %eax
-	addl	%eax, %edx
-	movq	-56(%rbp), %rax
-	movl	%edx, 36(%rax)
-	movq	-56(%rbp), %rax
-	movl	40(%rax), %edx
-	movl	-36(%rbp), %eax
-	addl	%eax, %edx
-	movq	-56(%rbp), %rax
-	movl	%edx, 40(%rax)
-	incl	-40(%rbp)
-	cmpl	%ebx, -40(%rbp)
-	jl	.L65
-.L64:
-	movq	-56(%rbp), %rax
-	leaq	16(%rax), %rcx
-	movq	(%rcx), %rdx
-.L66:
-	vmovq	%rdx, %xmm0
-	vaddsd	-24(%rbp), %xmm0, %xmm0
-	vmovq	%xmm0, %rsi
+	idivl	%r12d
+	cmpl	%edx, %ecx
+	jl	.L38
+.L50:
+	imull	%eax, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	addl	%ecx, %edx
+	leal	(%rax,%rdx), %r10d
+	cmpl	%r10d, %edx
+	jge	.L39
+	movq	(%rbx), %r12
+	vmovq	28(%rbx), %xmm3
+	vmovq	36(%rbx), %xmm1
+	movl	32(%rbx), %edi
+	movq	(%r12), %r11
+	movq	8(%rbx), %r12
+	vmovd	%xmm3, %r9d
+	vpextrd	$1, %xmm3, %ecx
+	movl	%edi, 60(%rsp)
+	vpaddd	%xmm3, %xmm1, %xmm3
+	movl	28(%rbx), %r8d
+	vpextrd	$1, %xmm1, %edi
+	movq	(%r12), %r15
+	vmovd	%xmm1, %esi
+	cmpl	$1, %r9d
+	jne	.L54
+	cmpl	$1, %ecx
+	jne	.L54
+	leal	-1(%rax), %r12d
+	cmpl	$6, %r12d
+	jbe	.L52
+	movslq	%esi, %rcx
+	movl	%eax, %r9d
+	vxorpd	%xmm0, %xmm0, %xmm0
+	leaq	(%r11,%rcx,8), %r14
+	shrl	$3, %r9d
+	movslq	%edi, %rcx
+	leaq	(%r15,%rcx,8), %r13
+	salq	$6, %r9
+	xorl	%ecx, %ecx
+	.p2align 4,,10
+	.p2align 3
+.L45:
+	vmovupd	(%r14,%rcx), %zmm5
+	vfmadd231pd	0(%r13,%rcx), %zmm5, %zmm0
+	addq	$64, %rcx
+	cmpq	%rcx, %r9
+	jne	.L45
+	vextractf64x4	$0x1, %zmm0, %ymm1
+	movl	%eax, %ecx
+	vaddpd	%ymm0, %ymm1, %ymm0
+	andl	$-8, %ecx
+	addl	%ecx, %edx
+	leal	(%rsi,%rcx), %r9d
+	leal	(%rcx,%rdi), %r13d
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	%ecx, %eax
+	je	.L60
+.L44:
+	subl	%ecx, %eax
+	leal	-1(%rax), %r14d
+	cmpl	$2, %r14d
+	jbe	.L47
+	movslq	%esi, %rsi
+	movslq	%edi, %rdi
+	addq	%rcx, %rsi
+	addq	%rcx, %rdi
+	movl	%eax, %ecx
+	vmovupd	(%r15,%rdi,8), %ymm1
+	vmulpd	(%r11,%rsi,8), %ymm1, %ymm1
+	andl	$-4, %ecx
+	addl	%ecx, %edx
+	addl	%ecx, %r9d
+	addl	%ecx, %r13d
+	vextractf128	$0x1, %ymm1, %xmm2
+	vaddpd	%xmm1, %xmm2, %xmm2
+	vunpckhpd	%xmm2, %xmm2, %xmm1
+	vaddpd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
+	cmpl	%ecx, %eax
+	je	.L60
+.L47:
+	movslq	%r9d, %r9
+	movslq	%r13d, %r13
+	leal	1(%rdx), %esi
+	vmovsd	(%r15,%r13,8), %xmm6
+	leaq	0(,%r9,8), %rcx
+	vfmadd231sd	(%r11,%r9,8), %xmm6, %xmm0
+	leaq	0(,%r13,8), %rax
+	cmpl	%esi, %r10d
+	jle	.L60
+	addl	$2, %edx
+	vmovsd	8(%r11,%rcx), %xmm7
+	vfmadd231sd	8(%r15,%rax), %xmm7, %xmm0
+	cmpl	%edx, %r10d
+	jle	.L60
+	vmovsd	16(%r11,%rcx), %xmm7
+	vfmadd231sd	16(%r15,%rax), %xmm7, %xmm0
+	vzeroupper
+.L43:
+	movl	60(%rsp), %r11d
+	imull	%r12d, %r8d
+	imull	%r12d, %r11d
+	vmovd	%r8d, %xmm4
+	vpinsrd	$1, %r11d, %xmm4, %xmm1
+	vpaddd	%xmm3, %xmm1, %xmm1
+	vmovq	%xmm1, 36(%rbx)
+.L39:
+	movq	16(%rbx), %rdx
+	leaq	16(%rbx), %rcx
+.L49:
+	vmovq	%rdx, %xmm7
 	movq	%rdx, %rax
+	vaddsd	%xmm7, %xmm0, %xmm6
+	vmovq	%xmm6, %rsi
 	lock cmpxchgq	%rsi, (%rcx)
-	movq	%rdx, %rsi
-	movq	%rax, %rdx
-	cmpq	%rsi, %rax
-	jne	.L66
-	jmp	.L68
-.L63:
-	movl	$0, %eax
-	incl	%ecx
-	jmp	.L67
-.L68:
-	addq	$48, %rsp
+	jne	.L63
+	leaq	-40(%rbp), %rsp
 	popq	%rbx
 	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
 	popq	%rbp
+	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
+	.p2align 4,,10
+	.p2align 3
+.L60:
+	.cfi_restore_state
+	vzeroupper
+	jmp	.L43
+	.p2align 4,,10
+	.p2align 3
+.L38:
+	addl	$1, %eax
+	xorl	%edx, %edx
+	jmp	.L50
+	.p2align 4,,10
+	.p2align 3
+.L54:
+	movslq	%ecx, %rcx
+	movslq	%r9d, %r9
+	movslq	%esi, %rsi
+	movslq	%edi, %rdi
+	leaq	0(,%rcx,8), %r12
+	salq	$3, %r9
+	leaq	(%r11,%rsi,8), %rsi
+	leaq	(%r15,%rdi,8), %rcx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	.p2align 4,,10
+	.p2align 3
+.L42:
+	addl	$1, %edx
+	vmovsd	(%rsi), %xmm4
+	addq	%r9, %rsi
+	vfmadd231sd	(%rcx), %xmm4, %xmm0
+	addq	%r12, %rcx
+	cmpl	%edx, %r10d
+	jne	.L42
+	leal	-1(%rax), %r12d
+	jmp	.L43
+.L52:
+	movl	%edi, %r13d
+	vmovd	%xmm1, %r9d
+	xorl	%ecx, %ecx
+	jmp	.L44
+.L63:
+	movq	%rax, %rdx
+	jmp	.L49
 	.cfi_endproc
-.LFE3970:
+.LFE4037:
 	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2
-	.section	.rodata
+	.section	.text._Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii,"axG",@progbits,_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii,comdat
+	.p2align 4
+	.weak	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
+	.type	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii, @function
+_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii:
+.LFB3696:
+	.cfi_startproc
+	endbr64
+	movslq	%ecx, %rax
+	testl	%edx, %edx
+	jle	.L88
+	cmpl	$1, %eax
+	jne	.L66
+	cmpl	$1, %r8d
+	jne	.L66
+	movslq	%edx, %rax
+	movl	%edx, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	imulq	$1717986919, %rax, %rax
+	sarl	$31, %ecx
+	sarq	$33, %rax
+	subl	%ecx, %eax
+	leal	(%rax,%rax,4), %ecx
+	movl	%edx, %eax
+	subl	%ecx, %eax
+	jne	.L110
+.L67:
+	cmpl	$4, %edx
+	jle	.L64
+	movq	(%rdi), %rdi
+	movq	(%rsi), %rcx
+	cltq
+	.p2align 4,,10
+	.p2align 3
+.L72:
+	vmovsd	8(%rdi,%rax,8), %xmm1
+	vmovsd	24(%rdi,%rax,8), %xmm2
+	vmulsd	8(%rcx,%rax,8), %xmm1, %xmm1
+	vmovsd	(%rdi,%rax,8), %xmm3
+	vmulsd	24(%rcx,%rax,8), %xmm2, %xmm2
+	vfmadd231sd	(%rcx,%rax,8), %xmm3, %xmm1
+	vmovsd	16(%rdi,%rax,8), %xmm4
+	vfmadd231sd	16(%rcx,%rax,8), %xmm4, %xmm2
+	vmovsd	32(%rdi,%rax,8), %xmm5
+	vfmadd231sd	32(%rcx,%rax,8), %xmm5, %xmm0
+	addq	$5, %rax
+	vaddsd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
+	cmpl	%eax, %edx
+	jg	.L72
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L66:
+	testl	%eax, %eax
+	js	.L111
+	testl	%r8d, %r8d
+	js	.L112
+	movq	(%rdi), %r10
+	movq	(%rsi), %r9
+	cmpl	$1, %r8d
+	jne	.L92
+	cmpl	$1, %eax
+	jne	.L92
+	leal	-1(%rdx), %eax
+	cmpl	$6, %eax
+	jbe	.L91
+	movl	%edx, %ecx
+	leaq	8(%r10), %rdi
+	leaq	8(%r9), %rsi
+	xorl	%eax, %eax
+	shrl	$3, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	salq	$6, %rcx
+	.p2align 4,,10
+	.p2align 3
+.L82:
+	vmovupd	(%rsi,%rax), %zmm6
+	vfmadd231pd	(%rdi,%rax), %zmm6, %zmm0
+	addq	$64, %rax
+	cmpq	%rax, %rcx
+	jne	.L82
+	vextractf64x4	$0x1, %zmm0, %ymm1
+	movl	%edx, %eax
+	vaddpd	%ymm0, %ymm1, %ymm0
+	andl	$-8, %eax
+	leal	1(%rax), %ecx
+	movl	%eax, %edi
+	movl	%ecx, %esi
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	%edx, %eax
+	je	.L109
+.L81:
+	movl	%edx, %r8d
+	subl	%eax, %r8d
+	leal	-1(%r8), %r11d
+	cmpl	$2, %r11d
+	jbe	.L86
+	vmovupd	8(%r9,%rax,8), %ymm7
+	vmulpd	8(%r10,%rax,8), %ymm7, %ymm1
+	movl	%r8d, %eax
+	andl	$-4, %eax
+	addl	%eax, %edi
+	addl	%eax, %ecx
+	addl	%eax, %esi
+	vextractf128	$0x1, %ymm1, %xmm2
+	vaddpd	%xmm1, %xmm2, %xmm2
+	vunpckhpd	%xmm2, %xmm2, %xmm1
+	vaddpd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
+	cmpl	%r8d, %eax
+	je	.L109
+.L86:
+	movslq	%ecx, %rcx
+	movslq	%esi, %rsi
+	vmovsd	(%r10,%rcx,8), %xmm6
+	leaq	0(,%rcx,8), %rax
+	leal	1(%rdi), %ecx
+	vfmadd231sd	(%r9,%rsi,8), %xmm6, %xmm0
+	leaq	0(,%rsi,8), %r8
+	cmpl	%ecx, %edx
+	jle	.L109
+	addl	$2, %edi
+	vmovsd	8(%r9,%r8), %xmm7
+	vfmadd231sd	8(%r10,%rax), %xmm7, %xmm0
+	cmpl	%edi, %edx
+	jle	.L109
+	vmovsd	16(%r9,%r8), %xmm6
+	vfmadd231sd	16(%r10,%rax), %xmm6, %xmm0
+	vzeroupper
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L109:
+	vzeroupper
+.L64:
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L88:
+	vmovsd	.LC1(%rip), %xmm0
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L110:
+	movq	(%rdi), %r9
+	movq	(%rsi), %r8
+	cmpl	$4, %eax
+	jne	.L68
+	vmovupd	(%r9), %ymm0
+	vmulpd	(%r8), %ymm0, %ymm0
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	vzeroupper
+	jmp	.L67
+	.p2align 4,,10
+	.p2align 3
+.L111:
+	movl	$1, %ecx
+	subl	%edx, %ecx
+	imull	%eax, %ecx
+	addl	$1, %ecx
+	testl	%r8d, %r8d
+	jns	.L113
+.L74:
+	movl	$1, %r9d
+	movq	(%rdi), %r10
+	subl	%edx, %r9d
+	imull	%r8d, %r9d
+	leal	1(%r9), %r11d
+	movq	(%rsi), %r9
+.L77:
+	movslq	%ecx, %rcx
+	movslq	%r8d, %r8
+	movslq	%r11d, %r11
+	salq	$3, %rax
+	leaq	(%r10,%rcx,8), %rdi
+	salq	$3, %r8
+	leaq	(%r9,%r11,8), %rsi
+	xorl	%ecx, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	.p2align 4,,10
+	.p2align 3
+.L80:
+	addl	$1, %ecx
+	vmovsd	(%rdi), %xmm7
+	addq	%rax, %rdi
+	vfmadd231sd	(%rsi), %xmm7, %xmm0
+	addq	%r8, %rsi
+	cmpl	%ecx, %edx
+	jne	.L80
+	ret
+.L68:
+	cmpl	$1, %eax
+	je	.L90
+	vmovupd	(%r9), %xmm7
+	vmulpd	(%r8), %xmm7, %xmm1
+	movl	$2, %ecx
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	$2, %eax
+	je	.L67
+.L70:
+	vmovsd	(%r9,%rcx,8), %xmm7
+	vfmadd231sd	(%r8,%rcx,8), %xmm7, %xmm0
+	jmp	.L67
+.L91:
+	xorl	%eax, %eax
+	movl	$1, %esi
+	movl	$1, %ecx
+	xorl	%edi, %edi
+	vxorpd	%xmm0, %xmm0, %xmm0
+	jmp	.L81
+.L90:
+	xorl	%ecx, %ecx
+	jmp	.L70
+.L113:
+	movq	(%rdi), %r10
+	movq	(%rsi), %r9
+	movl	$1, %r11d
+	jmp	.L77
+.L92:
+	movl	$1, %r11d
+	movl	$1, %ecx
+	jmp	.L77
+.L112:
+	movl	$1, %ecx
+	jmp	.L74
+	.cfi_endproc
+.LFE3696:
+	.size	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii, .-_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
+	.section	.text._Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,"axG",@progbits,_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii,comdat
+	.p2align 4
+	.weak	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
+	.type	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii, @function
+_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii:
+.LFB3697:
+	.cfi_startproc
+	endbr64
+	pushq	%r12
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
+	vmovq	%rdi, %xmm3
+	movl	%r9d, %edi
+	movl	%r8d, %r12d
+	pushq	%rbp
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	vpinsrq	$1, %rsi, %xmm3, %xmm2
+	movl	%ecx, %ebp
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	.cfi_offset 3, -32
+	movl	%edx, %ebx
+	subq	$80, %rsp
+	.cfi_def_cfa_offset 112
+	movq	%fs:40, %rax
+	movq	%rax, 72(%rsp)
+	xorl	%eax, %eax
+	vmovdqa	%xmm2, (%rsp)
+	call	omp_set_num_threads@PLT
+	testl	%ebx, %ebx
+	jle	.L121
+	cmpl	$1, %ebp
+	jne	.L116
+	cmpl	$1, %r12d
+	jne	.L116
+	movslq	%ebx, %rbp
+	movl	%ebx, %eax
+	vxorpd	%xmm0, %xmm0, %xmm0
+	imulq	$1717986919, %rbp, %rbp
+	sarl	$31, %eax
+	sarq	$33, %rbp
+	subl	%eax, %ebp
+	leal	0(%rbp,%rbp,4), %eax
+	movl	%ebx, %ebp
+	subl	%eax, %ebp
+	jne	.L133
+.L117:
+	cmpl	$4, %ebx
+	jg	.L134
+	.p2align 4,,10
+	.p2align 3
+.L114:
+	movq	72(%rsp), %rax
+	subq	%fs:40, %rax
+	jne	.L135
+	addq	$80, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 32
+	popq	%rbx
+	.cfi_def_cfa_offset 24
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L116:
+	.cfi_restore_state
+	movl	$1, %eax
+	testl	%ebp, %ebp
+	jns	.L118
+	subl	%ebx, %eax
+	imull	%ebp, %eax
+	addl	$1, %eax
+.L118:
+	vmovd	%r12d, %xmm4
+	vmovd	%ebx, %xmm5
+	vpinsrd	$1, %eax, %xmm4, %xmm1
+	vpinsrd	$1, %ebp, %xmm5, %xmm0
+	movl	$1, %eax
+	vpunpcklqdq	%xmm1, %xmm0, %xmm0
+	testl	%r12d, %r12d
+	jns	.L119
+	subl	%ebx, %eax
+	imull	%r12d, %eax
+	addl	$1, %eax
+.L119:
+	vmovdqa	(%rsp), %xmm7
+	leaq	16(%rsp), %rsi
+	xorl	%ecx, %ecx
+	xorl	%edx, %edx
+	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.2(%rip), %rdi
+	vmovdqu	%xmm0, 40(%rsp)
+	movq	$0x000000000, 32(%rsp)
+	movl	%eax, 56(%rsp)
+	vmovdqa	%xmm7, 16(%rsp)
+	call	GOMP_parallel@PLT
+	vmovsd	32(%rsp), %xmm0
+	jmp	.L114
+	.p2align 4,,10
+	.p2align 3
+.L121:
+	vmovsd	.LC1(%rip), %xmm0
+	jmp	.L114
+	.p2align 4,,10
+	.p2align 3
+.L134:
+	vmovd	%ebx, %xmm6
+	addl	$1, %ebp
+	leaq	16(%rsp), %rsi
+	xorl	%ecx, %ecx
+	vmovsd	%xmm0, 32(%rsp)
+	vpinsrd	$1, %ebp, %xmm6, %xmm0
+	xorl	%edx, %edx
+	vmovdqa	(%rsp), %xmm6
+	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.1(%rip), %rdi
+	vmovq	%xmm0, 40(%rsp)
+	vmovdqa	%xmm6, 16(%rsp)
+	call	GOMP_parallel@PLT
+	vmovsd	32(%rsp), %xmm0
+	jmp	.L114
+	.p2align 4,,10
+	.p2align 3
+.L133:
+	vmovdqa	(%rsp), %xmm6
+	leaq	16(%rsp), %rsi
+	xorl	%ecx, %ecx
+	xorl	%edx, %edx
+	leaq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii._omp_fn.0(%rip), %rdi
+	movl	%ebp, 40(%rsp)
+	movq	$0x000000000, 32(%rsp)
+	vmovdqa	%xmm6, 16(%rsp)
+	call	GOMP_parallel@PLT
+	vmovsd	32(%rsp), %xmm0
+	jmp	.L117
+.L135:
+	call	__stack_chk_fail@PLT
+	.cfi_endproc
+.LFE3697:
+	.size	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii, .-_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
+	.section	.text._Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd,"axG",@progbits,_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd,comdat
+	.p2align 4
+	.weak	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
+	.type	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd, @function
+_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd:
+.LFB3698:
+	.cfi_startproc
+	endbr64
+	movq	$0x000000000, (%r9)
+	testl	%edx, %edx
+	jle	.L185
+	movslq	%ecx, %rax
+	cmpl	$1, %eax
+	jne	.L138
+	cmpl	$1, %r8d
+	jne	.L138
+	movslq	%edx, %rax
+	movl	%edx, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	imulq	$1717986919, %rax, %rax
+	sarl	$31, %ecx
+	sarq	$33, %rax
+	subl	%ecx, %eax
+	leal	(%rax,%rax,4), %ecx
+	movl	%edx, %eax
+	subl	%ecx, %eax
+	jne	.L188
+.L139:
+	cmpl	$4, %edx
+	jle	.L186
+	movq	(%rdi), %rdi
+	movq	(%rsi), %rcx
+	cltq
+	.p2align 4,,10
+	.p2align 3
+.L145:
+	vmovsd	8(%rdi,%rax,8), %xmm1
+	vmovsd	24(%rdi,%rax,8), %xmm2
+	vmulsd	8(%rcx,%rax,8), %xmm1, %xmm1
+	vmovsd	(%rdi,%rax,8), %xmm3
+	vmulsd	24(%rcx,%rax,8), %xmm2, %xmm2
+	vfmadd231sd	(%rcx,%rax,8), %xmm3, %xmm1
+	vmovsd	16(%rdi,%rax,8), %xmm4
+	vfmadd231sd	16(%rcx,%rax,8), %xmm4, %xmm2
+	vmovsd	32(%rdi,%rax,8), %xmm5
+	vfmadd231sd	32(%rcx,%rax,8), %xmm5, %xmm0
+	addq	$5, %rax
+	vaddsd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
+	cmpl	%eax, %edx
+	jg	.L145
+.L186:
+	vmovsd	%xmm0, (%r9)
+.L185:
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L138:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	pushq	%rbx
+	.cfi_offset 3, -24
+	testl	%eax, %eax
+	js	.L189
+	testl	%r8d, %r8d
+	js	.L190
+	movq	(%rdi), %r11
+	movq	(%rsi), %r10
+	cmpl	$1, %r8d
+	jne	.L165
+	cmpl	$1, %eax
+	jne	.L165
+	leal	-1(%rdx), %eax
+	cmpl	$6, %eax
+	jbe	.L164
+	movl	%edx, %ecx
+	leaq	8(%r11), %rdi
+	leaq	8(%r10), %rsi
+	xorl	%eax, %eax
+	shrl	$3, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	salq	$6, %rcx
+	.p2align 4,,10
+	.p2align 3
+.L156:
+	vmovupd	(%rsi,%rax), %zmm6
+	vfmadd231pd	(%rdi,%rax), %zmm6, %zmm0
+	addq	$64, %rax
+	cmpq	%rax, %rcx
+	jne	.L156
+	vextractf64x4	$0x1, %zmm0, %ymm1
+	movl	%edx, %eax
+	vaddpd	%ymm0, %ymm1, %ymm0
+	andl	$-8, %eax
+	leal	1(%rax), %ecx
+	movl	%eax, %edi
+	movl	%ecx, %esi
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	%edx, %eax
+	je	.L182
+.L155:
+	movl	%edx, %r8d
+	subl	%eax, %r8d
+	leal	-1(%r8), %ebx
+	cmpl	$2, %ebx
+	jbe	.L160
+	vmovupd	8(%r10,%rax,8), %ymm7
+	vmulpd	8(%r11,%rax,8), %ymm7, %ymm1
+	movl	%r8d, %eax
+	andl	$-4, %eax
+	addl	%eax, %edi
+	addl	%eax, %ecx
+	addl	%eax, %esi
+	vextractf128	$0x1, %ymm1, %xmm2
+	vaddpd	%xmm1, %xmm2, %xmm2
+	vunpckhpd	%xmm2, %xmm2, %xmm1
+	vaddpd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm1, %xmm0, %xmm0
+	cmpl	%r8d, %eax
+	je	.L182
+.L160:
+	movslq	%ecx, %rcx
+	movslq	%esi, %rsi
+	vmovsd	(%r11,%rcx,8), %xmm6
+	leaq	0(,%rcx,8), %rax
+	leal	1(%rdi), %ecx
+	vfmadd231sd	(%r10,%rsi,8), %xmm6, %xmm0
+	leaq	0(,%rsi,8), %r8
+	cmpl	%ecx, %edx
+	jle	.L182
+	addl	$2, %edi
+	vmovsd	8(%r10,%r8), %xmm7
+	vfmadd231sd	8(%r11,%rax), %xmm7, %xmm0
+	cmpl	%edi, %edx
+	jle	.L182
+	vmovsd	16(%r10,%r8), %xmm6
+	vfmadd231sd	16(%r11,%rax), %xmm6, %xmm0
+	vzeroupper
+.L146:
+	movq	-8(%rbp), %rbx
+	vmovsd	%xmm0, (%r9)
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L188:
+	.cfi_restore 3
+	.cfi_restore 6
+	movq	(%rdi), %r10
+	movq	(%rsi), %r8
+	cmpl	$4, %eax
+	jne	.L140
+	vmovupd	(%r10), %ymm0
+	vmulpd	(%r8), %ymm0, %ymm0
+	vextractf128	$0x1, %ymm0, %xmm1
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	vzeroupper
+	jmp	.L139
+	.p2align 4,,10
+	.p2align 3
+.L182:
+	.cfi_def_cfa 6, 16
+	.cfi_offset 3, -24
+	.cfi_offset 6, -16
+	vzeroupper
+	movq	-8(%rbp), %rbx
+	vmovsd	%xmm0, (%r9)
+	leave
+	.cfi_remember_state
+	.cfi_def_cfa 7, 8
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L189:
+	.cfi_restore_state
+	movl	$1, %ecx
+	subl	%edx, %ecx
+	imull	%eax, %ecx
+	leal	1(%rcx), %ebx
+	testl	%r8d, %r8d
+	jns	.L191
+.L148:
+	movl	$1, %ecx
+	movq	(%rdi), %r11
+	movq	(%rsi), %r10
+	subl	%edx, %ecx
+	imull	%r8d, %ecx
+	addl	$1, %ecx
+.L151:
+	movslq	%ecx, %rcx
+	movslq	%ebx, %rbx
+	movslq	%r8d, %r8
+	salq	$3, %rax
+	leaq	(%r10,%rcx,8), %rsi
+	leaq	(%r11,%rbx,8), %rdi
+	salq	$3, %r8
+	xorl	%ecx, %ecx
+	vxorpd	%xmm0, %xmm0, %xmm0
+	.p2align 4,,10
+	.p2align 3
+.L154:
+	addl	$1, %ecx
+	vmovsd	(%rdi), %xmm7
+	addq	%rax, %rdi
+	vfmadd231sd	(%rsi), %xmm7, %xmm0
+	addq	%r8, %rsi
+	cmpl	%ecx, %edx
+	jne	.L154
+	jmp	.L146
+.L140:
+	.cfi_def_cfa 7, 8
+	.cfi_restore 3
+	.cfi_restore 6
+	cmpl	$1, %eax
+	je	.L163
+	vmovupd	(%r10), %xmm7
+	vmulpd	(%r8), %xmm7, %xmm1
+	movl	$2, %ecx
+	vunpckhpd	%xmm1, %xmm1, %xmm0
+	vaddpd	%xmm1, %xmm0, %xmm0
+	cmpl	$2, %eax
+	je	.L139
+.L142:
+	vmovsd	(%r10,%rcx,8), %xmm7
+	vfmadd231sd	(%r8,%rcx,8), %xmm7, %xmm0
+	jmp	.L139
+.L164:
+	.cfi_def_cfa 6, 16
+	.cfi_offset 3, -24
+	.cfi_offset 6, -16
+	xorl	%eax, %eax
+	movl	$1, %esi
+	movl	$1, %ecx
+	xorl	%edi, %edi
+	vxorpd	%xmm0, %xmm0, %xmm0
+	jmp	.L155
+.L163:
+	.cfi_def_cfa 7, 8
+	.cfi_restore 3
+	.cfi_restore 6
+	xorl	%ecx, %ecx
+	jmp	.L142
+.L191:
+	.cfi_def_cfa 6, 16
+	.cfi_offset 3, -24
+	.cfi_offset 6, -16
+	movq	(%rdi), %r11
+	movq	(%rsi), %r10
+	movl	$1, %ecx
+	jmp	.L151
+.L165:
+	movl	$1, %ecx
+	movl	$1, %ebx
+	jmp	.L151
+.L190:
+	movl	$1, %ebx
+	jmp	.L148
+	.cfi_endproc
+.LFE3698:
+	.size	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd, .-_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
+	.section	.text.startup,"ax",@progbits
+	.p2align 4
+	.type	_GLOBAL__sub_I_common.cc, @function
+_GLOBAL__sub_I_common.cc:
+.LFB4034:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	leaq	_ZStL8__ioinit(%rip), %rbp
+	movq	%rbp, %rdi
+	call	_ZNSt8ios_base4InitC1Ev@PLT
+	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
+	movq	%rbp, %rsi
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	leaq	__dso_handle(%rip), %rdx
+	jmp	__cxa_atexit@PLT
+	.cfi_endproc
+.LFE4034:
+	.size	_GLOBAL__sub_I_common.cc, .-_GLOBAL__sub_I_common.cc
+	.section	.init_array,"aw"
+	.align 8
+	.quad	_GLOBAL__sub_I_common.cc
+	.local	_ZStL8__ioinit
+	.comm	_ZStL8__ioinit,1,1
+	.section	.rodata.cst8,"aM",@progbits,8
 	.align 8
 .LC1:
 	.long	0

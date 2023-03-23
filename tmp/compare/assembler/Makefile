@@ -1,7 +1,7 @@
 MKLROOT = /home/jerem/app/intel/oneapi/mkl/2023.0.0
 PLTROOT = /home/jerem/app/matplotlib-cpp
 
-FLAGS = -w -march=native #-O3
+FLAGS = -w -O3 -mavx512f -funsafe-math-optimizations 
 
 LIBS = -lmpfr -lgsl -lgslcblas -lopenblas -lpython3.10 -lQt5Widgets -L/home/jerem/app/blaspp/lib -fopenmp   # -lm -lpthread -fopenmp
 BIB =  -I$(PLTROOT)/ -I/usr/include/python3.10 -I/usr/local/blaspp/include 
