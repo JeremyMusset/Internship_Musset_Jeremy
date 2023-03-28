@@ -3,6 +3,9 @@
 #include "../../include/gen_random_number.h"
 #include "../../include/compare.h"
 #include "matplotlibcpp.h"
+#include <unistd.h>
+
+#include <sys/sysinfo.h>
 
 
 using namespace std;
@@ -46,7 +49,7 @@ int main() {
     class std::vector<double> Time_par_common(sz_time);
     class std::vector<double> Time_mkl(sz_time);
     class std::vector<double> Time_blaspp(sz_time);
-
+    class std::vector<long double> Frequence(sz_time);
     class std::vector<double> Time_par_standard4(sz_time);
     class std::vector<double> Time_par_common4(sz_time);
     class std::vector<double> Time_par_standard8(sz_time);
@@ -63,7 +66,7 @@ int main() {
         // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
         compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
-
+        
         // Gbytes / s
         // double qtt;
         // for (int j=1;j<7 ; j++) {
@@ -94,6 +97,18 @@ int main() {
             }
         }
         printf("};\n");
+
+        printf("\nTime3_par_standard = \n {");
+        for (a=0; a<sz_time;a++){
+            if(a == sz_time-1){
+                printf("%.10f",Time_par_standard[a]);
+            }
+            else{
+                printf("%.10f, ",Time_par_standard[a]);
+            }
+        }
+        printf("};\n");
+
 
     return 0;
 }

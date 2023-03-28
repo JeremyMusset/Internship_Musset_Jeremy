@@ -91,7 +91,18 @@ int main() {
                 printf("%.10f, ",Time_standard[a]);
             }
         }
-        printf("};\n");
+        printf("};\n\n");
+
+        // printf("\nTime_par_standard = \n {");
+        // for (a=0; a<sz_time;a++){
+        //     if(a == sz_time-1){
+        //         printf("%.10f",Time_par_standard[a]);
+        //     }
+        //     else{
+        //         printf("%.10f, ",Time_par_standard[a]);
+        //     }
+        // }
+        // printf("};\n");
 
 
     return 0;

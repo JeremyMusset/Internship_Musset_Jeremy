@@ -7,6 +7,13 @@
 template < class T >
 void compare_dot_prod(int n,double required_cond, int nb_gen, double sum, class std::vector<T> &Time, class std::vector<mpfr_t> &Error, int q, int nb_threads);
 
+template < class T >
+void compare_dot_prod_fma(int n,double required_cond, int nb_gen, double sum, class std::vector<T> &Time, class std::vector<mpfr_t> &Error, int q, int nb_threads);
+
+
+template < class T >
+void compare_dot_prod_vec(int n,double required_cond, int nb_gen, double sum, class std::vector<T> &Time, class std::vector<mpfr_t> &Error, int q, int nb_threads);
+
 
 template < class T >
 void compare_dot_prod_th(int n,double required_cond, int nb_gen, double sum, class std::vector<T> &Time, class std::vector<mpfr_t> &Error, int q, int nb_threads);

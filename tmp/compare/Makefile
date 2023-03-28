@@ -3,7 +3,7 @@ PLTROOT = /home/jerem/app/matplotlib-cpp
 
 DEBOG = -g  -fprofile-arcs -ftest-coverage 
 
-FLAGS =  -w -O3 #-march=native
+FLAGS =  -w -O3 -funsafe-math-optimizations #-mavx512f 
 LIBS = -lmpfr -lgsl -lgslcblas -lopenblas -lpython3.10 -lQt5Widgets -L/home/jerem/app/blaspp/lib -fopenmp # -lm -lpthread -fopenmp
 BIB =  -I$(PLTROOT)/ -I/usr/include/python3.10 -I/usr/local/blaspp/include 
 INC = ../generation/*.cc ../dot_product/*.cc ../compare/*.cc 
@@ -39,13 +39,13 @@ comprun : compile
 
 
 
-FLAGSS = -O3 
+FLAGSS = -O3
 FLAGS1 = -O3 -march=native
 FLAGS2 = -O3 -mavx512f
-FLAGS3 = -O3 -march=native -funsafe-math-optimizations
+FLAGS3 = #-O3 -march=skylake-avx512
 FLAGS4 = -O3 -mavx512f -funsafe-math-optimizations 
-FLAGS5 =
-FLAGS6 =
+FLAGS5 = #-O3 -march=native -funsafe-math-optimizations
+FLAGS6 = -O3 -mavx512f -funsafe-math-optimizations  
 
 compilenovec : 
 	g++ $(INC) $(BIB) $(BIB_MKL) $(EXECNOVEC).cpp -o $(EXECNOVEC) -w $(LIBS) $(LIBS_MKL)
@@ -103,8 +103,15 @@ comprunnovecic : compilenovec
 	./$(EXECNOVEC)
 
 
-test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4
+test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4 compilevec5 compilevec6
 	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " && echo "//-------------- VEC : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " &&  echo " // --------------- VEC 2 : $(FLAGS2)-------------- " >> test.txt && ./$(EXECVEC2) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " &&  echo " // --------------- VEC 4 : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " && echo " // -------------- VEC  5 : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " &&  echo " // --------------- VEC 6 : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
+
+
+testpar : compilenovec compilevec4 compilevec5 compilevec6
+	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " &&  echo " // --------------- VEC : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " &&  echo " // --------------- VEC INSIDE -------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " &&  echo " // --------------- VEC : INSIDE + $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                          
+
+testfma :  compilevec3 compilevec4 compilevec5 compilevec6
+	echo " // -------------- NO VEC : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " &&  echo " // --------------- VEC 4 : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " && echo " // -------------- NO VEC FMA : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " &&  echo " // --------------- VEC FMA : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
 
 
 compileprint : 
@@ -119,3 +126,20 @@ compileroof :
 
 roof : compileroof
 	export OMP_NUM_THREADS=15 && ./$(EXECROOF)
+
+
+COMPSYCL = icpx 
+# COMPSYCL = dpcpp
+
+INSYCL = -I/home/jerem/app/intel/oneapi/compiler/2023.0.0/linux/include/ -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11/
+LIBSYCL = -fsycl -fsycl-targets=spir64
+
+compsycl : 
+	$(COMPSYCL) $(INSYCL) $(LIBSYCL) compare_sycl.cpp -o compare_sycl
+
+
+
+
+
+
+
