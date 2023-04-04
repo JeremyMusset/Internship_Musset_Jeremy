@@ -26,14 +26,14 @@ int main() {
     double Time_seq, Time_par,res;
     vector<double>::iterator k;
     for (k = VSize.begin(); k != VSize.end(); k++){  
-        printf(" ___________ SIZE = %.20f ________________\n\n",*k);
+        printf(" ___________ SIZE = %.20f ________________\n\n",N);
         Time_seq =0;
         Time_par = 0;
-        N = *k;
+        const N = *k;
 
         /////////////////////////// RES //////////////////////////////
         res =0;
-        for (unsigned int j=0; j<n;j++){
+        for (unsigned int j=0; j<N;j++){
         res += a[j]*b[j];
         }
 
@@ -57,6 +57,7 @@ int main() {
         sycl::buffer<float, 1> c_buf{&c, sycl::range<1>{1}};
 
         // Exécution du kernel sur le device
+        clock_gettime(CLOCK_REALTIME,&Min_start_standard); 
         q.submit([&](sycl::handler& h) {
             auto a_acc = a_buf.get_access<sycl::access::mode::read>(h);
             auto b_acc = b_buf.get_access<sycl::access::mode::read>(h);
@@ -87,7 +88,7 @@ int main() {
         
 
         i += 1;
-    }
+    
     std::cout << "Produit scalaire : " << c << std::endl;
     coeff /= sz_time;
     printf("\n Coeff : %.20f\n",coeff);

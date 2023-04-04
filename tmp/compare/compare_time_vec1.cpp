@@ -84,13 +84,23 @@ int main() {
 
 
     int a;
-        printf("\nTime1_standard = \n {");
+        printf("\nTime_gcc3_standard = \n {");
         for (a=0; a<sz_time;a++){
             if(a == sz_time-1){
                 printf("%.10f",Time_standard[a]);
             }
             else{
                 printf("%.10f, ",Time_standard[a]);
+            }
+        }
+        printf("};\n");
+        printf("\nTime_gcc3_par_standard = \n {");
+        for (a=0; a<sz_time;a++){
+            if(a == sz_time-1){
+                printf("%.10f",Time_par_standard[a]);
+            }
+            else{
+                printf("%.10f, ",Time_par_standard[a]);
             }
         }
         printf("};\n");

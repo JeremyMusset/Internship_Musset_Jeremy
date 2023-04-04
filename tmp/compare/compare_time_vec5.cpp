@@ -62,7 +62,7 @@ int main() {
     for (k = VSize.begin(); k != VSize.end(); k++){  
         // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
-        compare_dot_prod_fma(*k, cond, nb_gen,sum,Time,Error,3,8);
+        compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
 
         // Gbytes / s
         // double qtt;
@@ -84,7 +84,7 @@ int main() {
 
 
     int a;
-        printf("\nTime5_standard = \n {");
+        printf("\nTime_in2_standard = \n {");
         for (a=0; a<sz_time;a++){
             if(a == sz_time-1){
                 printf("%.10f",Time_standard[a]);
@@ -95,7 +95,7 @@ int main() {
         }
         printf("};\n");
 
-         printf("\nTime5_par_standard = \n {");
+        printf("\nTime_in2_par_standard = = \n {");
         for (a=0; a<sz_time;a++){
             if(a == sz_time-1){
                 printf("%.10f",Time_par_standard[a]);
@@ -105,6 +105,7 @@ int main() {
             }
         }
         printf("};\n");
+
 
 
     return 0;

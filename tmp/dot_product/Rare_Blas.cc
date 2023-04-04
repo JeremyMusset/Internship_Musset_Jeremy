@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
+#include <limits>
+
 #include <float.h>
 #include <cmath>
 #include <iomanip>
@@ -345,7 +347,8 @@ T FastSum(std::vector<T> x,int n,std::vector<T> q, int L, int cq)
 template < class T >
 void IFastSum(std::vector<T> p, bool allowRec,T &res)
 {
-    int sz = size(p);
+    // int sz = size(p);
+    int sz = p.size();
     res = 0;
     int nb_err,n;             // Non zero errors
     T St,Smax,Splus,Smoins, S1, S2,eplus,emoins, maxErr, tmp1,tmp2;

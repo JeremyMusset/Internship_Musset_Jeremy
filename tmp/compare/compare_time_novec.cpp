@@ -82,7 +82,7 @@ int main() {
 
 
     int a;
-        printf("\nTime_standard = \n {");
+        printf("\nTime_gcc1_standard = \n {");
         for (a=0; a<sz_time;a++){
             if(a == sz_time-1){
                 printf("%.10f",Time_standard[a]);
@@ -93,16 +93,16 @@ int main() {
         }
         printf("};\n\n");
 
-        // printf("\nTime_par_standard = \n {");
-        // for (a=0; a<sz_time;a++){
-        //     if(a == sz_time-1){
-        //         printf("%.10f",Time_par_standard[a]);
-        //     }
-        //     else{
-        //         printf("%.10f, ",Time_par_standard[a]);
-        //     }
-        // }
-        // printf("};\n");
+        printf("\nTime_gcc1_par_standard = \n {");
+        for (a=0; a<sz_time;a++){
+            if(a == sz_time-1){
+                printf("%.10f",Time_par_standard[a]);
+            }
+            else{
+                printf("%.10f, ",Time_par_standard[a]);
+            }
+        }
+        printf("};\n");
 
 
     return 0;

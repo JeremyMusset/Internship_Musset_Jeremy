@@ -445,12 +445,12 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     mpfr_div_si(Err_blaspp,Err_blaspp,nb_gen,MPFR_RNDN);
 
     mpfr_set_d(Error[0], 0, MPFR_RNDN);
-    mpfr_set(Error[1], Err_standard, MPFR_RNDN);
-    mpfr_set(Error[2], Err_common, MPFR_RNDN);
-    mpfr_set(Error[3], Err_par_standard, MPFR_RNDN);
-    mpfr_set(Error[4], Err_par_common, MPFR_RNDN);
-    mpfr_set(Error[5], Err_mkl, MPFR_RNDN);
-    mpfr_set(Error[6], Err_blaspp, MPFR_RNDN);
+    // mpfr_set(Error[1], Err_standard, MPFR_RNDN);
+    // mpfr_set(Error[2], Err_common, MPFR_RNDN);
+    // mpfr_set(Error[3], Err_par_standard, MPFR_RNDN);
+    // mpfr_set(Error[4], Err_par_common, MPFR_RNDN);
+    // mpfr_set(Error[5], Err_mkl, MPFR_RNDN);
+    // mpfr_set(Error[6], Err_blaspp, MPFR_RNDN);
 
     // mpfr_clear(Err_standard);
     // mpfr_clear(Err_common);
@@ -459,6 +459,20 @@ void compare_dot_prod(int n,double required_cond, int nb_gen,  double sum, std::
     // mpfr_clear(Err_mkl);
     // mpfr_clear(Err_blaspp);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -914,6 +928,26 @@ void compare_dot_prod_fma(int n,double required_cond, int nb_gen,  double sum, s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////// TH ///////////////////////////////////////////////////////////////////////////
 
 
@@ -1309,6 +1343,232 @@ void compare_dot_prod_cond(int n,double required_cond, int nb_gen,  double sum, 
 
 
 
+
+template
+void compare_dot_prod_cond_fma<double>(int n,double required_cond, int nb_gen, double sum, std::vector<double> &Error_standard, std::vector<double> &Error_common,std::vector<double> &Error_par_standard, std::vector<double> &Error_par_common, std::vector<double> &Error_mkl, std::vector<double> &Error_blaspp, int q, int nb, int nb_threads);
+
+
+/// @brief give error according to the cond
+/// @tparam T 
+/// @param n size
+/// @param required_cond cond
+/// @param nb_gen nb of gen
+/// @param sum sum
+/// @param Error_standard output
+/// @param Error_common output
+/// @param Error_par_standard output
+/// @param Error_par_common output
+/// @param Error_mkl output
+/// @param Error_blaspp output
+/// @param q position of program
+/// @param nb position into cond vector
+template < class T >
+void compare_dot_prod_cond_fma(int n,double required_cond, int nb_gen,  double sum, std::vector<T> &Error_standard, std::vector<T> &Error_common, std::vector<T> &Error_par_standard, std::vector<T> &Error_par_common, std::vector<T> &Error_mkl, std::vector<T> &Error_blaspp, int q, int nb, int nb_threads){
+
+    // Error
+    mpfr_t Err_standard,Err_common,Err_par_standard,Err_par_common,Err_mkl,Err_blaspp;
+    mpfr_init2(Err_standard, P);
+    mpfr_init2(Err_common, P);
+    mpfr_init2(Err_mkl, P);
+    mpfr_init2(Err_blaspp, P);
+    mpfr_set_d(Err_standard, 0, MPFR_RNDN);
+    mpfr_set_d(Err_common, 0, MPFR_RNDN);
+    mpfr_set_d(Err_mkl, 0, MPFR_RNDN);
+    mpfr_set_d(Err_blaspp, 0, MPFR_RNDN);
+
+    mpfr_init2(Err_par_standard, P);
+    mpfr_init2(Err_par_common, P);
+    mpfr_set_d(Err_par_standard, 0, MPFR_RNDN);
+    mpfr_set_d(Err_par_common, 0, MPFR_RNDN);
+
+
+    class std::vector<double> a(n);
+    class std::vector<double> b(n);
+
+    // We execute dot product on the nb_gen files
+    for (unsigned int l=0;l<nb_gen;l++){
+
+    //////////////////////////////////////////////////////////////////
+    //////////////////////// Data importation ////////////////////////
+    //////////////////////////////////////////////////////////////////
+      
+    class std::vector<double> vec;
+    import_vec(vec,l, q); 
+   
+    // Vectors importation 
+    for (unsigned int i=0;i<n;i++){
+        a[i] = vec[i+1];
+        b[i] = vec[n+1+i]; 
+    }
+
+    double res_standard,res_common,res_par_standard,res_par_common,res_mkl,res_blaspp;
+
+    //////////////////////////////////////////////////////////////////
+    //////////////////////// MPFR_dot product ////////////////////////
+    //////////////////////////////////////////////////////////////////
+    
+    mpfr_t res_mpfr;
+    mpfr_t *a_mpfr = new mpfr_t[n];
+    mpfr_t *b_mpfr = new mpfr_t[n];
+    for (unsigned int i = 0; i < n; i++){
+        mpfr_init2(a_mpfr[i], P);
+        mpfr_set_d(a_mpfr[i], a[i], MPFR_RNDN);
+        mpfr_init2(b_mpfr[i], P);
+        mpfr_set_d(b_mpfr[i], b[i], MPFR_RNDN);
+    } 
+    mpfr_init2(res_mpfr,P);
+    mpfr_set_d(res_mpfr,0,MPFR_RNDN);
+ 
+    dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
+
+
+    ////////////////////////////////////////////////////////////////////
+    //////////////////////// STANDARD DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    res_standard = 0;
+    for (unsigned int j=0; j<n;j++){
+        res_standard = fma(a[j],b[j],res_standard);
+    }
+
+
+    ////////////////////////////////////////////////////////////////////
+    //////////////////////// COMMON DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+
+    res_common = 0.0;
+   
+    res_common = common_dot_prod(a,b,n,1,1);
+
+
+    ////////////////////////////////////////////////////////////////////
+    ////////////////// PARALLEL STANDARD DOT PRODUCT ///////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    res_par_standard = 0.0; 
+    #pragma omp parallel for reduction(+:res_par_standard)
+    for (unsigned int j=0; j<n;j++){
+            res_par_standard = fma(a[j],b[j],res_par_standard);
+    }
+        
+    ////////////////////////////////////////////////////////////////////
+    /////////////////// PARALLEL COMMON DOT PRODUCT ////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    struct timespec start_par_common, end_par_common;
+    res_par_common = 0.0;
+        
+    res_par_common = par_common_dot_prod(a,b,n,1,1,nb_threads);
+    
+
+
+    ////////////////////////////////////////////////////////////////////
+    ///////////////////// MKL DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    res_mkl = 0.0;
+
+    double *abis;
+    abis = (double *) malloc(n*sizeof(double)); 
+    double *bbis;
+    bbis = (double *) malloc(n*sizeof(double)); 
+    for (unsigned int i = 0; i<n;i++){
+        abis[i] = a[i];
+        bbis[i] = b[i];
+    }
+
+    res_mkl = cblas_ddot(n,abis,1,bbis,1);
+
+    
+    ////////////////////////////////////////////////////////////////////
+    ///////////////////// BLASPP DOT PRODUCT ////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    res_blaspp = 0.0;
+    
+    res_blaspp = blas::dot(n,abis,1,bbis,1);
+    
+    
+    
+    // Print results
+    // mpfr_printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.30Rg \n --------------------------------- \n", res_mpfr);
+    // printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
+    // printf ("\n SEQUENTIAL COMMON DOT PRODUCT : \n%.50f \n", res_common);
+       // printf ("\n PARALLEL DOT PRODUCT : \n%.50f \n", res_par_standard);
+    // printf ("\n PARALLEL COMMON DOT PRODUCT : \n%.50f \n", res_par_common);
+    // printf ("\n SEQUENTIAL MKL : \n%.50f \n", res_mkl);  
+    // printf ("\n SEQUENTIAL BLASPP : \n%.50f \n\n", res_blaspp);   
+
+    // Error
+    mpfr_t tmp,tmp2,tmp3,tmp4,tmp5,tmp6;
+    mpfr_init2(tmp, P);
+    mpfr_init2(tmp2, P);
+    mpfr_init2(tmp3, P);
+    mpfr_init2(tmp4, P);
+    mpfr_init2(tmp5, P);
+    mpfr_init2(tmp6, P);
+
+    mpfr_sub_d(tmp4,res_mpfr,res_standard,MPFR_RNDN);
+    mpfr_div(tmp4,tmp4,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp4,tmp4,MPFR_RNDN);
+    mpfr_add(Err_standard, Err_standard,tmp4,MPFR_RNDN);
+
+    mpfr_sub_d(tmp,res_mpfr,res_common,MPFR_RNDN);
+    mpfr_div(tmp,tmp,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp,tmp,MPFR_RNDN);
+    mpfr_add(Err_common, Err_common,tmp,MPFR_RNDN);
+
+    mpfr_sub_d(tmp2,res_mpfr,res_mkl,MPFR_RNDN);
+    mpfr_div(tmp2,tmp2,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp2,tmp2,MPFR_RNDN);
+    mpfr_add(Err_mkl, Err_mkl,tmp2,MPFR_RNDN);
+
+    mpfr_sub_d(tmp3,res_mpfr,res_blaspp,MPFR_RNDN);
+    mpfr_div(tmp3,tmp3,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp3,tmp3,MPFR_RNDN);
+    mpfr_add(Err_blaspp, Err_blaspp,tmp3,MPFR_RNDN);
+
+     mpfr_sub_d(tmp5,res_mpfr,res_par_standard,MPFR_RNDN);
+    mpfr_div(tmp5,tmp5,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp5,tmp5,MPFR_RNDN);
+    mpfr_add(Err_par_standard, Err_par_standard,tmp5,MPFR_RNDN);
+
+    mpfr_sub_d(tmp6,res_mpfr,res_par_common,MPFR_RNDN);
+    mpfr_div(tmp6,tmp6,res_mpfr,MPFR_RNDN);
+    mpfr_abs(tmp6,tmp6,MPFR_RNDN);
+    mpfr_add(Err_par_common, Err_par_common,tmp6,MPFR_RNDN);
+
+    mpfr_clear(tmp);
+    mpfr_clear(tmp2);
+    mpfr_clear(tmp3);
+    mpfr_clear(tmp4);
+    mpfr_clear(tmp5);
+    mpfr_clear(tmp6);
+
+
+    mpfr_div_si(Err_standard,Err_standard,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_common,Err_common,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_par_standard,Err_par_standard,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_par_common,Err_par_common,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_mkl,Err_mkl,nb_gen,MPFR_RNDN);
+    mpfr_div_si(Err_blaspp,Err_blaspp,nb_gen,MPFR_RNDN);
+
+    int indice = nb*nb_gen + l;
+
+     // Save result
+    Error_standard[indice] = mpfr_get_d(Err_standard,MPFR_RNDN);
+    Error_common[indice] = mpfr_get_d(Err_common,MPFR_RNDN);
+    Error_par_standard[indice] = mpfr_get_d(Err_par_standard,MPFR_RNDN);
+    Error_par_common[indice] = mpfr_get_d(Err_par_common,MPFR_RNDN);
+    Error_mkl[indice] = mpfr_get_d(Err_mkl,MPFR_RNDN);
+    Error_blaspp[indice] = mpfr_get_d(Err_blaspp,MPFR_RNDN);
+
+
+    }
+
+    
+}
 
 
 
