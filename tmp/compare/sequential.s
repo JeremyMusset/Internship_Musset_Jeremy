@@ -28,39 +28,39 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	pushq	%r13
 	pushq	%r12
 	pushq	%rbx
-	subq	$904, %rsp                      # imm = 0x388
+	subq	$920, %rsp                      # imm = 0x398
 	.cfi_offset %rbx, -56
 	.cfi_offset %r12, -48
 	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
-	movl	%r8d, -172(%rbp)                # 4-byte Spill
+	movl	%r8d, -180(%rbp)                # 4-byte Spill
 	movq	%rcx, -80(%rbp)                 # 8-byte Spill
-	movq	%rdx, -456(%rbp)                # 8-byte Spill
+	movq	%rdx, -472(%rbp)                # 8-byte Spill
                                         # kill: def $esi killed $esi def $rsi
-	movq	%rsi, -136(%rbp)                # 8-byte Spill
+	movq	%rsi, -144(%rbp)                # 8-byte Spill
 	movl	%edi, %r14d
-	leaq	-560(%rbp), %rdi
+	leaq	-576(%rbp), %rdi
 	movl	$4000, %esi                     # imm = 0xFA0
 	callq	mpfr_init2
-	leaq	-720(%rbp), %rbx
+	leaq	-736(%rbp), %rbx
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbx, %rdi
 	callq	mpfr_init2
-	leaq	-688(%rbp), %r15
+	leaq	-704(%rbp), %r15
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%r15, %rdi
 	callq	mpfr_init2
-	leaq	-944(%rbp), %r12
+	leaq	-960(%rbp), %r12
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%r12, %rdi
 	callq	mpfr_init2
-	leaq	-912(%rbp), %r13
+	leaq	-928(%rbp), %r13
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%r13, %rdi
 	callq	mpfr_init2
 	vxorpd	%xmm0, %xmm0, %xmm0
-	leaq	-560(%rbp), %rdi
+	leaq	-576(%rbp), %rdi
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 	vxorpd	%xmm0, %xmm0, %xmm0
@@ -83,7 +83,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	testl	%ebx, %ebx
 	js	.LBB0_136
 # %bb.1:
-	movq	%rbx, -88(%rbp)                 # 8-byte Spill
+	movq	%rbx, -136(%rbp)                # 8-byte Spill
 	je	.LBB0_7
 # %bb.2:
 	movslq	%ebx, %r13
@@ -102,7 +102,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	xorl	%esi, %esi
 	callq	_intel_fast_memset@PLT
 	movq	%r15, %r12
-	movq	-88(%rbp), %rbx                 # 8-byte Reload
+	movq	-136(%rbp), %rbx                # 8-byte Reload
 .LBB0_4:
 .Ltmp0:
 	movq	%r14, %rdi
@@ -120,10 +120,12 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .LBB0_7:
 	xorl	%r13d, %r13d
 	xorl	%ebx, %ebx
-	movq	$0, -64(%rbp)                   # 8-byte Folded Spill
-	movq	$0, -72(%rbp)                   # 8-byte Folded Spill
+	xorl	%eax, %eax
+	movq	%rax, -64(%rbp)                 # 8-byte Spill
+	xorl	%eax, %eax
+	movq	%rax, -72(%rbp)                 # 8-byte Spill
 	movq	-80(%rbp), %r15                 # 8-byte Reload
-	cmpl	$0, -136(%rbp)                  # 4-byte Folded Reload
+	cmpl	$0, -144(%rbp)                  # 4-byte Folded Reload
 	jne	.LBB0_11
 .LBB0_8:
 	vxorpd	%xmm0, %xmm0, %xmm0
@@ -139,65 +141,66 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	movq	-48(%rbp), %rbx                 # 8-byte Reload
 	movq	-80(%rbp), %r15                 # 8-byte Reload
 	movq	%r12, %r13
-	cmpl	$0, -136(%rbp)                  # 4-byte Folded Reload
+	cmpl	$0, -144(%rbp)                  # 4-byte Folded Reload
 	je	.LBB0_8
 .LBB0_11:
-	movq	-88(%rbp), %r15                 # 8-byte Reload
+	movq	-136(%rbp), %r15                # 8-byte Reload
 	movl	%r15d, %edx
-	movq	%r13, -168(%rbp)                # 8-byte Spill
+	movq	%r13, -176(%rbp)                # 8-byte Spill
 	subq	%rbx, %r13
 	movq	%r13, %rax
 	sarq	$3, %rax
-	movq	%rax, -160(%rbp)                # 8-byte Spill
+	movq	%rax, -168(%rbp)                # 8-byte Spill
 	movq	-72(%rbp), %r12                 # 8-byte Reload
 	movq	-64(%rbp), %rcx                 # 8-byte Reload
 	subq	%rcx, %r12
 	movq	%r12, %rax
 	sarq	$3, %rax
-	movq	%rax, -152(%rbp)                # 8-byte Spill
+	movq	%rax, -160(%rbp)                # 8-byte Spill
 	movl	%edx, %esi
 	andl	$-4, %esi
-	movq	%rdx, -144(%rbp)                # 8-byte Spill
+	movq	%rdx, -152(%rbp)                # 8-byte Spill
                                         # kill: def $edx killed $edx killed $rdx def $rdx
 	andl	$3, %edx
-	movq	%rdx, -496(%rbp)                # 8-byte Spill
+	movq	%rdx, -512(%rbp)                # 8-byte Spill
 	movl	%r15d, %eax
 	andl	$-4, %eax
 	addl	%r15d, %eax
 	incl	%eax
-	movq	%rax, -488(%rbp)                # 8-byte Spill
+	movq	%rax, -504(%rbp)                # 8-byte Spill
 	leaq	(%rcx,%rsi,8), %rax
-	movq	%rax, -480(%rbp)                # 8-byte Spill
+	movq	%rax, -496(%rbp)                # 8-byte Spill
 	leaq	1(%rsi), %rax
-	movq	%rax, -464(%rbp)                # 8-byte Spill
-	movq	%rsi, -504(%rbp)                # 8-byte Spill
+	movq	%rax, -480(%rbp)                # 8-byte Spill
+	movq	%rsi, -520(%rbp)                # 8-byte Spill
 	leaq	(%rbx,%rsi,8), %rax
-	movq	%rax, -472(%rbp)                # 8-byte Spill
+	movq	%rax, -488(%rbp)                # 8-byte Spill
 	xorl	%esi, %esi
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, -432(%rbp)               # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, -416(%rbp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, -400(%rbp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vxorpd	%xmm1, %xmm1, %xmm1
 	movq	%rbx, -48(%rbp)                 # 8-byte Spill
 	jmp	.LBB0_13
 	.p2align	4, 0x90
 .LBB0_12:                               #   in Loop: Header=BB0_13 Depth=1
-	vcvtsi2sd	%r14, %xmm1, %xmm0
-	vcvtsi2sd	%r15, %xmm1, %xmm1
-	vmovupd	-752(%rbp), %xmm2               # 16-byte Reload
+	vmovdqu	-768(%rbp), %xmm0               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm0, %xmm2, %xmm0
-	vmovupd	-736(%rbp), %xmm2               # 16-byte Reload
+	vpsubq	-752(%rbp), %xmm0, %xmm0        # 16-byte Folded Reload
+	vcvtqq2pd	%xmm0, %xmm0
+	vmovupd	-400(%rbp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm1, %xmm2, %xmm1
-	movq	-512(%rbp), %rsi                # 8-byte Reload
+	vaddpd	%xmm0, %xmm1, %xmm1
+	vmovupd	%xmm1, -400(%rbp)               # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
+	movq	-528(%rbp), %rsi                # 8-byte Reload
 	incl	%esi
-	cmpl	-136(%rbp), %esi                # 4-byte Folded Reload
-	movq	-88(%rbp), %r15                 # 8-byte Reload
+	cmpl	-144(%rbp), %esi                # 4-byte Folded Reload
 	je	.LBB0_109
 .LBB0_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_17 Depth 2
@@ -206,29 +209,25 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
                                         #     Child Loop BB0_43 Depth 2
                                         #     Child Loop BB0_60 Depth 2
                                         #     Child Loop BB0_77 Depth 2
-	vmovupd	%xmm1, -736(%rbp)               # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	vmovupd	%xmm0, -752(%rbp)               # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, -448(%rbp)               # AlignMOV convert to UnAlignMOV 
-	movq	$0, -432(%rbp)
+	vmovupd	%xmm0, -464(%rbp)               # AlignMOV convert to UnAlignMOV 
+	movq	$0, -448(%rbp)
 .Ltmp3:
-	leaq	-448(%rbp), %rdi
-	movq	%rsi, -512(%rbp)                # 8-byte Spill
+	leaq	-464(%rbp), %rdi
+	movq	%rsi, -528(%rbp)                # 8-byte Spill
                                         # kill: def $esi killed $esi killed $rsi
-	movl	-172(%rbp), %edx                # 4-byte Reload
+	movl	-180(%rbp), %edx                # 4-byte Reload
 	callq	_Z10import_vecIdEvRSt6vectorIT_SaIS1_EEji
 .Ltmp4:
 # %bb.14:                               #   in Loop: Header=BB0_13 Depth=1
 	testl	%r15d, %r15d
 	je	.LBB0_28
 # %bb.15:                               #   in Loop: Header=BB0_13 Depth=1
-	movq	-448(%rbp), %rax
+	movq	-464(%rbp), %rax
 	cmpl	$4, %r15d
 	movq	-64(%rbp), %rsi                 # 8-byte Reload
-	movq	-144(%rbp), %rdi                # 8-byte Reload
-	movq	-504(%rbp), %r8                 # 8-byte Reload
+	movq	-152(%rbp), %rdi                # 8-byte Reload
+	movq	-520(%rbp), %r8                 # 8-byte Reload
 	jb	.LBB0_18
 # %bb.16:                               #   in Loop: Header=BB0_13 Depth=1
 	xorl	%ecx, %ecx
@@ -262,13 +261,13 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	jne	.LBB0_17
 .LBB0_18:                               #   in Loop: Header=BB0_13 Depth=1
 	cmpq	%rdi, %r8
-	movq	-496(%rbp), %r8                 # 8-byte Reload
-	movq	-488(%rbp), %r9                 # 8-byte Reload
-	movq	-480(%rbp), %r10                # 8-byte Reload
-	movq	-472(%rbp), %rbx                # 8-byte Reload
+	movq	-512(%rbp), %r8                 # 8-byte Reload
+	movq	-504(%rbp), %r9                 # 8-byte Reload
+	movq	-496(%rbp), %r10                # 8-byte Reload
+	movq	-488(%rbp), %rbx                # 8-byte Reload
 	jae	.LBB0_21
 # %bb.19:                               #   in Loop: Header=BB0_13 Depth=1
-	movq	-464(%rbp), %rcx                # 8-byte Reload
+	movq	-480(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rcx
 	xorl	%edx, %edx
 	.p2align	4, 0x90
@@ -293,7 +292,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	subq	%rax, %r15
 	movq	%r15, %rsp
 	movq	%r15, -56(%rbp)                 # 8-byte Spill
-	movq	%r14, -96(%rbp)                 # 8-byte Spill
+	movq	%r14, -88(%rbp)                 # 8-byte Spill
 	xorl	%ebx, %ebx
 	.p2align	4, 0x90
 .LBB0_22:                               #   Parent Loop BB0_13 Depth=1
@@ -329,20 +328,20 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	incq	%rbx
 	addq	$32, %r14
 	addq	$32, %r15
-	cmpq	%rbx, -144(%rbp)                # 8-byte Folded Reload
+	cmpq	%rbx, -152(%rbp)                # 8-byte Folded Reload
 	jne	.LBB0_22
 # %bb.27:                               #   in Loop: Header=BB0_13 Depth=1
 	movq	-48(%rbp), %rbx                 # 8-byte Reload
-	movq	-88(%rbp), %r15                 # 8-byte Reload
+	movq	-136(%rbp), %r15                # 8-byte Reload
 	jmp	.LBB0_29
 	.p2align	4, 0x90
 .LBB0_28:                               #   in Loop: Header=BB0_13 Depth=1
 	movq	%rsp, -376(%rbp)                # 8-byte Spill
 	movq	%rsp, %rcx
-	movq	-144(%rbp), %rax                # 8-byte Reload
+	movq	-152(%rbp), %rax                # 8-byte Reload
 	shlq	$5, %rax
 	subq	%rax, %rcx
-	movq	%rcx, -96(%rbp)                 # 8-byte Spill
+	movq	%rcx, -88(%rbp)                 # 8-byte Spill
 	movq	%rcx, %rsp
 	movq	%rsp, %rcx
 	subq	%rax, %rcx
@@ -363,11 +362,11 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp18:
 # %bb.31:                               #   in Loop: Header=BB0_13 Depth=1
 	xorl	%edi, %edi
-	leaq	-880(%rbp), %rsi
+	leaq	-896(%rbp), %rsi
 	callq	clock_gettime
 .Ltmp20:
 	movl	%r15d, %edi
-	movq	-96(%rbp), %r14                 # 8-byte Reload
+	movq	-88(%rbp), %r14                 # 8-byte Reload
 	movq	%r14, %rsi
 	movq	-56(%rbp), %rdx                 # 8-byte Reload
 	leaq	-128(%rbp), %rcx
@@ -447,18 +446,18 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp39:
 # %bb.41:                               #   in Loop: Header=BB0_13 Depth=1
 	xorl	%edi, %edi
-	leaq	-864(%rbp), %rsi
+	leaq	-880(%rbp), %rsi
 	callq	clock_gettime
-	movq	-856(%rbp), %rax
-	subq	-872(%rbp), %rax
-	vcvtsi2sd	%rax, %xmm3, %xmm0
-	vmovupd	-416(%rbp), %xmm1               # 16-byte Reload
+	movq	-872(%rbp), %rax
+	subq	-888(%rbp), %rax
+	vcvtsi2sd	%rax, %xmm2, %xmm0
+	vmovupd	-432(%rbp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm1, %xmm1
-	vmovupd	%xmm1, -416(%rbp)               # 16-byte Spill
+	vmovupd	%xmm1, -432(%rbp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
-	leaq	-848(%rbp), %rsi
+	leaq	-864(%rbp), %rsi
 	callq	clock_gettime
 	movl	$10, %r14d
 	jmp	.LBB0_43
@@ -471,7 +470,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, -368(%rbp)               # AlignMOV convert to UnAlignMOV 
 	movq	$0, -352(%rbp)
-	cmpq	%rbx, -168(%rbp)                # 8-byte Folded Reload
+	cmpq	%rbx, -176(%rbp)                # 8-byte Folded Reload
 	je	.LBB0_47
 # %bb.44:                               #   in Loop: Header=BB0_43 Depth=2
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
@@ -485,7 +484,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 # %bb.46:                               #   in Loop: Header=BB0_43 Depth=2
 	movq	%rax, -368(%rbp)
 	movq	%rbx, %rsi
-	movq	-160(%rbp), %rcx                # 8-byte Reload
+	movq	-168(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -352(%rbp)
 	movq	%rax, %rdi
@@ -515,7 +514,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp48:
 # %bb.51:                               #   in Loop: Header=BB0_43 Depth=2
 	movq	%rax, -336(%rbp)
-	movq	-152(%rbp), %rcx                # 8-byte Reload
+	movq	-160(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -320(%rbp)
 	movq	%rax, %rdi
@@ -555,18 +554,18 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	.p2align	4, 0x90
 .LBB0_58:                               #   in Loop: Header=BB0_13 Depth=1
 	xorl	%edi, %edi
-	leaq	-832(%rbp), %rsi
+	leaq	-848(%rbp), %rsi
 	callq	clock_gettime
-	movq	-824(%rbp), %rax
-	subq	-840(%rbp), %rax
+	movq	-840(%rbp), %rax
+	subq	-856(%rbp), %rax
 	vcvtsi2sd	%rax, %xmm2, %xmm0
-	vmovupd	-400(%rbp), %xmm1               # 16-byte Reload
+	vmovupd	-416(%rbp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm1, %xmm1
-	vmovupd	%xmm1, -400(%rbp)               # 16-byte Spill
+	vmovupd	%xmm1, -416(%rbp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
-	leaq	-816(%rbp), %rsi
+	leaq	-800(%rbp), %rsi
 	callq	clock_gettime
 	movl	$10, %r14d
 	jmp	.LBB0_60
@@ -579,7 +578,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, -304(%rbp)               # AlignMOV convert to UnAlignMOV 
 	movq	$0, -288(%rbp)
-	cmpq	%rbx, -168(%rbp)                # 8-byte Folded Reload
+	cmpq	%rbx, -176(%rbp)                # 8-byte Folded Reload
 	je	.LBB0_64
 # %bb.61:                               #   in Loop: Header=BB0_60 Depth=2
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
@@ -593,7 +592,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 # %bb.63:                               #   in Loop: Header=BB0_60 Depth=2
 	movq	%rax, -304(%rbp)
 	movq	%rbx, %rsi
-	movq	-160(%rbp), %rcx                # 8-byte Reload
+	movq	-168(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -288(%rbp)
 	movq	%rax, %rdi
@@ -623,7 +622,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp63:
 # %bb.68:                               #   in Loop: Header=BB0_60 Depth=2
 	movq	%rax, -272(%rbp)
-	movq	-152(%rbp), %rcx                # 8-byte Reload
+	movq	-160(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -256(%rbp)
 	movq	%rax, %rdi
@@ -642,7 +641,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	leaq	-272(%rbp), %rsi
 	movl	%r15d, %edx
 	callq	_Z25Rare_blas_dot_prod_hybridIdET_St6vectorIS0_SaIS0_EES3_i
-	vmovsd	%xmm0, -96(%rbp)                # 8-byte Spill
+	vmovsd	%xmm0, -88(%rbp)                # 8-byte Spill
 .Ltmp69:
 # %bb.71:                               #   in Loop: Header=BB0_60 Depth=2
 	movq	-272(%rbp), %rdi
@@ -664,7 +663,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	leaq	-784(%rbp), %rsi
 	callq	clock_gettime
 	xorl	%edi, %edi
-	leaq	-800(%rbp), %rsi
+	leaq	-832(%rbp), %rsi
 	callq	clock_gettime
 	movl	$10, %r14d
 	jmp	.LBB0_77
@@ -677,7 +676,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, -240(%rbp)               # AlignMOV convert to UnAlignMOV 
 	movq	$0, -224(%rbp)
-	cmpq	%rbx, -168(%rbp)                # 8-byte Folded Reload
+	cmpq	%rbx, -176(%rbp)                # 8-byte Folded Reload
 	je	.LBB0_81
 # %bb.78:                               #   in Loop: Header=BB0_77 Depth=2
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
@@ -691,7 +690,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 # %bb.80:                               #   in Loop: Header=BB0_77 Depth=2
 	movq	%rax, -240(%rbp)
 	movq	%rbx, %rsi
-	movq	-160(%rbp), %rcx                # 8-byte Reload
+	movq	-168(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -224(%rbp)
 	movq	%rax, %rdi
@@ -721,7 +720,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp78:
 # %bb.85:                               #   in Loop: Header=BB0_77 Depth=2
 	movq	%rax, -208(%rbp)
-	movq	-152(%rbp), %rcx                # 8-byte Reload
+	movq	-160(%rbp), %rcx                # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, -192(%rbp)
 	movq	%rax, %rdi
@@ -740,7 +739,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	leaq	-208(%rbp), %rsi
 	movl	%r15d, %edx
 	callq	_Z25Rare_blas_dot_prod_onlineIdET_St6vectorIS0_SaIS0_EES3_i
-	vmovsd	%xmm0, -520(%rbp)               # 8-byte Spill
+	vmovsd	%xmm0, -536(%rbp)               # 8-byte Spill
 .Ltmp84:
 # %bb.88:                               #   in Loop: Header=BB0_77 Depth=2
 	movq	-208(%rbp), %rdi
@@ -759,41 +758,45 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	.p2align	4, 0x90
 .LBB0_92:                               #   in Loop: Header=BB0_13 Depth=1
 	xorl	%edi, %edi
-	leaq	-768(%rbp), %rsi
+	leaq	-816(%rbp), %rsi
 	callq	clock_gettime
-	movq	-776(%rbp), %r14
-	subq	-808(%rbp), %r14
-	movq	-760(%rbp), %r15
-	subq	-792(%rbp), %r15
+	vpbroadcastq	-776(%rbp), %xmm0
+	vpbroadcastq	-792(%rbp), %xmm1
+	vpinsrq	$1, -808(%rbp), %xmm0, %xmm0
+	vmovdqu	%xmm0, -768(%rbp)               # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
+	vpinsrq	$1, -824(%rbp), %xmm1, %xmm0
+	vmovdqu	%xmm0, -752(%rbp)               # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
 .Ltmp86:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	-656(%rbp), %rdi
+	leaq	-672(%rbp), %rdi
 	callq	mpfr_init2
 .Ltmp87:
 # %bb.93:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp88:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	-624(%rbp), %rdi
+	leaq	-640(%rbp), %rdi
 	callq	mpfr_init2
 .Ltmp89:
 # %bb.94:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp90:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	-592(%rbp), %rdi
+	leaq	-608(%rbp), %rdi
 	callq	mpfr_init2
 .Ltmp91:
 # %bb.95:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp92:
-	leaq	-656(%rbp), %rdi
+	leaq	-672(%rbp), %rdi
 	leaq	-128(%rbp), %rsi
-	vmovsd	-56(%rbp), %xmm0                # 8-byte Reload
+	vmovq	-56(%rbp), %xmm0                # 8-byte Folded Reload
                                         # xmm0 = mem[0],zero
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp93:
 # %bb.96:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp94:
-	leaq	-656(%rbp), %rdi
+	leaq	-672(%rbp), %rdi
 	movq	%rdi, %rsi
 	leaq	-128(%rbp), %rdx
 	xorl	%ecx, %ecx
@@ -801,7 +804,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp95:
 # %bb.97:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp96:
-	leaq	-656(%rbp), %rdi
+	leaq	-672(%rbp), %rdi
 	movq	%rdi, %rsi
 	xorl	%edx, %edx
 	movl	$1, %ecx
@@ -809,24 +812,24 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp97:
 # %bb.98:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp98:
-	leaq	-560(%rbp), %rdi
+	leaq	-576(%rbp), %rdi
 	movq	%rdi, %rsi
-	leaq	-656(%rbp), %rdx
+	leaq	-672(%rbp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp99:
 # %bb.99:                               #   in Loop: Header=BB0_13 Depth=1
 .Ltmp100:
-	leaq	-624(%rbp), %rdi
+	leaq	-640(%rbp), %rdi
 	leaq	-128(%rbp), %rsi
-	vmovsd	-96(%rbp), %xmm0                # 8-byte Reload
+	vmovq	-88(%rbp), %xmm0                # 8-byte Folded Reload
                                         # xmm0 = mem[0],zero
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp101:
 # %bb.100:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp102:
-	leaq	-624(%rbp), %rdi
+	leaq	-640(%rbp), %rdi
 	movq	%rdi, %rsi
 	leaq	-128(%rbp), %rdx
 	xorl	%ecx, %ecx
@@ -834,7 +837,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp103:
 # %bb.101:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp104:
-	leaq	-624(%rbp), %rdi
+	leaq	-640(%rbp), %rdi
 	movq	%rdi, %rsi
 	xorl	%edx, %edx
 	movl	$1, %ecx
@@ -842,24 +845,24 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp105:
 # %bb.102:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp106:
-	leaq	-720(%rbp), %rdi
+	leaq	-736(%rbp), %rdi
 	movq	%rdi, %rsi
-	leaq	-624(%rbp), %rdx
+	leaq	-640(%rbp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp107:
 # %bb.103:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp108:
-	leaq	-592(%rbp), %rdi
+	leaq	-608(%rbp), %rdi
 	leaq	-128(%rbp), %rsi
-	vmovsd	-520(%rbp), %xmm0               # 8-byte Reload
+	vmovq	-536(%rbp), %xmm0               # 8-byte Folded Reload
                                         # xmm0 = mem[0],zero
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp109:
 # %bb.104:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp110:
-	leaq	-592(%rbp), %rdi
+	leaq	-608(%rbp), %rdi
 	movq	%rdi, %rsi
 	leaq	-128(%rbp), %rdx
 	xorl	%ecx, %ecx
@@ -867,7 +870,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp111:
 # %bb.105:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp112:
-	leaq	-592(%rbp), %rdi
+	leaq	-608(%rbp), %rdi
 	movq	%rdi, %rsi
 	xorl	%edx, %edx
 	movl	$1, %ecx
@@ -875,34 +878,33 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp113:
 # %bb.106:                              #   in Loop: Header=BB0_13 Depth=1
 .Ltmp114:
-	leaq	-688(%rbp), %rdi
+	leaq	-704(%rbp), %rdi
 	movq	%rdi, %rsi
-	leaq	-592(%rbp), %rdx
+	leaq	-608(%rbp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp115:
 # %bb.107:                              #   in Loop: Header=BB0_13 Depth=1
 	movq	-376(%rbp), %rsp                # 8-byte Reload
-	movq	-448(%rbp), %rdi
+	movq	-464(%rbp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB0_12
 # %bb.108:                              #   in Loop: Header=BB0_13 Depth=1
 	callq	_ZdlPv
 	jmp	.LBB0_12
 .LBB0_109:
-	vunpcklpd	%xmm1, %xmm0, %xmm0     # xmm0 = xmm0[0],xmm1[0]
-	vmovupd	-416(%rbp), %xmm1               # 16-byte Reload
+	vmovupd	-432(%rbp), %xmm0               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	-400(%rbp), %xmm1, %xmm1 # 16-byte Folded Reload
-                                        # xmm1 = xmm1[0],mem[0]
-	vinsertf128	$1, %xmm0, %ymm1, %ymm0
+	vunpcklpd	-416(%rbp), %xmm0, %xmm0 # 16-byte Folded Reload
+                                        # xmm0 = xmm0[0],mem[0]
+	vinsertf128	$1, -400(%rbp), %ymm0, %ymm0 # 16-byte Folded Reload
 	movq	-80(%rbp), %r15                 # 8-byte Reload
 .LBB0_110:
-	movq	-136(%rbp), %rcx                # 8-byte Reload
+	movq	-144(%rbp), %rcx                # 8-byte Reload
 	leal	(%rcx,%rcx), %eax
 	leal	(%rax,%rax,4), %eax
-	vcvtsi2sd	%eax, %xmm3, %xmm1
-	movq	-456(%rbp), %rax                # 8-byte Reload
+	vcvtsi2sd	%eax, %xmm2, %xmm1
+	movq	-472(%rbp), %rax                # 8-byte Reload
 	movq	(%rax), %rax
 	vmovsd	.LCPI0_0(%rip), %xmm2           # xmm2 = mem[0],zero
 	vdivsd	%xmm1, %xmm2, %xmm1
@@ -913,7 +915,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 	vmovupd	%xmm0, 32(%rax)
 	movslq	%ecx, %r14
 .Ltmp117:
-	leaq	-560(%rbp), %rdi
+	leaq	-576(%rbp), %rdi
 	movq	%rdi, %rsi
 	movq	%r14, %rdx
 	xorl	%ecx, %ecx
@@ -922,7 +924,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp118:
 # %bb.111:
 .Ltmp119:
-	leaq	-720(%rbp), %rdi
+	leaq	-736(%rbp), %rdi
 	movq	%rdi, %rsi
 	movq	%r14, %rdx
 	xorl	%ecx, %ecx
@@ -930,7 +932,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp120:
 # %bb.112:
 .Ltmp121:
-	leaq	-688(%rbp), %rdi
+	leaq	-704(%rbp), %rdi
 	movq	%rdi, %rsi
 	movq	%r14, %rdx
 	xorl	%ecx, %ecx
@@ -946,45 +948,45 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 # %bb.114:
 	movq	(%r15), %rdi
 	addq	$32, %rdi
-	movl	-552(%rbp), %ecx
+	movl	-568(%rbp), %ecx
 .Ltmp125:
-	leaq	-560(%rbp), %rsi
+	leaq	-576(%rbp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp126:
 # %bb.115:
 	movq	(%r15), %rdi
 	addq	$64, %rdi
-	movl	-712(%rbp), %ecx
+	movl	-728(%rbp), %ecx
 .Ltmp127:
-	leaq	-720(%rbp), %rsi
+	leaq	-736(%rbp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp128:
 # %bb.116:
 	movq	(%r15), %rdi
 	addq	$96, %rdi
-	movl	-680(%rbp), %ecx
+	movl	-696(%rbp), %ecx
 .Ltmp129:
-	leaq	-688(%rbp), %rsi
+	leaq	-704(%rbp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp130:
 # %bb.117:
 	movq	(%r15), %rdi
 	subq	$-128, %rdi
-	movl	-936(%rbp), %ecx
+	movl	-952(%rbp), %ecx
 .Ltmp131:
-	leaq	-944(%rbp), %rsi
+	leaq	-960(%rbp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp132:
 # %bb.118:
 	movl	$160, %edi
 	addq	(%r15), %rdi
-	movl	-904(%rbp), %ecx
+	movl	-920(%rbp), %ecx
 .Ltmp133:
-	leaq	-912(%rbp), %rsi
+	leaq	-928(%rbp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp134:
@@ -1120,7 +1122,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp14:
 	movq	%rax, %r15
 	movq	-48(%rbp), %rbx                 # 8-byte Reload
-	movq	-448(%rbp), %rdi
+	movq	-464(%rbp), %rdi
 	testq	%rdi, %rdi
 	jne	.LBB0_176
 	jmp	.LBB0_173
@@ -1162,7 +1164,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .LBB0_169:
 	callq	_ZdlPv
 .LBB0_172:
-	movq	-448(%rbp), %rdi
+	movq	-464(%rbp), %rdi
 	testq	%rdi, %rdi
 	jne	.LBB0_176
 .LBB0_173:
@@ -1179,7 +1181,7 @@ _Z12seq_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEi: #
 .Ltmp46:
 .LBB0_171:
 	movq	%rax, %r15
-	movq	-448(%rbp), %rdi
+	movq	-464(%rbp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB0_173
 .LBB0_176:

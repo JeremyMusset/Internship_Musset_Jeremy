@@ -93,7 +93,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 	testl	%r14d, %r14d
-	js	.LBB0_333
+	js	.LBB0_330
 # %bb.1:
 	movslq	%r14d, %rax
 	movq	%r14, 16(%rsp)                  # 8-byte Spill
@@ -137,10 +137,10 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 .Ltmp1:
 # %bb.7:
 	movq	%rax, %r14
+	leaq	8(%rax), %rdi
 	movq	%rax, 352(%rsp)
 	movq	96(%rsp), %rax                  # 8-byte Reload
 	leaq	(%r14,%rax,8), %rbp
-	leaq	8(%r14), %rdi
 	movq	%rbp, 368(%rsp)
 	movq	$0, (%r14)
 	cmpl	$1, 16(%rsp)                    # 4-byte Folded Reload
@@ -155,7 +155,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 .LBB0_9:
 	movq	%rdi, 360(%rsp)
 	cmpl	$0, 376(%rsp)                   # 4-byte Folded Reload
-	je	.LBB0_303
+	je	.LBB0_300
 # %bb.10:
 	movq	%rax, %r15
 	shlq	$5, %r15
@@ -183,16 +183,16 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	1(%rdx), %rax
 	movq	%rax, 784(%rsp)                 # 8-byte Spill
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 720(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 704(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm2, %xmm2, %xmm2
 	vxorpd	%xmm5, %xmm5, %xmm5
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 704(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 688(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 688(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 720(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm3, %xmm3, %xmm3
 	xorl	%esi, %esi
@@ -202,28 +202,28 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	.p2align	4, 0x90
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=1
 	vcvtsi2sdq	656(%rsp), %xmm4, %xmm8 # 8-byte Folded Reload
-	vcvtsi2sdq	640(%rsp), %xmm4, %xmm0 # 8-byte Folded Reload
-	vcvtsi2sdq	624(%rsp), %xmm4, %xmm2 # 8-byte Folded Reload
-	vcvtsi2sdq	384(%rsp), %xmm4, %xmm3 # 8-byte Folded Reload
+	vcvtsi2sdq	640(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
+	vcvtsi2sdq	624(%rsp), %xmm4, %xmm10 # 8-byte Folded Reload
+	vcvtsi2sdq	384(%rsp), %xmm4, %xmm11 # 8-byte Folded Reload
 	vcvtsi2sdq	848(%rsp), %xmm4, %xmm12 # 8-byte Folded Reload
 	vcvtsi2sdq	88(%rsp), %xmm4, %xmm13 # 8-byte Folded Reload
 	vcvtsi2sdq	160(%rsp), %xmm4, %xmm14 # 8-byte Folded Reload
 	vcvtsi2sdq	840(%rsp), %xmm4, %xmm15 # 8-byte Folded Reload
-	vcvtsi2sdq	832(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
-	vcvtsi2sdq	824(%rsp), %xmm4, %xmm1 # 8-byte Folded Reload
-	vcvtsi2sd	%r13, %xmm4, %xmm10
-	vcvtsi2sd	%r15, %xmm4, %xmm11
+	vcvtsi2sdq	832(%rsp), %xmm4, %xmm16 # 8-byte Folded Reload
+	vcvtsi2sdq	824(%rsp), %xmm4, %xmm17 # 8-byte Folded Reload
+	vcvtsi2sd	%r13, %xmm4, %xmm18
+	vcvtsi2sd	%r15, %xmm4, %xmm19
 	vcvtsi2sd	%r12, %xmm4, %xmm4
 	vcvtsi2sd	%rbx, %xmm5, %xmm5
 	vcvtsi2sd	%rbp, %xmm6, %xmm6
 	vcvtsi2sd	%r14, %xmm7, %xmm7
-	vminsd	%xmm0, %xmm8, %xmm8
-	vminsd	%xmm3, %xmm2, %xmm0
-	vminsd	%xmm0, %xmm8, %xmm0
+	vminsd	%xmm8, %xmm9, %xmm0
+	vminsd	%xmm11, %xmm10, %xmm1
+	vminsd	%xmm1, %xmm0, %xmm0
 	vminsd	%xmm0, %xmm12, %xmm0
-	vmovupd	688(%rsp), %xmm2                # 16-byte Reload
+	vmovupd	720(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	%xmm0, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm0[0]
+	vunpcklpd	%xmm0, %xmm1, %xmm0     # xmm0 = xmm1[0],xmm0[0]
 	vmovupd	1072(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddpd	%xmm3, %xmm0, %xmm3
@@ -231,13 +231,13 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm2, %xmm13, %xmm2
 	vminsd	%xmm14, %xmm15, %xmm0
-	vminsd	%xmm1, %xmm9, %xmm1
+	vminsd	%xmm17, %xmm16, %xmm1
 	vminsd	%xmm1, %xmm0, %xmm0
-	vminsd	%xmm0, %xmm10, %xmm0
+	vminsd	%xmm0, %xmm18, %xmm0
 	vmovupd	1088(%rsp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm1, %xmm0, %xmm1
-	vminsd	%xmm4, %xmm11, %xmm0
+	vminsd	%xmm19, %xmm4, %xmm0
 	vminsd	%xmm0, %xmm5, %xmm0
 	vminsd	%xmm0, %xmm6, %xmm0
 	vminsd	%xmm0, %xmm7, %xmm0
@@ -249,38 +249,38 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpl	376(%rsp), %esi                 # 4-byte Folded Reload
 	movq	816(%rsp), %r15                 # 8-byte Reload
 	movq	216(%rsp), %r12                 # 8-byte Reload
-	je	.LBB0_304
+	je	.LBB0_301
 .LBB0_12:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
                                         #     Child Loop BB0_19 Depth 2
                                         #     Child Loop BB0_24 Depth 2
                                         #     Child Loop BB0_34 Depth 2
-                                        #     Child Loop BB0_41 Depth 2
-                                        #     Child Loop BB0_45 Depth 2
-                                        #     Child Loop BB0_49 Depth 2
-                                        #     Child Loop BB0_53 Depth 2
-                                        #     Child Loop BB0_57 Depth 2
-                                        #     Child Loop BB0_61 Depth 2
-                                        #     Child Loop BB0_65 Depth 2
-                                        #     Child Loop BB0_69 Depth 2
-                                        #     Child Loop BB0_73 Depth 2
-                                        #     Child Loop BB0_77 Depth 2
-                                        #     Child Loop BB0_95 Depth 2
-                                        #     Child Loop BB0_210 Depth 2
-                                        #     Child Loop BB0_212 Depth 2
-                                        #     Child Loop BB0_214 Depth 2
+                                        #     Child Loop BB0_40 Depth 2
+                                        #     Child Loop BB0_44 Depth 2
+                                        #     Child Loop BB0_48 Depth 2
+                                        #     Child Loop BB0_52 Depth 2
+                                        #     Child Loop BB0_56 Depth 2
+                                        #     Child Loop BB0_60 Depth 2
+                                        #     Child Loop BB0_64 Depth 2
+                                        #     Child Loop BB0_68 Depth 2
+                                        #     Child Loop BB0_72 Depth 2
+                                        #     Child Loop BB0_76 Depth 2
+                                        #     Child Loop BB0_94 Depth 2
+                                        #     Child Loop BB0_207 Depth 2
+                                        #     Child Loop BB0_209 Depth 2
+                                        #     Child Loop BB0_211 Depth 2
+                                        #     Child Loop BB0_218 Depth 2
                                         #     Child Loop BB0_221 Depth 2
-                                        #     Child Loop BB0_224 Depth 2
-                                        #     Child Loop BB0_228 Depth 2
-                                        #     Child Loop BB0_232 Depth 2
-                                        #     Child Loop BB0_236 Depth 2
-                                        #     Child Loop BB0_240 Depth 2
-                                        #     Child Loop BB0_244 Depth 2
-                                        #     Child Loop BB0_248 Depth 2
-                                        #     Child Loop BB0_252 Depth 2
-                                        #     Child Loop BB0_256 Depth 2
-                                        #     Child Loop BB0_260 Depth 2
-                                        #     Child Loop BB0_264 Depth 2
+                                        #     Child Loop BB0_225 Depth 2
+                                        #     Child Loop BB0_229 Depth 2
+                                        #     Child Loop BB0_233 Depth 2
+                                        #     Child Loop BB0_237 Depth 2
+                                        #     Child Loop BB0_241 Depth 2
+                                        #     Child Loop BB0_245 Depth 2
+                                        #     Child Loop BB0_249 Depth 2
+                                        #     Child Loop BB0_253 Depth 2
+                                        #     Child Loop BB0_257 Depth 2
+                                        #     Child Loop BB0_261 Depth 2
 	vmovupd	%xmm3, 1072(%rsp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vmovupd	%xmm1, 1088(%rsp)               # 16-byte Spill
@@ -450,12 +450,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	1224(%rsp), %rax
 	subq	1240(%rsp), %rax
 	movq	%rax, 384(%rsp)                 # 8-byte Spill
-	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	movq	216(%rsp), %r12                 # 8-byte Reload
+	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
+	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
 	je	.LBB0_37
 # %bb.33:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rbx
-	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
 	.p2align	4, 0x90
 .LBB0_34:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -473,11 +473,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	addq	$32, %r15
 	decq	%rbx
 	jne	.LBB0_34
-	jmp	.LBB0_38
-	.p2align	4, 0x90
 .LBB0_37:                               #   in Loop: Header=BB0_12 Depth=1
-	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
-.LBB0_38:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1568(%rsp), %rsi
 	callq	clock_gettime
@@ -488,36 +484,36 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	320(%rsp), %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_46
-# %bb.39:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_45
+# %bb.38:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB0_43
-# %bb.40:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_42
+# %bb.39:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_41:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_40:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB0_41
-# %bb.42:                               #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_40
+# %bb.41:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r12, %rdx
-	jne	.LBB0_44
-	jmp	.LBB0_46
+	jne	.LBB0_43
+	jmp	.LBB0_45
 	.p2align	4, 0x90
-.LBB0_43:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_42:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_44:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_43:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_45:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_44:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_45
-.LBB0_46:                               #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_44
+.LBB0_45:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	304(%rsp), %rsi
 	callq	clock_gettime
@@ -529,36 +525,36 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	320(%rsp), %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_54
-# %bb.47:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_53
+# %bb.46:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB0_51
-# %bb.48:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_50
+# %bb.47:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_49:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_48:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB0_49
-# %bb.50:                               #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_48
+# %bb.49:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r12, %rdx
-	jne	.LBB0_52
-	jmp	.LBB0_54
+	jne	.LBB0_51
+	jmp	.LBB0_53
 	.p2align	4, 0x90
-.LBB0_51:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_50:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_52:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_51:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_53:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_52:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_53
-.LBB0_54:                               #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_52
+.LBB0_53:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	304(%rsp), %rsi
 	callq	clock_gettime
@@ -570,36 +566,36 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	320(%rsp), %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_62
-# %bb.55:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_61
+# %bb.54:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB0_59
-# %bb.56:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_58
+# %bb.55:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_57:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_56:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB0_57
-# %bb.58:                               #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_56
+# %bb.57:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r12, %rdx
-	jne	.LBB0_60
-	jmp	.LBB0_62
+	jne	.LBB0_59
+	jmp	.LBB0_61
 	.p2align	4, 0x90
-.LBB0_59:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_58:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_60:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_59:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_61:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_60:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_61
-.LBB0_62:                               #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_60
+.LBB0_61:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	304(%rsp), %rsi
 	callq	clock_gettime
@@ -611,36 +607,36 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	320(%rsp), %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_70
-# %bb.63:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_69
+# %bb.62:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB0_67
-# %bb.64:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_66
+# %bb.63:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_65:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_64:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB0_65
-# %bb.66:                               #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_64
+# %bb.65:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r12, %rdx
-	jne	.LBB0_68
-	jmp	.LBB0_70
+	jne	.LBB0_67
+	jmp	.LBB0_69
 	.p2align	4, 0x90
-.LBB0_67:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_66:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_68:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_67:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_69:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_68:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_69
-.LBB0_70:                               #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_68
+.LBB0_69:                               #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	304(%rsp), %rsi
 	callq	clock_gettime
@@ -652,50 +648,50 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	320(%rsp), %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_75
-# %bb.71:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_74
+# %bb.70:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	testq	%rcx, %rcx
-	je	.LBB0_76
-# %bb.72:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_75
+# %bb.71:                               #   in Loop: Header=BB0_12 Depth=1
 	vpxor	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	movq	104(%rsp), %rdx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB0_73:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_72:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rdx,%rax,8), %ymm1
 	vfmadd231pd	(%r15,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB0_73
-# %bb.74:                               #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_72
+# %bb.73:                               #   in Loop: Header=BB0_12 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rcx, %rax
 	cmpq	%r12, %rcx
-	jne	.LBB0_77
-	jmp	.LBB0_78
+	jne	.LBB0_76
+	jmp	.LBB0_77
+	.p2align	4, 0x90
+.LBB0_74:                               #   in Loop: Header=BB0_12 Depth=1
+	vxorpd	%xmm1, %xmm1, %xmm1
+	jmp	.LBB0_77
 	.p2align	4, 0x90
 .LBB0_75:                               #   in Loop: Header=BB0_12 Depth=1
-	vxorpd	%xmm1, %xmm1, %xmm1
-	jmp	.LBB0_78
-	.p2align	4, 0x90
-.LBB0_76:                               #   in Loop: Header=BB0_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	movq	104(%rsp), %rdx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB0_77:                               #   Parent Loop BB0_12 Depth=1
+.LBB0_76:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rdx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r15,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %r12
-	jne	.LBB0_77
-.LBB0_78:                               #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_76
+.LBB0_77:                               #   in Loop: Header=BB0_12 Depth=1
 	vmovsd	%xmm1, 856(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	304(%rsp), %rsi
@@ -717,16 +713,16 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovdqu	%xmm0, 576(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 592(%rsp)
 	subq	%r15, %r14
-	je	.LBB0_82
-# %bb.79:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_81
+# %bb.78:                               #   in Loop: Header=BB0_12 Depth=1
 	cmpq	%r13, %r14
-	ja	.LBB0_325
-# %bb.80:                               #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_322
+# %bb.79:                               #   in Loop: Header=BB0_12 Depth=1
 .Ltmp32:
 	movq	%r14, %rdi
 	callq	_Znwm
 .Ltmp33:
-# %bb.81:                               #   in Loop: Header=BB0_12 Depth=1
+# %bb.80:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 576(%rsp)
 	movq	%rax, 584(%rsp)
 	leaq	(%rax,%r12,8), %rbx
@@ -735,12 +731,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r15, %rsi
 	movq	%r14, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_83
+	jmp	.LBB0_82
 	.p2align	4, 0x90
-.LBB0_82:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_81:                               #   in Loop: Header=BB0_12 Depth=1
 	leaq	(,%r12,8), %rbx
 	movq	%rbx, 592(%rsp)
-.LBB0_83:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_82:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	360(%rsp), %rcx
 	movq	%rcx, %rbp
 	movq	104(%rsp), %rax                 # 8-byte Reload
@@ -754,17 +750,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	$0, 560(%rsp)
 	subq	%rax, %rbx
 	movq	%rbx, 128(%rsp)                 # 8-byte Spill
-	je	.LBB0_87
-# %bb.84:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_86
+# %bb.83:                               #   in Loop: Header=BB0_12 Depth=1
 	cmpq	%r13, %rbx
-	ja	.LBB0_327
-# %bb.85:                               #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_324
+# %bb.84:                               #   in Loop: Header=BB0_12 Depth=1
 .Ltmp38:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp39:
 	movq	%rbx, %rdx
-# %bb.86:                               #   in Loop: Header=BB0_12 Depth=1
+# %bb.85:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 544(%rsp)
 	movq	%rax, 552(%rsp)
 	leaq	(%rax,%rbp,8), %rbx
@@ -772,12 +768,13 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%rax, %rdi
 	movq	104(%rsp), %rsi                 # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB0_88
+	jmp	.LBB0_87
 	.p2align	4, 0x90
-.LBB0_87:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_86:                               #   in Loop: Header=BB0_12 Depth=1
 	leaq	(,%rbp,8), %rbx
 	movq	%rbx, 560(%rsp)
-.LBB0_88:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_87:                               #   in Loop: Header=BB0_12 Depth=1
+	movq	%r15, 184(%rsp)                 # 8-byte Spill
 	movq	%rbx, 552(%rsp)
 .Ltmp44:
 	leaq	576(%rsp), %rdi
@@ -788,18 +785,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %r8d
 	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
 .Ltmp45:
-# %bb.89:                               #   in Loop: Header=BB0_12 Depth=1
+# %bb.88:                               #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, 208(%rsp)                 # 8-byte Spill
 	movq	%rbp, 112(%rsp)                 # 8-byte Spill
-	movq	%r15, 184(%rsp)                 # 8-byte Spill
 	vmovdqu	672(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
-	imulq	$1000000000, %rax, %r13         # imm = 0x3B9ACA00
+	imulq	$1000000000, %rax, %r15         # imm = 0x3B9ACA00
 	vmovdqu	160(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
-	imulq	$1000000000, %rax, %r15         # imm = 0x3B9ACA00
+	imulq	$1000000000, %rax, %r13         # imm = 0x3B9ACA00
 	vmovdqu	656(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
@@ -814,61 +810,61 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
 	movq	544(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_91
-# %bb.90:                               #   in Loop: Header=BB0_12 Depth=1
-	movq	%rcx, %rbp
-	movq	%rax, %rbx
+	je	.LBB0_90
+# %bb.89:                               #   in Loop: Header=BB0_12 Depth=1
+	movq	%rax, %rbp
+	movq	%rcx, %rbx
 	movq	%rdx, %r12
 	callq	_ZdlPv
 	movq	%r12, %rdx
-	movq	%rbx, %rax
-	movq	%rbp, %rcx
-.LBB0_91:                               #   in Loop: Header=BB0_12 Depth=1
+	movq	%rbx, %rcx
+	movq	%rbp, %rax
+.LBB0_90:                               #   in Loop: Header=BB0_12 Depth=1
 	vmovdqu	672(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vpextrq	$1, %xmm0, %r12
-	addq	%r13, %r12
+	addq	%r15, %r12
 	vmovdqu	160(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %rbx
-	addq	%r15, %rbx
+	vpextrq	$1, %xmm0, %r15
+	addq	%r13, %r15
 	vmovdqu	656(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %r15
-	addq	%rdx, %r15
+	vpextrq	$1, %xmm0, %rbp
+	addq	%rdx, %rbp
 	vmovdqu	640(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %rbp
+	vpextrq	$1, %xmm0, %rbx
+	addq	%rcx, %rbx
 	vmovdqu	624(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vpextrq	$1, %xmm0, %r13
-	addq	%rcx, %rbp
 	addq	%rax, %r13
 	movq	576(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_93
-# %bb.92:                               #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_92
+# %bb.91:                               #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_93:                               #   in Loop: Header=BB0_12 Depth=1
+.LBB0_92:                               #   in Loop: Header=BB0_12 Depth=1
 	vcvtsi2sdq	384(%rsp), %xmm2, %xmm0 # 8-byte Folded Reload
 	vcvtsi2sd	%r12, %xmm2, %xmm1
-	vcvtsi2sd	%rbx, %xmm2, %xmm2
-	vmovupd	720(%rsp), %xmm3                # 16-byte Reload
+	vcvtsi2sd	%r15, %xmm2, %xmm2
+	vmovupd	704(%rsp), %xmm3                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm3, %xmm3
-	vmovupd	%xmm3, 720(%rsp)                # 16-byte Spill
+	vmovupd	%xmm3, 704(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vminsd	%xmm1, %xmm2, %xmm0
-	vcvtsi2sd	%r15, %xmm4, %xmm1
-	vminsd	%xmm0, %xmm1, %xmm0
 	vcvtsi2sd	%rbp, %xmm4, %xmm1
+	vcvtsi2sd	%rbx, %xmm4, %xmm2
 	vminsd	%xmm0, %xmm1, %xmm0
+	vminsd	%xmm0, %xmm2, %xmm0
 	vcvtsi2sd	%r13, %xmm4, %xmm1
 	vminsd	%xmm0, %xmm1, %xmm0
-	vmovupd	704(%rsp), %xmm1                # 16-byte Reload
+	vmovupd	688(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 704(%rsp)                # 16-byte Spill
+	vmovupd	%xmm1, 688(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	leaq	1536(%rsp), %rsi
@@ -881,107 +877,9 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$5, %r12d
 	movq	184(%rsp), %r13                 # 8-byte Reload
 	movq	104(%rsp), %rbp                 # 8-byte Reload
-	jmp	.LBB0_95
+	jmp	.LBB0_94
 	.p2align	4, 0x90
-.LBB0_94:                               #   in Loop: Header=BB0_95 Depth=2
-	vmovupd	688(%rsp), %xmm1                # 16-byte Reload
-                                        # AlignMOV convert to UnAlignMOV 
-	vminsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 688(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	decl	%r12d
-	je	.LBB0_112
-.LBB0_95:                               #   Parent Loop BB0_12 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xorl	%edi, %edi
-	leaq	1152(%rsp), %rsi
-	callq	clock_gettime
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 512(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 528(%rsp)
-	cmpq	%r13, 344(%rsp)                 # 8-byte Folded Reload
-	je	.LBB0_99
-# %bb.96:                               #   in Loop: Header=BB0_95 Depth=2
-	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	cmpq	%rax, %r14
-	ja	.LBB0_317
-# %bb.97:                               #   in Loop: Header=BB0_95 Depth=2
-.Ltmp47:
-	movq	%r14, %rdi
-	callq	_Znwm
-.Ltmp48:
-# %bb.98:                               #   in Loop: Header=BB0_95 Depth=2
-	movq	%rax, 512(%rsp)
-	movq	%rax, 520(%rsp)
-	movq	208(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 528(%rsp)
-	movq	%rax, %rdi
-	movq	%r13, %rsi
-	movq	%r14, %rdx
-	callq	memmove@PLT
-	jmp	.LBB0_100
-	.p2align	4, 0x90
-.LBB0_99:                               #   in Loop: Header=BB0_95 Depth=2
-	movq	%r15, 528(%rsp)
-	movq	%r15, %rbx
-.LBB0_100:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	%rbx, 520(%rsp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 480(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 496(%rsp)
-	cmpq	%rbp, 88(%rsp)                  # 8-byte Folded Reload
-	je	.LBB0_104
-# %bb.101:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	128(%rsp), %rbx                 # 8-byte Reload
-	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	cmpq	%rax, %rbx
-	ja	.LBB0_319
-# %bb.102:                              #   in Loop: Header=BB0_95 Depth=2
-.Ltmp53:
-	movq	%rbx, %rdi
-	callq	_Znwm
-.Ltmp54:
-# %bb.103:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	%rax, 480(%rsp)
-	movq	%rax, 488(%rsp)
-	movq	%rbx, %rdx
-	movq	112(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 496(%rsp)
-	movq	%rax, %rdi
-	movq	%rbp, %rsi
-	callq	memmove@PLT
-	jmp	.LBB0_105
-	.p2align	4, 0x90
-.LBB0_104:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	160(%rsp), %rbx                 # 8-byte Reload
-	movq	%rbx, 496(%rsp)
-.LBB0_105:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	%rbx, 488(%rsp)
-.Ltmp59:
-	leaq	512(%rsp), %rdi
-	leaq	480(%rsp), %rsi
-	movq	16(%rsp), %rdx                  # 8-byte Reload
-                                        # kill: def $edx killed $edx killed $rdx
-	movl	$1, %ecx
-	movl	$1, %r8d
-	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
-	vmovsd	%xmm0, 672(%rsp)                # 8-byte Spill
-.Ltmp60:
-# %bb.106:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	480(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB0_108
-# %bb.107:                              #   in Loop: Header=BB0_95 Depth=2
-	callq	_ZdlPv
-.LBB0_108:                              #   in Loop: Header=BB0_95 Depth=2
-	movq	512(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB0_110
-# %bb.109:                              #   in Loop: Header=BB0_95 Depth=2
-	callq	_ZdlPv
-.LBB0_110:                              #   in Loop: Header=BB0_95 Depth=2
+.LBB0_93:                               #   in Loop: Header=BB0_94 Depth=2
 	xorl	%edi, %edi
 	leaq	1136(%rsp), %rsi
 	callq	clock_gettime
@@ -993,13 +891,109 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	addq	%rax, %rcx
 	vcvtsi2sd	%rcx, %xmm4, %xmm0
 	cmpl	$5, %r12d
-	jne	.LBB0_94
-# %bb.111:                              #   in Loop: Header=BB0_95 Depth=2
-	vmovupd	%xmm0, 688(%rsp)                # 16-byte Spill
+	sete	%al
+	kmovd	%eax, %k1
+	vmovupd	720(%rsp), %xmm1                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
+	vminsd	%xmm1, %xmm0, %xmm1
+	vmovsd	%xmm0, %xmm1, %xmm1 {%k1}
+	vmovupd	%xmm1, 720(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	decl	%r12d
-	jne	.LBB0_95
-.LBB0_112:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_109
+.LBB0_94:                               #   Parent Loop BB0_12 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xorl	%edi, %edi
+	leaq	1152(%rsp), %rsi
+	callq	clock_gettime
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 512(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 528(%rsp)
+	cmpq	%r13, 344(%rsp)                 # 8-byte Folded Reload
+	je	.LBB0_98
+# %bb.95:                               #   in Loop: Header=BB0_94 Depth=2
+	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
+	cmpq	%rax, %r14
+	ja	.LBB0_314
+# %bb.96:                               #   in Loop: Header=BB0_94 Depth=2
+.Ltmp47:
+	movq	%r14, %rdi
+	callq	_Znwm
+.Ltmp48:
+# %bb.97:                               #   in Loop: Header=BB0_94 Depth=2
+	movq	%rax, 512(%rsp)
+	movq	%rax, 520(%rsp)
+	movq	208(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 528(%rsp)
+	movq	%rax, %rdi
+	movq	%r13, %rsi
+	movq	%r14, %rdx
+	callq	memmove@PLT
+	jmp	.LBB0_99
+	.p2align	4, 0x90
+.LBB0_98:                               #   in Loop: Header=BB0_94 Depth=2
+	movq	%r15, 528(%rsp)
+	movq	%r15, %rbx
+.LBB0_99:                               #   in Loop: Header=BB0_94 Depth=2
+	movq	%rbx, 520(%rsp)
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 480(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 496(%rsp)
+	cmpq	%rbp, 88(%rsp)                  # 8-byte Folded Reload
+	je	.LBB0_103
+# %bb.100:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	128(%rsp), %rbx                 # 8-byte Reload
+	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
+	cmpq	%rax, %rbx
+	ja	.LBB0_316
+# %bb.101:                              #   in Loop: Header=BB0_94 Depth=2
+.Ltmp53:
+	movq	%rbx, %rdi
+	callq	_Znwm
+.Ltmp54:
+# %bb.102:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	%rax, 480(%rsp)
+	movq	%rax, 488(%rsp)
+	movq	%rbx, %rdx
+	movq	112(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 496(%rsp)
+	movq	%rax, %rdi
+	movq	%rbp, %rsi
+	callq	memmove@PLT
+	jmp	.LBB0_104
+	.p2align	4, 0x90
+.LBB0_103:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	160(%rsp), %rbx                 # 8-byte Reload
+	movq	%rbx, 496(%rsp)
+.LBB0_104:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	%rbx, 488(%rsp)
+.Ltmp59:
+	leaq	512(%rsp), %rdi
+	leaq	480(%rsp), %rsi
+	movq	16(%rsp), %rdx                  # 8-byte Reload
+                                        # kill: def $edx killed $edx killed $rdx
+	movl	$1, %ecx
+	movl	$1, %r8d
+	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
+	vmovsd	%xmm0, 672(%rsp)                # 8-byte Spill
+.Ltmp60:
+# %bb.105:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	480(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB0_107
+# %bb.106:                              #   in Loop: Header=BB0_94 Depth=2
+	callq	_ZdlPv
+.LBB0_107:                              #   in Loop: Header=BB0_94 Depth=2
+	movq	512(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB0_93
+# %bb.108:                              #   in Loop: Header=BB0_94 Depth=2
+	callq	_ZdlPv
+	jmp	.LBB0_93
+	.p2align	4, 0x90
+.LBB0_109:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1520(%rsp), %rsi
 	callq	clock_gettime
@@ -1142,19 +1136,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 448(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 464(%rsp)
 	cmpq	%r12, 344(%rsp)                 # 8-byte Folded Reload
-	je	.LBB0_116
-# %bb.113:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_113
+# %bb.110:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r14
-	ja	.LBB0_329
-# %bb.114:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_326
+# %bb.111:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp62:
 	movq	%r14, %rdi
 	callq	_Znwm
 .Ltmp63:
 	movq	104(%rsp), %r13                 # 8-byte Reload
 	movq	160(%rsp), %rbp                 # 8-byte Reload
-# %bb.115:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.112:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 448(%rsp)
 	movq	%rax, 456(%rsp)
 	movq	208(%rsp), %rcx                 # 8-byte Reload
@@ -1164,33 +1158,33 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%r14, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_117
+	jmp	.LBB0_114
 	.p2align	4, 0x90
-.LBB0_116:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_113:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%r15, 464(%rsp)
 	movq	104(%rsp), %r13                 # 8-byte Reload
 	movq	160(%rsp), %rbp                 # 8-byte Reload
-.LBB0_117:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_114:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%r15, 456(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 416(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 432(%rsp)
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movq	%rbx, 848(%rsp)                 # 8-byte Spill
-	je	.LBB0_121
-# %bb.118:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_118
+# %bb.115:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbp                 # 8-byte Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
 	leaq	64(%rsp), %r14
 	leaq	32(%rsp), %r15
-	ja	.LBB0_331
-# %bb.119:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_328
+# %bb.116:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp68:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp69:
-# %bb.120:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.117:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 416(%rsp)
 	movq	%rax, 424(%rsp)
 	movq	112(%rsp), %rcx                 # 8-byte Reload
@@ -1200,14 +1194,14 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r13, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_122
+	jmp	.LBB0_119
 	.p2align	4, 0x90
-.LBB0_121:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_118:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbp, 432(%rsp)
 	movq	%rbp, %rbx
 	leaq	64(%rsp), %r14
 	leaq	32(%rsp), %r15
-.LBB0_122:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_119:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 424(%rsp)
 .Ltmp74:
 	leaq	448(%rsp), %rdi
@@ -1219,19 +1213,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp75:
-# %bb.123:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.120:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	416(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_125
-# %bb.124:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_122
+# %bb.121:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_125:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_122:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	448(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_127
-# %bb.126:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_124
+# %bb.123:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_127:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_124:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	944(%rsp), %rsi
 	callq	clock_gettime
@@ -1243,17 +1237,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r12, %rbp
-	je	.LBB0_131
-# %bb.128:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_128
+# %bb.125:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB0_321
-# %bb.129:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_318
+# %bb.126:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp77:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp78:
-# %bb.130:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.127:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -1262,12 +1256,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_132
+	jmp	.LBB0_129
 	.p2align	4, 0x90
-.LBB0_131:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_128:                              #   in Loop: Header=BB0_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB0_132:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_129:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -1275,17 +1269,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	160(%rsp), %rbx                 # 8-byte Reload
-	je	.LBB0_136
-# %bb.133:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_133
+# %bb.130:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB0_323
-# %bb.134:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_320
+# %bb.131:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp79:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp80:
-# %bb.135:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.132:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -1295,11 +1289,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB0_137
+	jmp	.LBB0_134
 	.p2align	4, 0x90
-.LBB0_136:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_133:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 48(%rsp)
-.LBB0_137:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_134:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp81:
 	movq	%r14, %rdi
@@ -1311,19 +1305,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp82:
-# %bb.138:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.135:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_140
-# %bb.139:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_137
+# %bb.136:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_140:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_137:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_142
-# %bb.141:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_139
+# %bb.138:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_142:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_139:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	264(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r12, %rbx
@@ -1332,17 +1326,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r12, %rbp
-	je	.LBB0_146
-# %bb.143:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_143
+# %bb.140:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB0_321
-# %bb.144:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_318
+# %bb.141:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp83:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp84:
-# %bb.145:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.142:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -1351,12 +1345,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_147
+	jmp	.LBB0_144
 	.p2align	4, 0x90
-.LBB0_146:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_143:                              #   in Loop: Header=BB0_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB0_147:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_144:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -1364,17 +1358,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	160(%rsp), %rbx                 # 8-byte Reload
-	je	.LBB0_151
-# %bb.148:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_148
+# %bb.145:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB0_323
-# %bb.149:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_320
+# %bb.146:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp85:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp86:
-# %bb.150:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.147:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -1384,11 +1378,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB0_152
+	jmp	.LBB0_149
 	.p2align	4, 0x90
-.LBB0_151:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_148:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 48(%rsp)
-.LBB0_152:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_149:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp87:
 	movq	%r14, %rdi
@@ -1400,19 +1394,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp88:
-# %bb.153:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.150:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_155
-# %bb.154:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_152
+# %bb.151:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_155:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_152:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_157
-# %bb.156:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_154
+# %bb.153:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_157:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_154:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	264(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r12, %rbx
@@ -1421,17 +1415,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r12, %rbp
-	je	.LBB0_161
-# %bb.158:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_158
+# %bb.155:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB0_321
-# %bb.159:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_318
+# %bb.156:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp89:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp90:
-# %bb.160:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.157:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -1440,12 +1434,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_162
+	jmp	.LBB0_159
 	.p2align	4, 0x90
-.LBB0_161:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_158:                              #   in Loop: Header=BB0_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB0_162:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_159:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -1453,17 +1447,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	160(%rsp), %rbx                 # 8-byte Reload
-	je	.LBB0_166
-# %bb.163:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_163
+# %bb.160:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB0_323
-# %bb.164:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_320
+# %bb.161:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp91:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp92:
-# %bb.165:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.162:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -1473,11 +1467,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB0_167
+	jmp	.LBB0_164
 	.p2align	4, 0x90
-.LBB0_166:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_163:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 48(%rsp)
-.LBB0_167:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_164:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp93:
 	movq	%r14, %rdi
@@ -1489,19 +1483,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp94:
-# %bb.168:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.165:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_170
-# %bb.169:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_167
+# %bb.166:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_170:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_167:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_172
-# %bb.171:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_169
+# %bb.168:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_172:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_169:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	264(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r12, %rbx
@@ -1510,17 +1504,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r12, %rbp
-	je	.LBB0_176
-# %bb.173:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_173
+# %bb.170:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB0_321
-# %bb.174:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_318
+# %bb.171:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp95:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp96:
-# %bb.175:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.172:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -1529,12 +1523,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_177
+	jmp	.LBB0_174
 	.p2align	4, 0x90
-.LBB0_176:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_173:                              #   in Loop: Header=BB0_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB0_177:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_174:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -1542,17 +1536,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	160(%rsp), %rbx                 # 8-byte Reload
-	je	.LBB0_181
-# %bb.178:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_178
+# %bb.175:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB0_323
-# %bb.179:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_320
+# %bb.176:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp97:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp98:
-# %bb.180:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.177:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -1562,11 +1556,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB0_182
+	jmp	.LBB0_179
 	.p2align	4, 0x90
-.LBB0_181:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_178:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 48(%rsp)
-.LBB0_182:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_179:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp99:
 	movq	%r14, %rdi
@@ -1578,19 +1572,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp100:
-# %bb.183:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.180:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_185
-# %bb.184:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_182
+# %bb.181:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_185:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_182:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_187
-# %bb.186:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_184
+# %bb.183:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_187:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_184:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	264(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r12, %rbx
@@ -1599,17 +1593,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r12, %rbp
-	je	.LBB0_191
-# %bb.188:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_188
+# %bb.185:                              #   in Loop: Header=BB0_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB0_321
-# %bb.189:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_318
+# %bb.186:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp101:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp102:
-# %bb.190:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.187:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -1618,12 +1612,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r12, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_192
+	jmp	.LBB0_189
 	.p2align	4, 0x90
-.LBB0_191:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_188:                              #   in Loop: Header=BB0_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB0_192:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_189:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -1631,17 +1625,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, 88(%rsp)                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	160(%rsp), %rbp                 # 8-byte Reload
-	je	.LBB0_196
-# %bb.193:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_193
+# %bb.190:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB0_323
-# %bb.194:                              #   in Loop: Header=BB0_12 Depth=1
+	ja	.LBB0_320
+# %bb.191:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp107:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp108:
-# %bb.195:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.192:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	112(%rsp), %rcx                 # 8-byte Reload
@@ -1651,11 +1645,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r13, %rsi
 	movq	%rbx, %rdx
 	callq	memmove@PLT
-	jmp	.LBB0_197
+	jmp	.LBB0_194
 	.p2align	4, 0x90
-.LBB0_196:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_193:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbp, 48(%rsp)
-.LBB0_197:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_194:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbp, 40(%rsp)
 .Ltmp113:
 	movq	%r14, %rdi
@@ -1668,20 +1662,20 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 	vmovsd	%xmm0, 128(%rsp)                # 8-byte Spill
 .Ltmp114:
-# %bb.198:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.195:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_200
-# %bb.199:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_197
+# %bb.196:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_200:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_197:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
 	movq	216(%rsp), %r15                 # 8-byte Reload
-	je	.LBB0_202
-# %bb.201:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_199
+# %bb.198:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
-.LBB0_202:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_199:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	928(%rsp), %rsi
 	callq	clock_gettime
@@ -1699,8 +1693,8 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	callq	malloc
 	movq	%rax, %rbp
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_215
-# %bb.203:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_212
+# %bb.200:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	792(%rsp), %rdx                 # 8-byte Reload
 	leaq	(%r12,%rdx,8), %rax
 	cmpq	%rbx, %rax
@@ -1725,20 +1719,20 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpq	%r13, %rsi
 	setb	%sil
 	testb	%r10b, %r9b
-	jne	.LBB0_209
-# %bb.204:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_206
+# %bb.201:                              #   in Loop: Header=BB0_12 Depth=1
 	orb	%dil, %al
-	je	.LBB0_209
-# %bb.205:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_206
+# %bb.202:                              #   in Loop: Header=BB0_12 Depth=1
 	orb	%r8b, %cl
-	je	.LBB0_209
-# %bb.206:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_206
+# %bb.203:                              #   in Loop: Header=BB0_12 Depth=1
 	orb	%sil, %dl
-	je	.LBB0_209
-# %bb.207:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_206
+# %bb.204:                              #   in Loop: Header=BB0_12 Depth=1
 	cmpl	$13, 16(%rsp)                   # 4-byte Folded Reload
-	jb	.LBB0_211
-# %bb.208:                              #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_208
+# %bb.205:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, %rdi
 	movq	%r12, %rsi
 	movq	600(%rsp), %r14                 # 8-byte Reload
@@ -1748,12 +1742,12 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r13, %rsi
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
-	jmp	.LBB0_215
+	jmp	.LBB0_212
 	.p2align	4, 0x90
-.LBB0_209:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_206:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_210:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_207:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r12,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbx,%rax,8)
@@ -1761,15 +1755,15 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB0_210
-	jmp	.LBB0_215
-.LBB0_211:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_207
+	jmp	.LBB0_212
+.LBB0_208:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	xorl	%eax, %eax
 	testq	%rcx, %rcx
-	je	.LBB0_214
+	je	.LBB0_211
 	.p2align	4, 0x90
-.LBB0_212:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_209:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%r12,%rax,8), %ymm0
 	vmovups	%ymm0, (%rbx,%rax,8)
@@ -1777,13 +1771,13 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%ymm0, (%rbp,%rax,8)
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB0_212
-# %bb.213:                              #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_209
+# %bb.210:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rcx, %rax
 	cmpq	%r15, %rcx
-	je	.LBB0_215
+	je	.LBB0_212
 	.p2align	4, 0x90
-.LBB0_214:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_211:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r12,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbx,%rax,8)
@@ -1791,9 +1785,9 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB0_214
+	jne	.LBB0_211
 	.p2align	4, 0x90
-.LBB0_215:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_212:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	16(%rsp), %r14                  # 8-byte Reload
 	movl	%r14d, %edi
 	movq	%rbx, %rsi
@@ -1908,11 +1902,11 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	callq	malloc
 	movq	%rax, %rbp
 	testl	%r14d, %r14d
-	je	.LBB0_218
-# %bb.216:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_215
+# %bb.213:                              #   in Loop: Header=BB0_12 Depth=1
 	cmpl	$13, %r14d
-	jb	.LBB0_219
-# %bb.217:                              #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_216
+# %bb.214:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%r12, %rdi
 	movq	184(%rsp), %rsi                 # 8-byte Reload
 	movq	600(%rsp), %r14                 # 8-byte Reload
@@ -1922,9 +1916,9 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	104(%rsp), %rsi                 # 8-byte Reload
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
-	jmp	.LBB0_225
+	jmp	.LBB0_222
 	.p2align	4, 0x90
-.LBB0_218:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_215:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1200(%rsp), %rsi
 	callq	clock_gettime
@@ -1934,18 +1928,18 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	callq	clock_gettime
 	movq	608(%rsp), %rbx                 # 8-byte Reload
 	leaq	960(%rsp), %r14
-	jmp	.LBB0_233
+	jmp	.LBB0_230
 	.p2align	4, 0x90
-.LBB0_219:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_216:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	xorl	%eax, %eax
 	testq	%rcx, %rcx
-	je	.LBB0_223
-# %bb.220:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_220
+# %bb.217:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	184(%rsp), %rdx                 # 8-byte Reload
 	movq	104(%rsp), %rsi                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB0_221:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_218:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%rdx,%rax,8), %ymm0
 	vmovups	%ymm0, (%r12,%rax,8)
@@ -1953,17 +1947,17 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovupd	%ymm0, (%rbp,%rax,8)
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB0_221
-# %bb.222:                              #   in Loop: Header=BB0_12 Depth=1
+	jb	.LBB0_218
+# %bb.219:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rcx, %rax
 	cmpq	%r15, %rcx
-	jne	.LBB0_224
-	jmp	.LBB0_225
-.LBB0_223:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_221
+	jmp	.LBB0_222
+.LBB0_220:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	184(%rsp), %rdx                 # 8-byte Reload
 	movq	104(%rsp), %rsi                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB0_224:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_221:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rdx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%r12,%rax,8)
@@ -1971,8 +1965,8 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB0_224
-.LBB0_225:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_221
+.LBB0_222:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1200(%rsp), %rsi
 	vzeroupper
@@ -1984,34 +1978,34 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	movq	608(%rsp), %rbx                 # 8-byte Reload
 	leaq	960(%rsp), %r14
-	je	.LBB0_233
-# %bb.226:                              #   in Loop: Header=BB0_12 Depth=1
-	testq	%rbx, %rbx
 	je	.LBB0_230
-# %bb.227:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.223:                              #   in Loop: Header=BB0_12 Depth=1
+	testq	%rbx, %rbx
+	je	.LBB0_227
+# %bb.224:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_228:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_225:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbx, %rax
-	jl	.LBB0_228
-# %bb.229:                              #   in Loop: Header=BB0_12 Depth=1
+	jl	.LBB0_225
+# %bb.226:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, %rcx
 	cmpq	96(%rsp), %rbx                  # 8-byte Folded Reload
-	jne	.LBB0_231
-	jmp	.LBB0_233
-.LBB0_230:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_228
+	jmp	.LBB0_230
+.LBB0_227:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_231:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_228:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	96(%rsp), %rax                  # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_232:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_229:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_232
-.LBB0_233:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_229
+.LBB0_230:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
@@ -2023,35 +2017,35 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r15, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_241
-# %bb.234:                              #   in Loop: Header=BB0_12 Depth=1
-	testq	%rbx, %rbx
 	je	.LBB0_238
-# %bb.235:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.231:                              #   in Loop: Header=BB0_12 Depth=1
+	testq	%rbx, %rbx
+	je	.LBB0_235
+# %bb.232:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_236:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_233:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbx, %rax
-	jl	.LBB0_236
-# %bb.237:                              #   in Loop: Header=BB0_12 Depth=1
+	jl	.LBB0_233
+# %bb.234:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, %rcx
 	cmpq	96(%rsp), %rbx                  # 8-byte Folded Reload
-	jne	.LBB0_239
-	jmp	.LBB0_241
+	jne	.LBB0_236
+	jmp	.LBB0_238
 	.p2align	4, 0x90
-.LBB0_238:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_235:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_239:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_236:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	96(%rsp), %rax                  # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_240:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_237:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_240
-.LBB0_241:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_237
+.LBB0_238:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
@@ -2063,35 +2057,35 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r15, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_249
-# %bb.242:                              #   in Loop: Header=BB0_12 Depth=1
-	testq	%rbx, %rbx
 	je	.LBB0_246
-# %bb.243:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.239:                              #   in Loop: Header=BB0_12 Depth=1
+	testq	%rbx, %rbx
+	je	.LBB0_243
+# %bb.240:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_244:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_241:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbx, %rax
-	jl	.LBB0_244
-# %bb.245:                              #   in Loop: Header=BB0_12 Depth=1
+	jl	.LBB0_241
+# %bb.242:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, %rcx
 	cmpq	96(%rsp), %rbx                  # 8-byte Folded Reload
-	jne	.LBB0_247
-	jmp	.LBB0_249
+	jne	.LBB0_244
+	jmp	.LBB0_246
 	.p2align	4, 0x90
-.LBB0_246:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_243:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_247:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_244:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	96(%rsp), %rax                  # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_248:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_245:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_248
-.LBB0_249:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_245
+.LBB0_246:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
@@ -2103,35 +2097,35 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r15, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_257
-# %bb.250:                              #   in Loop: Header=BB0_12 Depth=1
-	testq	%rbx, %rbx
 	je	.LBB0_254
-# %bb.251:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.247:                              #   in Loop: Header=BB0_12 Depth=1
+	testq	%rbx, %rbx
+	je	.LBB0_251
+# %bb.248:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_252:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_249:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbx, %rax
-	jl	.LBB0_252
-# %bb.253:                              #   in Loop: Header=BB0_12 Depth=1
+	jl	.LBB0_249
+# %bb.250:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	%rbx, %rcx
 	cmpq	96(%rsp), %rbx                  # 8-byte Folded Reload
-	jne	.LBB0_255
-	jmp	.LBB0_257
+	jne	.LBB0_252
+	jmp	.LBB0_254
 	.p2align	4, 0x90
-.LBB0_254:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_251:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB0_255:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_252:                              #   in Loop: Header=BB0_12 Depth=1
 	movq	96(%rsp), %rax                  # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB0_256:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_253:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB0_256
-.LBB0_257:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_253
+.LBB0_254:                              #   in Loop: Header=BB0_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
@@ -2143,50 +2137,50 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movq	%r15, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB0_262
-# %bb.258:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_259
+# %bb.255:                              #   in Loop: Header=BB0_12 Depth=1
 	testq	%rbx, %rbx
 	movq	96(%rsp), %rcx                  # 8-byte Reload
 	leaq	1408(%rsp), %r15
-	je	.LBB0_263
-# %bb.259:                              #   in Loop: Header=BB0_12 Depth=1
+	je	.LBB0_260
+# %bb.256:                              #   in Loop: Header=BB0_12 Depth=1
 	vpxor	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_260:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_257:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rbp,%rax,8), %ymm1
 	vfmadd231pd	(%r12,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rbx, %rax
-	jl	.LBB0_260
-# %bb.261:                              #   in Loop: Header=BB0_12 Depth=1
+	jl	.LBB0_257
+# %bb.258:                              #   in Loop: Header=BB0_12 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rbx, %rax
 	cmpq	%rcx, %rbx
-	jne	.LBB0_264
-	jmp	.LBB0_265
+	jne	.LBB0_261
+	jmp	.LBB0_262
 	.p2align	4, 0x90
-.LBB0_262:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_259:                              #   in Loop: Header=BB0_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	leaq	1408(%rsp), %r15
-	jmp	.LBB0_265
+	jmp	.LBB0_262
 	.p2align	4, 0x90
-.LBB0_263:                              #   in Loop: Header=BB0_12 Depth=1
+.LBB0_260:                              #   in Loop: Header=BB0_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB0_264:                              #   Parent Loop BB0_12 Depth=1
+.LBB0_261:                              #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbp,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r12,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rcx
-	jne	.LBB0_264
-.LBB0_265:                              #   in Loop: Header=BB0_12 Depth=1
+	jne	.LBB0_261
+.LBB0_262:                              #   in Loop: Header=BB0_12 Depth=1
 	vmovsd	%xmm1, 112(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
@@ -2207,37 +2201,37 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	leaq	1648(%rsp), %rbx
 	leaq	1616(%rsp), %rbp
 	leaq	1584(%rsp), %r12
-# %bb.266:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.263:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp118:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbx, %rdi
 	callq	mpfr_init2
 .Ltmp119:
-# %bb.267:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.264:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp120:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbp, %rdi
 	callq	mpfr_init2
 .Ltmp121:
-# %bb.268:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.265:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp122:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%r12, %rdi
 	callq	mpfr_init2
 .Ltmp123:
-# %bb.269:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.266:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp124:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	896(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp125:
-# %bb.270:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.267:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp126:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	864(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp127:
-# %bb.271:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.268:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp128:
 	movq	%r12, %rdi
 	movq	%r14, %rsi
@@ -2246,7 +2240,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp129:
-# %bb.272:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.269:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp130:
 	movq	%r12, %rdi
 	movq	%r12, %rsi
@@ -2254,7 +2248,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp131:
-# %bb.273:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.270:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp132:
 	movq	%r12, %rdi
 	movq	%r12, %rsi
@@ -2262,7 +2256,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp133:
-# %bb.274:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.271:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp134:
 	leaq	1168(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2270,7 +2264,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp135:
-# %bb.275:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.272:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp136:
 	movq	%r15, %rdi
 	movq	%r14, %rsi
@@ -2279,7 +2273,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp137:
-# %bb.276:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.273:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp138:
 	movq	%r15, %rdi
 	movq	%r15, %rsi
@@ -2287,7 +2281,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp139:
-# %bb.277:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.274:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp140:
 	movq	%r15, %rdi
 	movq	%r15, %rsi
@@ -2295,7 +2289,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp141:
-# %bb.278:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.275:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp142:
 	leaq	1376(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2303,7 +2297,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp143:
-# %bb.279:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.276:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp144:
 	movq	%rbx, %rdi
 	movq	%r14, %rsi
@@ -2312,7 +2306,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp145:
-# %bb.280:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.277:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp146:
 	movq	%rbx, %rdi
 	movq	%rbx, %rsi
@@ -2320,7 +2314,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp147:
-# %bb.281:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.278:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp148:
 	movq	%rbx, %rdi
 	movq	%rbx, %rsi
@@ -2328,7 +2322,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp149:
-# %bb.282:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.279:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp150:
 	leaq	1280(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2336,7 +2330,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp151:
-# %bb.283:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.280:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp152:
 	movq	%rbp, %rdi
 	movq	%r14, %rsi
@@ -2345,7 +2339,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp153:
-# %bb.284:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.281:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp154:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -2353,7 +2347,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp155:
-# %bb.285:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.282:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp156:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -2361,7 +2355,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp157:
-# %bb.286:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.283:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp158:
 	leaq	1248(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2369,7 +2363,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp159:
-# %bb.287:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.284:                              #   in Loop: Header=BB0_12 Depth=1
 	vmovq	136(%rsp), %xmm0                # xmm0 = mem[0],zero
 .Ltmp160:
 	leaq	896(%rsp), %rdi
@@ -2377,7 +2371,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp161:
-# %bb.288:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.285:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp162:
 	leaq	896(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2385,7 +2379,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp163:
-# %bb.289:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.286:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp164:
 	leaq	896(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2393,7 +2387,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp165:
-# %bb.290:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.287:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp166:
 	leaq	1344(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2401,7 +2395,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp167:
-# %bb.291:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.288:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp168:
 	leaq	864(%rsp), %rdi
 	movq	%r14, %rsi
@@ -2410,7 +2404,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp169:
-# %bb.292:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.289:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp170:
 	leaq	864(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2418,7 +2412,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp171:
-# %bb.293:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.290:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp172:
 	leaq	864(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2426,7 +2420,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp173:
-# %bb.294:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.291:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp174:
 	leaq	1312(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2434,37 +2428,37 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp175:
-# %bb.295:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.292:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp176:
 	movq	%r15, %rdi
 	callq	mpfr_clear
 .Ltmp177:
-# %bb.296:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.293:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp178:
 	movq	%rbx, %rdi
 	callq	mpfr_clear
 .Ltmp179:
-# %bb.297:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.294:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp180:
 	movq	%rbp, %rdi
 	callq	mpfr_clear
 .Ltmp181:
-# %bb.298:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.295:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp182:
 	movq	%r12, %rdi
 	callq	mpfr_clear
 .Ltmp183:
-# %bb.299:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.296:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp184:
 	leaq	896(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp185:
-# %bb.300:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.297:                              #   in Loop: Header=BB0_12 Depth=1
 .Ltmp186:
 	leaq	864(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp187:
-# %bb.301:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.298:                              #   in Loop: Header=BB0_12 Depth=1
 	imulq	$1000000000, 208(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
 	addq	%rax, 88(%rsp)                  # 8-byte Folded Spill
@@ -2483,8 +2477,8 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovdqu	1008(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm3, %rsi
-	imulq	$1000000000, %rsi, %rsi         # imm = 0x3B9ACA00
 	vpextrq	$1, %xmm0, %r15
+	imulq	$1000000000, %rsi, %rsi         # imm = 0x3B9ACA00
 	addq	%rax, %r15
 	vpextrq	$1, %xmm1, %r12
 	vpextrq	$1, %xmm2, %rbx
@@ -2495,30 +2489,30 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vmovdqu	992(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
-	vpextrq	$1, %xmm0, %r14
 	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
+	vpextrq	$1, %xmm0, %r14
 	addq	%rax, %r14
 	movq	736(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB0_11
-# %bb.302:                              #   in Loop: Header=BB0_12 Depth=1
+# %bb.299:                              #   in Loop: Header=BB0_12 Depth=1
 	callq	_ZdlPv
 	jmp	.LBB0_11
-.LBB0_303:
+.LBB0_300:
 	vpxor	%xmm0, %xmm0, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vxorpd	%xmm5, %xmm5, %xmm5
-	jmp	.LBB0_305
-.LBB0_304:
+	jmp	.LBB0_302
+.LBB0_301:
 	vunpcklpd	%xmm1, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm1[0]
-	vmovupd	720(%rsp), %xmm1                # 16-byte Reload
+	vmovupd	704(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	704(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
+	vunpcklpd	688(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
                                         # xmm1 = xmm1[0],mem[0]
 	vinsertf128	$1, %xmm3, %ymm1, %ymm1
 	movq	184(%rsp), %r15                 # 8-byte Reload
 	movq	104(%rsp), %r14                 # 8-byte Reload
-.LBB0_305:
+.LBB0_302:
 	movq	376(%rsp), %rcx                 # 8-byte Reload
 	leal	(%rcx,%rcx,4), %eax
 	vmovd	%eax, %xmm2
@@ -2533,9 +2527,9 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vpermilpd	$1, %xmm2, %xmm2        # xmm2 = xmm2[1,0]
 	vmulpd	%ymm3, %ymm1, %ymm1
 	vmovupd	%ymm1, (%rax)
+	vdivsd	%xmm2, %xmm5, %xmm1
 	vmovupd	%xmm0, 32(%rax)
-	vdivsd	%xmm2, %xmm5, %xmm0
-	vmovsd	%xmm0, 48(%rax)
+	vmovsd	%xmm1, 48(%rax)
 	movslq	%ecx, %rbx
 .Ltmp189:
 	leaq	1168(%rsp), %rdi
@@ -2545,7 +2539,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	vzeroupper
 	callq	mpfr_div_si
 .Ltmp190:
-# %bb.306:
+# %bb.303:
 .Ltmp191:
 	leaq	1376(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2553,7 +2547,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp192:
-# %bb.307:
+# %bb.304:
 .Ltmp193:
 	leaq	1344(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2561,7 +2555,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp194:
-# %bb.308:
+# %bb.305:
 .Ltmp195:
 	leaq	1312(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2569,7 +2563,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp196:
-# %bb.309:
+# %bb.306:
 .Ltmp197:
 	leaq	1280(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2577,7 +2571,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp198:
-# %bb.310:
+# %bb.307:
 .Ltmp199:
 	leaq	1248(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -2585,7 +2579,7 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp200:
-# %bb.311:
+# %bb.308:
 	movq	768(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 .Ltmp201:
@@ -2593,19 +2587,19 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp202:
-# %bb.312:
+# %bb.309:
 	testq	%r14, %r14
-	je	.LBB0_314
-# %bb.313:
+	je	.LBB0_311
+# %bb.310:
 	movq	%r14, %rdi
 	callq	_ZdlPv
-.LBB0_314:
+.LBB0_311:
 	testq	%r15, %r15
-	je	.LBB0_316
-# %bb.315:
+	je	.LBB0_313
+# %bb.312:
 	movq	%r15, %rdi
 	callq	_ZdlPv
-.LBB0_316:
+.LBB0_313:
 	addq	$1688, %rsp                     # imm = 0x698
 	.cfi_def_cfa_offset 56
 	popq	%rbx
@@ -2621,215 +2615,215 @@ _Z16compare_dot_prodIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EE
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
-.LBB0_317:
+.LBB0_314:
 	.cfi_def_cfa_offset 1744
 .Ltmp50:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp51:
-# %bb.318:
-.LBB0_319:
+# %bb.315:
+.LBB0_316:
 .Ltmp56:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp57:
-# %bb.320:
-.LBB0_321:
+# %bb.317:
+.LBB0_318:
 .Ltmp104:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp105:
-# %bb.322:
-.LBB0_323:
+# %bb.319:
+.LBB0_320:
 .Ltmp110:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp111:
-# %bb.324:
-.LBB0_325:
+# %bb.321:
+.LBB0_322:
 .Ltmp35:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp36:
-# %bb.326:
-.LBB0_327:
+# %bb.323:
+.LBB0_324:
 .Ltmp41:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp42:
-# %bb.328:
-.LBB0_329:
+# %bb.325:
+.LBB0_326:
 .Ltmp65:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp66:
-# %bb.330:
-.LBB0_331:
+# %bb.327:
+.LBB0_328:
 .Ltmp71:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp72:
-# %bb.332:
-.LBB0_333:
+# %bb.329:
+.LBB0_330:
 	movl	$.L.str, %edi
 	callq	_ZSt20__throw_length_errorPKc
-.LBB0_334:
+.LBB0_331:
 .Ltmp2:
 	movq	%rax, %rbx
 	movq	256(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_384
-	jmp	.LBB0_386
-.LBB0_335:
+	je	.LBB0_381
+	jmp	.LBB0_383
+.LBB0_332:
 .Ltmp203:
 	movq	%rax, %rbx
-	jmp	.LBB0_382
-.LBB0_336:
+	jmp	.LBB0_379
+.LBB0_333:
 .Ltmp70:
-	jmp	.LBB0_359
-.LBB0_337:
+	jmp	.LBB0_356
+.LBB0_334:
 .Ltmp64:
-	jmp	.LBB0_378
-.LBB0_338:
+	jmp	.LBB0_375
+.LBB0_335:
 .Ltmp40:
-	jmp	.LBB0_364
-.LBB0_339:
+	jmp	.LBB0_361
+.LBB0_336:
 .Ltmp34:
-	jmp	.LBB0_378
-.LBB0_340:
+	jmp	.LBB0_375
+.LBB0_337:
 .Ltmp76:
 	movq	%rax, %rbx
 	movq	416(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_360
-# %bb.341:
+	je	.LBB0_357
+# %bb.338:
 	callq	_ZdlPv
-	jmp	.LBB0_360
-.LBB0_342:
+	jmp	.LBB0_357
+.LBB0_339:
 .Ltmp46:
 	movq	%rax, %rbx
 	movq	544(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_365
-# %bb.343:
+	je	.LBB0_362
+# %bb.340:
 	callq	_ZdlPv
-	jmp	.LBB0_365
-.LBB0_344:
+	jmp	.LBB0_362
+.LBB0_341:
 .Ltmp5:
-	jmp	.LBB0_378
-.LBB0_345:
+	jmp	.LBB0_375
+.LBB0_342:
 .Ltmp8:
-	jmp	.LBB0_378
-.LBB0_346:
+	jmp	.LBB0_375
+.LBB0_343:
 .Ltmp109:
-	jmp	.LBB0_369
-.LBB0_347:
+	jmp	.LBB0_366
+.LBB0_344:
 .Ltmp103:
-	jmp	.LBB0_378
-.LBB0_348:
+	jmp	.LBB0_375
+.LBB0_345:
 .Ltmp26:
-	jmp	.LBB0_378
-.LBB0_349:
+	jmp	.LBB0_375
+.LBB0_346:
 .Ltmp115:
 	movq	%rax, %rbx
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_370
-# %bb.350:
+	je	.LBB0_367
+# %bb.347:
 	callq	_ZdlPv
-	jmp	.LBB0_370
-.LBB0_351:
+	jmp	.LBB0_367
+.LBB0_348:
 .Ltmp55:
-	jmp	.LBB0_374
-.LBB0_352:
+	jmp	.LBB0_371
+.LBB0_349:
 .Ltmp49:
-	jmp	.LBB0_378
-.LBB0_353:
+	jmp	.LBB0_375
+.LBB0_350:
 .Ltmp61:
 	movq	%rax, %rbx
 	movq	480(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_375
-# %bb.354:
+	je	.LBB0_372
+# %bb.351:
 	callq	_ZdlPv
+	jmp	.LBB0_372
+.LBB0_352:
+.Ltmp188:
+	jmp	.LBB0_375
+.LBB0_353:
+.Ltmp31:
+	jmp	.LBB0_375
+.LBB0_354:
+.Ltmp19:
 	jmp	.LBB0_375
 .LBB0_355:
-.Ltmp188:
-	jmp	.LBB0_378
-.LBB0_356:
-.Ltmp31:
-	jmp	.LBB0_378
-.LBB0_357:
-.Ltmp19:
-	jmp	.LBB0_378
-.LBB0_358:
 .Ltmp73:
-.LBB0_359:
+.LBB0_356:
 	movq	%rax, %rbx
-.LBB0_360:
+.LBB0_357:
 	movq	448(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB0_366
-	jmp	.LBB0_379
-.LBB0_362:
+	jne	.LBB0_363
+	jmp	.LBB0_376
+.LBB0_359:
 .Ltmp67:
-	jmp	.LBB0_378
-.LBB0_363:
+	jmp	.LBB0_375
+.LBB0_360:
 .Ltmp43:
-.LBB0_364:
+.LBB0_361:
 	movq	%rax, %rbx
-.LBB0_365:
+.LBB0_362:
 	movq	576(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_379
-	jmp	.LBB0_366
-.LBB0_367:
+	je	.LBB0_376
+	jmp	.LBB0_363
+.LBB0_364:
 .Ltmp37:
-	jmp	.LBB0_378
-.LBB0_368:
+	jmp	.LBB0_375
+.LBB0_365:
 .Ltmp112:
-.LBB0_369:
+.LBB0_366:
 	movq	%rax, %rbx
-.LBB0_370:
+.LBB0_367:
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB0_366
-	jmp	.LBB0_379
-.LBB0_372:
+	jne	.LBB0_363
+	jmp	.LBB0_376
+.LBB0_369:
 .Ltmp106:
-	jmp	.LBB0_378
-.LBB0_373:
+	jmp	.LBB0_375
+.LBB0_370:
 .Ltmp58:
-.LBB0_374:
+.LBB0_371:
 	movq	%rax, %rbx
-.LBB0_375:
+.LBB0_372:
 	movq	512(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_379
-.LBB0_366:
+	je	.LBB0_376
+.LBB0_363:
 	callq	_ZdlPv
-	jmp	.LBB0_379
-.LBB0_377:
+	jmp	.LBB0_376
+.LBB0_374:
 .Ltmp52:
-.LBB0_378:
+.LBB0_375:
 	movq	%rax, %rbx
-.LBB0_379:
+.LBB0_376:
 	movq	736(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_381
-# %bb.380:
+	je	.LBB0_378
+# %bb.377:
 	callq	_ZdlPv
-.LBB0_381:
+.LBB0_378:
 	movq	352(%rsp), %r14
-.LBB0_382:
+.LBB0_379:
 	testq	%r14, %r14
-	jne	.LBB0_385
-# %bb.383:
+	jne	.LBB0_382
+# %bb.380:
 	movq	256(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB0_386
-.LBB0_384:
+	jne	.LBB0_383
+.LBB0_381:
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
-.LBB0_385:
+.LBB0_382:
 	movq	%r14, %rdi
 	callq	_ZdlPv
 	movq	256(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB0_384
-.LBB0_386:
+	je	.LBB0_381
+.LBB0_383:
 	callq	_ZdlPv
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
@@ -3104,11 +3098,17 @@ GCC_except_table0:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -3116,9 +3116,9 @@ GCC_except_table0:
 	testl	%ebp, %ebp
 	je	.LBB1_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -3146,40 +3146,37 @@ GCC_except_table0:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB1_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB1_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB1_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB1_13
 # %bb.16:
@@ -3187,7 +3184,7 @@ GCC_except_table0:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB1_17:                               # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -3197,14 +3194,12 @@ GCC_except_table0:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB1_14
 	jmp	.LBB1_19
 .LBB1_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB1_5:                                # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -3217,7 +3212,6 @@ GCC_except_table0:
 .LBB1_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB1_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -3236,11 +3230,11 @@ GCC_except_table0:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func, %r9d
@@ -3258,8 +3252,8 @@ GCC_except_table0:
 	jne	.LBB1_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -3267,19 +3261,23 @@ GCC_except_table0:
 	jmp	.LBB1_11
 .LBB1_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB1_10:                               # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB1_10
 .LBB1_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -3318,11 +3316,17 @@ GCC_except_table0:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -3330,9 +3334,9 @@ GCC_except_table0:
 	testl	%ebp, %ebp
 	je	.LBB3_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -3360,40 +3364,37 @@ GCC_except_table0:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB3_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB3_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB3_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB3_13
 # %bb.16:
@@ -3401,7 +3402,7 @@ GCC_except_table0:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB3_17:                               # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -3411,14 +3412,12 @@ GCC_except_table0:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB3_14
 	jmp	.LBB3_19
 .LBB3_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB3_5:                                # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -3431,7 +3430,6 @@ GCC_except_table0:
 .LBB3_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB3_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -3450,11 +3448,11 @@ GCC_except_table0:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.2, %r9d
@@ -3472,8 +3470,8 @@ GCC_except_table0:
 	jne	.LBB3_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -3481,19 +3479,23 @@ GCC_except_table0:
 	jmp	.LBB3_11
 .LBB3_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB3_10:                               # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB3_10
 .LBB3_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -3614,7 +3616,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 	testl	%r14d, %r14d
-	js	.LBB5_312
+	js	.LBB5_308
 # %bb.1:
 	movslq	%r14d, %rax
 	movq	%r14, 16(%rsp)                  # 8-byte Spill
@@ -3658,11 +3660,11 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 .Ltmp205:
 # %bb.7:
 	movq	%rax, %r13
+	leaq	8(%rax), %rdi
 	movq	%rax, 288(%rsp)
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	leaq	(,%rax,8), %rbp
 	addq	%r13, %rbp
-	leaq	8(%r13), %rdi
 	movq	%rbp, 304(%rsp)
 	movq	$0, (%r13)
 	cmpl	$1, 16(%rsp)                    # 4-byte Folded Reload
@@ -3677,7 +3679,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 .LBB5_9:
 	movq	%rdi, 296(%rsp)
 	cmpl	$0, 344(%rsp)                   # 4-byte Folded Reload
-	je	.LBB5_276
+	je	.LBB5_272
 # %bb.10:
 	movq	%rax, %r14
 	shlq	$5, %r14
@@ -3710,19 +3712,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	andq	$-64, %rsi
 	movq	%rsi, 800(%rsp)                 # 8-byte Spill
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 624(%rsp)                # 16-byte Spill
+	vmovupd	%xmm0, 592(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm2, %xmm2, %xmm2
 	vxorpd	%xmm5, %xmm5, %xmm5
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 608(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 592(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 576(%rsp)                # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 624(%rsp)                # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 608(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm3, %xmm3, %xmm3
 	xorl	%esi, %esi
@@ -3732,28 +3734,28 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	.p2align	4, 0x90
 .LBB5_11:                               #   in Loop: Header=BB5_12 Depth=1
 	vcvtsi2sdq	792(%rsp), %xmm4, %xmm8 # 8-byte Folded Reload
-	vcvtsi2sdq	784(%rsp), %xmm4, %xmm0 # 8-byte Folded Reload
-	vcvtsi2sdq	776(%rsp), %xmm4, %xmm2 # 8-byte Folded Reload
-	vcvtsi2sdq	768(%rsp), %xmm4, %xmm3 # 8-byte Folded Reload
+	vcvtsi2sdq	784(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
+	vcvtsi2sdq	776(%rsp), %xmm4, %xmm10 # 8-byte Folded Reload
+	vcvtsi2sdq	768(%rsp), %xmm4, %xmm11 # 8-byte Folded Reload
 	vcvtsi2sdq	760(%rsp), %xmm4, %xmm12 # 8-byte Folded Reload
 	vcvtsi2sdq	96(%rsp), %xmm4, %xmm13 # 8-byte Folded Reload
 	vcvtsi2sdq	280(%rsp), %xmm4, %xmm14 # 8-byte Folded Reload
 	vcvtsi2sdq	752(%rsp), %xmm4, %xmm15 # 8-byte Folded Reload
-	vcvtsi2sdq	744(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
-	vcvtsi2sdq	736(%rsp), %xmm4, %xmm1 # 8-byte Folded Reload
-	vcvtsi2sdq	728(%rsp), %xmm4, %xmm10 # 8-byte Folded Reload
-	vcvtsi2sd	%r8, %xmm4, %xmm11
+	vcvtsi2sdq	744(%rsp), %xmm4, %xmm16 # 8-byte Folded Reload
+	vcvtsi2sdq	736(%rsp), %xmm4, %xmm17 # 8-byte Folded Reload
+	vcvtsi2sdq	728(%rsp), %xmm4, %xmm18 # 8-byte Folded Reload
+	vcvtsi2sd	%rcx, %xmm4, %xmm19
 	vcvtsi2sd	%rbp, %xmm4, %xmm4
 	vcvtsi2sd	%rbx, %xmm5, %xmm5
 	vcvtsi2sd	%r12, %xmm6, %xmm6
 	vcvtsi2sd	%r14, %xmm7, %xmm7
-	vminsd	%xmm0, %xmm8, %xmm8
-	vminsd	%xmm3, %xmm2, %xmm0
-	vminsd	%xmm0, %xmm8, %xmm0
+	vminsd	%xmm8, %xmm9, %xmm0
+	vminsd	%xmm11, %xmm10, %xmm1
+	vminsd	%xmm1, %xmm0, %xmm0
 	vminsd	%xmm0, %xmm12, %xmm0
-	vmovupd	576(%rsp), %xmm2                # 16-byte Reload
+	vmovupd	608(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	%xmm0, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm0[0]
+	vunpcklpd	%xmm0, %xmm1, %xmm0     # xmm0 = xmm1[0],xmm0[0]
 	vmovupd	1216(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddpd	%xmm3, %xmm0, %xmm3
@@ -3761,13 +3763,13 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm2, %xmm13, %xmm2
 	vminsd	%xmm14, %xmm15, %xmm0
-	vminsd	%xmm1, %xmm9, %xmm1
+	vminsd	%xmm17, %xmm16, %xmm1
 	vminsd	%xmm1, %xmm0, %xmm0
-	vminsd	%xmm0, %xmm10, %xmm0
+	vminsd	%xmm0, %xmm18, %xmm0
 	vmovupd	1232(%rsp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm1, %xmm0, %xmm1
-	vminsd	%xmm4, %xmm11, %xmm0
+	vminsd	%xmm19, %xmm4, %xmm0
 	vminsd	%xmm0, %xmm5, %xmm0
 	vminsd	%xmm0, %xmm6, %xmm0
 	vminsd	%xmm0, %xmm7, %xmm0
@@ -3779,20 +3781,21 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	cmpl	344(%rsp), %esi                 # 4-byte Folded Reload
 	movq	712(%rsp), %r14                 # 8-byte Reload
 	movq	144(%rsp), %r12                 # 8-byte Reload
-	je	.LBB5_277
+	je	.LBB5_273
 .LBB5_12:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_16 Depth 2
                                         #     Child Loop BB5_19 Depth 2
                                         #     Child Loop BB5_24 Depth 2
                                         #     Child Loop BB5_34 Depth 2
-                                        #     Child Loop BB5_39 Depth 2
-                                        #       Child Loop BB5_42 Depth 3
-                                        #       Child Loop BB5_45 Depth 3
-                                        #     Child Loop BB5_66 Depth 2
-                                        #     Child Loop BB5_181 Depth 2
-                                        #     Child Loop BB5_184 Depth 2
-                                        #     Child Loop BB5_187 Depth 2
-                                        #     Child Loop BB5_194 Depth 2
+                                        #     Child Loop BB5_40 Depth 2
+                                        #       Child Loop BB5_43 Depth 3
+                                        #       Child Loop BB5_46 Depth 3
+                                        #     Child Loop BB5_64 Depth 2
+                                        #     Child Loop BB5_177 Depth 2
+                                        #     Child Loop BB5_180 Depth 2
+                                        #     Child Loop BB5_183 Depth 2
+                                        #     Child Loop BB5_190 Depth 2
+                                        #     Child Loop BB5_193 Depth 2
                                         #     Child Loop BB5_197 Depth 2
                                         #     Child Loop BB5_201 Depth 2
                                         #     Child Loop BB5_205 Depth 2
@@ -3803,7 +3806,6 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
                                         #     Child Loop BB5_225 Depth 2
                                         #     Child Loop BB5_229 Depth 2
                                         #     Child Loop BB5_233 Depth 2
-                                        #     Child Loop BB5_237 Depth 2
 	vmovupd	%xmm3, 1216(%rsp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vmovupd	%xmm1, 1232(%rsp)               # 16-byte Spill
@@ -3972,8 +3974,8 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	clock_gettime
 	movq	1400(%rsp), %r14
 	subq	1416(%rsp), %r14
-	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	movq	144(%rsp), %rbx                 # 8-byte Reload
+	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	je	.LBB5_37
 # %bb.33:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, %rbp
@@ -3995,12 +3997,11 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	decq	%rbp
 	jne	.LBB5_34
 .LBB5_37:                               #   in Loop: Header=BB5_12 Depth=1
-	vxorps	%xmm12, %xmm12, %xmm12
-	vcvtsi2sd	%r14, %xmm12, %xmm0
-	vmovupd	624(%rsp), %xmm1                # 16-byte Reload
+	vcvtsi2sd	%r14, %xmm20, %xmm0
+	vmovupd	592(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm1, %xmm1
-	vmovupd	%xmm1, 624(%rsp)                # 16-byte Spill
+	vmovupd	%xmm1, 592(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%ebp, %ebp
 	xorl	%edi, %edi
@@ -4009,38 +4010,55 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	208(%rsp), %r15
 	movq	288(%rsp), %r13
 	movq	720(%rsp), %r14                 # 8-byte Reload
-	jmp	.LBB5_39
+	jmp	.LBB5_40
 	.p2align	4, 0x90
-.LBB5_38:                               #   in Loop: Header=BB5_39 Depth=2
-	vmovupd	592(%rsp), %xmm1                # 16-byte Reload
+.LBB5_38:                               #   in Loop: Header=BB5_40 Depth=2
+	vxorpd	%xmm1, %xmm1, %xmm1
+.LBB5_39:                               #   in Loop: Header=BB5_40 Depth=2
+	vmovsd	%xmm1, 352(%rsp)                # 8-byte Spill
+	xorl	%edi, %edi
+	leaq	1312(%rsp), %rsi
+	callq	clock_gettime
+	vmovdqu	1312(%rsp), %xmm0               # AlignMOV convert to UnAlignMOV 
+	vpsubq	1328(%rsp), %xmm0, %xmm0
+	vmovq	%xmm0, %rax
+	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
+	vpextrq	$1, %xmm0, %rcx
+	addq	%rax, %rcx
+	vcvtsi2sd	%rcx, %xmm8, %xmm0
+	testl	%ebp, %ebp
+	sete	%al
+	kmovd	%eax, %k1
+	vmovupd	624(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vminsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 592(%rsp)                # 16-byte Spill
+	vmovsd	%xmm0, %xmm1, %xmm1 {%k1}
+	vmovupd	%xmm1, 624(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	incl	%ebp
 	cmpl	$5, %ebp
-	je	.LBB5_49
-.LBB5_39:                               #   Parent Loop BB5_12 Depth=1
+	je	.LBB5_47
+.LBB5_40:                               #   Parent Loop BB5_12 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB5_42 Depth 3
-                                        #       Child Loop BB5_45 Depth 3
+                                        #       Child Loop BB5_43 Depth 3
+                                        #       Child Loop BB5_46 Depth 3
 	xorl	%edi, %edi
 	leaq	1328(%rsp), %rsi
 	callq	clock_gettime
 	movq	16(%rsp), %rax                  # 8-byte Reload
 	testl	%eax, %eax
-	je	.LBB5_46
-# %bb.40:                               #   in Loop: Header=BB5_39 Depth=2
+	je	.LBB5_38
+# %bb.41:                               #   in Loop: Header=BB5_40 Depth=2
 	vxorpd	%xmm2, %xmm2, %xmm2
 	cmpl	$8, %eax
 	movq	800(%rsp), %rcx                 # 8-byte Reload
-	jb	.LBB5_43
-# %bb.41:                               #   in Loop: Header=BB5_39 Depth=2
+	jb	.LBB5_44
+# %bb.42:                               #   in Loop: Header=BB5_40 Depth=2
 	vxorpd	%xmm2, %xmm2, %xmm2
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_42:                               #   Parent Loop BB5_12 Depth=1
-                                        #     Parent Loop BB5_39 Depth=2
+.LBB5_43:                               #   Parent Loop BB5_12 Depth=1
+                                        #     Parent Loop BB5_40 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vmovsd	(%r15,%rax), %xmm0              # xmm0 = mem[0],zero
 	vmovsd	8(%r15,%rax), %xmm1             # xmm1 = mem[0],zero
@@ -4060,48 +4078,25 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vfmadd132sd	56(%r13,%rax), %xmm1, %xmm2 # xmm2 = (xmm2 * mem) + xmm1
 	addq	$64, %rax
 	cmpq	%rax, %rcx
-	jne	.LBB5_42
-.LBB5_43:                               #   in Loop: Header=BB5_39 Depth=2
+	jne	.LBB5_43
+.LBB5_44:                               #   in Loop: Header=BB5_40 Depth=2
 	vmovapd	%xmm2, %xmm1
 	cmpq	%rbx, %r14
-	jae	.LBB5_47
-# %bb.44:                               #   in Loop: Header=BB5_39 Depth=2
+	jae	.LBB5_39
+# %bb.45:                               #   in Loop: Header=BB5_40 Depth=2
 	movq	%r14, %rax
 	.p2align	4, 0x90
-.LBB5_45:                               #   Parent Loop BB5_12 Depth=1
-                                        #     Parent Loop BB5_39 Depth=2
+.LBB5_46:                               #   Parent Loop BB5_12 Depth=1
+                                        #     Parent Loop BB5_40 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r13,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rbx
-	jne	.LBB5_45
-	jmp	.LBB5_47
+	jne	.LBB5_46
+	jmp	.LBB5_39
 	.p2align	4, 0x90
-.LBB5_46:                               #   in Loop: Header=BB5_39 Depth=2
-	vxorpd	%xmm1, %xmm1, %xmm1
-.LBB5_47:                               #   in Loop: Header=BB5_39 Depth=2
-	vmovsd	%xmm1, 352(%rsp)                # 8-byte Spill
-	xorl	%edi, %edi
-	leaq	1312(%rsp), %rsi
-	callq	clock_gettime
-	vmovdqu	1312(%rsp), %xmm0               # AlignMOV convert to UnAlignMOV 
-	vpsubq	1328(%rsp), %xmm0, %xmm0
-	vmovq	%xmm0, %rax
-	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
-	vpextrq	$1, %xmm0, %rcx
-	addq	%rax, %rcx
-	vxorps	%xmm12, %xmm12, %xmm12
-	vcvtsi2sd	%rcx, %xmm12, %xmm0
-	testl	%ebp, %ebp
-	jne	.LBB5_38
-# %bb.48:                               #   in Loop: Header=BB5_39 Depth=2
-	vmovupd	%xmm0, 592(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	incl	%ebp
-	cmpl	$5, %ebp
-	jne	.LBB5_39
-.LBB5_49:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_47:                               #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1568(%rsp), %rsi
 	callq	clock_gettime
@@ -4115,17 +4110,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	$0, 544(%rsp)
 	subq	%r15, %rbp
 	movq	%rbx, 232(%rsp)                 # 8-byte Spill
-	je	.LBB5_53
-# %bb.50:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_51
+# %bb.48:                               #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_304
-# %bb.51:                               #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_300
+# %bb.49:                               #   in Loop: Header=BB5_12 Depth=1
 .Ltmp236:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp237:
-# %bb.52:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.50:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 528(%rsp)
 	movq	%rax, 536(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4134,12 +4129,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_54
+	jmp	.LBB5_52
 	.p2align	4, 0x90
-.LBB5_53:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_51:                               #   in Loop: Header=BB5_12 Depth=1
 	leaq	(,%rbx,8), %rbx
 	movq	%rbx, 544(%rsp)
-.LBB5_54:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_52:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	296(%rsp), %rax
 	movq	%rax, %r12
 	subq	%r13, %r12
@@ -4152,18 +4147,18 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	$0, 512(%rsp)
 	subq	%r13, %rbx
 	movq	%rbx, 136(%rsp)                 # 8-byte Spill
-	je	.LBB5_58
-# %bb.55:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_56
+# %bb.53:                               #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbx
-	ja	.LBB5_306
-# %bb.56:                               #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_302
+# %bb.54:                               #   in Loop: Header=BB5_12 Depth=1
 .Ltmp242:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp243:
 	movq	%rbx, %rdx
-# %bb.57:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.55:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 496(%rsp)
 	movq	%rax, 504(%rsp)
 	leaq	(%rax,%r12,8), %rbx
@@ -4171,12 +4166,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB5_59
+	jmp	.LBB5_57
 	.p2align	4, 0x90
-.LBB5_58:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_56:                               #   in Loop: Header=BB5_12 Depth=1
 	leaq	(,%r12,8), %rbx
 	movq	%rbx, 512(%rsp)
-.LBB5_59:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_57:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 504(%rsp)
 .Ltmp248:
 	leaq	528(%rsp), %rdi
@@ -4187,23 +4182,23 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %r8d
 	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
 .Ltmp249:
-# %bb.60:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.58:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	496(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB5_60
+# %bb.59:                               #   in Loop: Header=BB5_12 Depth=1
+	callq	_ZdlPv
+.LBB5_60:                               #   in Loop: Header=BB5_12 Depth=1
+	movq	528(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB5_62
 # %bb.61:                               #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
 .LBB5_62:                               #   in Loop: Header=BB5_12 Depth=1
-	movq	528(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB5_64
-# %bb.63:                               #   in Loop: Header=BB5_12 Depth=1
-	callq	_ZdlPv
-.LBB5_64:                               #   in Loop: Header=BB5_12 Depth=1
-	vmovupd	608(%rsp), %xmm0                # 16-byte Reload
+	vmovupd	576(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	592(%rsp), %xmm0, %xmm0         # 16-byte Folded Reload
-	vmovupd	%xmm0, 608(%rsp)                # 16-byte Spill
+	vaddsd	624(%rsp), %xmm0, %xmm0         # 16-byte Folded Reload
+	vmovupd	%xmm0, 576(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	leaq	1552(%rsp), %rsi
@@ -4215,107 +4210,9 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	leaq	(,%r12,8), %rax
 	movq	%rax, 120(%rsp)                 # 8-byte Spill
 	movl	$5, %r12d
-	jmp	.LBB5_66
+	jmp	.LBB5_64
 	.p2align	4, 0x90
-.LBB5_65:                               #   in Loop: Header=BB5_66 Depth=2
-	vmovupd	576(%rsp), %xmm1                # 16-byte Reload
-                                        # AlignMOV convert to UnAlignMOV 
-	vminsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 576(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	decl	%r12d
-	je	.LBB5_83
-.LBB5_66:                               #   Parent Loop BB5_12 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xorl	%edi, %edi
-	leaq	1296(%rsp), %rsi
-	callq	clock_gettime
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 464(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 480(%rsp)
-	cmpq	%r15, %r14
-	je	.LBB5_70
-# %bb.67:                               #   in Loop: Header=BB5_66 Depth=2
-	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	cmpq	%rax, %rbp
-	ja	.LBB5_296
-# %bb.68:                               #   in Loop: Header=BB5_66 Depth=2
-.Ltmp251:
-	movq	%rbp, %rdi
-	callq	_Znwm
-.Ltmp252:
-# %bb.69:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	%rax, 464(%rsp)
-	movq	%rax, 472(%rsp)
-	movq	232(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 480(%rsp)
-	movq	%rax, %rdi
-	movq	%r15, %rsi
-	movq	%rbp, %rdx
-	callq	memmove@PLT
-	jmp	.LBB5_71
-	.p2align	4, 0x90
-.LBB5_70:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	280(%rsp), %rbx                 # 8-byte Reload
-	movq	%rbx, 480(%rsp)
-.LBB5_71:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	%rbx, 472(%rsp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 432(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 448(%rsp)
-	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
-	je	.LBB5_75
-# %bb.72:                               #   in Loop: Header=BB5_66 Depth=2
-	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	movq	136(%rsp), %rbx                 # 8-byte Reload
-	cmpq	%rax, %rbx
-	ja	.LBB5_298
-# %bb.73:                               #   in Loop: Header=BB5_66 Depth=2
-.Ltmp257:
-	movq	%rbx, %rdi
-	callq	_Znwm
-.Ltmp258:
-# %bb.74:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	%rax, 432(%rsp)
-	movq	%rax, 440(%rsp)
-	movq	%rbx, %rdx
-	movq	128(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 448(%rsp)
-	movq	%rax, %rdi
-	movq	%r13, %rsi
-	callq	memmove@PLT
-	jmp	.LBB5_76
-	.p2align	4, 0x90
-.LBB5_75:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	120(%rsp), %rbx                 # 8-byte Reload
-	movq	%rbx, 448(%rsp)
-.LBB5_76:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	%rbx, 440(%rsp)
-.Ltmp263:
-	leaq	464(%rsp), %rdi
-	leaq	432(%rsp), %rsi
-	movq	16(%rsp), %rdx                  # 8-byte Reload
-                                        # kill: def $edx killed $edx killed $rdx
-	movl	$1, %ecx
-	movl	$1, %r8d
-	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
-	vmovsd	%xmm0, 808(%rsp)                # 8-byte Spill
-.Ltmp264:
-# %bb.77:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	432(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB5_79
-# %bb.78:                               #   in Loop: Header=BB5_66 Depth=2
-	callq	_ZdlPv
-.LBB5_79:                               #   in Loop: Header=BB5_66 Depth=2
-	movq	464(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB5_81
-# %bb.80:                               #   in Loop: Header=BB5_66 Depth=2
-	callq	_ZdlPv
-.LBB5_81:                               #   in Loop: Header=BB5_66 Depth=2
+.LBB5_63:                               #   in Loop: Header=BB5_64 Depth=2
 	xorl	%edi, %edi
 	leaq	1280(%rsp), %rsi
 	callq	clock_gettime
@@ -4327,13 +4224,109 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	addq	%rax, %rcx
 	vcvtsi2sd	%rcx, %xmm2, %xmm0
 	cmpl	$5, %r12d
-	jne	.LBB5_65
-# %bb.82:                               #   in Loop: Header=BB5_66 Depth=2
-	vmovupd	%xmm0, 576(%rsp)                # 16-byte Spill
+	sete	%al
+	kmovd	%eax, %k1
+	vmovupd	608(%rsp), %xmm1                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
+	vminsd	%xmm1, %xmm0, %xmm1
+	vmovsd	%xmm0, %xmm1, %xmm1 {%k1}
+	vmovupd	%xmm1, 608(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	decl	%r12d
-	jne	.LBB5_66
-.LBB5_83:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_79
+.LBB5_64:                               #   Parent Loop BB5_12 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xorl	%edi, %edi
+	leaq	1296(%rsp), %rsi
+	callq	clock_gettime
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 464(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 480(%rsp)
+	cmpq	%r15, %r14
+	je	.LBB5_68
+# %bb.65:                               #   in Loop: Header=BB5_64 Depth=2
+	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
+	cmpq	%rax, %rbp
+	ja	.LBB5_292
+# %bb.66:                               #   in Loop: Header=BB5_64 Depth=2
+.Ltmp251:
+	movq	%rbp, %rdi
+	callq	_Znwm
+.Ltmp252:
+# %bb.67:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	%rax, 464(%rsp)
+	movq	%rax, 472(%rsp)
+	movq	232(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 480(%rsp)
+	movq	%rax, %rdi
+	movq	%r15, %rsi
+	movq	%rbp, %rdx
+	callq	memmove@PLT
+	jmp	.LBB5_69
+	.p2align	4, 0x90
+.LBB5_68:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	280(%rsp), %rbx                 # 8-byte Reload
+	movq	%rbx, 480(%rsp)
+.LBB5_69:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	%rbx, 472(%rsp)
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 432(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 448(%rsp)
+	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
+	je	.LBB5_73
+# %bb.70:                               #   in Loop: Header=BB5_64 Depth=2
+	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
+	movq	136(%rsp), %rbx                 # 8-byte Reload
+	cmpq	%rax, %rbx
+	ja	.LBB5_294
+# %bb.71:                               #   in Loop: Header=BB5_64 Depth=2
+.Ltmp257:
+	movq	%rbx, %rdi
+	callq	_Znwm
+.Ltmp258:
+# %bb.72:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	%rax, 432(%rsp)
+	movq	%rax, 440(%rsp)
+	movq	%rbx, %rdx
+	movq	128(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 448(%rsp)
+	movq	%rax, %rdi
+	movq	%r13, %rsi
+	callq	memmove@PLT
+	jmp	.LBB5_74
+	.p2align	4, 0x90
+.LBB5_73:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	120(%rsp), %rbx                 # 8-byte Reload
+	movq	%rbx, 448(%rsp)
+.LBB5_74:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	%rbx, 440(%rsp)
+.Ltmp263:
+	leaq	464(%rsp), %rdi
+	leaq	432(%rsp), %rsi
+	movq	16(%rsp), %rdx                  # 8-byte Reload
+                                        # kill: def $edx killed $edx killed $rdx
+	movl	$1, %ecx
+	movl	$1, %r8d
+	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
+	vmovsd	%xmm0, 808(%rsp)                # 8-byte Spill
+.Ltmp264:
+# %bb.75:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	432(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB5_77
+# %bb.76:                               #   in Loop: Header=BB5_64 Depth=2
+	callq	_ZdlPv
+.LBB5_77:                               #   in Loop: Header=BB5_64 Depth=2
+	movq	464(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB5_63
+# %bb.78:                               #   in Loop: Header=BB5_64 Depth=2
+	callq	_ZdlPv
+	jmp	.LBB5_63
+	.p2align	4, 0x90
+.LBB5_79:                               #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1536(%rsp), %rsi
 	callq	clock_gettime
@@ -4474,18 +4467,18 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 400(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 416(%rsp)
 	cmpq	%r15, %r14
-	je	.LBB5_87
-# %bb.84:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_83
+# %bb.80:                               #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
 	leaq	64(%rsp), %r12
-	ja	.LBB5_308
-# %bb.85:                               #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_304
+# %bb.81:                               #   in Loop: Header=BB5_12 Depth=1
 .Ltmp266:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp267:
-# %bb.86:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.82:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 400(%rsp)
 	movq	%rax, 408(%rsp)
 	movq	232(%rsp), %rcx                 # 8-byte Reload
@@ -4497,32 +4490,32 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	memmove@PLT
 	movq	%r14, %rax
 	movq	144(%rsp), %r14                 # 8-byte Reload
-	jmp	.LBB5_88
+	jmp	.LBB5_84
 	.p2align	4, 0x90
-.LBB5_87:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_83:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	280(%rsp), %rax                 # 8-byte Reload
 	movq	%rax, 416(%rsp)
 	movq	144(%rsp), %r14                 # 8-byte Reload
 	leaq	64(%rsp), %r12
-.LBB5_88:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_84:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 408(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 368(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 384(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
 	movq	%rbx, 760(%rsp)                 # 8-byte Spill
-	je	.LBB5_92
-# %bb.89:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_88
+# %bb.85:                               #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbp                 # 8-byte Reload
 	cmpq	%rax, %rbp
-	ja	.LBB5_310
-# %bb.90:                               #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_306
+# %bb.86:                               #   in Loop: Header=BB5_12 Depth=1
 .Ltmp272:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp273:
-# %bb.91:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.87:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 368(%rsp)
 	movq	%rax, 376(%rsp)
 	movq	128(%rsp), %rcx                 # 8-byte Reload
@@ -4532,12 +4525,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r13, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_93
+	jmp	.LBB5_89
 	.p2align	4, 0x90
-.LBB5_92:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_88:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	120(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 384(%rsp)
-.LBB5_93:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_89:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 376(%rsp)
 .Ltmp278:
 	leaq	400(%rsp), %rdi
@@ -4549,19 +4542,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp279:
-# %bb.94:                               #   in Loop: Header=BB5_12 Depth=1
+# %bb.90:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	368(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_96
-# %bb.95:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_92
+# %bb.91:                               #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_96:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_92:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	400(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_98
-# %bb.97:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_94
+# %bb.93:                               #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_98:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_94:                               #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	960(%rsp), %rsi
 	callq	clock_gettime
@@ -4573,17 +4566,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r15, %rbp
-	je	.LBB5_102
-# %bb.99:                               #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_98
+# %bb.95:                               #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_300
-# %bb.100:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_296
+# %bb.96:                               #   in Loop: Header=BB5_12 Depth=1
 .Ltmp281:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp282:
-# %bb.101:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.97:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4592,29 +4585,29 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_103
+	jmp	.LBB5_99
 	.p2align	4, 0x90
-.LBB5_102:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_98:                               #   in Loop: Header=BB5_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB5_103:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_99:                               #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
-	je	.LBB5_107
-# %bb.104:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_103
+# %bb.100:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB5_302
-# %bb.105:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_298
+# %bb.101:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp283:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp284:
-# %bb.106:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.102:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -4624,12 +4617,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB5_108
+	jmp	.LBB5_104
 	.p2align	4, 0x90
-.LBB5_107:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_103:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	120(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 48(%rsp)
-.LBB5_108:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_104:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp285:
 	movq	%r12, %rdi
@@ -4641,19 +4634,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp286:
-# %bb.109:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.105:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_111
-# %bb.110:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_107
+# %bb.106:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_111:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_107:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_113
-# %bb.112:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_109
+# %bb.108:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_113:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_109:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -4662,17 +4655,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r15, %rbp
-	je	.LBB5_117
-# %bb.114:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_113
+# %bb.110:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_300
-# %bb.115:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_296
+# %bb.111:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp287:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp288:
-# %bb.116:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.112:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4681,29 +4674,29 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_118
+	jmp	.LBB5_114
 	.p2align	4, 0x90
-.LBB5_117:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_113:                              #   in Loop: Header=BB5_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB5_118:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_114:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
-	je	.LBB5_122
-# %bb.119:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_118
+# %bb.115:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB5_302
-# %bb.120:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_298
+# %bb.116:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp289:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp290:
-# %bb.121:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.117:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -4713,12 +4706,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB5_123
+	jmp	.LBB5_119
 	.p2align	4, 0x90
-.LBB5_122:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_118:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	120(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 48(%rsp)
-.LBB5_123:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_119:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp291:
 	movq	%r12, %rdi
@@ -4730,19 +4723,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp292:
-# %bb.124:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.120:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_126
-# %bb.125:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_122
+# %bb.121:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_126:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_122:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_128
-# %bb.127:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_124
+# %bb.123:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_128:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_124:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -4751,17 +4744,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r15, %rbp
-	je	.LBB5_132
-# %bb.129:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_128
+# %bb.125:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_300
-# %bb.130:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_296
+# %bb.126:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp293:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp294:
-# %bb.131:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.127:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4770,29 +4763,29 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_133
+	jmp	.LBB5_129
 	.p2align	4, 0x90
-.LBB5_132:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_128:                              #   in Loop: Header=BB5_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB5_133:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_129:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
-	je	.LBB5_137
-# %bb.134:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_133
+# %bb.130:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB5_302
-# %bb.135:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_298
+# %bb.131:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp295:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp296:
-# %bb.136:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.132:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -4802,12 +4795,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB5_138
+	jmp	.LBB5_134
 	.p2align	4, 0x90
-.LBB5_137:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_133:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	120(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 48(%rsp)
-.LBB5_138:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_134:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp297:
 	movq	%r12, %rdi
@@ -4819,19 +4812,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp298:
-# %bb.139:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.135:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_141
-# %bb.140:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_137
+# %bb.136:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_141:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_137:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_143
-# %bb.142:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_139
+# %bb.138:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_143:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_139:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -4840,17 +4833,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r15, %rbp
-	je	.LBB5_147
-# %bb.144:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_143
+# %bb.140:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_300
-# %bb.145:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_296
+# %bb.141:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp299:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp300:
-# %bb.146:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.142:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4859,29 +4852,29 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_148
+	jmp	.LBB5_144
 	.p2align	4, 0x90
-.LBB5_147:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_143:                              #   in Loop: Header=BB5_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB5_148:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_144:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
-	je	.LBB5_152
-# %bb.149:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_148
+# %bb.145:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB5_302
-# %bb.150:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_298
+# %bb.146:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp301:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp302:
-# %bb.151:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.147:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	%rbx, %rdx
@@ -4891,12 +4884,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	%r13, %rsi
 	callq	memmove@PLT
-	jmp	.LBB5_153
+	jmp	.LBB5_149
 	.p2align	4, 0x90
-.LBB5_152:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_148:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	120(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 48(%rsp)
-.LBB5_153:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_149:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp303:
 	movq	%r12, %rdi
@@ -4908,19 +4901,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	28(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp304:
-# %bb.154:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.150:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_156
-# %bb.155:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_152
+# %bb.151:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_156:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_152:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_158
-# %bb.157:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_154
+# %bb.153:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_158:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_154:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -4929,17 +4922,17 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	subq	%r15, %rbp
-	je	.LBB5_162
-# %bb.159:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_158
+# %bb.155:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB5_300
-# %bb.160:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_296
+# %bb.156:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp305:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp306:
-# %bb.161:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.157:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -4948,30 +4941,30 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB5_163
+	jmp	.LBB5_159
 	.p2align	4, 0x90
-.LBB5_162:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_158:                              #   in Loop: Header=BB5_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 80(%rsp)
-.LBB5_163:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_159:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, 72(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
 	cmpq	%r13, 96(%rsp)                  # 8-byte Folded Reload
 	movq	120(%rsp), %rax                 # 8-byte Reload
-	je	.LBB5_167
-# %bb.164:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_163
+# %bb.160:                              #   in Loop: Header=BB5_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	136(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB5_302
-# %bb.165:                              #   in Loop: Header=BB5_12 Depth=1
+	ja	.LBB5_298
+# %bb.161:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp311:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp312:
-# %bb.166:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.162:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
 	movq	128(%rsp), %rcx                 # 8-byte Reload
@@ -4982,11 +4975,11 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rbx, %rdx
 	callq	memmove@PLT
 	movq	%rbp, %rax
-	jmp	.LBB5_168
+	jmp	.LBB5_164
 	.p2align	4, 0x90
-.LBB5_167:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_163:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 48(%rsp)
-.LBB5_168:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_164:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rax, 40(%rsp)
 .Ltmp317:
 	movq	%r12, %rdi
@@ -4999,19 +4992,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 	vmovsd	%xmm0, 232(%rsp)                # 8-byte Spill
 .Ltmp318:
-# %bb.169:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.165:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_171
-# %bb.170:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_167
+# %bb.166:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_171:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_167:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_173
-# %bb.172:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_169
+# %bb.168:                              #   in Loop: Header=BB5_12 Depth=1
 	callq	_ZdlPv
-.LBB5_173:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_169:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	944(%rsp), %rsi
 	callq	clock_gettime
@@ -5029,8 +5022,8 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	malloc
 	movq	%rax, %rbp
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_188
-# %bb.174:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_184
+# %bb.170:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	688(%rsp), %rdx                 # 8-byte Reload
 	leaq	(%r15,%rdx,8), %rax
 	cmpq	%rbx, %rax
@@ -5055,20 +5048,20 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	cmpq	%r13, %rsi
 	setb	%sil
 	testb	%r10b, %r9b
-	jne	.LBB5_180
-# %bb.175:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_176
+# %bb.171:                              #   in Loop: Header=BB5_12 Depth=1
 	orb	%dil, %al
-	je	.LBB5_180
-# %bb.176:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_176
+# %bb.172:                              #   in Loop: Header=BB5_12 Depth=1
 	orb	%r8b, %cl
-	je	.LBB5_180
-# %bb.177:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_176
+# %bb.173:                              #   in Loop: Header=BB5_12 Depth=1
 	orb	%sil, %dl
-	je	.LBB5_180
-# %bb.178:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_176
+# %bb.174:                              #   in Loop: Header=BB5_12 Depth=1
 	cmpl	$13, 16(%rsp)                   # 4-byte Folded Reload
-	jb	.LBB5_182
-# %bb.179:                              #   in Loop: Header=BB5_12 Depth=1
+	jb	.LBB5_178
+# %bb.175:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbx, %rdi
 	movq	%r15, %rsi
 	movq	560(%rsp), %r14                 # 8-byte Reload
@@ -5078,12 +5071,12 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r13, %rsi
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
-	jmp	.LBB5_188
+	jmp	.LBB5_184
 	.p2align	4, 0x90
-.LBB5_180:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_176:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_181:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_177:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbx,%rax,8)
@@ -5091,16 +5084,16 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r14
-	jne	.LBB5_181
-	jmp	.LBB5_188
-.LBB5_182:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_177
+	jmp	.LBB5_184
+.LBB5_178:                              #   in Loop: Header=BB5_12 Depth=1
 	cmpq	$0, 200(%rsp)                   # 8-byte Folded Reload
-	je	.LBB5_186
-# %bb.183:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_182
+# %bb.179:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	movq	200(%rsp), %rcx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB5_184:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_180:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%r15,%rax,8), %ymm0
 	vmovups	%ymm0, (%rbx,%rax,8)
@@ -5108,16 +5101,16 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%ymm0, (%rbp,%rax,8)
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB5_184
-# %bb.185:                              #   in Loop: Header=BB5_12 Depth=1
+	jb	.LBB5_180
+# %bb.181:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rcx, %rax
 	cmpq	%r14, %rcx
-	jne	.LBB5_187
-	jmp	.LBB5_188
-.LBB5_186:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_183
+	jmp	.LBB5_184
+.LBB5_182:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_187:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_183:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbx,%rax,8)
@@ -5125,9 +5118,9 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r14
-	jne	.LBB5_187
+	jne	.LBB5_183
 	.p2align	4, 0x90
-.LBB5_188:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_184:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	16(%rsp), %r14                  # 8-byte Reload
 	movl	%r14d, %edi
 	movq	%rbx, %rsi
@@ -5242,11 +5235,11 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rbx
 	testl	%r14d, %r14d
 	movq	%rbp, 728(%rsp)                 # 8-byte Spill
-	je	.LBB5_191
-# %bb.189:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_187
+# %bb.185:                              #   in Loop: Header=BB5_12 Depth=1
 	cmpl	$13, %r14d
-	jb	.LBB5_192
-# %bb.190:                              #   in Loop: Header=BB5_12 Depth=1
+	jb	.LBB5_188
+# %bb.186:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%r12, %rdi
 	movq	%r15, %rsi
 	movq	560(%rsp), %r14                 # 8-byte Reload
@@ -5258,9 +5251,9 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	_intel_fast_memcpy@PLT
 	movq	272(%rsp), %rbp                 # 8-byte Reload
 	leaq	320(%rsp), %r14
-	jmp	.LBB5_198
+	jmp	.LBB5_194
 	.p2align	4, 0x90
-.LBB5_191:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_187:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1376(%rsp), %rsi
 	callq	clock_gettime
@@ -5269,19 +5262,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	movq	272(%rsp), %rbp                 # 8-byte Reload
-	jmp	.LBB5_206
+	jmp	.LBB5_202
 	.p2align	4, 0x90
-.LBB5_192:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_188:                              #   in Loop: Header=BB5_12 Depth=1
 	cmpq	$0, 200(%rsp)                   # 8-byte Folded Reload
 	movq	144(%rsp), %rcx                 # 8-byte Reload
-	je	.LBB5_196
-# %bb.193:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_192
+# %bb.189:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	movq	200(%rsp), %rdx                 # 8-byte Reload
 	movq	272(%rsp), %rbp                 # 8-byte Reload
 	leaq	320(%rsp), %r14
 	.p2align	4, 0x90
-.LBB5_194:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_190:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%r15,%rax,8), %ymm0
 	vmovups	%ymm0, (%r12,%rax,8)
@@ -5289,18 +5282,18 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%ymm0, (%rbx,%rax,8)
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB5_194
-# %bb.195:                              #   in Loop: Header=BB5_12 Depth=1
+	jb	.LBB5_190
+# %bb.191:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rdx, %rax
 	cmpq	%rcx, %rdx
-	jne	.LBB5_197
-	jmp	.LBB5_198
-.LBB5_196:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_193
+	jmp	.LBB5_194
+.LBB5_192:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	movq	272(%rsp), %rbp                 # 8-byte Reload
 	leaq	320(%rsp), %r14
 	.p2align	4, 0x90
-.LBB5_197:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_193:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%r12,%rax,8)
@@ -5308,8 +5301,8 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbx,%rax,8)
 	incq	%rax
 	cmpq	%rax, %rcx
-	jne	.LBB5_197
-.LBB5_198:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_193
+.LBB5_194:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1376(%rsp), %rsi
 	vzeroupper
@@ -5318,34 +5311,34 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_206
-# %bb.199:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_202
+# %bb.195:                              #   in Loop: Header=BB5_12 Depth=1
 	testq	%rbp, %rbp
-	je	.LBB5_203
-# %bb.200:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_199
+# %bb.196:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_201:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_197:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB5_201
-# %bb.202:                              #   in Loop: Header=BB5_12 Depth=1
+	jl	.LBB5_197
+# %bb.198:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	112(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB5_204
-	jmp	.LBB5_206
-.LBB5_203:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_200
+	jmp	.LBB5_202
+.LBB5_199:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB5_204:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_200:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB5_205:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_201:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB5_205
-.LBB5_206:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_201
+.LBB5_202:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	256(%rsp), %rsi
 	callq	clock_gettime
@@ -5357,35 +5350,35 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_214
-# %bb.207:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_210
+# %bb.203:                              #   in Loop: Header=BB5_12 Depth=1
 	testq	%rbp, %rbp
-	je	.LBB5_211
-# %bb.208:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_207
+# %bb.204:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_209:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_205:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB5_209
-# %bb.210:                              #   in Loop: Header=BB5_12 Depth=1
+	jl	.LBB5_205
+# %bb.206:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	112(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB5_212
-	jmp	.LBB5_214
+	jne	.LBB5_208
+	jmp	.LBB5_210
 	.p2align	4, 0x90
-.LBB5_211:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_207:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB5_212:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_208:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB5_213:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_209:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB5_213
-.LBB5_214:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_209
+.LBB5_210:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	256(%rsp), %rsi
 	callq	clock_gettime
@@ -5397,35 +5390,35 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_222
-# %bb.215:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_218
+# %bb.211:                              #   in Loop: Header=BB5_12 Depth=1
 	testq	%rbp, %rbp
-	je	.LBB5_219
-# %bb.216:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_215
+# %bb.212:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_217:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_213:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB5_217
-# %bb.218:                              #   in Loop: Header=BB5_12 Depth=1
+	jl	.LBB5_213
+# %bb.214:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	112(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB5_220
-	jmp	.LBB5_222
+	jne	.LBB5_216
+	jmp	.LBB5_218
 	.p2align	4, 0x90
-.LBB5_219:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_215:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB5_220:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_216:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB5_221:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_217:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB5_221
-.LBB5_222:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_217
+.LBB5_218:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	256(%rsp), %rsi
 	callq	clock_gettime
@@ -5437,35 +5430,35 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_230
-# %bb.223:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_226
+# %bb.219:                              #   in Loop: Header=BB5_12 Depth=1
 	testq	%rbp, %rbp
-	je	.LBB5_227
-# %bb.224:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_223
+# %bb.220:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_225:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_221:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB5_225
-# %bb.226:                              #   in Loop: Header=BB5_12 Depth=1
+	jl	.LBB5_221
+# %bb.222:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	112(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB5_228
-	jmp	.LBB5_230
+	jne	.LBB5_224
+	jmp	.LBB5_226
 	.p2align	4, 0x90
-.LBB5_227:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_223:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB5_228:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_224:                              #   in Loop: Header=BB5_12 Depth=1
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB5_229:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_225:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB5_229
-.LBB5_230:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_225
+.LBB5_226:                              #   in Loop: Header=BB5_12 Depth=1
 	xorl	%edi, %edi
 	leaq	256(%rsp), %rsi
 	callq	clock_gettime
@@ -5477,50 +5470,50 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB5_235
-# %bb.231:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_231
+# %bb.227:                              #   in Loop: Header=BB5_12 Depth=1
 	testq	%rbp, %rbp
 	movq	112(%rsp), %rcx                 # 8-byte Reload
 	leaq	1424(%rsp), %r14
-	je	.LBB5_236
-# %bb.232:                              #   in Loop: Header=BB5_12 Depth=1
+	je	.LBB5_232
+# %bb.228:                              #   in Loop: Header=BB5_12 Depth=1
 	vpxor	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_233:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_229:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rbx,%rax,8), %ymm1
 	vfmadd231pd	(%r12,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB5_233
-# %bb.234:                              #   in Loop: Header=BB5_12 Depth=1
+	jl	.LBB5_229
+# %bb.230:                              #   in Loop: Header=BB5_12 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rbp, %rax
 	cmpq	%rcx, %rbp
-	jne	.LBB5_237
-	jmp	.LBB5_238
+	jne	.LBB5_233
+	jmp	.LBB5_234
 	.p2align	4, 0x90
-.LBB5_235:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_231:                              #   in Loop: Header=BB5_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	leaq	1424(%rsp), %r14
-	jmp	.LBB5_238
+	jmp	.LBB5_234
 	.p2align	4, 0x90
-.LBB5_236:                              #   in Loop: Header=BB5_12 Depth=1
+.LBB5_232:                              #   in Loop: Header=BB5_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB5_237:                              #   Parent Loop BB5_12 Depth=1
+.LBB5_233:                              #   Parent Loop BB5_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r12,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rcx
-	jne	.LBB5_237
-.LBB5_238:                              #   in Loop: Header=BB5_12 Depth=1
+	jne	.LBB5_233
+.LBB5_234:                              #   in Loop: Header=BB5_12 Depth=1
 	vmovsd	%xmm1, 128(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	256(%rsp), %rsi
@@ -5541,37 +5534,37 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	leaq	1344(%rsp), %rbx
 	leaq	1632(%rsp), %rbp
 	leaq	1600(%rsp), %r12
-# %bb.239:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.235:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp322:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbp, %rdi
 	callq	mpfr_init2
 .Ltmp323:
-# %bb.240:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.236:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp324:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%r12, %rdi
 	callq	mpfr_init2
 .Ltmp325:
-# %bb.241:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.237:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp326:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	880(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp327:
-# %bb.242:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.238:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp328:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	848(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp329:
-# %bb.243:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.239:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp330:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	816(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp331:
-# %bb.244:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.240:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp332:
 	leaq	880(%rsp), %rdi
 	movq	%rbx, %rsi
@@ -5580,7 +5573,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp333:
-# %bb.245:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.241:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp334:
 	leaq	880(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5588,7 +5581,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp335:
-# %bb.246:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.242:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp336:
 	leaq	880(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5596,7 +5589,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp337:
-# %bb.247:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.243:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp338:
 	leaq	912(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5604,7 +5597,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp339:
-# %bb.248:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.244:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp340:
 	movq	%r14, %rdi
 	movq	%rbx, %rsi
@@ -5613,7 +5606,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp341:
-# %bb.249:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.245:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp342:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -5621,7 +5614,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp343:
-# %bb.250:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.246:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp344:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -5629,7 +5622,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp345:
-# %bb.251:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.247:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp346:
 	leaq	1104(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5637,7 +5630,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp347:
-# %bb.252:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.248:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp348:
 	movq	%rbp, %rdi
 	movq	%rbx, %rsi
@@ -5646,7 +5639,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp349:
-# %bb.253:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.249:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp350:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -5654,7 +5647,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp351:
-# %bb.254:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.250:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp352:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -5662,7 +5655,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp353:
-# %bb.255:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.251:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp354:
 	leaq	1008(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5670,7 +5663,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp355:
-# %bb.256:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.252:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp356:
 	movq	%r12, %rdi
 	movq	%rbx, %rsi
@@ -5679,7 +5672,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp357:
-# %bb.257:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.253:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp358:
 	movq	%r12, %rdi
 	movq	%r12, %rsi
@@ -5687,7 +5680,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp359:
-# %bb.258:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.254:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp360:
 	movq	%r12, %rdi
 	movq	%r12, %rsi
@@ -5695,7 +5688,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp361:
-# %bb.259:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.255:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp362:
 	leaq	976(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5703,7 +5696,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp363:
-# %bb.260:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.256:                              #   in Loop: Header=BB5_12 Depth=1
 	vmovq	104(%rsp), %xmm0                # xmm0 = mem[0],zero
 .Ltmp364:
 	leaq	848(%rsp), %rdi
@@ -5711,7 +5704,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp365:
-# %bb.261:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.257:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp366:
 	leaq	848(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5719,7 +5712,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp367:
-# %bb.262:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.258:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp368:
 	leaq	848(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5727,7 +5720,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp369:
-# %bb.263:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.259:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp370:
 	leaq	1072(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5735,7 +5728,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp371:
-# %bb.264:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.260:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp372:
 	leaq	816(%rsp), %rdi
 	movq	%rbx, %rsi
@@ -5744,7 +5737,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp373:
-# %bb.265:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.261:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp374:
 	leaq	816(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5752,7 +5745,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp375:
-# %bb.266:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.262:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp376:
 	leaq	816(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5760,7 +5753,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp377:
-# %bb.267:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.263:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp378:
 	leaq	1040(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5768,37 +5761,37 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp379:
-# %bb.268:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.264:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp380:
 	movq	%r14, %rdi
 	callq	mpfr_clear
 .Ltmp381:
-# %bb.269:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.265:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp382:
 	movq	%rbp, %rdi
 	callq	mpfr_clear
 .Ltmp383:
-# %bb.270:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.266:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp384:
 	movq	%r12, %rdi
 	callq	mpfr_clear
 .Ltmp385:
-# %bb.271:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.267:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp386:
 	leaq	880(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp387:
-# %bb.272:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.268:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp388:
 	leaq	848(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp389:
-# %bb.273:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.269:                              #   in Loop: Header=BB5_12 Depth=1
 .Ltmp390:
 	leaq	816(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp391:
-# %bb.274:                              #   in Loop: Header=BB5_12 Depth=1
+# %bb.270:                              #   in Loop: Header=BB5_12 Depth=1
 	imulq	$1000000000, 120(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
 	addq	%rax, 96(%rsp)                  # 8-byte Folded Spill
@@ -5809,7 +5802,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovdqu	1184(%rsp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm1, %rcx
-	imulq	$1000000000, %rcx, %rcx         # imm = 0x3B9ACA00
+	imulq	$1000000000, %rcx, %rdi         # imm = 0x3B9ACA00
 	vmovdqu	1168(%rsp), %xmm2               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm2, %rdx
@@ -5817,42 +5810,42 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovdqu	1152(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm3, %rsi
+	vpextrq	$1, %xmm0, %rcx
 	imulq	$1000000000, %rsi, %rsi         # imm = 0x3B9ACA00
-	vpextrq	$1, %xmm0, %r8
-	addq	%rax, %r8
+	addq	%rax, %rcx
 	vpextrq	$1, %xmm1, %rbp
 	vpextrq	$1, %xmm2, %rbx
-	addq	%rcx, %rbp
+	addq	%rdi, %rbp
 	addq	%rdx, %rbx
 	vpextrq	$1, %xmm3, %r12
 	addq	%rsi, %r12
 	vmovdqu	1136(%rsp), %xmm0               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
-	vpextrq	$1, %xmm0, %r14
 	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
+	vpextrq	$1, %xmm0, %r14
 	addq	%rax, %r14
 	movq	640(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB5_11
-# %bb.275:                              #   in Loop: Header=BB5_12 Depth=1
-	movq	%r8, 352(%rsp)                  # 8-byte Spill
+# %bb.271:                              #   in Loop: Header=BB5_12 Depth=1
+	movq	%rcx, 352(%rsp)                 # 8-byte Spill
 	callq	_ZdlPv
-	movq	352(%rsp), %r8                  # 8-byte Reload
+	movq	352(%rsp), %rcx                 # 8-byte Reload
 	jmp	.LBB5_11
-.LBB5_276:
+.LBB5_272:
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vxorpd	%xmm5, %xmm5, %xmm5
-	jmp	.LBB5_278
-.LBB5_277:
+	jmp	.LBB5_274
+.LBB5_273:
 	vunpcklpd	%xmm1, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm1[0]
-	vmovupd	624(%rsp), %xmm1                # 16-byte Reload
+	vmovupd	592(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	608(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
+	vunpcklpd	576(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
                                         # xmm1 = xmm1[0],mem[0]
 	vinsertf128	$1, %xmm3, %ymm1, %ymm1
-.LBB5_278:
+.LBB5_274:
 	movq	344(%rsp), %rcx                 # 8-byte Reload
 	leal	(%rcx,%rcx,4), %eax
 	vmovd	%eax, %xmm2
@@ -5867,9 +5860,9 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vpermilpd	$1, %xmm2, %xmm2        # xmm2 = xmm2[1,0]
 	vmulpd	%ymm3, %ymm1, %ymm1
 	vmovupd	%ymm1, (%rax)
+	vdivsd	%xmm2, %xmm5, %xmm1
 	vmovupd	%xmm0, 32(%rax)
-	vdivsd	%xmm2, %xmm5, %xmm0
-	vmovsd	%xmm0, 48(%rax)
+	vmovsd	%xmm1, 48(%rax)
 	movslq	%ecx, %rbx
 .Ltmp393:
 	leaq	912(%rsp), %rdi
@@ -5880,7 +5873,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	mpfr_div_si
 .Ltmp394:
 	movq	672(%rsp), %rbp                 # 8-byte Reload
-# %bb.279:
+# %bb.275:
 .Ltmp395:
 	leaq	1104(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5888,7 +5881,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp396:
-# %bb.280:
+# %bb.276:
 .Ltmp397:
 	leaq	1072(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5896,7 +5889,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp398:
-# %bb.281:
+# %bb.277:
 .Ltmp399:
 	leaq	1040(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5904,7 +5897,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp400:
-# %bb.282:
+# %bb.278:
 .Ltmp401:
 	leaq	1008(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5912,7 +5905,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp402:
-# %bb.283:
+# %bb.279:
 .Ltmp403:
 	leaq	976(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -5920,14 +5913,14 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp404:
-# %bb.284:
+# %bb.280:
 	movq	(%rbp), %rdi
 .Ltmp405:
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp406:
-# %bb.285:
+# %bb.281:
 	movq	(%rbp), %rdi
 	addq	$32, %rdi
 	movl	920(%rsp), %ecx
@@ -5936,7 +5929,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp408:
-# %bb.286:
+# %bb.282:
 	movq	(%rbp), %rdi
 	addq	$64, %rdi
 	movl	1112(%rsp), %ecx
@@ -5945,7 +5938,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp410:
-# %bb.287:
+# %bb.283:
 	movq	(%rbp), %rdi
 	addq	$96, %rdi
 	movl	1080(%rsp), %ecx
@@ -5954,7 +5947,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp412:
-# %bb.288:
+# %bb.284:
 	movq	(%rbp), %rdi
 	subq	$-128, %rdi
 	movl	1048(%rsp), %ecx
@@ -5963,7 +5956,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp414:
-# %bb.289:
+# %bb.285:
 	movl	$160, %edi
 	addq	(%rbp), %rdi
 	movl	1016(%rsp), %ecx
@@ -5972,7 +5965,7 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp416:
-# %bb.290:
+# %bb.286:
 	movl	$192, %edi
 	addq	(%rbp), %rdi
 	movl	984(%rsp), %ecx
@@ -5981,19 +5974,19 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp418:
-# %bb.291:
+# %bb.287:
 	testq	%r13, %r13
-	je	.LBB5_293
-# %bb.292:
+	je	.LBB5_289
+# %bb.288:
 	movq	%r13, %rdi
 	callq	_ZdlPv
-.LBB5_293:
+.LBB5_289:
 	testq	%r15, %r15
-	je	.LBB5_295
-# %bb.294:
+	je	.LBB5_291
+# %bb.290:
 	movq	%r15, %rdi
 	callq	_ZdlPv
-.LBB5_295:
+.LBB5_291:
 	addq	$1672, %rsp                     # imm = 0x688
 	.cfi_def_cfa_offset 56
 	popq	%rbx
@@ -6009,215 +6002,215 @@ _Z20compare_dot_prod_fmaIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
-.LBB5_296:
+.LBB5_292:
 	.cfi_def_cfa_offset 1728
 .Ltmp254:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp255:
-# %bb.297:
-.LBB5_298:
+# %bb.293:
+.LBB5_294:
 .Ltmp260:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp261:
-# %bb.299:
-.LBB5_300:
+# %bb.295:
+.LBB5_296:
 .Ltmp308:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp309:
-# %bb.301:
-.LBB5_302:
+# %bb.297:
+.LBB5_298:
 .Ltmp314:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp315:
-# %bb.303:
-.LBB5_304:
+# %bb.299:
+.LBB5_300:
 .Ltmp239:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp240:
-# %bb.305:
-.LBB5_306:
+# %bb.301:
+.LBB5_302:
 .Ltmp245:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp246:
-# %bb.307:
-.LBB5_308:
+# %bb.303:
+.LBB5_304:
 .Ltmp269:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp270:
-# %bb.309:
-.LBB5_310:
+# %bb.305:
+.LBB5_306:
 .Ltmp275:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp276:
-# %bb.311:
-.LBB5_312:
+# %bb.307:
+.LBB5_308:
 	movl	$.L.str, %edi
 	callq	_ZSt20__throw_length_errorPKc
-.LBB5_313:
+.LBB5_309:
 .Ltmp206:
 	movq	%rax, %rbx
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_363
-	jmp	.LBB5_365
-.LBB5_314:
+	je	.LBB5_359
+	jmp	.LBB5_361
+.LBB5_310:
 .Ltmp274:
-	jmp	.LBB5_338
-.LBB5_315:
+	jmp	.LBB5_334
+.LBB5_311:
 .Ltmp268:
-	jmp	.LBB5_357
-.LBB5_316:
+	jmp	.LBB5_353
+.LBB5_312:
 .Ltmp244:
-	jmp	.LBB5_343
-.LBB5_317:
+	jmp	.LBB5_339
+.LBB5_313:
 .Ltmp238:
-	jmp	.LBB5_357
-.LBB5_318:
+	jmp	.LBB5_353
+.LBB5_314:
 .Ltmp419:
 	movq	%rax, %rbx
-	jmp	.LBB5_361
-.LBB5_319:
+	jmp	.LBB5_357
+.LBB5_315:
 .Ltmp280:
 	movq	%rax, %rbx
 	movq	368(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_339
-# %bb.320:
+	je	.LBB5_335
+# %bb.316:
 	callq	_ZdlPv
-	jmp	.LBB5_339
-.LBB5_321:
+	jmp	.LBB5_335
+.LBB5_317:
 .Ltmp250:
 	movq	%rax, %rbx
 	movq	496(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_344
-# %bb.322:
+	je	.LBB5_340
+# %bb.318:
 	callq	_ZdlPv
-	jmp	.LBB5_344
-.LBB5_323:
+	jmp	.LBB5_340
+.LBB5_319:
 .Ltmp209:
-	jmp	.LBB5_357
-.LBB5_324:
+	jmp	.LBB5_353
+.LBB5_320:
 .Ltmp212:
-	jmp	.LBB5_357
-.LBB5_325:
+	jmp	.LBB5_353
+.LBB5_321:
 .Ltmp313:
-	jmp	.LBB5_348
-.LBB5_326:
+	jmp	.LBB5_344
+.LBB5_322:
 .Ltmp307:
-	jmp	.LBB5_357
-.LBB5_327:
+	jmp	.LBB5_353
+.LBB5_323:
 .Ltmp230:
-	jmp	.LBB5_357
-.LBB5_328:
+	jmp	.LBB5_353
+.LBB5_324:
 .Ltmp319:
 	movq	%rax, %rbx
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_349
-# %bb.329:
+	je	.LBB5_345
+# %bb.325:
 	callq	_ZdlPv
-	jmp	.LBB5_349
-.LBB5_330:
+	jmp	.LBB5_345
+.LBB5_326:
 .Ltmp259:
-	jmp	.LBB5_353
-.LBB5_331:
+	jmp	.LBB5_349
+.LBB5_327:
 .Ltmp253:
-	jmp	.LBB5_357
-.LBB5_332:
+	jmp	.LBB5_353
+.LBB5_328:
 .Ltmp265:
 	movq	%rax, %rbx
 	movq	432(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_354
-# %bb.333:
+	je	.LBB5_350
+# %bb.329:
 	callq	_ZdlPv
-	jmp	.LBB5_354
-.LBB5_334:
+	jmp	.LBB5_350
+.LBB5_330:
 .Ltmp392:
-	jmp	.LBB5_357
-.LBB5_335:
+	jmp	.LBB5_353
+.LBB5_331:
 .Ltmp235:
-	jmp	.LBB5_357
-.LBB5_336:
+	jmp	.LBB5_353
+.LBB5_332:
 .Ltmp223:
-	jmp	.LBB5_357
-.LBB5_337:
+	jmp	.LBB5_353
+.LBB5_333:
 .Ltmp277:
-.LBB5_338:
+.LBB5_334:
 	movq	%rax, %rbx
-.LBB5_339:
+.LBB5_335:
 	movq	400(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB5_345
-	jmp	.LBB5_358
-.LBB5_341:
+	jne	.LBB5_341
+	jmp	.LBB5_354
+.LBB5_337:
 .Ltmp271:
-	jmp	.LBB5_357
-.LBB5_342:
+	jmp	.LBB5_353
+.LBB5_338:
 .Ltmp247:
-.LBB5_343:
+.LBB5_339:
 	movq	%rax, %rbx
-.LBB5_344:
+.LBB5_340:
 	movq	528(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_358
-	jmp	.LBB5_345
-.LBB5_346:
+	je	.LBB5_354
+	jmp	.LBB5_341
+.LBB5_342:
 .Ltmp241:
-	jmp	.LBB5_357
-.LBB5_347:
+	jmp	.LBB5_353
+.LBB5_343:
 .Ltmp316:
-.LBB5_348:
+.LBB5_344:
 	movq	%rax, %rbx
-.LBB5_349:
+.LBB5_345:
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB5_345
-	jmp	.LBB5_358
-.LBB5_351:
+	jne	.LBB5_341
+	jmp	.LBB5_354
+.LBB5_347:
 .Ltmp310:
-	jmp	.LBB5_357
-.LBB5_352:
+	jmp	.LBB5_353
+.LBB5_348:
 .Ltmp262:
+.LBB5_349:
+	movq	%rax, %rbx
+.LBB5_350:
+	movq	464(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB5_354
+.LBB5_341:
+	callq	_ZdlPv
+	jmp	.LBB5_354
+.LBB5_352:
+.Ltmp256:
 .LBB5_353:
 	movq	%rax, %rbx
 .LBB5_354:
-	movq	464(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB5_358
-.LBB5_345:
-	callq	_ZdlPv
-	jmp	.LBB5_358
-.LBB5_356:
-.Ltmp256:
-.LBB5_357:
-	movq	%rax, %rbx
-.LBB5_358:
 	movq	640(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_360
-# %bb.359:
+	je	.LBB5_356
+# %bb.355:
 	callq	_ZdlPv
-.LBB5_360:
+.LBB5_356:
 	movq	288(%rsp), %r13
-.LBB5_361:
+.LBB5_357:
 	testq	%r13, %r13
-	jne	.LBB5_364
-# %bb.362:
+	jne	.LBB5_360
+# %bb.358:
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB5_365
-.LBB5_363:
+	jne	.LBB5_361
+.LBB5_359:
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
-.LBB5_364:
+.LBB5_360:
 	movq	%r13, %rdi
 	callq	_ZdlPv
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB5_363
-.LBB5_365:
+	je	.LBB5_359
+.LBB5_361:
 	callq	_ZdlPv
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
@@ -6488,22 +6481,28 @@ GCC_except_table5:
 # %bb.0:
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	pushq	%r14
+	pushq	%r15
 	.cfi_def_cfa_offset 24
-	pushq	%rbx
+	pushq	%r14
 	.cfi_def_cfa_offset 32
-	subq	$48, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$32, %rsp
 	.cfi_def_cfa_offset 80
-	.cfi_offset %rbx, -32
-	.cfi_offset %r14, -24
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
 	movq	%rdx, %rbp
 	testl	%ebp, %ebp
 	je	.LBB6_11
 # %bb.1:
+	movq	%r9, %r15
+	movq	%r8, %r12
 	movq	%rcx, %rbx
-	movq	%r8, 24(%rsp)                   # 8-byte Spill
-	movq	%r9, 32(%rsp)                   # 8-byte Spill
 	decl	%ebp
 	movl	$0, 12(%rsp)
 	movl	%ebp, 8(%rsp)
@@ -6531,15 +6530,13 @@ GCC_except_table5:
 	.cfi_adjust_cfa_offset -32
 	movl	8(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	12(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB6_6
 # %bb.2:
-	movq	24(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	32(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rax,%rdx,8), %rdi
 	movq	%rsp, %r8
@@ -6626,11 +6623,11 @@ GCC_except_table5:
 	movl	%r14d, %esi
 	callq	__kmpc_for_static_fini@PLT
 	movq	%rsp, %rax
-	movq	%rax, 40(%rsp)
+	movq	%rax, 24(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	48(%rsp), %r8
+	leaq	32(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.10, %r9d
@@ -6667,11 +6664,15 @@ GCC_except_table5:
 	vmovq	%rax, %xmm1
 	jne	.LBB6_10
 .LBB6_11:
-	addq	$48, %rsp
-	.cfi_def_cfa_offset 32
+	addq	$32, %rsp
+	.cfi_def_cfa_offset 48
 	popq	%rbx
-	.cfi_def_cfa_offset 24
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
 	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
 	.cfi_def_cfa_offset 16
 	popq	%rbp
 	.cfi_def_cfa_offset 8
@@ -6702,22 +6703,28 @@ GCC_except_table5:
 # %bb.0:
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	pushq	%r14
+	pushq	%r15
 	.cfi_def_cfa_offset 24
-	pushq	%rbx
+	pushq	%r14
 	.cfi_def_cfa_offset 32
-	subq	$48, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$32, %rsp
 	.cfi_def_cfa_offset 80
-	.cfi_offset %rbx, -32
-	.cfi_offset %r14, -24
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
 	movq	%rdx, %rbp
 	testl	%ebp, %ebp
 	je	.LBB8_11
 # %bb.1:
+	movq	%r9, %r15
+	movq	%r8, %r12
 	movq	%rcx, %rbx
-	movq	%r8, 24(%rsp)                   # 8-byte Spill
-	movq	%r9, 32(%rsp)                   # 8-byte Spill
 	decl	%ebp
 	movl	$0, 12(%rsp)
 	movl	%ebp, 8(%rsp)
@@ -6745,15 +6752,13 @@ GCC_except_table5:
 	.cfi_adjust_cfa_offset -32
 	movl	8(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	12(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB8_6
 # %bb.2:
-	movq	24(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	32(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rax,%rdx,8), %rdi
 	movq	%rsp, %r8
@@ -6840,11 +6845,11 @@ GCC_except_table5:
 	movl	%r14d, %esi
 	callq	__kmpc_for_static_fini@PLT
 	movq	%rsp, %rax
-	movq	%rax, 40(%rsp)
+	movq	%rax, 24(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	48(%rsp), %r8
+	leaq	32(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.12, %r9d
@@ -6881,11 +6886,15 @@ GCC_except_table5:
 	vmovq	%rax, %xmm1
 	jne	.LBB8_10
 .LBB8_11:
-	addq	$48, %rsp
-	.cfi_def_cfa_offset 32
+	addq	$32, %rsp
+	.cfi_def_cfa_offset 48
 	popq	%rbx
-	.cfi_def_cfa_offset 24
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
 	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
 	.cfi_def_cfa_offset 16
 	popq	%rbp
 	.cfi_def_cfa_offset 8
@@ -6985,9 +6994,10 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 160(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 176(%rsp)
-	vmovupd	%xmm0, 224(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 240(%rsp)
-	movq	$0, 8(%rsp)                     # 8-byte Folded Spill
+	vmovupd	%xmm0, 240(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 256(%rsp)
+	xorl	%eax, %eax
+	movq	%rax, 8(%rsp)                   # 8-byte Spill
 	xorl	%r14d, %r14d
 	xorl	%r13d, %r13d
 	jmp	.LBB10_11
@@ -7002,10 +7012,10 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	callq	_Znwm
 .Ltmp421:
 # %bb.7:
-	movq	%rax, 224(%rsp)
-	leaq	(%rax,%r12,8), %rbx
 	leaq	8(%rax), %rdi
-	movq	%rbx, 240(%rsp)
+	movq	%rax, 240(%rsp)
+	leaq	(%rax,%r12,8), %rbx
+	movq	%rbx, 256(%rsp)
 	movq	%rax, %r14
 	movq	$0, (%rax)
 	cmpl	$1, 72(%rsp)                    # 4-byte Folded Reload
@@ -7025,28 +7035,28 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	movq	136(%rsp), %r15                 # 8-byte Reload
 	movq	128(%rsp), %r12                 # 8-byte Reload
 .LBB10_11:
-	movq	%r13, 232(%rsp)
+	movq	%r13, 248(%rsp)
 .Ltmp423:
-	leaq	384(%rsp), %rdi
+	leaq	400(%rsp), %rdi
 	movl	$4000, %esi                     # imm = 0xFA0
 	callq	mpfr_init2
 .Ltmp424:
 # %bb.12:
 .Ltmp425:
-	leaq	352(%rsp), %rdi
+	leaq	368(%rsp), %rdi
 	movl	$4000, %esi                     # imm = 0xFA0
 	callq	mpfr_init2
 .Ltmp426:
 # %bb.13:
 .Ltmp427:
-	leaq	384(%rsp), %rdi
+	leaq	400(%rsp), %rdi
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp428:
 # %bb.14:
 .Ltmp429:
-	leaq	352(%rsp), %rdi
+	leaq	368(%rsp), %rdi
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%esi, %esi
 	callq	mpfr_set_d
@@ -7056,7 +7066,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	je	.LBB10_16
 # %bb.28:
 	shlq	$5, %rbp
-	movq	%rbp, 304(%rsp)                 # 8-byte Spill
+	movq	%rbp, 320(%rsp)                 # 8-byte Spill
 	movq	72(%rsp), %rcx                  # 8-byte Reload
 	movq	%r13, %rax
 	movl	%ecx, %r13d
@@ -7069,34 +7079,38 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	andl	$-4, %edx
 	movl	%r13d, %eax
 	andl	$3, %eax
-	movq	%rax, 288(%rsp)                 # 8-byte Spill
+	movq	%rax, 304(%rsp)                 # 8-byte Spill
 	movl	%ecx, %eax
 	andl	$-4, %eax
 	addl	%ecx, %eax
 	incl	%eax
-	movq	%rax, 280(%rsp)                 # 8-byte Spill
+	movq	%rax, 296(%rsp)                 # 8-byte Spill
 	leaq	(%r14,%rdx,8), %rax
-	movq	%rax, 272(%rsp)                 # 8-byte Spill
+	movq	%rax, 288(%rsp)                 # 8-byte Spill
 	leaq	1(%rdx), %rax
-	movq	%rax, 256(%rsp)                 # 8-byte Spill
-	movq	%rdx, 296(%rsp)                 # 8-byte Spill
+	movq	%rax, 272(%rsp)                 # 8-byte Spill
+	movq	%rdx, 312(%rsp)                 # 8-byte Spill
 	movq	8(%rsp), %rax                   # 8-byte Reload
 	leaq	(%rax,%rdx,8), %rbx
 	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 192(%rsp)                # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%esi, %esi
-	movq	%rbx, 264(%rsp)                 # 8-byte Spill
+	movq	%rbx, 280(%rsp)                 # 8-byte Spill
 	jmp	.LBB10_29
 	.p2align	4, 0x90
 .LBB10_146:                             #   in Loop: Header=BB10_29 Depth=1
 	vcvtsi2sd	%r15, %xmm1, %xmm0
-	vcvtsi2sd	%rbp, %xmm1, %xmm1
-	vmovupd	560(%rsp), %xmm2                # 16-byte Reload
+	vmovupd	192(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm0, %xmm2, %xmm0
-	vmovupd	544(%rsp), %xmm2                # 16-byte Reload
+	vaddsd	%xmm0, %xmm1, %xmm1
+	vmovupd	%xmm1, 192(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm1, %xmm2, %xmm1
+	vcvtsi2sd	%rbp, %xmm2, %xmm0
+	vmovupd	560(%rsp), %xmm1                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
+	vaddsd	%xmm0, %xmm1, %xmm1
 	movl	156(%rsp), %esi                 # 4-byte Reload
 	incl	%esi
 	cmpl	144(%rsp), %esi                 # 4-byte Folded Reload
@@ -7105,15 +7119,13 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
                                         #     Child Loop BB10_33 Depth 2
                                         #     Child Loop BB10_36 Depth 2
                                         #     Child Loop BB10_41 Depth 2
-	vmovupd	%xmm1, 544(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	vmovupd	%xmm0, 560(%rsp)                # 16-byte Spill
+	vmovupd	%xmm1, 560(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 192(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 208(%rsp)
+	vmovupd	%xmm0, 208(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 224(%rsp)
 .Ltmp431:
-	leaq	192(%rsp), %rdi
+	leaq	208(%rsp), %rdi
 	movl	%esi, 156(%rsp)                 # 4-byte Spill
 	movl	152(%rsp), %edx                 # 4-byte Reload
 	callq	_Z10import_vecIdEvRSt6vectorIT_SaIS1_EEji
@@ -7122,9 +7134,9 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	cmpl	$0, 72(%rsp)                    # 4-byte Folded Reload
 	je	.LBB10_37
 # %bb.31:                               #   in Loop: Header=BB10_29 Depth=1
-	movq	192(%rsp), %rax
+	movq	208(%rsp), %rax
 	cmpl	$4, 72(%rsp)                    # 4-byte Folded Reload
-	movq	296(%rsp), %rsi                 # 8-byte Reload
+	movq	312(%rsp), %rsi                 # 8-byte Reload
 	movq	8(%rsp), %rdi                   # 8-byte Reload
 	jb	.LBB10_34
 # %bb.32:                               #   in Loop: Header=BB10_29 Depth=1
@@ -7159,13 +7171,13 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	jne	.LBB10_33
 .LBB10_34:                              #   in Loop: Header=BB10_29 Depth=1
 	cmpq	%r13, %rsi
-	movq	288(%rsp), %r8                  # 8-byte Reload
-	movq	280(%rsp), %rbp                 # 8-byte Reload
-	movq	272(%rsp), %rbx                 # 8-byte Reload
-	movq	264(%rsp), %rdi                 # 8-byte Reload
+	movq	304(%rsp), %r8                  # 8-byte Reload
+	movq	296(%rsp), %rbp                 # 8-byte Reload
+	movq	288(%rsp), %rbx                 # 8-byte Reload
+	movq	280(%rsp), %rdi                 # 8-byte Reload
 	jae	.LBB10_37
 # %bb.35:                               #   in Loop: Header=BB10_29 Depth=1
-	movq	256(%rsp), %rcx                 # 8-byte Reload
+	movq	272(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rcx
 	xorl	%edx, %edx
 	.p2align	4, 0x90
@@ -7181,7 +7193,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	jne	.LBB10_36
 .LBB10_37:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp434:
-	movq	304(%rsp), %rbp                 # 8-byte Reload
+	movq	320(%rsp), %rbp                 # 8-byte Reload
 	movq	%rbp, %rdi
 	callq	_Znam
 .Ltmp435:
@@ -7237,13 +7249,13 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .LBB10_46:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp448:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	320(%rsp), %rdi
+	leaq	336(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp449:
 # %bb.47:                               #   in Loop: Header=BB10_29 Depth=1
 .Ltmp450:
 	vxorpd	%xmm0, %xmm0, %xmm0
-	leaq	320(%rsp), %rdi
+	leaq	336(%rsp), %rdi
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp451:
@@ -7253,16 +7265,16 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
                                         # kill: def $edi killed $edi killed $rdi
 	movq	%rbx, %rsi
 	movq	120(%rsp), %rdx                 # 8-byte Reload
-	leaq	320(%rsp), %rcx
+	leaq	336(%rsp), %rcx
 	callq	_Z13dot_prod_mpfriPA1_13__mpfr_structS1_PS_
 .Ltmp453:
 # %bb.49:                               #   in Loop: Header=BB10_29 Depth=1
 	movq	%r14, %r12
 	xorl	%edi, %edi
-	leaq	464(%rsp), %rsi
+	leaq	480(%rsp), %rsi
 	callq	clock_gettime
 	movq	$0, 96(%rsp)
-	leaq	224(%rsp), %r14
+	leaq	240(%rsp), %r14
 	movq	%r14, (%rsp)
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..13, %edx
@@ -7315,15 +7327,15 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	xorl	%eax, %eax
 	callq	__kmpc_fork_call@PLT
 	xorl	%edi, %edi
-	leaq	448(%rsp), %rsi
+	leaq	464(%rsp), %rsi
 	callq	clock_gettime
-	movq	448(%rsp), %rax
-	movq	456(%rsp), %r15
-	subq	464(%rsp), %rax
+	movq	464(%rsp), %rax
+	movq	472(%rsp), %r15
+	subq	480(%rsp), %rax
 	movq	%rax, 120(%rsp)                 # 8-byte Spill
-	subq	472(%rsp), %r15
+	subq	488(%rsp), %r15
 	xorl	%edi, %edi
-	leaq	432(%rsp), %rsi
+	leaq	448(%rsp), %rsi
 	callq	clock_gettime
 	movq	168(%rsp), %rbx
 	movq	%rbx, %rbp
@@ -7756,7 +7768,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	movl	$1, %r8d
 	movl	84(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
-	vmovsd	%xmm0, 312(%rsp)                # 8-byte Spill
+	vmovsd	%xmm0, 328(%rsp)                # 8-byte Spill
 .Ltmp492:
 # %bb.128:                              #   in Loop: Header=BB10_29 Depth=1
 	movq	16(%rsp), %rdi
@@ -7773,21 +7785,21 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	callq	_ZdlPv
 .LBB10_132:                             #   in Loop: Header=BB10_29 Depth=1
 	xorl	%edi, %edi
-	leaq	416(%rsp), %rsi
+	leaq	432(%rsp), %rsi
 	callq	clock_gettime
-	movq	416(%rsp), %r12
-	movq	424(%rsp), %rbp
-	subq	432(%rsp), %r12
-	subq	440(%rsp), %rbp
+	movq	432(%rsp), %r12
+	movq	440(%rsp), %rbp
+	subq	448(%rsp), %r12
+	subq	456(%rsp), %rbp
 .Ltmp494:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	512(%rsp), %rdi
+	leaq	528(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp495:
 # %bb.133:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp496:
 	movl	$4000, %esi                     # imm = 0xFA0
-	leaq	480(%rsp), %rdi
+	leaq	496(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp497:
 # %bb.134:                              #   in Loop: Header=BB10_29 Depth=1
@@ -7806,22 +7818,22 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 # %bb.136:                              #   in Loop: Header=BB10_29 Depth=1
 	vmovsd	96(%rsp), %xmm0                 # xmm0 = mem[0],zero
 .Ltmp503:
-	leaq	480(%rsp), %rdi
-	leaq	320(%rsp), %rsi
+	leaq	496(%rsp), %rdi
+	leaq	336(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp504:
 # %bb.137:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp505:
-	leaq	480(%rsp), %rdi
+	leaq	496(%rsp), %rdi
 	movq	%rdi, %rsi
-	leaq	320(%rsp), %rdx
+	leaq	336(%rsp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp506:
 # %bb.138:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp507:
-	leaq	480(%rsp), %rdi
+	leaq	496(%rsp), %rdi
 	movq	%rdi, %rsi
 	xorl	%edx, %edx
 	movl	$1, %ecx
@@ -7829,32 +7841,32 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .Ltmp508:
 # %bb.139:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp509:
-	leaq	384(%rsp), %rdi
+	leaq	400(%rsp), %rdi
 	movq	%rdi, %rsi
-	leaq	480(%rsp), %rdx
+	leaq	496(%rsp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp510:
 # %bb.140:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp511:
-	leaq	512(%rsp), %rdi
-	leaq	320(%rsp), %rsi
-	vmovsd	312(%rsp), %xmm0                # 8-byte Reload
+	leaq	528(%rsp), %rdi
+	leaq	336(%rsp), %rsi
+	vmovsd	328(%rsp), %xmm0                # 8-byte Reload
                                         # xmm0 = mem[0],zero
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp512:
 # %bb.141:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp513:
-	leaq	512(%rsp), %rdi
+	leaq	528(%rsp), %rdi
 	movq	%rdi, %rsi
-	leaq	320(%rsp), %rdx
+	leaq	336(%rsp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp514:
 # %bb.142:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp515:
-	leaq	512(%rsp), %rdi
+	leaq	528(%rsp), %rdi
 	movq	%rdi, %rsi
 	xorl	%edx, %edx
 	movl	$1, %ecx
@@ -7862,9 +7874,9 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .Ltmp516:
 # %bb.143:                              #   in Loop: Header=BB10_29 Depth=1
 .Ltmp517:
-	leaq	352(%rsp), %rdi
+	leaq	368(%rsp), %rdi
 	movq	%rdi, %rsi
-	leaq	512(%rsp), %rdx
+	leaq	528(%rsp), %rdx
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp518:
@@ -7874,13 +7886,15 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	addq	%rax, %r15
 	imulq	$1000000000, %r12, %rax         # imm = 0x3B9ACA00
 	addq	%rax, %rbp
-	movq	192(%rsp), %rdi
+	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB10_146
 # %bb.145:                              #   in Loop: Header=BB10_29 Depth=1
 	callq	_ZdlPv
 	jmp	.LBB10_146
 .LBB10_17:
+	vmovupd	192(%rsp), %xmm0                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
 	vunpcklpd	%xmm1, %xmm0, %xmm0     # xmm0 = xmm0[0],xmm1[0]
 	movq	136(%rsp), %r15                 # 8-byte Reload
 	movq	128(%rsp), %r12                 # 8-byte Reload
@@ -7890,7 +7904,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .LBB10_18:
 	movq	144(%rsp), %rcx                 # 8-byte Reload
 	leal	(%rcx,%rcx,4), %eax
-	vcvtsi2sd	%eax, %xmm3, %xmm1
+	vcvtsi2sd	%eax, %xmm2, %xmm1
 	movq	(%r12), %rax
 	vmovsd	.LCPI10_0(%rip), %xmm2          # xmm2 = mem[0],zero
 	vdivsd	%xmm1, %xmm2, %xmm1
@@ -7899,7 +7913,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	vmovupd	%xmm0, (%rax)
 	movslq	%ecx, %rbp
 .Ltmp520:
-	leaq	384(%rsp), %rdi
+	leaq	400(%rsp), %rdi
 	movq	%rdi, %rsi
 	movq	%rbp, %rdx
 	xorl	%ecx, %ecx
@@ -7907,7 +7921,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .Ltmp521:
 # %bb.19:
 .Ltmp522:
-	leaq	352(%rsp), %rdi
+	leaq	368(%rsp), %rdi
 	movq	%rdi, %rsi
 	movq	%rbp, %rdx
 	xorl	%ecx, %ecx
@@ -7915,18 +7929,18 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .Ltmp523:
 # %bb.20:
 	movq	(%r15), %rdi
-	movl	392(%rsp), %ecx
+	movl	408(%rsp), %ecx
 .Ltmp524:
-	leaq	384(%rsp), %rsi
+	leaq	400(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp525:
 # %bb.21:
 	movq	(%r15), %rdi
 	addq	$32, %rdi
-	movl	360(%rsp), %ecx
+	movl	376(%rsp), %ecx
 .Ltmp526:
-	leaq	352(%rsp), %rsi
+	leaq	368(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp527:
@@ -8020,7 +8034,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .Ltmp447:
 .LBB10_159:
 	movq	%rax, %rbp
-	movq	192(%rsp), %rdi
+	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB10_163
 	jmp	.LBB10_161
@@ -8032,7 +8046,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	testq	%rdi, %rdi
 	jne	.LBB10_156
 # %bb.160:
-	movq	192(%rsp), %rdi
+	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
 	jne	.LBB10_161
 .LBB10_163:
@@ -8047,7 +8061,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 	callq	_Unwind_Resume@PLT
 .LBB10_156:
 	callq	_ZdlPv
-	movq	192(%rsp), %rdi
+	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB10_163
 	jmp	.LBB10_161
@@ -8056,7 +8070,7 @@ _Z19compare_dot_prod_thIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6
 .LBB10_148:
 	movq	%rax, %rbp
 	movq	%r12, %r14
-	movq	192(%rsp), %rdi
+	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB10_163
 .LBB10_161:
@@ -8260,11 +8274,17 @@ GCC_except_table10:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -8272,9 +8292,9 @@ GCC_except_table10:
 	testl	%ebp, %ebp
 	je	.LBB11_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -8302,40 +8322,37 @@ GCC_except_table10:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB11_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB11_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB11_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB11_13
 # %bb.16:
@@ -8343,7 +8360,7 @@ GCC_except_table10:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB11_17:                              # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -8353,14 +8370,12 @@ GCC_except_table10:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB11_14
 	jmp	.LBB11_19
 .LBB11_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB11_5:                               # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -8373,7 +8388,6 @@ GCC_except_table10:
 .LBB11_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB11_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -8392,11 +8406,11 @@ GCC_except_table10:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.14, %r9d
@@ -8414,8 +8428,8 @@ GCC_except_table10:
 	jne	.LBB11_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -8423,19 +8437,23 @@ GCC_except_table10:
 	jmp	.LBB11_11
 .LBB11_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB11_10:                              # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB11_10
 .LBB11_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -8599,9 +8617,9 @@ _Z21compare_dot_prod_condIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 .Ltmp530:
 # %bb.7:
 	movq	%rax, %r12
+	leaq	8(%rax), %rdi
 	movq	%rax, 336(%rsp)
 	leaq	(%rax,%rbx,8), %rbp
-	leaq	8(%rax), %rdi
 	movq	%rbp, 352(%rsp)
 	movq	$0, (%rax)
 	cmpl	$1, 16(%rsp)                    # 4-byte Folded Reload
@@ -9095,7 +9113,8 @@ _Z21compare_dot_prod_condIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 	movl	$1, %r8d
 	callq	cblas_ddot
 	vmovsd	%xmm0, 32(%rsp)                 # 8-byte Spill
-	movq	$0, 24(%rsp)                    # 8-byte Folded Spill
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 24(%rsp)                 # 8-byte Spill
 	jmp	.LBB13_89
 	.p2align	4, 0x90
 .LBB13_74:                              #   in Loop: Header=BB13_12 Depth=1
@@ -9168,7 +9187,8 @@ _Z21compare_dot_prod_condIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 	jmp	.LBB13_86
 	.p2align	4, 0x90
 .LBB13_85:                              #   in Loop: Header=BB13_12 Depth=1
-	movq	$0, 24(%rsp)                    # 8-byte Folded Spill
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 24(%rsp)                 # 8-byte Spill
 	xorl	%eax, %eax
 .LBB13_86:                              #   in Loop: Header=BB13_12 Depth=1
 	movq	64(%rsp), %rcx                  # 8-byte Reload
@@ -9847,11 +9867,17 @@ GCC_except_table13:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -9859,9 +9885,9 @@ GCC_except_table13:
 	testl	%ebp, %ebp
 	je	.LBB14_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -9889,40 +9915,37 @@ GCC_except_table13:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB14_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB14_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB14_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB14_13
 # %bb.16:
@@ -9930,7 +9953,7 @@ GCC_except_table13:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB14_17:                              # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -9940,14 +9963,12 @@ GCC_except_table13:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB14_14
 	jmp	.LBB14_19
 .LBB14_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB14_5:                               # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -9960,7 +9981,6 @@ GCC_except_table13:
 .LBB14_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB14_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -9979,11 +9999,11 @@ GCC_except_table13:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.16, %r9d
@@ -10001,8 +10021,8 @@ GCC_except_table13:
 	jne	.LBB14_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -10010,19 +10030,23 @@ GCC_except_table13:
 	jmp	.LBB14_11
 .LBB14_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB14_10:                              # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB14_10
 .LBB14_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -10186,9 +10210,9 @@ _Z25compare_dot_prod_cond_fmaIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 .Ltmp684:
 # %bb.7:
 	movq	%rax, %r12
+	leaq	8(%rax), %rdi
 	movq	%rax, 336(%rsp)
 	leaq	(%rax,%rbx,8), %rbp
-	leaq	8(%rax), %rdi
 	movq	%rbp, 352(%rsp)
 	movq	$0, (%rax)
 	cmpl	$1, 8(%rsp)                     # 4-byte Folded Reload
@@ -10697,7 +10721,8 @@ _Z25compare_dot_prod_cond_fmaIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 	movl	$1, %r8d
 	callq	cblas_ddot
 	vmovsd	%xmm0, 248(%rsp)                # 8-byte Spill
-	movq	$0, 16(%rsp)                    # 8-byte Folded Spill
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 16(%rsp)                 # 8-byte Spill
 	jmp	.LBB16_88
 	.p2align	4, 0x90
 .LBB16_73:                              #   in Loop: Header=BB16_12 Depth=1
@@ -10770,7 +10795,8 @@ _Z25compare_dot_prod_cond_fmaIdEvididRSt6vectorIT_SaIS1_EES4_S4_S4_S4_S4_iii: #
 	jmp	.LBB16_85
 	.p2align	4, 0x90
 .LBB16_84:                              #   in Loop: Header=BB16_12 Depth=1
-	movq	$0, 16(%rsp)                    # 8-byte Folded Spill
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 16(%rsp)                 # 8-byte Spill
 	xorl	%eax, %eax
 .LBB16_85:                              #   in Loop: Header=BB16_12 Depth=1
 	movq	48(%rsp), %rcx                  # 8-byte Reload
@@ -11443,22 +11469,28 @@ GCC_except_table16:
 # %bb.0:
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	pushq	%r14
+	pushq	%r15
 	.cfi_def_cfa_offset 24
-	pushq	%rbx
+	pushq	%r14
 	.cfi_def_cfa_offset 32
-	subq	$48, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$32, %rsp
 	.cfi_def_cfa_offset 80
-	.cfi_offset %rbx, -32
-	.cfi_offset %r14, -24
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
 	movq	%rdx, %rbp
 	testl	%ebp, %ebp
 	je	.LBB17_11
 # %bb.1:
+	movq	%r9, %r15
+	movq	%r8, %r12
 	movq	%rcx, %rbx
-	movq	%r8, 24(%rsp)                   # 8-byte Spill
-	movq	%r9, 32(%rsp)                   # 8-byte Spill
 	decl	%ebp
 	movl	$0, 12(%rsp)
 	movl	%ebp, 8(%rsp)
@@ -11486,15 +11518,13 @@ GCC_except_table16:
 	.cfi_adjust_cfa_offset -32
 	movl	8(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	12(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB17_6
 # %bb.2:
-	movq	24(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	32(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rax,%rdx,8), %rdi
 	movq	%rsp, %r8
@@ -11581,11 +11611,11 @@ GCC_except_table16:
 	movl	%r14d, %esi
 	callq	__kmpc_for_static_fini@PLT
 	movq	%rsp, %rax
-	movq	%rax, 40(%rsp)
+	movq	%rax, 24(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	48(%rsp), %r8
+	leaq	32(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.18, %r9d
@@ -11622,11 +11652,15 @@ GCC_except_table16:
 	vmovq	%rax, %xmm1
 	jne	.LBB17_10
 .LBB17_11:
-	addq	$48, %rsp
-	.cfi_def_cfa_offset 32
+	addq	$32, %rsp
+	.cfi_def_cfa_offset 48
 	popq	%rbx
-	.cfi_def_cfa_offset 24
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
 	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
 	.cfi_def_cfa_offset 16
 	popq	%rbp
 	.cfi_def_cfa_offset 8
@@ -11650,11 +11684,12 @@ GCC_except_table16:
 	.size	.omp.reduction.reduction_func.18, .Lfunc_end18-.omp.reduction.reduction_func.18
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEii
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0                          # -- Begin function _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEii
 .LCPI19_0:
 	.quad	0x3ff0000000000000              #  1
-	.quad	0x3ff0000000000000              #  1
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
 .LCPI19_1:
 	.zero	16
 	.section	.text._Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEii,"axG",@progbits,_Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS6_EEii,comdat
@@ -11687,7 +11722,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
-	movl	%r9d, 164(%rsp)                 # 4-byte Spill
+	movl	%r9d, 156(%rsp)                 # 4-byte Spill
 	movl	%r8d, 264(%rsp)                 # 4-byte Spill
 	movq	%rcx, 192(%rsp)                 # 8-byte Spill
 	movq	%rdx, 488(%rsp)                 # 8-byte Spill
@@ -11742,7 +11777,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 	testl	%r14d, %r14d
-	js	.LBB19_344
+	js	.LBB19_343
 # %bb.1:
 	movslq	%r14d, %rdx
 	movq	%r14, 24(%rsp)                  # 8-byte Spill
@@ -11771,11 +11806,12 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 464(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 480(%rsp)
 	xorl	%r15d, %r15d
-	movq	$0, 16(%rsp)                    # 8-byte Folded Spill
+	xorl	%eax, %eax
+	movq	%rax, 16(%rsp)                  # 8-byte Spill
 	xorl	%ebp, %ebp
 	movq	%rbp, 472(%rsp)
 	cmpl	$0, 256(%rsp)                   # 4-byte Folded Reload
-	je	.LBB19_317
+	je	.LBB19_316
 .LBB19_9:
 	movq	%rdx, %r14
 	shlq	$5, %r14
@@ -11789,7 +11825,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rdi, 304(%rsp)                 # 8-byte Spill
 	andq	$-4, %rdx
 	movq	%rdx, 504(%rsp)                 # 8-byte Spill
-	movq	%rax, 184(%rsp)                 # 8-byte Spill
+	movq	%rax, 176(%rsp)                 # 8-byte Spill
                                         # kill: def $eax killed $eax killed $rax def $rax
 	andl	$3, %eax
 	movq	%rax, 520(%rsp)                 # 8-byte Spill
@@ -11821,7 +11857,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 400(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%esi, %esi
-	movq	%rbp, 176(%rsp)                 # 8-byte Spill
+	movq	%rbp, 168(%rsp)                 # 8-byte Spill
 	movq	%r14, 528(%rsp)                 # 8-byte Spill
 	jmp	.LBB19_11
 	.p2align	4, 0x90
@@ -11833,16 +11869,16 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vaddsd	%xmm0, %xmm2, %xmm2
 	vmovupd	%xmm2, 416(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
+	vmovupd	384(%rsp), %xmm0                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
+	vaddsd	%xmm1, %xmm0, %xmm0
+	vmovupd	%xmm0, 384(%rsp)                # 16-byte Spill
+                                        # AlignMOV convert to UnAlignMOV 
 	vcvtsi2sdq	320(%rsp), %xmm3, %xmm0 # 8-byte Folded Reload
-	vmovupd	384(%rsp), %xmm2                # 16-byte Reload
-                                        # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm1, %xmm2, %xmm2
-	vmovupd	%xmm2, 384(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
 	vmovupd	1152(%rsp), %xmm2               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm2, %xmm2
-	vcvtsi2sdq	152(%rsp), %xmm3, %xmm0 # 8-byte Folded Reload
+	vcvtsi2sdq	184(%rsp), %xmm3, %xmm0 # 8-byte Folded Reload
 	vmovupd	368(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm1, %xmm1
@@ -11855,51 +11891,51 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm1, 352(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vcvtsi2sd	%r12, %xmm3, %xmm0
-	vcvtsi2sd	%rbx, %xmm3, %xmm1
-	vmovupd	336(%rsp), %xmm3                # 16-byte Reload
+	vmovupd	336(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm0, %xmm3, %xmm3
-	vmovupd	%xmm3, 336(%rsp)                # 16-byte Spill
+	vaddsd	%xmm0, %xmm1, %xmm1
+	vmovupd	%xmm1, 336(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
-	vmovupd	400(%rsp), %xmm0                # 16-byte Reload
+	vcvtsi2sd	%rbx, %xmm3, %xmm0
+	vmovupd	400(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vaddsd	%xmm1, %xmm0, %xmm0
-	vmovupd	%xmm0, 400(%rsp)                # 16-byte Spill
+	vaddsd	%xmm0, %xmm1, %xmm1
+	vmovupd	%xmm1, 400(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	movl	268(%rsp), %esi                 # 4-byte Reload
 	incl	%esi
 	cmpl	256(%rsp), %esi                 # 4-byte Folded Reload
 	movq	528(%rsp), %r14                 # 8-byte Reload
-	je	.LBB19_315
+	je	.LBB19_314
 .LBB19_11:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB19_15 Depth 2
                                         #     Child Loop BB19_18 Depth 2
                                         #     Child Loop BB19_23 Depth 2
-                                        #     Child Loop BB19_33 Depth 2
-                                        #     Child Loop BB19_38 Depth 2
-                                        #     Child Loop BB19_43 Depth 2
-                                        #     Child Loop BB19_46 Depth 2
-                                        #     Child Loop BB19_50 Depth 2
-                                        #     Child Loop BB19_53 Depth 2
-                                        #     Child Loop BB19_57 Depth 2
-                                        #     Child Loop BB19_60 Depth 2
-                                        #     Child Loop BB19_64 Depth 2
-                                        #     Child Loop BB19_67 Depth 2
-                                        #     Child Loop BB19_70 Depth 2
-                                        #     Child Loop BB19_226 Depth 2
-                                        #     Child Loop BB19_229 Depth 2
-                                        #     Child Loop BB19_237 Depth 2
-                                        #     Child Loop BB19_240 Depth 2
-                                        #     Child Loop BB19_243 Depth 2
-                                        #     Child Loop BB19_247 Depth 2
-                                        #     Child Loop BB19_250 Depth 2
-                                        #     Child Loop BB19_254 Depth 2
-                                        #     Child Loop BB19_257 Depth 2
-                                        #     Child Loop BB19_261 Depth 2
-                                        #     Child Loop BB19_264 Depth 2
-                                        #     Child Loop BB19_268 Depth 2
-                                        #     Child Loop BB19_271 Depth 2
-                                        #     Child Loop BB19_275 Depth 2
+                                        #     Child Loop BB19_32 Depth 2
+                                        #     Child Loop BB19_37 Depth 2
+                                        #     Child Loop BB19_42 Depth 2
+                                        #     Child Loop BB19_45 Depth 2
+                                        #     Child Loop BB19_49 Depth 2
+                                        #     Child Loop BB19_52 Depth 2
+                                        #     Child Loop BB19_56 Depth 2
+                                        #     Child Loop BB19_59 Depth 2
+                                        #     Child Loop BB19_63 Depth 2
+                                        #     Child Loop BB19_66 Depth 2
+                                        #     Child Loop BB19_69 Depth 2
+                                        #     Child Loop BB19_225 Depth 2
+                                        #     Child Loop BB19_228 Depth 2
+                                        #     Child Loop BB19_236 Depth 2
+                                        #     Child Loop BB19_239 Depth 2
+                                        #     Child Loop BB19_242 Depth 2
+                                        #     Child Loop BB19_246 Depth 2
+                                        #     Child Loop BB19_249 Depth 2
+                                        #     Child Loop BB19_253 Depth 2
+                                        #     Child Loop BB19_256 Depth 2
+                                        #     Child Loop BB19_260 Depth 2
+                                        #     Child Loop BB19_263 Depth 2
+                                        #     Child Loop BB19_267 Depth 2
+                                        #     Child Loop BB19_270 Depth 2
+                                        #     Child Loop BB19_274 Depth 2
 	vmovupd	%xmm2, 1152(%rsp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm0, %xmm0, %xmm0
@@ -11918,7 +11954,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	432(%rsp), %rax
 	cmpl	$4, 24(%rsp)                    # 4-byte Folded Reload
 	movq	16(%rsp), %rsi                  # 8-byte Reload
-	movq	184(%rsp), %rdi                 # 8-byte Reload
+	movq	176(%rsp), %rdi                 # 8-byte Reload
 	movq	208(%rsp), %rbp                 # 8-byte Reload
 	jb	.LBB19_16
 # %bb.14:                               #   in Loop: Header=BB19_11 Depth=1
@@ -12027,7 +12063,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	incq	%r14
 	addq	$32, %r13
 	addq	$32, %rbp
-	cmpq	%r14, 184(%rsp)                 # 8-byte Folded Reload
+	cmpq	%r14, 176(%rsp)                 # 8-byte Folded Reload
 	jne	.LBB19_23
 .LBB19_28:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp857:
@@ -12061,196 +12097,197 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	1216(%rsp), %rax
 	subq	1232(%rsp), %rax
 	movq	%rax, 600(%rsp)                 # 8-byte Spill
+	movq	176(%rsp), %rbp                 # 8-byte Reload
 	cmpl	$0, 24(%rsp)                    # 4-byte Folded Reload
-	je	.LBB19_40
-# %bb.32:                               #   in Loop: Header=BB19_11 Depth=1
-	movq	184(%rsp), %rbp                 # 8-byte Reload
+	je	.LBB19_39
 	.p2align	4, 0x90
-.LBB19_33:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_32:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 .Ltmp864:
 	movq	%r12, %rdi
 	callq	mpfr_clear
 .Ltmp865:
-# %bb.34:                               #   in Loop: Header=BB19_33 Depth=2
+# %bb.33:                               #   in Loop: Header=BB19_32 Depth=2
 .Ltmp866:
 	movq	%rbx, %rdi
 	callq	mpfr_clear
 .Ltmp867:
-# %bb.35:                               #   in Loop: Header=BB19_33 Depth=2
+# %bb.34:                               #   in Loop: Header=BB19_32 Depth=2
 	addq	$32, %r12
 	addq	$32, %rbx
 	decq	%rbp
-	jne	.LBB19_33
-# %bb.36:                               #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_32
+# %bb.35:                               #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	624(%rsp), %rsi
 	callq	clock_gettime
 	movq	208(%rsp), %rsi                 # 8-byte Reload
 	testq	%rsi, %rsi
-	je	.LBB19_41
-# %bb.37:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_40
+# %bb.36:                               #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
-	movq	184(%rsp), %rdx                 # 8-byte Reload
+	movq	176(%rsp), %rdx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_38:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_37:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_38
-# %bb.39:                               #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_37
+# %bb.38:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_42
-	jmp	.LBB19_44
+	jne	.LBB19_41
+	jmp	.LBB19_43
 	.p2align	4, 0x90
-.LBB19_40:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_39:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	624(%rsp), %rsi
 	callq	clock_gettime
 	vxorpd	%xmm1, %xmm1, %xmm1
-	jmp	.LBB19_71
+	jmp	.LBB19_70
 	.p2align	4, 0x90
+.LBB19_40:                              #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
+	movq	176(%rsp), %rdx                 # 8-byte Reload
 .LBB19_41:                              #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-	movq	184(%rsp), %rdx                 # 8-byte Reload
-.LBB19_42:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_43:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_42:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_43
-.LBB19_44:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_42
+.LBB19_43:                              #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_48
-# %bb.45:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_47
+# %bb.44:                               #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_46:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_45:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_46
-# %bb.47:                               #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_45
+# %bb.46:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_49
-	jmp	.LBB19_51
+	jne	.LBB19_48
+	jmp	.LBB19_50
 	.p2align	4, 0x90
+.LBB19_47:                              #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
 .LBB19_48:                              #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-.LBB19_49:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_50:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_49:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_50
-.LBB19_51:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_49
+.LBB19_50:                              #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_55
-# %bb.52:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_54
+# %bb.51:                               #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_53:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_52:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_53
-# %bb.54:                               #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_52
+# %bb.53:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_56
-	jmp	.LBB19_58
+	jne	.LBB19_55
+	jmp	.LBB19_57
 	.p2align	4, 0x90
+.LBB19_54:                              #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
 .LBB19_55:                              #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-.LBB19_56:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_57:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_56:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_57
-.LBB19_58:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_56
+.LBB19_57:                              #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_62
-# %bb.59:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_61
+# %bb.58:                               #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_60:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_59:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_60
-# %bb.61:                               #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_59
+# %bb.60:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_63
-	jmp	.LBB19_65
+	jne	.LBB19_62
+	jmp	.LBB19_64
 	.p2align	4, 0x90
-.LBB19_62:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_61:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%ecx, %ecx
-.LBB19_63:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_62:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_64:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_63:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_64
-.LBB19_65:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_63
+.LBB19_64:                              #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_69
-# %bb.66:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_68
+# %bb.65:                               #   in Loop: Header=BB19_11 Depth=1
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	movq	16(%rsp), %rcx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_67:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_66:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rcx,%rax,8), %ymm1
 	vfmadd231pd	(%r15,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_67
-# %bb.68:                               #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_66
+# %bb.67:                               #   in Loop: Header=BB19_11 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rsi, %rax
 	cmpq	%rdx, %rsi
-	jne	.LBB19_70
-	jmp	.LBB19_71
+	jne	.LBB19_69
+	jmp	.LBB19_70
 	.p2align	4, 0x90
-.LBB19_69:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_68:                              #   in Loop: Header=BB19_11 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	movq	16(%rsp), %rcx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_70:                              #   Parent Loop BB19_11 Depth=1
+.LBB19_69:                              #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rcx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r15,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rdx
-	jne	.LBB19_70
-.LBB19_71:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_69
+.LBB19_70:                              #   in Loop: Header=BB19_11 Depth=1
 	vmovsd	%xmm1, 592(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	976(%rsp), %rsi
 	vzeroupper
 	callq	clock_gettime
-	movq	976(%rsp), %r12
-	subq	624(%rsp), %r12
-	movq	984(%rsp), %r14
-	subq	632(%rsp), %r14
-	movq	$0, 168(%rsp)
+	movq	976(%rsp), %rcx
+	movq	984(%rsp), %rax
+	subq	624(%rsp), %rcx
+	movq	%rcx, 584(%rsp)                 # 8-byte Spill
+	subq	632(%rsp), %rax
+	movq	%rax, 328(%rsp)                 # 8-byte Spill
+	movq	$0, 160(%rsp)
 	xorl	%edi, %edi
 	leaq	960(%rsp), %rsi
 	callq	clock_gettime
@@ -12258,22 +12295,22 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
 	sarq	$3, %rbx
-	movq	$0, 168(%rsp)
+	movq	$0, 160(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 96(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 112(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_75
-# %bb.72:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_74
+# %bb.71:                               #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_336
-# %bb.73:                               #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_335
+# %bb.72:                               #   in Loop: Header=BB19_11 Depth=1
 .Ltmp869:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp870:
-# %bb.74:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.73:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 96(%rsp)
 	movq	%rax, 104(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12282,50 +12319,48 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_76
+	jmp	.LBB19_75
 	.p2align	4, 0x90
-.LBB19_75:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_74:                              #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 112(%rsp)
-.LBB19_76:                              #   in Loop: Header=BB19_11 Depth=1
-	movq	176(%rsp), %rcx                 # 8-byte Reload
+.LBB19_75:                              #   in Loop: Header=BB19_11 Depth=1
+	movq	168(%rsp), %rcx                 # 8-byte Reload
 	movq	%rcx, %r13
 	movq	16(%rsp), %rax                  # 8-byte Reload
 	subq	%rax, %r13
-	movq	%r13, %rdx
-	sarq	$3, %rdx
-	movq	%rdx, 152(%rsp)                 # 8-byte Spill
+	movq	%r13, %r14
+	sarq	$3, %r14
 	movq	%rbx, 104(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
 	cmpq	%rax, %rcx
-	je	.LBB19_80
-# %bb.77:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_79
+# %bb.76:                               #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_338
-# %bb.78:                               #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_337
+# %bb.77:                               #   in Loop: Header=BB19_11 Depth=1
 .Ltmp871:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp872:
-# %bb.79:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.78:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
+	leaq	(%rax,%r14,8), %rbx
 	movq	%rbx, 80(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_81
+	jmp	.LBB19_80
 	.p2align	4, 0x90
-.LBB19_80:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_79:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 80(%rsp)
 	movq	%r13, %rbx
-.LBB19_81:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_80:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 72(%rsp)
 .Ltmp873:
 	leaq	96(%rsp), %rdi
@@ -12334,42 +12369,42 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	leaq	168(%rsp), %r9
+	leaq	160(%rsp), %r9
 	callq	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
 .Ltmp874:
-# %bb.82:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.81:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_84
-# %bb.83:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_83
+# %bb.82:                               #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_84:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_83:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_86
-# %bb.85:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_85
+# %bb.84:                               #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_86:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_85:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
 	sarq	$3, %rbx
-	movq	$0, 168(%rsp)
+	movq	$0, 160(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 96(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 112(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_90
-# %bb.87:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_89
+# %bb.86:                               #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_336
-# %bb.88:                               #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_335
+# %bb.87:                               #   in Loop: Header=BB19_11 Depth=1
 .Ltmp875:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp876:
-# %bb.89:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.88:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 96(%rsp)
 	movq	%rax, 104(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12378,44 +12413,43 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_91
+	jmp	.LBB19_90
 	.p2align	4, 0x90
-.LBB19_90:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_89:                              #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 112(%rsp)
-.LBB19_91:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_90:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 104(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_95
-# %bb.92:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_94
+# %bb.91:                               #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_338
-# %bb.93:                               #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_337
+# %bb.92:                               #   in Loop: Header=BB19_11 Depth=1
 .Ltmp877:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp878:
-# %bb.94:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.93:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
+	leaq	(%rax,%r14,8), %rbx
 	movq	%rbx, 80(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_96
+	jmp	.LBB19_95
 	.p2align	4, 0x90
-.LBB19_95:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_94:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 80(%rsp)
 	movq	%r13, %rbx
-.LBB19_96:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_95:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 72(%rsp)
 .Ltmp879:
 	leaq	96(%rsp), %rdi
@@ -12424,42 +12458,42 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	leaq	168(%rsp), %r9
+	leaq	160(%rsp), %r9
 	callq	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
 .Ltmp880:
-# %bb.97:                               #   in Loop: Header=BB19_11 Depth=1
+# %bb.96:                               #   in Loop: Header=BB19_11 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_99
-# %bb.98:                               #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_98
+# %bb.97:                               #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_99:                              #   in Loop: Header=BB19_11 Depth=1
+.LBB19_98:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_101
-# %bb.100:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_100
+# %bb.99:                               #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_101:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_100:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
 	sarq	$3, %rbx
-	movq	$0, 168(%rsp)
+	movq	$0, 160(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 96(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 112(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_105
-# %bb.102:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_104
+# %bb.101:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_336
-# %bb.103:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_335
+# %bb.102:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp881:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp882:
-# %bb.104:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.103:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 96(%rsp)
 	movq	%rax, 104(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12468,44 +12502,43 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_106
+	jmp	.LBB19_105
 	.p2align	4, 0x90
-.LBB19_105:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_104:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 112(%rsp)
-.LBB19_106:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_105:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 104(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_110
-# %bb.107:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_109
+# %bb.106:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_338
-# %bb.108:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_337
+# %bb.107:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp883:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp884:
-# %bb.109:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.108:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
+	leaq	(%rax,%r14,8), %rbx
 	movq	%rbx, 80(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_111
+	jmp	.LBB19_110
 	.p2align	4, 0x90
-.LBB19_110:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_109:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 80(%rsp)
 	movq	%r13, %rbx
-.LBB19_111:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_110:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 72(%rsp)
 .Ltmp885:
 	leaq	96(%rsp), %rdi
@@ -12514,42 +12547,42 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	leaq	168(%rsp), %r9
+	leaq	160(%rsp), %r9
 	callq	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
 .Ltmp886:
-# %bb.112:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.111:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_114
-# %bb.113:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_113
+# %bb.112:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_114:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_113:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_116
-# %bb.115:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_115
+# %bb.114:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_116:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_115:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
 	sarq	$3, %rbx
-	movq	$0, 168(%rsp)
+	movq	$0, 160(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 96(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 112(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_120
-# %bb.117:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_119
+# %bb.116:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_336
-# %bb.118:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_335
+# %bb.117:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp887:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp888:
-# %bb.119:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.118:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 96(%rsp)
 	movq	%rax, 104(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12558,44 +12591,43 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_121
+	jmp	.LBB19_120
 	.p2align	4, 0x90
-.LBB19_120:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_119:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 112(%rsp)
-.LBB19_121:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_120:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 104(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_125
-# %bb.122:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_124
+# %bb.121:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_338
-# %bb.123:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_337
+# %bb.122:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp889:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp890:
-# %bb.124:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.123:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
+	leaq	(%rax,%r14,8), %rbx
 	movq	%rbx, 80(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_126
+	jmp	.LBB19_125
 	.p2align	4, 0x90
-.LBB19_125:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_124:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 80(%rsp)
 	movq	%r13, %rbx
-.LBB19_126:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_125:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 72(%rsp)
 .Ltmp891:
 	leaq	96(%rsp), %rdi
@@ -12604,42 +12636,42 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	leaq	168(%rsp), %r9
+	leaq	160(%rsp), %r9
 	callq	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
 .Ltmp892:
-# %bb.127:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.126:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_129
-# %bb.128:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_128
+# %bb.127:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_129:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_128:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_131
-# %bb.130:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_130
+# %bb.129:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_131:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_130:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
 	sarq	$3, %rbx
-	movq	$0, 168(%rsp)
+	movq	$0, 160(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 96(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 112(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_135
-# %bb.132:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_134
+# %bb.131:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_336
-# %bb.133:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_335
+# %bb.132:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp893:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp894:
-# %bb.134:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.133:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 96(%rsp)
 	movq	%rax, 104(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12648,45 +12680,44 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_136
+	jmp	.LBB19_135
 	.p2align	4, 0x90
-.LBB19_135:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_134:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 112(%rsp)
-.LBB19_136:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_135:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 104(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 64(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 80(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	movq	184(%rsp), %rbp                 # 8-byte Reload
-	je	.LBB19_140
-# %bb.137:                              #   in Loop: Header=BB19_11 Depth=1
+	movq	176(%rsp), %r12                 # 8-byte Reload
+	je	.LBB19_139
+# %bb.136:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_338
-# %bb.138:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_337
+# %bb.137:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp899:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp900:
-# %bb.139:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.138:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
+	leaq	(%rax,%r14,8), %rbx
 	movq	%rbx, 80(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_141
+	jmp	.LBB19_140
 	.p2align	4, 0x90
-.LBB19_140:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_139:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 80(%rsp)
 	movq	%r13, %rbx
-.LBB19_141:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_140:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 72(%rsp)
 .Ltmp905:
 	leaq	96(%rsp), %rdi
@@ -12695,24 +12726,23 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	leaq	168(%rsp), %r9
+	leaq	160(%rsp), %r9
 	callq	_Z22common_dot_prod_threadIdEvSt6vectorIT_SaIS1_EES3_iiiRd
 .Ltmp906:
-# %bb.142:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.141:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_144
-# %bb.143:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_143
+# %bb.142:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_144:                             #   in Loop: Header=BB19_11 Depth=1
-	movq	%r12, 584(%rsp)                 # 8-byte Spill
-	movq	%r14, 328(%rsp)                 # 8-byte Spill
+.LBB19_143:                             #   in Loop: Header=BB19_11 Depth=1
+	movq	%r14, 184(%rsp)                 # 8-byte Spill
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_146
-# %bb.145:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_145
+# %bb.144:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_146:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_145:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	944(%rsp), %rsi
 	callq	clock_gettime
@@ -12722,7 +12752,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rcx, 576(%rsp)                 # 8-byte Spill
 	subq	968(%rsp), %rax
 	movq	%rax, 320(%rsp)                 # 8-byte Spill
-	movl	164(%rsp), %edi                 # 4-byte Reload
+	movl	156(%rsp), %edi                 # 4-byte Reload
 	callq	omp_set_num_threads
 	xorl	%edi, %edi
 	leaq	928(%rsp), %rsi
@@ -12733,9 +12763,9 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..19, %edx
 	movl	$4, %esi
-	movq	%rbp, %rcx
-	leaq	200(%rsp), %r12
-	movq	%r12, %r8
+	movq	%r12, %rcx
+	leaq	200(%rsp), %rbp
+	movq	%rbp, %r8
 	leaq	224(%rsp), %r14
 	movq	%r14, %r9
 	xorl	%eax, %eax
@@ -12745,8 +12775,8 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..19, %edx
 	movl	$4, %esi
-	movq	%rbp, %rcx
-	movq	%r12, %r8
+	movq	%r12, %rcx
+	movq	%rbp, %r8
 	movq	%r14, %r9
 	xorl	%eax, %eax
 	callq	__kmpc_fork_call@PLT
@@ -12755,8 +12785,8 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..19, %edx
 	movl	$4, %esi
-	movq	%rbp, %rcx
-	movq	%r12, %r8
+	movq	%r12, %rcx
+	movq	%rbp, %r8
 	movq	%r14, %r9
 	xorl	%eax, %eax
 	callq	__kmpc_fork_call@PLT
@@ -12765,8 +12795,8 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..19, %edx
 	movl	$4, %esi
-	movq	%rbp, %rcx
-	movq	%r12, %r8
+	movq	%r12, %rcx
+	movq	%rbp, %r8
 	movq	%r14, %r9
 	xorl	%eax, %eax
 	callq	__kmpc_fork_call@PLT
@@ -12775,8 +12805,8 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$.L__unnamed_1, %edi
 	movl	$.omp_outlined..19, %edx
 	movl	$4, %esi
-	movq	%rbp, %rcx
-	movq	%r12, %r8
+	movq	%r12, %rcx
+	movq	%rbp, %r8
 	movq	%r14, %r9
 	xorl	%eax, %eax
 	callq	__kmpc_fork_call@PLT
@@ -12799,18 +12829,18 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 128(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 144(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_150
-# %bb.147:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_149
+# %bb.146:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
 	leaq	128(%rsp), %r14
-	ja	.LBB19_340
-# %bb.148:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_339
+# %bb.147:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp908:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp909:
-# %bb.149:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.148:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 128(%rsp)
 	movq	%rax, 136(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12819,45 +12849,45 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_151
+	jmp	.LBB19_150
 	.p2align	4, 0x90
-.LBB19_150:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_149:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 144(%rsp)
 	leaq	128(%rsp), %r14
-.LBB19_151:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_150:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 136(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_155
-# %bb.152:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_154
+# %bb.151:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_342
-# %bb.153:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_341
+# %bb.152:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp910:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp911:
-# %bb.154:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.153:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
+	movq	184(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, 48(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_156
+	jmp	.LBB19_155
 	.p2align	4, 0x90
-.LBB19_155:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_154:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 48(%rsp)
 	movq	%r13, %rbx
-.LBB19_156:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_155:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp912:
 	movq	%r14, %rdi
@@ -12866,22 +12896,22 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	movl	164(%rsp), %r9d                 # 4-byte Reload
+	movl	156(%rsp), %r9d                 # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp913:
-# %bb.157:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.156:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_159
-# %bb.158:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_158
+# %bb.157:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_159:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_158:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_161
-# %bb.160:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_160
+# %bb.159:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_161:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_160:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -12890,17 +12920,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 128(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 144(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_165
-# %bb.162:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_164
+# %bb.161:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_340
-# %bb.163:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_339
+# %bb.162:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp914:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp915:
-# %bb.164:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.163:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 128(%rsp)
 	movq	%rax, 136(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12909,44 +12939,44 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_166
+	jmp	.LBB19_165
 	.p2align	4, 0x90
-.LBB19_165:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_164:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 144(%rsp)
-.LBB19_166:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_165:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 136(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_170
-# %bb.167:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_169
+# %bb.166:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_342
-# %bb.168:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_341
+# %bb.167:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp916:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp917:
-# %bb.169:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.168:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
+	movq	184(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, 48(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_171
+	jmp	.LBB19_170
 	.p2align	4, 0x90
-.LBB19_170:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_169:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 48(%rsp)
 	movq	%r13, %rbx
-.LBB19_171:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_170:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp918:
 	movq	%r14, %rdi
@@ -12955,22 +12985,22 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	movl	164(%rsp), %r9d                 # 4-byte Reload
+	movl	156(%rsp), %r9d                 # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp919:
-# %bb.172:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.171:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_174
-# %bb.173:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_173
+# %bb.172:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_174:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_173:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_176
-# %bb.175:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_175
+# %bb.174:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_176:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_175:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -12979,17 +13009,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 128(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 144(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_180
-# %bb.177:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_179
+# %bb.176:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_340
-# %bb.178:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_339
+# %bb.177:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp920:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp921:
-# %bb.179:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.178:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 128(%rsp)
 	movq	%rax, 136(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -12998,44 +13028,44 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_181
+	jmp	.LBB19_180
 	.p2align	4, 0x90
-.LBB19_180:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_179:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 144(%rsp)
-.LBB19_181:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_180:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 136(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_185
-# %bb.182:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_184
+# %bb.181:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_342
-# %bb.183:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_341
+# %bb.182:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp922:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp923:
-# %bb.184:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.183:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
+	movq	184(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, 48(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_186
+	jmp	.LBB19_185
 	.p2align	4, 0x90
-.LBB19_185:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_184:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 48(%rsp)
 	movq	%r13, %rbx
-.LBB19_186:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_185:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp924:
 	movq	%r14, %rdi
@@ -13044,22 +13074,22 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	movl	164(%rsp), %r9d                 # 4-byte Reload
+	movl	156(%rsp), %r9d                 # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp925:
-# %bb.187:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.186:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_189
-# %bb.188:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_188
+# %bb.187:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_189:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_188:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_191
-# %bb.190:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_190
+# %bb.189:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_191:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_190:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -13068,17 +13098,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 128(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 144(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_195
-# %bb.192:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_194
+# %bb.191:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_340
-# %bb.193:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_339
+# %bb.192:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp926:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp927:
-# %bb.194:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.193:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 128(%rsp)
 	movq	%rax, 136(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -13087,44 +13117,44 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_196
+	jmp	.LBB19_195
 	.p2align	4, 0x90
-.LBB19_195:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_194:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 144(%rsp)
-.LBB19_196:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_195:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 136(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_200
-# %bb.197:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_199
+# %bb.196:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_342
-# %bb.198:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_341
+# %bb.197:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp928:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp929:
-# %bb.199:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.198:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
+	movq	184(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, 48(%rsp)
 	movq	%rax, %rdi
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r13, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_201
+	jmp	.LBB19_200
 	.p2align	4, 0x90
-.LBB19_200:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_199:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 48(%rsp)
 	movq	%r13, %rbx
-.LBB19_201:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_200:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 40(%rsp)
 .Ltmp930:
 	movq	%r14, %rdi
@@ -13133,22 +13163,22 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	movl	164(%rsp), %r9d                 # 4-byte Reload
+	movl	156(%rsp), %r9d                 # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp931:
-# %bb.202:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.201:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_204
-# %bb.203:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_203
+# %bb.202:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_204:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_203:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_206
-# %bb.205:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_205
+# %bb.204:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_206:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_205:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	232(%rsp), %rbp
 	movq	%rbp, %rbx
 	subq	%r15, %rbx
@@ -13157,17 +13187,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%xmm0, 128(%rsp)                # AlignMOV convert to UnAlignMOV 
 	movq	$0, 144(%rsp)
 	subq	%r15, %rbp
-	je	.LBB19_210
-# %bb.207:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_209
+# %bb.206:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB19_340
-# %bb.208:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_339
+# %bb.207:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp932:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp933:
-# %bb.209:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.208:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 128(%rsp)
 	movq	%rax, 136(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -13176,32 +13206,32 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r15, %rsi
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB19_211
+	jmp	.LBB19_210
 	.p2align	4, 0x90
-.LBB19_210:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_209:                             #   in Loop: Header=BB19_11 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 144(%rsp)
-.LBB19_211:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_210:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, 136(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 32(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 48(%rsp)
-	movq	176(%rsp), %rax                 # 8-byte Reload
+	movq	168(%rsp), %rax                 # 8-byte Reload
 	cmpq	16(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB19_215
-# %bb.212:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_214
+# %bb.211:                              #   in Loop: Header=BB19_11 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %r13
-	ja	.LBB19_342
-# %bb.213:                              #   in Loop: Header=BB19_11 Depth=1
+	ja	.LBB19_341
+# %bb.212:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp938:
 	movq	%r13, %rdi
 	callq	_Znwm
 .Ltmp939:
-# %bb.214:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.213:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, 32(%rsp)
 	movq	%rax, 40(%rsp)
-	movq	152(%rsp), %rcx                 # 8-byte Reload
+	movq	184(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbx
 	movq	%rbx, 48(%rsp)
 	movq	%rax, %rdi
@@ -13209,11 +13239,11 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r13, %rdx
 	callq	memmove@PLT
 	movq	%rbx, %r13
-	jmp	.LBB19_216
+	jmp	.LBB19_215
 	.p2align	4, 0x90
-.LBB19_215:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_214:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 48(%rsp)
-.LBB19_216:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_215:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%r13, 40(%rsp)
 .Ltmp944:
 	movq	%r14, %rdi
@@ -13222,23 +13252,23 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
-	movl	164(%rsp), %r9d                 # 4-byte Reload
+	movl	156(%rsp), %r9d                 # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 	vmovsd	%xmm0, 552(%rsp)                # 8-byte Spill
 .Ltmp945:
-# %bb.217:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.216:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_219
-# %bb.218:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_218
+# %bb.217:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_219:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_218:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_221
-# %bb.220:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_220
+# %bb.219:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
-.LBB19_221:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_220:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	880(%rsp), %rsi
 	callq	clock_gettime
@@ -13256,11 +13286,11 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rax, %rbp
 	movq	24(%rsp), %r14                  # 8-byte Reload
 	testl	%r14d, %r14d
-	je	.LBB19_231
-# %bb.222:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_230
+# %bb.221:                              #   in Loop: Header=BB19_11 Depth=1
 	cmpl	$13, %r14d
-	jb	.LBB19_224
-# %bb.223:                              #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_223
+# %bb.222:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbx, %rdi
 	movq	%r15, %rsi
 	movq	304(%rsp), %r14                 # 8-byte Reload
@@ -13270,17 +13300,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	16(%rsp), %rsi                  # 8-byte Reload
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
-	jmp	.LBB19_230
+	jmp	.LBB19_229
 	.p2align	4, 0x90
-.LBB19_224:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_223:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	208(%rsp), %rdx                 # 8-byte Reload
 	xorl	%eax, %eax
 	testq	%rdx, %rdx
-	je	.LBB19_228
-# %bb.225:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_227
+# %bb.224:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	16(%rsp), %rcx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_226:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_225:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%r15,%rax,8), %ymm0
 	vmovups	%ymm0, (%rbx,%rax,8)
@@ -13288,17 +13318,17 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%ymm0, (%rbp,%rax,8)
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB19_226
-# %bb.227:                              #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_225
+# %bb.226:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
-	cmpq	184(%rsp), %rdx                 # 8-byte Folded Reload
+	cmpq	176(%rsp), %rdx                 # 8-byte Folded Reload
 	movq	24(%rsp), %r14                  # 8-byte Reload
-	je	.LBB19_231
-.LBB19_228:                             #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_230
+.LBB19_227:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	16(%rsp), %rcx                  # 8-byte Reload
-	movq	184(%rsp), %rdx                 # 8-byte Reload
+	movq	176(%rsp), %rdx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_229:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_228:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbx,%rax,8)
@@ -13306,11 +13336,11 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %rdx
-	jne	.LBB19_229
-.LBB19_230:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_228
+.LBB19_229:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	24(%rsp), %r14                  # 8-byte Reload
-.LBB19_231:                             #   in Loop: Header=BB19_11 Depth=1
-	movq	%r12, 152(%rsp)                 # 8-byte Spill
+.LBB19_230:                             #   in Loop: Header=BB19_11 Depth=1
+	movq	%r12, 184(%rsp)                 # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	864(%rsp), %rsi
 	vzeroupper
@@ -13361,12 +13391,12 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rbx, %rdi
 	callq	malloc
 	testl	%r14d, %r14d
-	je	.LBB19_234
-# %bb.232:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_233
+# %bb.231:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rax, %rbx
 	cmpl	$13, %r14d
-	jb	.LBB19_235
-# %bb.233:                              #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_234
+# %bb.232:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rbp, %rdi
 	movq	%r15, %rsi
 	movq	304(%rsp), %r14                 # 8-byte Reload
@@ -13377,26 +13407,27 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
 	leaq	1168(%rsp), %r14
-	jmp	.LBB19_241
+	jmp	.LBB19_240
 	.p2align	4, 0x90
-.LBB19_234:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_233:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	608(%rsp), %rsi
 	callq	clock_gettime
-	movq	$0, 216(%rsp)                   # 8-byte Folded Spill
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 216(%rsp)                # 8-byte Spill
 	leaq	1168(%rsp), %r14
-	jmp	.LBB19_277
+	jmp	.LBB19_276
 	.p2align	4, 0x90
-.LBB19_235:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_234:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	208(%rsp), %rsi                 # 8-byte Reload
 	xorl	%eax, %eax
 	testq	%rsi, %rsi
-	je	.LBB19_239
-# %bb.236:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_238
+# %bb.235:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	16(%rsp), %rcx                  # 8-byte Reload
 	leaq	1168(%rsp), %r14
 	.p2align	4, 0x90
-.LBB19_237:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_236:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%r15,%rax,8), %ymm0
 	vmovups	%ymm0, (%rbp,%rax,8)
@@ -13404,19 +13435,19 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovupd	%ymm0, (%rbx,%rax,8)
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jb	.LBB19_237
-# %bb.238:                              #   in Loop: Header=BB19_11 Depth=1
+	jb	.LBB19_236
+# %bb.237:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rax
-	movq	184(%rsp), %rdx                 # 8-byte Reload
+	movq	176(%rsp), %rdx                 # 8-byte Reload
 	cmpq	%rdx, %rsi
-	jne	.LBB19_240
-	jmp	.LBB19_241
-.LBB19_239:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_239
+	jmp	.LBB19_240
+.LBB19_238:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	16(%rsp), %rcx                  # 8-byte Reload
-	movq	184(%rsp), %rdx                 # 8-byte Reload
+	movq	176(%rsp), %rdx                 # 8-byte Reload
 	leaq	1168(%rsp), %r14
 	.p2align	4, 0x90
-.LBB19_240:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_239:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%rbp,%rax,8)
@@ -13424,137 +13455,137 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovsd	%xmm0, (%rbx,%rax,8)
 	incq	%rax
 	cmpq	%rax, %rdx
-	jne	.LBB19_240
-.LBB19_241:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_239
+.LBB19_240:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	608(%rsp), %rsi
 	vzeroupper
 	callq	clock_gettime
 	movq	504(%rsp), %rsi                 # 8-byte Reload
 	testq	%rsi, %rsi
-	je	.LBB19_245
-# %bb.242:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_244
+# %bb.241:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	movq	248(%rsp), %rdx                 # 8-byte Reload
 	.p2align	4, 0x90
-.LBB19_243:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_242:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jl	.LBB19_243
-# %bb.244:                              #   in Loop: Header=BB19_11 Depth=1
+	jl	.LBB19_242
+# %bb.243:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_246
-	jmp	.LBB19_248
+	jne	.LBB19_245
+	jmp	.LBB19_247
 	.p2align	4, 0x90
+.LBB19_244:                             #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
+	movq	248(%rsp), %rdx                 # 8-byte Reload
 .LBB19_245:                             #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-	movq	248(%rsp), %rdx                 # 8-byte Reload
-.LBB19_246:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_247:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_246:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_247
-.LBB19_248:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_246
+.LBB19_247:                             #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_252
-# %bb.249:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_251
+# %bb.248:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_250:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_249:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jl	.LBB19_250
-# %bb.251:                              #   in Loop: Header=BB19_11 Depth=1
+	jl	.LBB19_249
+# %bb.250:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_253
-	jmp	.LBB19_255
+	jne	.LBB19_252
+	jmp	.LBB19_254
 	.p2align	4, 0x90
+.LBB19_251:                             #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
 .LBB19_252:                             #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-.LBB19_253:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_254:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_253:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_254
-.LBB19_255:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_253
+.LBB19_254:                             #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_259
-# %bb.256:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_258
+# %bb.255:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_257:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_256:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jl	.LBB19_257
-# %bb.258:                              #   in Loop: Header=BB19_11 Depth=1
+	jl	.LBB19_256
+# %bb.257:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_260
-	jmp	.LBB19_262
+	jne	.LBB19_259
+	jmp	.LBB19_261
 	.p2align	4, 0x90
+.LBB19_258:                             #   in Loop: Header=BB19_11 Depth=1
+	xorl	%ecx, %ecx
 .LBB19_259:                             #   in Loop: Header=BB19_11 Depth=1
-	xorl	%ecx, %ecx
-.LBB19_260:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_261:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_260:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_261
-.LBB19_262:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_260
+.LBB19_261:                             #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_266
-# %bb.263:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_265
+# %bb.262:                              #   in Loop: Header=BB19_11 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_264:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_263:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jl	.LBB19_264
-# %bb.265:                              #   in Loop: Header=BB19_11 Depth=1
+	jl	.LBB19_263
+# %bb.264:                              #   in Loop: Header=BB19_11 Depth=1
 	movq	%rsi, %rcx
 	cmpq	%rdx, %rsi
-	jne	.LBB19_267
-	jmp	.LBB19_269
+	jne	.LBB19_266
+	jmp	.LBB19_268
 	.p2align	4, 0x90
-.LBB19_266:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_265:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%ecx, %ecx
-.LBB19_267:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_266:                             #   in Loop: Header=BB19_11 Depth=1
 	movq	%rdx, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB19_268:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_267:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB19_268
-.LBB19_269:                             #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_267
+.LBB19_268:                             #   in Loop: Header=BB19_11 Depth=1
 	testq	%rsi, %rsi
-	je	.LBB19_273
-# %bb.270:                              #   in Loop: Header=BB19_11 Depth=1
+	je	.LBB19_272
+# %bb.269:                              #   in Loop: Header=BB19_11 Depth=1
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB19_271:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_270:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rbx,%rax,8), %ymm1
 	vfmadd231pd	(%rbp,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rsi, %rax
-	jl	.LBB19_271
-# %bb.272:                              #   in Loop: Header=BB19_11 Depth=1
+	jl	.LBB19_270
+# %bb.271:                              #   in Loop: Header=BB19_11 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
@@ -13562,26 +13593,27 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vmovsd	%xmm0, 216(%rsp)                # 8-byte Spill
 	movq	%rsi, %rax
 	cmpq	%rdx, %rsi
-	jne	.LBB19_274
-	jmp	.LBB19_277
+	jne	.LBB19_273
+	jmp	.LBB19_276
 	.p2align	4, 0x90
-.LBB19_273:                             #   in Loop: Header=BB19_11 Depth=1
-	movq	$0, 216(%rsp)                   # 8-byte Folded Spill
+.LBB19_272:                             #   in Loop: Header=BB19_11 Depth=1
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovsd	%xmm0, 216(%rsp)                # 8-byte Spill
 	xorl	%eax, %eax
-.LBB19_274:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_273:                             #   in Loop: Header=BB19_11 Depth=1
 	vmovsd	216(%rsp), %xmm1                # 8-byte Reload
                                         # xmm1 = mem[0],zero
 	.p2align	4, 0x90
-.LBB19_275:                             #   Parent Loop BB19_11 Depth=1
+.LBB19_274:                             #   Parent Loop BB19_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%rbp,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rdx
-	jne	.LBB19_275
-# %bb.276:                              #   in Loop: Header=BB19_11 Depth=1
+	jne	.LBB19_274
+# %bb.275:                              #   in Loop: Header=BB19_11 Depth=1
 	vmovsd	%xmm1, 216(%rsp)                # 8-byte Spill
-.LBB19_277:                             #   in Loop: Header=BB19_11 Depth=1
+.LBB19_276:                             #   in Loop: Header=BB19_11 Depth=1
 	xorl	%edi, %edi
 	leaq	832(%rsp), %rsi
 	vzeroupper
@@ -13595,37 +13627,37 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%r14, %rdi
 	callq	mpfr_init2
 .Ltmp948:
-# %bb.278:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.277:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp949:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	768(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp950:
-# %bb.279:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.278:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp951:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	736(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp952:
-# %bb.280:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.279:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp953:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	704(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp954:
-# %bb.281:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.280:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp955:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	672(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp956:
-# %bb.282:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.281:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp957:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	640(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp958:
-# %bb.283:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.282:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp959:
 	leaq	704(%rsp), %rdi
 	leaq	272(%rsp), %rsi
@@ -13634,7 +13666,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp960:
-# %bb.284:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.283:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp961:
 	leaq	704(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13642,7 +13674,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp962:
-# %bb.285:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.284:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp963:
 	leaq	704(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13650,7 +13682,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp964:
-# %bb.286:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.285:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp965:
 	leaq	800(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13658,15 +13690,15 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp966:
-# %bb.287:                              #   in Loop: Header=BB19_11 Depth=1
-	vmovsd	168(%rsp), %xmm0                # xmm0 = mem[0],zero
+# %bb.286:                              #   in Loop: Header=BB19_11 Depth=1
+	vmovsd	160(%rsp), %xmm0                # xmm0 = mem[0],zero
 .Ltmp967:
 	movq	%r14, %rdi
 	leaq	272(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp968:
-# %bb.288:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.287:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp969:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -13674,7 +13706,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp970:
-# %bb.289:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.288:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp971:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -13682,7 +13714,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp972:
-# %bb.290:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.289:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp973:
 	leaq	1120(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13690,7 +13722,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp974:
-# %bb.291:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.290:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp975:
 	leaq	768(%rsp), %rdi
 	leaq	272(%rsp), %rsi
@@ -13699,7 +13731,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp976:
-# %bb.292:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.291:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp977:
 	leaq	768(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13707,7 +13739,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp978:
-# %bb.293:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.292:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp979:
 	leaq	768(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13715,7 +13747,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp980:
-# %bb.294:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.293:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp981:
 	leaq	1024(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13723,7 +13755,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp982:
-# %bb.295:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.294:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp983:
 	leaq	736(%rsp), %rdi
 	leaq	272(%rsp), %rsi
@@ -13732,7 +13764,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp984:
-# %bb.296:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.295:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp985:
 	leaq	736(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13740,7 +13772,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp986:
-# %bb.297:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.296:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp987:
 	leaq	736(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13748,7 +13780,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp988:
-# %bb.298:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.297:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp989:
 	leaq	992(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13756,7 +13788,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp990:
-# %bb.299:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.298:                              #   in Loop: Header=BB19_11 Depth=1
 	vmovsd	200(%rsp), %xmm0                # xmm0 = mem[0],zero
 .Ltmp991:
 	leaq	672(%rsp), %rdi
@@ -13764,7 +13796,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp992:
-# %bb.300:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.299:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp993:
 	leaq	672(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13772,7 +13804,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp994:
-# %bb.301:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.300:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp995:
 	leaq	672(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13780,7 +13812,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp996:
-# %bb.302:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.301:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp997:
 	leaq	1088(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13788,7 +13820,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp998:
-# %bb.303:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.302:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp999:
 	leaq	640(%rsp), %rdi
 	leaq	272(%rsp), %rsi
@@ -13797,7 +13829,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1000:
-# %bb.304:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.303:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1001:
 	leaq	640(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13805,7 +13837,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1002:
-# %bb.305:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.304:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1003:
 	leaq	640(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13813,7 +13845,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1004:
-# %bb.306:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.305:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1005:
 	leaq	1056(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13821,37 +13853,37 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1006:
-# %bb.307:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.306:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1007:
 	movq	%r14, %rdi
 	callq	mpfr_clear
 .Ltmp1008:
-# %bb.308:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.307:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1009:
 	leaq	768(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1010:
-# %bb.309:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.308:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1011:
 	leaq	736(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1012:
-# %bb.310:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.309:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1013:
 	leaq	704(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1014:
-# %bb.311:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.310:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1015:
 	leaq	672(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1016:
-# %bb.312:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.311:                              #   in Loop: Header=BB19_11 Depth=1
 .Ltmp1017:
 	leaq	640(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1018:
-# %bb.313:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.312:                              #   in Loop: Header=BB19_11 Depth=1
 	imulq	$1000000000, 584(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
 	addq	%rax, 328(%rsp)                 # 8-byte Folded Spill
@@ -13860,7 +13892,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	addq	%rax, 320(%rsp)                 # 8-byte Folded Spill
 	imulq	$1000000000, 568(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
-	addq	%rax, 152(%rsp)                 # 8-byte Folded Spill
+	addq	%rax, 184(%rsp)                 # 8-byte Folded Spill
 	imulq	$1000000000, 544(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
 	addq	%rax, %r13
@@ -13872,10 +13904,10 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	432(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB19_10
-# %bb.314:                              #   in Loop: Header=BB19_11 Depth=1
+# %bb.313:                              #   in Loop: Header=BB19_11 Depth=1
 	callq	_ZdlPv
 	jmp	.LBB19_10
-.LBB19_315:
+.LBB19_314:
 	vmovupd	352(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vunpcklpd	336(%rsp), %xmm0, %xmm0 # 16-byte Folded Reload
@@ -13889,7 +13921,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vinsertf128	$1, %xmm1, %ymm2, %ymm1
 	vmovupd	400(%rsp), %xmm4                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	jmp	.LBB19_318
+	jmp	.LBB19_317
 .LBB19_5:
 	leaq	-8(%rbx), %rdx
 	xorl	%esi, %esi
@@ -13901,23 +13933,23 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	callq	_Znwm
 .Ltmp838:
 # %bb.7:
+	leaq	8(%rax), %rdi
 	movq	%rax, 464(%rsp)
 	movq	248(%rsp), %rdx                 # 8-byte Reload
 	leaq	(%rax,%rdx,8), %rbp
-	leaq	8(%rax), %rdi
 	movq	%rbp, 480(%rsp)
 	movq	%rax, %rcx
 	movq	%rax, 16(%rsp)                  # 8-byte Spill
 	movq	$0, (%rax)
 	cmpl	$1, 24(%rsp)                    # 4-byte Folded Reload
-	jne	.LBB19_316
+	jne	.LBB19_315
 # %bb.8:
 	movq	%rdi, %rbp
 	movq	%rbp, 472(%rsp)
 	cmpl	$0, 256(%rsp)                   # 4-byte Folded Reload
 	jne	.LBB19_9
-	jmp	.LBB19_317
-.LBB19_316:
+	jmp	.LBB19_316
+.LBB19_315:
 	addq	$-8, %rbx
 	xorl	%esi, %esi
 	movq	%rbx, %rdx
@@ -13926,31 +13958,31 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	movq	%rbp, 472(%rsp)
 	cmpl	$0, 256(%rsp)                   # 4-byte Folded Reload
 	jne	.LBB19_9
-.LBB19_317:
+.LBB19_316:
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vxorpd	%xmm4, %xmm4, %xmm4
-.LBB19_318:
-	movq	256(%rsp), %rcx                 # 8-byte Reload
-	leal	(%rcx,%rcx,4), %eax
-	vmovd	%ecx, %xmm2
+.LBB19_317:
+	movq	256(%rsp), %rdx                 # 8-byte Reload
+	leal	(%rdx,%rdx,4), %eax
+	movq	488(%rsp), %rcx                 # 8-byte Reload
+	movq	(%rcx), %rcx
+	vmovd	%edx, %xmm2
 	vpinsrd	$1, %eax, %xmm2, %xmm2
-	movq	488(%rsp), %rax                 # 8-byte Reload
-	movq	(%rax), %rax
 	vcvtdq2pd	%xmm2, %xmm2
 	vpermpd	$84, %ymm2, %ymm3               # ymm3 = ymm2[0,1,1,1]
 	vdivpd	%ymm3, %ymm1, %ymm1
 	vpermilpd	$1, %xmm2, %xmm3        # xmm3 = xmm2[1,0]
-	vmovupd	%ymm1, (%rax)
+	vdivsd	%xmm3, %xmm4, %xmm3
+	vmovupd	%ymm1, (%rcx)
 	vpermilpd	$3, %xmm2, %xmm1        # xmm1 = xmm2[1,1]
-	vmovupd	.LCPI19_0(%rip), %xmm2          # xmm2 = [1.0E+0,1.0E+0]
-                                        # AlignMOV convert to UnAlignMOV 
+	vmovddup	.LCPI19_0(%rip), %xmm2          # xmm2 = [1.0E+0,1.0E+0]
+                                        # xmm2 = mem[0,0]
 	vdivpd	%xmm1, %xmm2, %xmm1
 	vmulpd	%xmm1, %xmm0, %xmm0
-	vmovupd	%xmm0, 32(%rax)
-	vdivsd	%xmm3, %xmm4, %xmm0
-	vmovsd	%xmm0, 48(%rax)
-	movslq	%ecx, %rbx
+	vmovupd	%xmm0, 32(%rcx)
+	vmovsd	%xmm3, 48(%rcx)
+	movslq	%edx, %rbx
 .Ltmp1020:
 	leaq	800(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13959,7 +13991,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	vzeroupper
 	callq	mpfr_div_si
 .Ltmp1021:
-# %bb.319:
+# %bb.318:
 .Ltmp1022:
 	leaq	1120(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13967,7 +13999,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1023:
-# %bb.320:
+# %bb.319:
 .Ltmp1024:
 	leaq	1088(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13975,7 +14007,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1025:
-# %bb.321:
+# %bb.320:
 .Ltmp1026:
 	leaq	1056(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13983,7 +14015,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1027:
-# %bb.322:
+# %bb.321:
 .Ltmp1028:
 	leaq	1024(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13991,7 +14023,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1029:
-# %bb.323:
+# %bb.322:
 .Ltmp1030:
 	leaq	992(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -13999,7 +14031,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1031:
-# %bb.324:
+# %bb.323:
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 .Ltmp1032:
@@ -14007,7 +14039,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp1033:
-# %bb.325:
+# %bb.324:
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 	addq	$32, %rdi
@@ -14017,7 +14049,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1035:
-# %bb.326:
+# %bb.325:
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 	addq	$64, %rdi
@@ -14027,7 +14059,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1037:
-# %bb.327:
+# %bb.326:
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 	addq	$96, %rdi
@@ -14037,7 +14069,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1039:
-# %bb.328:
+# %bb.327:
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	movq	(%rax), %rdi
 	subq	$-128, %rdi
@@ -14047,7 +14079,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1041:
-# %bb.329:
+# %bb.328:
 	movl	$160, %edi
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	addq	(%rax), %rdi
@@ -14057,7 +14089,7 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1043:
-# %bb.330:
+# %bb.329:
 	movl	$192, %edi
 	movq	192(%rsp), %rax                 # 8-byte Reload
 	addq	(%rax), %rdi
@@ -14067,19 +14099,19 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1045:
-# %bb.331:
+# %bb.330:
 	movq	16(%rsp), %rdi                  # 8-byte Reload
 	testq	%rdi, %rdi
-	je	.LBB19_333
-# %bb.332:
+	je	.LBB19_332
+# %bb.331:
 	callq	_ZdlPv
-.LBB19_333:
+.LBB19_332:
 	testq	%r15, %r15
-	je	.LBB19_335
-# %bb.334:
+	je	.LBB19_334
+# %bb.333:
 	movq	%r15, %rdi
 	callq	_ZdlPv
-.LBB19_335:
+.LBB19_334:
 	addq	$1240, %rsp                     # imm = 0x4D8
 	.cfi_def_cfa_offset 56
 	popq	%rbx
@@ -14095,142 +14127,142 @@ _Z23compare_dot_prod_threadIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structS
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
-.LBB19_336:
+.LBB19_335:
 	.cfi_def_cfa_offset 1296
 .Ltmp896:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp897:
-# %bb.337:
-.LBB19_338:
+# %bb.336:
+.LBB19_337:
 .Ltmp902:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp903:
-# %bb.339:
-.LBB19_340:
+# %bb.338:
+.LBB19_339:
 .Ltmp935:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp936:
-# %bb.341:
-.LBB19_342:
+# %bb.340:
+.LBB19_341:
 .Ltmp941:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp942:
-# %bb.343:
-.LBB19_344:
+# %bb.342:
+.LBB19_343:
 	movl	$.L.str, %edi
 	callq	_ZSt20__throw_length_errorPKc
-.LBB19_345:
+.LBB19_344:
 .Ltmp839:
 	movq	%rax, %rbx
-	jmp	.LBB19_378
-.LBB19_346:
+	jmp	.LBB19_377
+.LBB19_345:
 .Ltmp1046:
 	movq	%rax, %rbx
 	movq	16(%rsp), %rdi                  # 8-byte Reload
 	testq	%rdi, %rdi
-	je	.LBB19_374
-	jmp	.LBB19_377
-.LBB19_347:
+	je	.LBB19_373
+	jmp	.LBB19_376
+.LBB19_346:
 .Ltmp845:
-	jmp	.LBB19_371
-.LBB19_348:
+	jmp	.LBB19_370
+.LBB19_347:
 .Ltmp842:
-	jmp	.LBB19_371
-.LBB19_349:
+	jmp	.LBB19_370
+.LBB19_348:
 .Ltmp940:
-	jmp	.LBB19_362
-.LBB19_350:
+	jmp	.LBB19_361
+.LBB19_349:
 .Ltmp934:
-	jmp	.LBB19_371
-.LBB19_351:
+	jmp	.LBB19_370
+.LBB19_350:
 .Ltmp901:
-	jmp	.LBB19_367
-.LBB19_352:
+	jmp	.LBB19_366
+.LBB19_351:
 .Ltmp895:
-	jmp	.LBB19_371
-.LBB19_353:
+	jmp	.LBB19_370
+.LBB19_352:
 .Ltmp863:
-	jmp	.LBB19_371
-.LBB19_354:
+	jmp	.LBB19_370
+.LBB19_353:
 .Ltmp946:
 	movq	%rax, %rbx
 	movq	32(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_363
-# %bb.355:
+	je	.LBB19_362
+# %bb.354:
 	callq	_ZdlPv
-	jmp	.LBB19_363
-.LBB19_356:
+	jmp	.LBB19_362
+.LBB19_355:
 .Ltmp907:
 	movq	%rax, %rbx
 	movq	64(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_368
-# %bb.357:
+	je	.LBB19_367
+# %bb.356:
 	callq	_ZdlPv
-	jmp	.LBB19_368
-.LBB19_358:
+	jmp	.LBB19_367
+.LBB19_357:
 .Ltmp1019:
-	jmp	.LBB19_371
-.LBB19_359:
+	jmp	.LBB19_370
+.LBB19_358:
 .Ltmp868:
-	jmp	.LBB19_371
-.LBB19_360:
+	jmp	.LBB19_370
+.LBB19_359:
 .Ltmp856:
-	jmp	.LBB19_371
-.LBB19_361:
+	jmp	.LBB19_370
+.LBB19_360:
 .Ltmp943:
-.LBB19_362:
+.LBB19_361:
 	movq	%rax, %rbx
-.LBB19_363:
+.LBB19_362:
 	movq	128(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB19_369
-	jmp	.LBB19_372
-.LBB19_365:
-.Ltmp937:
+	jne	.LBB19_368
 	jmp	.LBB19_371
-.LBB19_366:
+.LBB19_364:
+.Ltmp937:
+	jmp	.LBB19_370
+.LBB19_365:
 .Ltmp904:
-.LBB19_367:
+.LBB19_366:
 	movq	%rax, %rbx
-.LBB19_368:
+.LBB19_367:
 	movq	96(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB19_372
-.LBB19_369:
+	je	.LBB19_371
+.LBB19_368:
 	callq	_ZdlPv
-.LBB19_372:
+.LBB19_371:
 	movq	432(%rsp), %rdi
+	testq	%rdi, %rdi
+	jne	.LBB19_375
+.LBB19_372:
+	movq	16(%rsp), %rdi                  # 8-byte Reload
 	testq	%rdi, %rdi
 	jne	.LBB19_376
 .LBB19_373:
-	movq	16(%rsp), %rdi                  # 8-byte Reload
-	testq	%rdi, %rdi
+	testq	%r15, %r15
 	jne	.LBB19_377
 .LBB19_374:
-	testq	%r15, %r15
-	jne	.LBB19_378
-.LBB19_375:
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
-.LBB19_370:
+.LBB19_369:
 .Ltmp898:
-.LBB19_371:
+.LBB19_370:
 	movq	%rax, %rbx
 	movq	432(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB19_372
+.LBB19_375:
+	callq	_ZdlPv
+	movq	16(%rsp), %rdi                  # 8-byte Reload
 	testq	%rdi, %rdi
 	je	.LBB19_373
 .LBB19_376:
 	callq	_ZdlPv
-	movq	16(%rsp), %rdi                  # 8-byte Reload
-	testq	%rdi, %rdi
+	testq	%r15, %r15
 	je	.LBB19_374
 .LBB19_377:
-	callq	_ZdlPv
-	testq	%r15, %r15
-	je	.LBB19_375
-.LBB19_378:
 	movq	%r15, %rdi
 	callq	_ZdlPv
 	movq	%rbx, %rdi
@@ -14534,11 +14566,17 @@ GCC_except_table19:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -14546,9 +14584,9 @@ GCC_except_table19:
 	testl	%ebp, %ebp
 	je	.LBB20_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -14576,40 +14614,37 @@ GCC_except_table19:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB20_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB20_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB20_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB20_13
 # %bb.16:
@@ -14617,7 +14652,7 @@ GCC_except_table19:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB20_17:                              # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -14627,14 +14662,12 @@ GCC_except_table19:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB20_14
 	jmp	.LBB20_19
 .LBB20_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB20_5:                               # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -14647,7 +14680,6 @@ GCC_except_table19:
 .LBB20_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB20_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -14666,11 +14698,11 @@ GCC_except_table19:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.20, %r9d
@@ -14688,8 +14720,8 @@ GCC_except_table19:
 	jne	.LBB20_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -14697,19 +14729,23 @@ GCC_except_table19:
 	jmp	.LBB20_11
 .LBB20_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB20_10:                              # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB20_10
 .LBB20_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -14830,7 +14866,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 	testl	%r14d, %r14d
-	js	.LBB22_341
+	js	.LBB22_338
 # %bb.1:
 	movslq	%r14d, %rcx
 	movq	%r14, 16(%rsp)                  # 8-byte Spill
@@ -14874,10 +14910,10 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 .Ltmp1048:
 # %bb.7:
 	movq	%r15, %r14
+	leaq	8(%rax), %rdi
 	movq	%rax, 320(%rsp)
 	movq	104(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %rbp
-	leaq	8(%rax), %rdi
 	movq	%rbp, 336(%rsp)
 	movq	$0, (%rax)
 	cmpl	$1, 16(%rsp)                    # 4-byte Folded Reload
@@ -14893,7 +14929,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 .LBB22_9:
 	movq	%rdi, 328(%rsp)
 	cmpl	$0, 376(%rsp)                   # 4-byte Folded Reload
-	je	.LBB22_305
+	je	.LBB22_302
 # %bb.10:
 	movq	%rcx, %r14
 	shlq	$5, %r14
@@ -14922,16 +14958,16 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	leaq	1(%rdx), %rax
 	movq	%rax, 816(%rsp)                 # 8-byte Spill
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 752(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 736(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm2, %xmm2, %xmm2
 	vxorpd	%xmm5, %xmm5, %xmm5
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 736(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 720(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 720(%rsp)                # 16-byte Spill
+	vmovdqu	%xmm0, 752(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vxorpd	%xmm3, %xmm3, %xmm3
 	xorl	%esi, %esi
@@ -14941,28 +14977,28 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	.p2align	4, 0x90
 .LBB22_11:                              #   in Loop: Header=BB22_12 Depth=1
 	vcvtsi2sdq	688(%rsp), %xmm4, %xmm8 # 8-byte Folded Reload
-	vcvtsi2sdq	672(%rsp), %xmm4, %xmm0 # 8-byte Folded Reload
-	vcvtsi2sdq	656(%rsp), %xmm4, %xmm2 # 8-byte Folded Reload
-	vcvtsi2sdq	384(%rsp), %xmm4, %xmm3 # 8-byte Folded Reload
+	vcvtsi2sdq	672(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
+	vcvtsi2sdq	656(%rsp), %xmm4, %xmm10 # 8-byte Folded Reload
+	vcvtsi2sdq	384(%rsp), %xmm4, %xmm11 # 8-byte Folded Reload
 	vcvtsi2sdq	312(%rsp), %xmm4, %xmm12 # 8-byte Folded Reload
 	vcvtsi2sdq	112(%rsp), %xmm4, %xmm13 # 8-byte Folded Reload
 	vcvtsi2sdq	880(%rsp), %xmm4, %xmm14 # 8-byte Folded Reload
 	vcvtsi2sdq	872(%rsp), %xmm4, %xmm15 # 8-byte Folded Reload
-	vcvtsi2sdq	864(%rsp), %xmm4, %xmm9 # 8-byte Folded Reload
-	vcvtsi2sdq	856(%rsp), %xmm4, %xmm1 # 8-byte Folded Reload
-	vcvtsi2sd	%r12, %xmm4, %xmm10
-	vcvtsi2sd	%r15, %xmm4, %xmm11
+	vcvtsi2sdq	864(%rsp), %xmm4, %xmm16 # 8-byte Folded Reload
+	vcvtsi2sdq	856(%rsp), %xmm4, %xmm17 # 8-byte Folded Reload
+	vcvtsi2sd	%r12, %xmm4, %xmm18
+	vcvtsi2sd	%r15, %xmm4, %xmm19
 	vcvtsi2sd	%r13, %xmm4, %xmm4
 	vcvtsi2sd	%rbx, %xmm5, %xmm5
 	vcvtsi2sd	%rbp, %xmm6, %xmm6
 	vcvtsi2sd	%r14, %xmm7, %xmm7
-	vminsd	%xmm0, %xmm8, %xmm8
-	vminsd	%xmm3, %xmm2, %xmm0
-	vminsd	%xmm0, %xmm8, %xmm0
+	vminsd	%xmm8, %xmm9, %xmm0
+	vminsd	%xmm11, %xmm10, %xmm1
+	vminsd	%xmm1, %xmm0, %xmm0
 	vminsd	%xmm0, %xmm12, %xmm0
-	vmovupd	720(%rsp), %xmm2                # 16-byte Reload
+	vmovupd	752(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	%xmm0, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm0[0]
+	vunpcklpd	%xmm0, %xmm1, %xmm0     # xmm0 = xmm1[0],xmm0[0]
 	vmovupd	1296(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddpd	%xmm3, %xmm0, %xmm3
@@ -14970,13 +15006,13 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm2, %xmm13, %xmm2
 	vminsd	%xmm14, %xmm15, %xmm0
-	vminsd	%xmm1, %xmm9, %xmm1
+	vminsd	%xmm17, %xmm16, %xmm1
 	vminsd	%xmm1, %xmm0, %xmm0
-	vminsd	%xmm0, %xmm10, %xmm0
+	vminsd	%xmm0, %xmm18, %xmm0
 	vmovupd	1312(%rsp), %xmm1               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm1, %xmm0, %xmm1
-	vminsd	%xmm4, %xmm11, %xmm0
+	vminsd	%xmm19, %xmm4, %xmm0
 	vminsd	%xmm0, %xmm5, %xmm0
 	vminsd	%xmm0, %xmm6, %xmm0
 	vminsd	%xmm0, %xmm7, %xmm0
@@ -14988,38 +15024,38 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	cmpl	376(%rsp), %esi                 # 4-byte Folded Reload
 	movq	848(%rsp), %r14                 # 8-byte Reload
 	movq	184(%rsp), %r12                 # 8-byte Reload
-	je	.LBB22_306
+	je	.LBB22_303
 .LBB22_12:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB22_16 Depth 2
                                         #     Child Loop BB22_19 Depth 2
                                         #     Child Loop BB22_24 Depth 2
                                         #     Child Loop BB22_34 Depth 2
-                                        #     Child Loop BB22_41 Depth 2
-                                        #     Child Loop BB22_45 Depth 2
-                                        #     Child Loop BB22_49 Depth 2
-                                        #     Child Loop BB22_53 Depth 2
-                                        #     Child Loop BB22_57 Depth 2
-                                        #     Child Loop BB22_61 Depth 2
-                                        #     Child Loop BB22_65 Depth 2
-                                        #     Child Loop BB22_69 Depth 2
-                                        #     Child Loop BB22_73 Depth 2
-                                        #     Child Loop BB22_77 Depth 2
-                                        #     Child Loop BB22_95 Depth 2
+                                        #     Child Loop BB22_40 Depth 2
+                                        #     Child Loop BB22_44 Depth 2
+                                        #     Child Loop BB22_48 Depth 2
+                                        #     Child Loop BB22_52 Depth 2
+                                        #     Child Loop BB22_56 Depth 2
+                                        #     Child Loop BB22_60 Depth 2
+                                        #     Child Loop BB22_64 Depth 2
+                                        #     Child Loop BB22_68 Depth 2
+                                        #     Child Loop BB22_72 Depth 2
+                                        #     Child Loop BB22_76 Depth 2
+                                        #     Child Loop BB22_94 Depth 2
+                                        #     Child Loop BB22_207 Depth 2
                                         #     Child Loop BB22_210 Depth 2
                                         #     Child Loop BB22_213 Depth 2
-                                        #     Child Loop BB22_216 Depth 2
+                                        #     Child Loop BB22_220 Depth 2
                                         #     Child Loop BB22_223 Depth 2
-                                        #     Child Loop BB22_226 Depth 2
-                                        #     Child Loop BB22_230 Depth 2
-                                        #     Child Loop BB22_234 Depth 2
-                                        #     Child Loop BB22_238 Depth 2
-                                        #     Child Loop BB22_242 Depth 2
-                                        #     Child Loop BB22_246 Depth 2
-                                        #     Child Loop BB22_250 Depth 2
-                                        #     Child Loop BB22_254 Depth 2
-                                        #     Child Loop BB22_258 Depth 2
-                                        #     Child Loop BB22_262 Depth 2
-                                        #     Child Loop BB22_266 Depth 2
+                                        #     Child Loop BB22_227 Depth 2
+                                        #     Child Loop BB22_231 Depth 2
+                                        #     Child Loop BB22_235 Depth 2
+                                        #     Child Loop BB22_239 Depth 2
+                                        #     Child Loop BB22_243 Depth 2
+                                        #     Child Loop BB22_247 Depth 2
+                                        #     Child Loop BB22_251 Depth 2
+                                        #     Child Loop BB22_255 Depth 2
+                                        #     Child Loop BB22_259 Depth 2
+                                        #     Child Loop BB22_263 Depth 2
 	vmovupd	%xmm3, 1296(%rsp)               # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vmovupd	%xmm1, 1312(%rsp)               # 16-byte Spill
@@ -15189,13 +15225,13 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	1416(%rsp), %rax
 	subq	1432(%rsp), %rax
 	movq	%rax, 384(%rsp)                 # 8-byte Spill
-	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	movq	184(%rsp), %r14                 # 8-byte Reload
+	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
+	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
+	leaq	624(%rsp), %rbp
 	je	.LBB22_37
 # %bb.33:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%r14, %rbx
-	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
-	leaq	432(%rsp), %rbp
 	.p2align	4, 0x90
 .LBB22_34:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -15213,12 +15249,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	addq	$32, %r12
 	decq	%rbx
 	jne	.LBB22_34
-	jmp	.LBB22_38
-	.p2align	4, 0x90
 .LBB22_37:                              #   in Loop: Header=BB22_12 Depth=1
-	movabsq	$9223372036854775800, %r13      # imm = 0x7FFFFFFFFFFFFFF8
-	leaq	432(%rsp), %rbp
-.LBB22_38:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1600(%rsp), %rsi
 	callq	clock_gettime
@@ -15229,222 +15260,222 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rbp, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_46
-# %bb.39:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_45
+# %bb.38:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB22_43
-# %bb.40:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_42
+# %bb.39:                               #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_41:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_40:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB22_41
-# %bb.42:                               #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_40
+# %bb.41:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r14, %rdx
-	jne	.LBB22_44
-	jmp	.LBB22_46
+	jne	.LBB22_43
+	jmp	.LBB22_45
 	.p2align	4, 0x90
-.LBB22_43:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_42:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_44:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_43:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r14, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_45:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_44:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_45
-.LBB22_46:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_44
+.LBB22_45:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
 	vmovdqu	288(%rsp), %xmm0                # AlignMOV convert to UnAlignMOV 
-	vpsubq	432(%rsp), %xmm0, %xmm0
+	vpsubq	624(%rsp), %xmm0, %xmm0
 	vmovdqu	%xmm0, 704(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	movq	%rbp, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_54
-# %bb.47:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_53
+# %bb.46:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB22_51
-# %bb.48:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_50
+# %bb.47:                               #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_49:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_48:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB22_49
-# %bb.50:                               #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_48
+# %bb.49:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r14, %rdx
-	jne	.LBB22_52
-	jmp	.LBB22_54
+	jne	.LBB22_51
+	jmp	.LBB22_53
 	.p2align	4, 0x90
-.LBB22_51:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_50:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_52:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_51:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r14, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_53:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_52:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_53
-.LBB22_54:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_52
+.LBB22_53:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
 	vmovdqu	288(%rsp), %xmm0                # AlignMOV convert to UnAlignMOV 
-	vpsubq	432(%rsp), %xmm0, %xmm0
+	vpsubq	624(%rsp), %xmm0, %xmm0
 	vmovdqu	%xmm0, 192(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	movq	%rbp, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_62
-# %bb.55:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_61
+# %bb.54:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB22_59
-# %bb.56:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_58
+# %bb.55:                               #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_57:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_56:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB22_57
-# %bb.58:                               #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_56
+# %bb.57:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r14, %rdx
-	jne	.LBB22_60
-	jmp	.LBB22_62
+	jne	.LBB22_59
+	jmp	.LBB22_61
 	.p2align	4, 0x90
-.LBB22_59:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_58:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_60:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_59:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r14, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_61:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_60:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_61
-.LBB22_62:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_60
+.LBB22_61:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
 	vmovdqu	288(%rsp), %xmm0                # AlignMOV convert to UnAlignMOV 
-	vpsubq	432(%rsp), %xmm0, %xmm0
+	vpsubq	624(%rsp), %xmm0, %xmm0
 	vmovdqu	%xmm0, 688(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	movq	%rbp, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_70
-# %bb.63:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_69
+# %bb.62:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rdx                 # 8-byte Reload
 	testq	%rdx, %rdx
-	je	.LBB22_67
-# %bb.64:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_66
+# %bb.63:                               #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_65:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_64:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rdx, %rax
-	jb	.LBB22_65
-# %bb.66:                               #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_64
+# %bb.65:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%rdx, %rcx
 	cmpq	%r14, %rdx
-	jne	.LBB22_68
-	jmp	.LBB22_70
+	jne	.LBB22_67
+	jmp	.LBB22_69
 	.p2align	4, 0x90
-.LBB22_67:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_66:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_68:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_67:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r14, %rax
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_69:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_68:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_69
-.LBB22_70:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_68
+.LBB22_69:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	callq	clock_gettime
 	vmovdqu	288(%rsp), %xmm0                # AlignMOV convert to UnAlignMOV 
-	vpsubq	432(%rsp), %xmm0, %xmm0
+	vpsubq	624(%rsp), %xmm0, %xmm0
 	vmovdqu	%xmm0, 672(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	movq	%rbp, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_75
-# %bb.71:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_74
+# %bb.70:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	testq	%rcx, %rcx
-	je	.LBB22_76
-# %bb.72:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_75
+# %bb.71:                               #   in Loop: Header=BB22_12 Depth=1
 	vpxor	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	movq	32(%rsp), %rbp                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_73:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_72:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%r15,%rax,8), %ymm1
 	vfmadd231pd	(%rbp,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB22_73
-# %bb.74:                               #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_72
+# %bb.73:                               #   in Loop: Header=BB22_12 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rcx, %rax
 	cmpq	%r14, %rcx
-	jne	.LBB22_77
-	jmp	.LBB22_78
+	jne	.LBB22_76
+	jmp	.LBB22_77
 	.p2align	4, 0x90
-.LBB22_75:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_74:                              #   in Loop: Header=BB22_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	movq	32(%rsp), %rbp                  # 8-byte Reload
-	jmp	.LBB22_78
+	jmp	.LBB22_77
 	.p2align	4, 0x90
-.LBB22_76:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_75:                              #   in Loop: Header=BB22_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	movq	32(%rsp), %rbp                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_77:                              #   Parent Loop BB22_12 Depth=1
+.LBB22_76:                              #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%r15,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%rbp,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %r14
-	jne	.LBB22_77
-.LBB22_78:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_76
+.LBB22_77:                              #   in Loop: Header=BB22_12 Depth=1
 	vmovsd	%xmm1, 888(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	288(%rsp), %rsi
 	vzeroupper
 	callq	clock_gettime
 	vmovdqu	288(%rsp), %xmm0                # AlignMOV convert to UnAlignMOV 
-	vpsubq	432(%rsp), %xmm0, %xmm0
+	vpsubq	624(%rsp), %xmm0, %xmm0
 	vmovdqu	%xmm0, 656(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
@@ -15456,81 +15487,81 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	sarq	$3, %r14
 	movq	%r12, 312(%rsp)                 # 8-byte Spill
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 608(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 624(%rsp)
+	vmovdqu	%xmm0, 592(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 608(%rsp)
 	subq	%rbp, %r12
-	je	.LBB22_82
-# %bb.79:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_81
+# %bb.78:                               #   in Loop: Header=BB22_12 Depth=1
 	cmpq	%r13, %r12
-	ja	.LBB22_333
-# %bb.80:                               #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_330
+# %bb.79:                               #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1079:
 	movq	%r12, %rdi
 	callq	_Znwm
 .Ltmp1080:
-# %bb.81:                               #   in Loop: Header=BB22_12 Depth=1
-	movq	%rax, 608(%rsp)
-	movq	%rax, 616(%rsp)
+# %bb.80:                               #   in Loop: Header=BB22_12 Depth=1
+	movq	%rax, 592(%rsp)
+	movq	%rax, 600(%rsp)
 	leaq	(%rax,%r14,8), %rbx
-	movq	%rbx, 624(%rsp)
+	movq	%rbx, 608(%rsp)
 	movq	%rax, %rdi
 	movq	%rbp, %rsi
 	movq	%r12, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_83
+	jmp	.LBB22_82
 	.p2align	4, 0x90
-.LBB22_82:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_81:                              #   in Loop: Header=BB22_12 Depth=1
 	leaq	(,%r14,8), %rbx
-	movq	%rbx, 624(%rsp)
-.LBB22_83:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	%rbx, 608(%rsp)
+.LBB22_82:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	328(%rsp), %rax
 	movq	%rax, %rbp
 	subq	%r15, %rbp
 	sarq	$3, %rbp
 	movq	%rax, 112(%rsp)                 # 8-byte Spill
-	movq	%rbx, 616(%rsp)
+	movq	%rbx, 600(%rsp)
 	movq	%rax, %rbx
 	vpxor	%xmm0, %xmm0, %xmm0
-	vmovdqu	%xmm0, 576(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 592(%rsp)
+	vmovdqu	%xmm0, 560(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 576(%rsp)
 	subq	%r15, %rbx
 	movq	%rbx, 128(%rsp)                 # 8-byte Spill
-	je	.LBB22_87
-# %bb.84:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_86
+# %bb.83:                               #   in Loop: Header=BB22_12 Depth=1
 	cmpq	%r13, %rbx
-	ja	.LBB22_335
-# %bb.85:                               #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_332
+# %bb.84:                               #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1085:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1086:
 	movq	%rbx, %rdx
-# %bb.86:                               #   in Loop: Header=BB22_12 Depth=1
-	movq	%rax, 576(%rsp)
-	movq	%rax, 584(%rsp)
+# %bb.85:                               #   in Loop: Header=BB22_12 Depth=1
+	movq	%rax, 560(%rsp)
+	movq	%rax, 568(%rsp)
 	leaq	(%rax,%rbp,8), %rbx
-	movq	%rbx, 592(%rsp)
+	movq	%rbx, 576(%rsp)
 	movq	%rax, %rdi
 	movq	%r15, %rsi
 	callq	memmove@PLT
-	jmp	.LBB22_88
+	jmp	.LBB22_87
 	.p2align	4, 0x90
-.LBB22_87:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_86:                              #   in Loop: Header=BB22_12 Depth=1
 	leaq	(,%rbp,8), %rbx
-	movq	%rbx, 592(%rsp)
-.LBB22_88:                              #   in Loop: Header=BB22_12 Depth=1
-	movq	%rbx, 584(%rsp)
+	movq	%rbx, 576(%rsp)
+.LBB22_87:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	%r14, 232(%rsp)                 # 8-byte Spill
+	movq	%rbx, 568(%rsp)
 .Ltmp1091:
-	leaq	608(%rsp), %rdi
-	leaq	576(%rsp), %rsi
+	leaq	592(%rsp), %rdi
+	leaq	560(%rsp), %rsi
 	movq	16(%rsp), %rdx                  # 8-byte Reload
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
 	movl	$1, %r8d
 	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
 .Ltmp1092:
-# %bb.89:                               #   in Loop: Header=BB22_12 Depth=1
-	movq	%r14, 232(%rsp)                 # 8-byte Spill
+# %bb.88:                               #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, 176(%rsp)                 # 8-byte Spill
 	movq	%r15, 24(%rsp)                  # 8-byte Spill
 	vmovdqu	704(%rsp), %xmm0                # 16-byte Reload
@@ -15553,63 +15584,63 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
 	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
-	movq	576(%rsp), %rdi
+	movq	560(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_91
-# %bb.90:                               #   in Loop: Header=BB22_12 Depth=1
-	movq	%rcx, %rbp
-	movq	%rax, %rbx
+	je	.LBB22_90
+# %bb.89:                               #   in Loop: Header=BB22_12 Depth=1
+	movq	%rax, %rbp
+	movq	%rcx, %rbx
 	movq	%rdx, %r13
 	callq	_ZdlPv
 	movq	%r13, %rdx
-	movq	%rbx, %rax
-	movq	%rbp, %rcx
-.LBB22_91:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	%rbx, %rcx
+	movq	%rbp, %rax
+.LBB22_90:                              #   in Loop: Header=BB22_12 Depth=1
 	vmovdqu	704(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vpextrq	$1, %xmm0, %r13
 	addq	%r15, %r13
 	vmovdqu	192(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %rbx
-	addq	%r14, %rbx
+	vpextrq	$1, %xmm0, %r15
+	addq	%r14, %r15
 	vmovdqu	688(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %r15
-	addq	%rdx, %r15
+	vpextrq	$1, %xmm0, %rbp
+	addq	%rdx, %rbp
 	vmovdqu	672(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vpextrq	$1, %xmm0, %rbp
+	vpextrq	$1, %xmm0, %rbx
+	addq	%rcx, %rbx
 	vmovdqu	656(%rsp), %xmm0                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vpextrq	$1, %xmm0, %r14
-	addq	%rcx, %rbp
 	addq	%rax, %r14
-	movq	608(%rsp), %rdi
+	movq	592(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_93
-# %bb.92:                               #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_92
+# %bb.91:                               #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_93:                              #   in Loop: Header=BB22_12 Depth=1
+.LBB22_92:                              #   in Loop: Header=BB22_12 Depth=1
 	vcvtsi2sdq	384(%rsp), %xmm2, %xmm0 # 8-byte Folded Reload
 	vcvtsi2sd	%r13, %xmm2, %xmm1
-	vcvtsi2sd	%rbx, %xmm2, %xmm2
-	vmovupd	752(%rsp), %xmm3                # 16-byte Reload
+	vcvtsi2sd	%r15, %xmm2, %xmm2
+	vmovupd	736(%rsp), %xmm3                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm0, %xmm3, %xmm3
-	vmovupd	%xmm3, 752(%rsp)                # 16-byte Spill
+	vmovupd	%xmm3, 736(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	vminsd	%xmm1, %xmm2, %xmm0
-	vcvtsi2sd	%r15, %xmm4, %xmm1
-	vminsd	%xmm0, %xmm1, %xmm0
 	vcvtsi2sd	%rbp, %xmm4, %xmm1
+	vcvtsi2sd	%rbx, %xmm4, %xmm2
 	vminsd	%xmm0, %xmm1, %xmm0
+	vminsd	%xmm0, %xmm2, %xmm0
 	vcvtsi2sd	%r14, %xmm4, %xmm1
 	vminsd	%xmm0, %xmm1, %xmm0
-	vmovupd	736(%rsp), %xmm1                # 16-byte Reload
+	vmovupd	720(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vaddsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 736(%rsp)                # 16-byte Spill
+	vmovupd	%xmm1, 720(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	xorl	%edi, %edi
 	leaq	1568(%rsp), %rsi
@@ -15622,106 +15653,9 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$5, %r15d
 	movabsq	$9223372036854775800, %r14      # imm = 0x7FFFFFFFFFFFFFF8
 	movq	32(%rsp), %rbp                  # 8-byte Reload
-	jmp	.LBB22_95
+	jmp	.LBB22_94
 	.p2align	4, 0x90
-.LBB22_94:                              #   in Loop: Header=BB22_95 Depth=2
-	vmovupd	720(%rsp), %xmm1                # 16-byte Reload
-                                        # AlignMOV convert to UnAlignMOV 
-	vminsd	%xmm1, %xmm0, %xmm1
-	vmovupd	%xmm1, 720(%rsp)                # 16-byte Spill
-                                        # AlignMOV convert to UnAlignMOV 
-	decl	%r15d
-	je	.LBB22_112
-.LBB22_95:                              #   Parent Loop BB22_12 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	xorl	%edi, %edi
-	leaq	1376(%rsp), %rsi
-	callq	clock_gettime
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 544(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 560(%rsp)
-	cmpq	%rbp, 312(%rsp)                 # 8-byte Folded Reload
-	je	.LBB22_99
-# %bb.96:                               #   in Loop: Header=BB22_95 Depth=2
-	cmpq	%r14, %r12
-	ja	.LBB22_325
-# %bb.97:                               #   in Loop: Header=BB22_95 Depth=2
-.Ltmp1094:
-	movq	%r12, %rdi
-	callq	_Znwm
-.Ltmp1095:
-# %bb.98:                               #   in Loop: Header=BB22_95 Depth=2
-	movq	%rax, 544(%rsp)
-	movq	%rax, 552(%rsp)
-	movq	232(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 560(%rsp)
-	movq	%rax, %rdi
-	movq	%rbp, %rsi
-	movq	%r12, %rdx
-	callq	memmove@PLT
-	jmp	.LBB22_100
-	.p2align	4, 0x90
-.LBB22_99:                              #   in Loop: Header=BB22_95 Depth=2
-	movq	%r13, 560(%rsp)
-	movq	%r13, %rbx
-.LBB22_100:                             #   in Loop: Header=BB22_95 Depth=2
-	movq	%rbx, 552(%rsp)
-	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 512(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 528(%rsp)
-	movq	112(%rsp), %rax                 # 8-byte Reload
-	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
-	je	.LBB22_104
-# %bb.101:                              #   in Loop: Header=BB22_95 Depth=2
-	movq	128(%rsp), %rbx                 # 8-byte Reload
-	cmpq	%r14, %rbx
-	ja	.LBB22_327
-# %bb.102:                              #   in Loop: Header=BB22_95 Depth=2
-.Ltmp1100:
-	movq	%rbx, %rdi
-	callq	_Znwm
-.Ltmp1101:
-# %bb.103:                              #   in Loop: Header=BB22_95 Depth=2
-	movq	%rax, 512(%rsp)
-	movq	%rax, 520(%rsp)
-	movq	%rbx, %rdx
-	movq	176(%rsp), %rcx                 # 8-byte Reload
-	leaq	(%rax,%rcx,8), %rbx
-	movq	%rbx, 528(%rsp)
-	movq	%rax, %rdi
-	movq	24(%rsp), %rsi                  # 8-byte Reload
-	callq	memmove@PLT
-	jmp	.LBB22_105
-	.p2align	4, 0x90
-.LBB22_104:                             #   in Loop: Header=BB22_95 Depth=2
-	movq	192(%rsp), %rbx                 # 8-byte Reload
-	movq	%rbx, 528(%rsp)
-.LBB22_105:                             #   in Loop: Header=BB22_95 Depth=2
-	movq	%rbx, 520(%rsp)
-.Ltmp1106:
-	leaq	544(%rsp), %rdi
-	leaq	512(%rsp), %rsi
-	movq	16(%rsp), %rdx                  # 8-byte Reload
-                                        # kill: def $edx killed $edx killed $rdx
-	movl	$1, %ecx
-	movl	$1, %r8d
-	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
-	vmovsd	%xmm0, 704(%rsp)                # 8-byte Spill
-.Ltmp1107:
-# %bb.106:                              #   in Loop: Header=BB22_95 Depth=2
-	movq	512(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB22_108
-# %bb.107:                              #   in Loop: Header=BB22_95 Depth=2
-	callq	_ZdlPv
-.LBB22_108:                             #   in Loop: Header=BB22_95 Depth=2
-	movq	544(%rsp), %rdi
-	testq	%rdi, %rdi
-	je	.LBB22_110
-# %bb.109:                              #   in Loop: Header=BB22_95 Depth=2
-	callq	_ZdlPv
-.LBB22_110:                             #   in Loop: Header=BB22_95 Depth=2
+.LBB22_93:                              #   in Loop: Header=BB22_94 Depth=2
 	xorl	%edi, %edi
 	leaq	1360(%rsp), %rsi
 	callq	clock_gettime
@@ -15733,13 +15667,108 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	addq	%rax, %rcx
 	vcvtsi2sd	%rcx, %xmm4, %xmm0
 	cmpl	$5, %r15d
-	jne	.LBB22_94
-# %bb.111:                              #   in Loop: Header=BB22_95 Depth=2
-	vmovupd	%xmm0, 720(%rsp)                # 16-byte Spill
+	sete	%al
+	kmovd	%eax, %k1
+	vmovupd	752(%rsp), %xmm1                # 16-byte Reload
+                                        # AlignMOV convert to UnAlignMOV 
+	vminsd	%xmm1, %xmm0, %xmm1
+	vmovsd	%xmm0, %xmm1, %xmm1 {%k1}
+	vmovupd	%xmm1, 752(%rsp)                # 16-byte Spill
                                         # AlignMOV convert to UnAlignMOV 
 	decl	%r15d
-	jne	.LBB22_95
-.LBB22_112:                             #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_109
+.LBB22_94:                              #   Parent Loop BB22_12 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xorl	%edi, %edi
+	leaq	1376(%rsp), %rsi
+	callq	clock_gettime
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 528(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 544(%rsp)
+	cmpq	%rbp, 312(%rsp)                 # 8-byte Folded Reload
+	je	.LBB22_98
+# %bb.95:                               #   in Loop: Header=BB22_94 Depth=2
+	cmpq	%r14, %r12
+	ja	.LBB22_322
+# %bb.96:                               #   in Loop: Header=BB22_94 Depth=2
+.Ltmp1094:
+	movq	%r12, %rdi
+	callq	_Znwm
+.Ltmp1095:
+# %bb.97:                               #   in Loop: Header=BB22_94 Depth=2
+	movq	%rax, 528(%rsp)
+	movq	%rax, 536(%rsp)
+	movq	232(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 544(%rsp)
+	movq	%rax, %rdi
+	movq	%rbp, %rsi
+	movq	%r12, %rdx
+	callq	memmove@PLT
+	jmp	.LBB22_99
+	.p2align	4, 0x90
+.LBB22_98:                              #   in Loop: Header=BB22_94 Depth=2
+	movq	%r13, 544(%rsp)
+	movq	%r13, %rbx
+.LBB22_99:                              #   in Loop: Header=BB22_94 Depth=2
+	movq	%rbx, 536(%rsp)
+	vxorpd	%xmm0, %xmm0, %xmm0
+	vmovupd	%xmm0, 496(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 512(%rsp)
+	movq	112(%rsp), %rax                 # 8-byte Reload
+	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
+	je	.LBB22_103
+# %bb.100:                              #   in Loop: Header=BB22_94 Depth=2
+	movq	128(%rsp), %rbx                 # 8-byte Reload
+	cmpq	%r14, %rbx
+	ja	.LBB22_324
+# %bb.101:                              #   in Loop: Header=BB22_94 Depth=2
+.Ltmp1100:
+	movq	%rbx, %rdi
+	callq	_Znwm
+.Ltmp1101:
+# %bb.102:                              #   in Loop: Header=BB22_94 Depth=2
+	movq	%rax, 496(%rsp)
+	movq	%rax, 504(%rsp)
+	movq	%rbx, %rdx
+	movq	176(%rsp), %rcx                 # 8-byte Reload
+	leaq	(%rax,%rcx,8), %rbx
+	movq	%rbx, 512(%rsp)
+	movq	%rax, %rdi
+	movq	24(%rsp), %rsi                  # 8-byte Reload
+	callq	memmove@PLT
+	jmp	.LBB22_104
+	.p2align	4, 0x90
+.LBB22_103:                             #   in Loop: Header=BB22_94 Depth=2
+	movq	192(%rsp), %rbx                 # 8-byte Reload
+	movq	%rbx, 512(%rsp)
+.LBB22_104:                             #   in Loop: Header=BB22_94 Depth=2
+	movq	%rbx, 504(%rsp)
+.Ltmp1106:
+	leaq	528(%rsp), %rdi
+	leaq	496(%rsp), %rsi
+	movq	16(%rsp), %rdx                  # 8-byte Reload
+                                        # kill: def $edx killed $edx killed $rdx
+	movl	$1, %ecx
+	movl	$1, %r8d
+	callq	_Z15common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iii
+	vmovsd	%xmm0, 704(%rsp)                # 8-byte Spill
+.Ltmp1107:
+# %bb.105:                              #   in Loop: Header=BB22_94 Depth=2
+	movq	496(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB22_107
+# %bb.106:                              #   in Loop: Header=BB22_94 Depth=2
+	callq	_ZdlPv
+.LBB22_107:                             #   in Loop: Header=BB22_94 Depth=2
+	movq	528(%rsp), %rdi
+	testq	%rdi, %rdi
+	je	.LBB22_93
+# %bb.108:                              #   in Loop: Header=BB22_94 Depth=2
+	callq	_ZdlPv
+	jmp	.LBB22_93
+	.p2align	4, 0x90
+.LBB22_109:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1552(%rsp), %rsi
 	callq	clock_gettime
@@ -15879,77 +15908,77 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	leaq	1520(%rsp), %rsi
 	callq	clock_gettime
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 480(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 496(%rsp)
+	vmovupd	%xmm0, 464(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 480(%rsp)
 	movq	32(%rsp), %rax                  # 8-byte Reload
 	cmpq	%rax, 312(%rsp)                 # 8-byte Folded Reload
-	je	.LBB22_116
-# %bb.113:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_113
+# %bb.110:                              #   in Loop: Header=BB22_12 Depth=1
 	cmpq	%r14, %r12
-	ja	.LBB22_337
-# %bb.114:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_334
+# %bb.111:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1109:
 	movq	%r12, %rdi
 	callq	_Znwm
 .Ltmp1110:
 	movq	24(%rsp), %rbx                  # 8-byte Reload
-# %bb.115:                              #   in Loop: Header=BB22_12 Depth=1
-	movq	%rax, 480(%rsp)
-	movq	%rax, 488(%rsp)
+# %bb.112:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	%rax, 464(%rsp)
+	movq	%rax, 472(%rsp)
 	movq	232(%rsp), %rcx                 # 8-byte Reload
 	leaq	(%rax,%rcx,8), %r13
-	movq	%r13, 496(%rsp)
+	movq	%r13, 480(%rsp)
 	movq	%rax, %rdi
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%r12, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_117
+	jmp	.LBB22_114
 	.p2align	4, 0x90
-.LBB22_116:                             #   in Loop: Header=BB22_12 Depth=1
-	movq	%r13, 496(%rsp)
+.LBB22_113:                             #   in Loop: Header=BB22_12 Depth=1
+	movq	%r13, 480(%rsp)
 	movq	24(%rsp), %rbx                  # 8-byte Reload
-.LBB22_117:                             #   in Loop: Header=BB22_12 Depth=1
-	movq	%r13, 488(%rsp)
+.LBB22_114:                             #   in Loop: Header=BB22_12 Depth=1
+	movq	%r13, 472(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
-	vmovupd	%xmm0, 448(%rsp)                # AlignMOV convert to UnAlignMOV 
-	movq	$0, 464(%rsp)
+	vmovupd	%xmm0, 432(%rsp)                # AlignMOV convert to UnAlignMOV 
+	movq	$0, 448(%rsp)
 	cmpq	%rbx, 112(%rsp)                 # 8-byte Folded Reload
 	leaq	80(%rsp), %r12
-	je	.LBB22_121
-# %bb.118:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_118
+# %bb.115:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%r14, %rbx
 	movq	184(%rsp), %r15                 # 8-byte Reload
 	movq	176(%rsp), %r13                 # 8-byte Reload
-	ja	.LBB22_339
-# %bb.119:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_336
+# %bb.116:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1115:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1116:
 	leaq	48(%rsp), %r14
 	movq	%rbx, %rdx
-# %bb.120:                              #   in Loop: Header=BB22_12 Depth=1
-	movq	%rax, 448(%rsp)
-	movq	%rax, 456(%rsp)
+# %bb.117:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	%rax, 432(%rsp)
+	movq	%rax, 440(%rsp)
 	leaq	(%rax,%r13,8), %rbx
-	movq	%rbx, 464(%rsp)
+	movq	%rbx, 448(%rsp)
 	movq	%rax, %rdi
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB22_122
+	jmp	.LBB22_119
 	.p2align	4, 0x90
-.LBB22_121:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_118:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbx                 # 8-byte Reload
-	movq	%rbx, 464(%rsp)
+	movq	%rbx, 448(%rsp)
 	movq	184(%rsp), %r15                 # 8-byte Reload
 	leaq	48(%rsp), %r14
 	movq	176(%rsp), %r13                 # 8-byte Reload
-.LBB22_122:                             #   in Loop: Header=BB22_12 Depth=1
-	movq	%rbx, 456(%rsp)
+.LBB22_119:                             #   in Loop: Header=BB22_12 Depth=1
+	movq	%rbx, 440(%rsp)
 .Ltmp1121:
-	leaq	480(%rsp), %rdi
-	leaq	448(%rsp), %rsi
+	leaq	464(%rsp), %rdi
+	leaq	432(%rsp), %rsi
 	movq	16(%rsp), %rdx                  # 8-byte Reload
                                         # kill: def $edx killed $edx killed $rdx
 	movl	$1, %ecx
@@ -15957,20 +15986,20 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	44(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp1122:
-# %bb.123:                              #   in Loop: Header=BB22_12 Depth=1
-	movq	448(%rsp), %rdi
+# %bb.120:                              #   in Loop: Header=BB22_12 Depth=1
+	movq	432(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_125
-# %bb.124:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_122
+# %bb.121:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_125:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_122:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, 312(%rsp)                 # 8-byte Spill
-	movq	480(%rsp), %rdi
+	movq	464(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_127
-# %bb.126:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_124
+# %bb.123:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_127:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_124:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1040(%rsp), %rsi
 	callq	clock_gettime
@@ -15983,17 +16012,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 80(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 96(%rsp)
 	subq	%rax, %rbp
-	je	.LBB22_131
-# %bb.128:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_128
+# %bb.125:                              #   in Loop: Header=BB22_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB22_329
-# %bb.129:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_326
+# %bb.126:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1124:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp1125:
-# %bb.130:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.127:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 80(%rsp)
 	movq	%rax, 88(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -16002,12 +16031,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_132
+	jmp	.LBB22_129
 	.p2align	4, 0x90
-.LBB22_131:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_128:                             #   in Loop: Header=BB22_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 96(%rsp)
-.LBB22_132:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_129:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 88(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 48(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -16015,17 +16044,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	je	.LBB22_136
-# %bb.133:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_133
+# %bb.130:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB22_331
-# %bb.134:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_328
+# %bb.131:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1126:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1127:
-# %bb.135:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.132:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 48(%rsp)
 	movq	%rax, 56(%rsp)
 	movq	%rbx, %rdx
@@ -16034,12 +16063,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB22_137
+	jmp	.LBB22_134
 	.p2align	4, 0x90
-.LBB22_136:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_133:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 64(%rsp)
-.LBB22_137:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_134:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 56(%rsp)
 .Ltmp1128:
 	movq	%r12, %rdi
@@ -16051,19 +16080,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	44(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp1129:
-# %bb.138:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.135:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_140
-# %bb.139:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_137
+# %bb.136:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_140:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_137:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_142
-# %bb.141:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_139
+# %bb.138:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_142:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_139:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	movq	32(%rsp), %rax                  # 8-byte Reload
@@ -16073,17 +16102,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 80(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 96(%rsp)
 	subq	%rax, %rbp
-	je	.LBB22_146
-# %bb.143:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_143
+# %bb.140:                              #   in Loop: Header=BB22_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB22_329
-# %bb.144:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_326
+# %bb.141:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1130:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp1131:
-# %bb.145:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.142:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 80(%rsp)
 	movq	%rax, 88(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -16092,12 +16121,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_147
+	jmp	.LBB22_144
 	.p2align	4, 0x90
-.LBB22_146:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_143:                             #   in Loop: Header=BB22_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 96(%rsp)
-.LBB22_147:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_144:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 88(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 48(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -16105,17 +16134,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	je	.LBB22_151
-# %bb.148:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_148
+# %bb.145:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB22_331
-# %bb.149:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_328
+# %bb.146:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1132:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1133:
-# %bb.150:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.147:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 48(%rsp)
 	movq	%rax, 56(%rsp)
 	movq	%rbx, %rdx
@@ -16124,12 +16153,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB22_152
+	jmp	.LBB22_149
 	.p2align	4, 0x90
-.LBB22_151:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_148:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 64(%rsp)
-.LBB22_152:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_149:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 56(%rsp)
 .Ltmp1134:
 	movq	%r12, %rdi
@@ -16141,19 +16170,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	44(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp1135:
-# %bb.153:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.150:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_155
-# %bb.154:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_152
+# %bb.151:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_155:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_152:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_157
-# %bb.156:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_154
+# %bb.153:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_157:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_154:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	movq	32(%rsp), %rax                  # 8-byte Reload
@@ -16163,17 +16192,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 80(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 96(%rsp)
 	subq	%rax, %rbp
-	je	.LBB22_161
-# %bb.158:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_158
+# %bb.155:                              #   in Loop: Header=BB22_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB22_329
-# %bb.159:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_326
+# %bb.156:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1136:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp1137:
-# %bb.160:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.157:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 80(%rsp)
 	movq	%rax, 88(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -16182,12 +16211,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_162
+	jmp	.LBB22_159
 	.p2align	4, 0x90
-.LBB22_161:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_158:                             #   in Loop: Header=BB22_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 96(%rsp)
-.LBB22_162:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_159:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 88(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 48(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -16195,17 +16224,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	je	.LBB22_166
-# %bb.163:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_163
+# %bb.160:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB22_331
-# %bb.164:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_328
+# %bb.161:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1138:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1139:
-# %bb.165:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.162:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 48(%rsp)
 	movq	%rax, 56(%rsp)
 	movq	%rbx, %rdx
@@ -16214,12 +16243,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB22_167
+	jmp	.LBB22_164
 	.p2align	4, 0x90
-.LBB22_166:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_163:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 64(%rsp)
-.LBB22_167:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_164:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 56(%rsp)
 .Ltmp1140:
 	movq	%r12, %rdi
@@ -16231,19 +16260,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	44(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp1141:
-# %bb.168:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.165:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_170
-# %bb.169:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_167
+# %bb.166:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_170:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_167:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_172
-# %bb.171:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_169
+# %bb.168:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_172:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_169:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	movq	32(%rsp), %rax                  # 8-byte Reload
@@ -16253,17 +16282,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 80(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 96(%rsp)
 	subq	%rax, %rbp
-	je	.LBB22_176
-# %bb.173:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_173
+# %bb.170:                              #   in Loop: Header=BB22_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB22_329
-# %bb.174:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_326
+# %bb.171:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1142:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp1143:
-# %bb.175:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.172:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 80(%rsp)
 	movq	%rax, 88(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -16272,12 +16301,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_177
+	jmp	.LBB22_174
 	.p2align	4, 0x90
-.LBB22_176:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_173:                             #   in Loop: Header=BB22_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 96(%rsp)
-.LBB22_177:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_174:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 88(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 48(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -16285,17 +16314,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	je	.LBB22_181
-# %bb.178:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_178
+# %bb.175:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB22_331
-# %bb.179:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_328
+# %bb.176:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1144:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1145:
-# %bb.180:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.177:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 48(%rsp)
 	movq	%rax, 56(%rsp)
 	movq	%rbx, %rdx
@@ -16304,12 +16333,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rdi
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	callq	memmove@PLT
-	jmp	.LBB22_182
+	jmp	.LBB22_179
 	.p2align	4, 0x90
-.LBB22_181:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_178:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbx                 # 8-byte Reload
 	movq	%rbx, 64(%rsp)
-.LBB22_182:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_179:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 56(%rsp)
 .Ltmp1146:
 	movq	%r12, %rdi
@@ -16321,19 +16350,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	44(%rsp), %r9d                  # 4-byte Reload
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 .Ltmp1147:
-# %bb.183:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.180:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_185
-# %bb.184:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_182
+# %bb.181:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_185:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_182:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_187
-# %bb.186:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_184
+# %bb.183:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_187:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_184:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	216(%rsp), %rbp
 	movq	%rbp, %rbx
 	movq	32(%rsp), %rax                  # 8-byte Reload
@@ -16343,17 +16372,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%xmm0, 80(%rsp)                 # AlignMOV convert to UnAlignMOV 
 	movq	$0, 96(%rsp)
 	subq	%rax, %rbp
-	je	.LBB22_191
-# %bb.188:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_188
+# %bb.185:                              #   in Loop: Header=BB22_12 Depth=1
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
 	cmpq	%rax, %rbp
-	ja	.LBB22_329
-# %bb.189:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_326
+# %bb.186:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1148:
 	movq	%rbp, %rdi
 	callq	_Znwm
 .Ltmp1149:
-# %bb.190:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.187:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 80(%rsp)
 	movq	%rax, 88(%rsp)
 	leaq	(%rax,%rbx,8), %rbx
@@ -16362,12 +16391,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbp, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_192
+	jmp	.LBB22_189
 	.p2align	4, 0x90
-.LBB22_191:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_188:                             #   in Loop: Header=BB22_12 Depth=1
 	shlq	$3, %rbx
 	movq	%rbx, 96(%rsp)
-.LBB22_192:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_189:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbx, 88(%rsp)
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vmovupd	%xmm0, 48(%rsp)                 # AlignMOV convert to UnAlignMOV 
@@ -16375,17 +16404,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	112(%rsp), %rax                 # 8-byte Reload
 	cmpq	24(%rsp), %rax                  # 8-byte Folded Reload
 	movabsq	$9223372036854775800, %rax      # imm = 0x7FFFFFFFFFFFFFF8
-	je	.LBB22_196
-# %bb.193:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_193
+# %bb.190:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	128(%rsp), %rbx                 # 8-byte Reload
 	cmpq	%rax, %rbx
-	ja	.LBB22_331
-# %bb.194:                              #   in Loop: Header=BB22_12 Depth=1
+	ja	.LBB22_328
+# %bb.191:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1154:
 	movq	%rbx, %rdi
 	callq	_Znwm
 .Ltmp1155:
-# %bb.195:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.192:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rax, 48(%rsp)
 	movq	%rax, 56(%rsp)
 	leaq	(%rax,%r13,8), %rbp
@@ -16394,12 +16423,12 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	movq	%rbx, %rdx
 	callq	memmove@PLT
-	jmp	.LBB22_197
+	jmp	.LBB22_194
 	.p2align	4, 0x90
-.LBB22_196:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_193:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	192(%rsp), %rbp                 # 8-byte Reload
 	movq	%rbp, 64(%rsp)
-.LBB22_197:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_194:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, 56(%rsp)
 .Ltmp1160:
 	movq	%r12, %rdi
@@ -16412,20 +16441,20 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	_Z19par_common_dot_prodIdET_St6vectorIS0_SaIS0_EES3_iiii
 	vmovsd	%xmm0, 232(%rsp)                # 8-byte Spill
 .Ltmp1161:
-# %bb.198:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.195:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_200
-# %bb.199:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_197
+# %bb.196:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_200:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_197:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
 	movq	32(%rsp), %rbx                  # 8-byte Reload
-	je	.LBB22_202
-# %bb.201:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_199
+# %bb.198:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
-.LBB22_202:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_199:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1024(%rsp), %rsi
 	callq	clock_gettime
@@ -16444,8 +16473,8 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%rax, %rbp
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
 	movq	24(%rsp), %rdi                  # 8-byte Reload
-	je	.LBB22_217
-# %bb.203:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_214
+# %bb.200:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	824(%rsp), %rdx                 # 8-byte Reload
 	leaq	(%rbx,%rdx,8), %rax
 	cmpq	%r12, %rax
@@ -16469,20 +16498,20 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	cmpq	%rdi, %rsi
 	setb	%sil
 	testb	%r10b, %r9b
-	jne	.LBB22_209
-# %bb.204:                              #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_206
+# %bb.201:                              #   in Loop: Header=BB22_12 Depth=1
 	orb	%r11b, %al
-	je	.LBB22_209
-# %bb.205:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_206
+# %bb.202:                              #   in Loop: Header=BB22_12 Depth=1
 	orb	%r8b, %cl
-	je	.LBB22_209
-# %bb.206:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_206
+# %bb.203:                              #   in Loop: Header=BB22_12 Depth=1
 	orb	%sil, %dl
-	je	.LBB22_209
-# %bb.207:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_206
+# %bb.204:                              #   in Loop: Header=BB22_12 Depth=1
 	cmpl	$13, 16(%rsp)                   # 4-byte Folded Reload
-	jb	.LBB22_211
-# %bb.208:                              #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_208
+# %bb.205:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r12, %rdi
 	movq	%rbx, %rsi
 	movq	640(%rsp), %r14                 # 8-byte Reload
@@ -16492,13 +16521,13 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	movq	%r14, %rdx
 	callq	_intel_fast_memcpy@PLT
-	jmp	.LBB22_217
+	jmp	.LBB22_214
 	.p2align	4, 0x90
-.LBB22_209:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_206:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	movq	24(%rsp), %rcx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_210:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_207:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%r12,%rax,8)
@@ -16506,17 +16535,17 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB22_210
-	jmp	.LBB22_217
-.LBB22_211:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_207
+	jmp	.LBB22_214
+.LBB22_208:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	xorl	%eax, %eax
 	testq	%rcx, %rcx
-	je	.LBB22_215
-# %bb.212:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_212
+# %bb.209:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	24(%rsp), %rdx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_213:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_210:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%rbx,%rax,8), %ymm0
 	vmovups	%ymm0, (%r12,%rax,8)
@@ -16524,16 +16553,16 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%ymm0, (%rbp,%rax,8)
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB22_213
-# %bb.214:                              #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_210
+# %bb.211:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rcx, %rax
 	cmpq	%r15, %rcx
-	jne	.LBB22_216
-	jmp	.LBB22_217
-.LBB22_215:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_213
+	jmp	.LBB22_214
+.LBB22_212:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	24(%rsp), %rdx                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_216:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_213:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%r12,%rax,8)
@@ -16541,9 +16570,9 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbp,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB22_216
+	jne	.LBB22_213
 	.p2align	4, 0x90
-.LBB22_217:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_214:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	16(%rsp), %r14                  # 8-byte Reload
 	movl	%r14d, %edi
 	movq	%r12, %rsi
@@ -16658,11 +16687,11 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	malloc
 	movq	%rax, %rbx
 	testl	%r14d, %r14d
-	je	.LBB22_220
-# %bb.218:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_217
+# %bb.215:                              #   in Loop: Header=BB22_12 Depth=1
 	cmpl	$13, %r14d
-	jb	.LBB22_221
-# %bb.219:                              #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_218
+# %bb.216:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%r13, %rdi
 	movq	32(%rsp), %rsi                  # 8-byte Reload
 	movq	640(%rsp), %r14                 # 8-byte Reload
@@ -16674,9 +16703,9 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	_intel_fast_memcpy@PLT
 	movq	304(%rsp), %rbp                 # 8-byte Reload
 	leaq	352(%rsp), %r14
-	jmp	.LBB22_227
+	jmp	.LBB22_224
 	.p2align	4, 0x90
-.LBB22_220:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_217:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1392(%rsp), %rsi
 	callq	clock_gettime
@@ -16685,20 +16714,20 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	movq	304(%rsp), %rbp                 # 8-byte Reload
-	jmp	.LBB22_235
+	jmp	.LBB22_232
 	.p2align	4, 0x90
-.LBB22_221:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_218:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	120(%rsp), %rcx                 # 8-byte Reload
 	testq	%rcx, %rcx
 	movq	32(%rsp), %rdx                  # 8-byte Reload
-	je	.LBB22_225
-# %bb.222:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_222
+# %bb.219:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	movq	304(%rsp), %rbp                 # 8-byte Reload
 	leaq	352(%rsp), %r14
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_223:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_220:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovups	(%rdx,%rax,8), %ymm0
 	vmovups	%ymm0, (%r13,%rax,8)
@@ -16706,19 +16735,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovupd	%ymm0, (%rbx,%rax,8)
 	addq	$4, %rax
 	cmpq	%rcx, %rax
-	jb	.LBB22_223
-# %bb.224:                              #   in Loop: Header=BB22_12 Depth=1
+	jb	.LBB22_220
+# %bb.221:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rcx, %rax
 	cmpq	%r15, %rcx
-	jne	.LBB22_226
-	jmp	.LBB22_227
-.LBB22_225:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_223
+	jmp	.LBB22_224
+.LBB22_222:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	movq	304(%rsp), %rbp                 # 8-byte Reload
 	leaq	352(%rsp), %r14
 	movq	24(%rsp), %rsi                  # 8-byte Reload
 	.p2align	4, 0x90
-.LBB22_226:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_223:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rdx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vmovsd	%xmm0, (%r13,%rax,8)
@@ -16726,8 +16755,8 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovsd	%xmm0, (%rbx,%rax,8)
 	incq	%rax
 	cmpq	%rax, %r15
-	jne	.LBB22_226
-.LBB22_227:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_223
+.LBB22_224:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	1392(%rsp), %rsi
 	vzeroupper
@@ -16736,34 +16765,34 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_235
-# %bb.228:                              #   in Loop: Header=BB22_12 Depth=1
-	testq	%rbp, %rbp
 	je	.LBB22_232
-# %bb.229:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.225:                              #   in Loop: Header=BB22_12 Depth=1
+	testq	%rbp, %rbp
+	je	.LBB22_229
+# %bb.226:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_230:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_227:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB22_230
-# %bb.231:                              #   in Loop: Header=BB22_12 Depth=1
+	jl	.LBB22_227
+# %bb.228:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	104(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB22_233
-	jmp	.LBB22_235
-.LBB22_232:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_230
+	jmp	.LBB22_232
+.LBB22_229:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_233:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_230:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	104(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_234:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_231:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_234
-.LBB22_235:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_231
+.LBB22_232:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	272(%rsp), %rsi
 	callq	clock_gettime
@@ -16775,35 +16804,35 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_243
-# %bb.236:                              #   in Loop: Header=BB22_12 Depth=1
-	testq	%rbp, %rbp
 	je	.LBB22_240
-# %bb.237:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.233:                              #   in Loop: Header=BB22_12 Depth=1
+	testq	%rbp, %rbp
+	je	.LBB22_237
+# %bb.234:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_238:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_235:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB22_238
-# %bb.239:                              #   in Loop: Header=BB22_12 Depth=1
+	jl	.LBB22_235
+# %bb.236:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	104(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB22_241
-	jmp	.LBB22_243
+	jne	.LBB22_238
+	jmp	.LBB22_240
 	.p2align	4, 0x90
-.LBB22_240:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_237:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_241:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_238:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	104(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_242:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_239:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_242
-.LBB22_243:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_239
+.LBB22_240:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	272(%rsp), %rsi
 	callq	clock_gettime
@@ -16815,35 +16844,35 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_251
-# %bb.244:                              #   in Loop: Header=BB22_12 Depth=1
-	testq	%rbp, %rbp
 	je	.LBB22_248
-# %bb.245:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.241:                              #   in Loop: Header=BB22_12 Depth=1
+	testq	%rbp, %rbp
+	je	.LBB22_245
+# %bb.242:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_246:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_243:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB22_246
-# %bb.247:                              #   in Loop: Header=BB22_12 Depth=1
+	jl	.LBB22_243
+# %bb.244:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	104(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB22_249
-	jmp	.LBB22_251
+	jne	.LBB22_246
+	jmp	.LBB22_248
 	.p2align	4, 0x90
-.LBB22_248:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_245:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_249:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_246:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	104(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_250:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_247:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_250
-.LBB22_251:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_247
+.LBB22_248:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	272(%rsp), %rsi
 	callq	clock_gettime
@@ -16855,35 +16884,35 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_259
-# %bb.252:                              #   in Loop: Header=BB22_12 Depth=1
-	testq	%rbp, %rbp
 	je	.LBB22_256
-# %bb.253:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.249:                              #   in Loop: Header=BB22_12 Depth=1
+	testq	%rbp, %rbp
+	je	.LBB22_253
+# %bb.250:                              #   in Loop: Header=BB22_12 Depth=1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_254:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_251:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB22_254
-# %bb.255:                              #   in Loop: Header=BB22_12 Depth=1
+	jl	.LBB22_251
+# %bb.252:                              #   in Loop: Header=BB22_12 Depth=1
 	movq	%rbp, %rcx
 	cmpq	104(%rsp), %rbp                 # 8-byte Folded Reload
-	jne	.LBB22_257
-	jmp	.LBB22_259
+	jne	.LBB22_254
+	jmp	.LBB22_256
 	.p2align	4, 0x90
-.LBB22_256:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_253:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%ecx, %ecx
-.LBB22_257:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_254:                             #   in Loop: Header=BB22_12 Depth=1
 	movq	104(%rsp), %rax                 # 8-byte Reload
 	subq	%rcx, %rax
 	.p2align	4, 0x90
-.LBB22_258:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_255:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	decq	%rax
-	jne	.LBB22_258
-.LBB22_259:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_255
+.LBB22_256:                             #   in Loop: Header=BB22_12 Depth=1
 	xorl	%edi, %edi
 	leaq	272(%rsp), %rsi
 	callq	clock_gettime
@@ -16895,50 +16924,50 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movq	%r14, %rsi
 	callq	clock_gettime
 	cmpl	$0, 16(%rsp)                    # 4-byte Folded Reload
-	je	.LBB22_264
-# %bb.260:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_261
+# %bb.257:                              #   in Loop: Header=BB22_12 Depth=1
 	testq	%rbp, %rbp
 	movq	104(%rsp), %rcx                 # 8-byte Reload
 	leaq	1440(%rsp), %r14
-	je	.LBB22_265
-# %bb.261:                              #   in Loop: Header=BB22_12 Depth=1
+	je	.LBB22_262
+# %bb.258:                              #   in Loop: Header=BB22_12 Depth=1
 	vpxor	%xmm0, %xmm0, %xmm0
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_262:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_259:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovupd	(%rbx,%rax,8), %ymm1
 	vfmadd231pd	(%r13,%rax,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rax
 	cmpq	%rbp, %rax
-	jl	.LBB22_262
-# %bb.263:                              #   in Loop: Header=BB22_12 Depth=1
+	jl	.LBB22_259
+# %bb.260:                              #   in Loop: Header=BB22_12 Depth=1
 	vextractf128	$1, %ymm0, %xmm1
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm1
 	movq	%rbp, %rax
 	cmpq	%rcx, %rbp
-	jne	.LBB22_266
-	jmp	.LBB22_267
+	jne	.LBB22_263
+	jmp	.LBB22_264
 	.p2align	4, 0x90
-.LBB22_264:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_261:                             #   in Loop: Header=BB22_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	leaq	1440(%rsp), %r14
-	jmp	.LBB22_267
+	jmp	.LBB22_264
 	.p2align	4, 0x90
-.LBB22_265:                             #   in Loop: Header=BB22_12 Depth=1
+.LBB22_262:                             #   in Loop: Header=BB22_12 Depth=1
 	vxorpd	%xmm1, %xmm1, %xmm1
 	xorl	%eax, %eax
 	.p2align	4, 0x90
-.LBB22_266:                             #   Parent Loop BB22_12 Depth=1
+.LBB22_263:                             #   Parent Loop BB22_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmovsd	(%rbx,%rax,8), %xmm0            # xmm0 = mem[0],zero
 	vfmadd231sd	(%r13,%rax,8), %xmm0, %xmm1 # xmm1 = (xmm0 * mem) + xmm1
 	incq	%rax
 	cmpq	%rax, %rcx
-	jne	.LBB22_266
-.LBB22_267:                             #   in Loop: Header=BB22_12 Depth=1
+	jne	.LBB22_263
+.LBB22_264:                             #   in Loop: Header=BB22_12 Depth=1
 	vmovsd	%xmm1, 176(%rsp)                # 8-byte Spill
 	xorl	%edi, %edi
 	leaq	272(%rsp), %rsi
@@ -16958,37 +16987,37 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 .Ltmp1164:
 	leaq	1648(%rsp), %rbx
 	leaq	1616(%rsp), %rbp
-# %bb.268:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.265:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1165:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbx, %rdi
 	callq	mpfr_init2
 .Ltmp1166:
-# %bb.269:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.266:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1167:
 	movl	$4000, %esi                     # imm = 0xFA0
 	movq	%rbp, %rdi
 	callq	mpfr_init2
 .Ltmp1168:
-# %bb.270:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.267:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1169:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	960(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp1170:
-# %bb.271:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.268:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1171:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	928(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp1172:
-# %bb.272:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.269:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1173:
 	movl	$4000, %esi                     # imm = 0xFA0
 	leaq	896(%rsp), %rdi
 	callq	mpfr_init2
 .Ltmp1174:
-# %bb.273:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.270:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1175:
 	leaq	960(%rsp), %rdi
 	leaq	400(%rsp), %rsi
@@ -16997,7 +17026,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1176:
-# %bb.274:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.271:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1177:
 	leaq	960(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17005,7 +17034,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1178:
-# %bb.275:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.272:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1179:
 	leaq	960(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17013,7 +17042,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1180:
-# %bb.276:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.273:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1181:
 	leaq	992(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17021,7 +17050,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1182:
-# %bb.277:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.274:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1183:
 	movq	%r14, %rdi
 	leaq	400(%rsp), %rsi
@@ -17030,7 +17059,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1184:
-# %bb.278:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.275:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1185:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -17038,7 +17067,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1186:
-# %bb.279:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.276:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1187:
 	movq	%r14, %rdi
 	movq	%r14, %rsi
@@ -17046,7 +17075,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1188:
-# %bb.280:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.277:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1189:
 	leaq	1184(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17054,7 +17083,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1190:
-# %bb.281:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.278:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1191:
 	movq	%rbx, %rdi
 	leaq	400(%rsp), %rsi
@@ -17063,7 +17092,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1192:
-# %bb.282:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.279:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1193:
 	movq	%rbx, %rdi
 	movq	%rbx, %rsi
@@ -17071,7 +17100,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1194:
-# %bb.283:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.280:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1195:
 	movq	%rbx, %rdi
 	movq	%rbx, %rsi
@@ -17079,7 +17108,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1196:
-# %bb.284:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.281:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1197:
 	leaq	1088(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17087,7 +17116,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1198:
-# %bb.285:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.282:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1199:
 	movq	%rbp, %rdi
 	leaq	400(%rsp), %rsi
@@ -17096,7 +17125,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1200:
-# %bb.286:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.283:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1201:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -17104,7 +17133,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1202:
-# %bb.287:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.284:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1203:
 	movq	%rbp, %rdi
 	movq	%rbp, %rsi
@@ -17112,7 +17141,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1204:
-# %bb.288:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.285:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1205:
 	leaq	1056(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17120,7 +17149,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1206:
-# %bb.289:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.286:                              #   in Loop: Header=BB22_12 Depth=1
 	vmovq	136(%rsp), %xmm0                # xmm0 = mem[0],zero
 .Ltmp1207:
 	leaq	928(%rsp), %rdi
@@ -17128,7 +17157,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1208:
-# %bb.290:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.287:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1209:
 	leaq	928(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17136,7 +17165,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1210:
-# %bb.291:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.288:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1211:
 	leaq	928(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17144,7 +17173,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1212:
-# %bb.292:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.289:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1213:
 	leaq	1152(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17152,7 +17181,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1214:
-# %bb.293:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.290:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1215:
 	leaq	896(%rsp), %rdi
 	leaq	400(%rsp), %rsi
@@ -17161,7 +17190,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_sub_d
 .Ltmp1216:
-# %bb.294:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.291:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1217:
 	leaq	896(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17169,7 +17198,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div
 .Ltmp1218:
-# %bb.295:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.292:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1219:
 	leaq	896(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17177,7 +17206,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	movl	$1, %ecx
 	callq	mpfr_set4
 .Ltmp1220:
-# %bb.296:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.293:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1221:
 	leaq	1120(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17185,37 +17214,37 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_add
 .Ltmp1222:
-# %bb.297:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.294:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1223:
 	movq	%r14, %rdi
 	callq	mpfr_clear
 .Ltmp1224:
-# %bb.298:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.295:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1225:
 	movq	%rbx, %rdi
 	callq	mpfr_clear
 .Ltmp1226:
-# %bb.299:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.296:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1227:
 	movq	%rbp, %rdi
 	callq	mpfr_clear
 .Ltmp1228:
-# %bb.300:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.297:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1229:
 	leaq	960(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1230:
-# %bb.301:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.298:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1231:
 	leaq	928(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1232:
-# %bb.302:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.299:                              #   in Loop: Header=BB22_12 Depth=1
 .Ltmp1233:
 	leaq	896(%rsp), %rdi
 	callq	mpfr_clear
 .Ltmp1234:
-# %bb.303:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.300:                              #   in Loop: Header=BB22_12 Depth=1
 	imulq	$1000000000, 192(%rsp), %rax    # 8-byte Folded Reload
                                         # imm = 0x3B9ACA00
 	addq	%rax, 112(%rsp)                 # 8-byte Folded Spill
@@ -17234,8 +17263,8 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovdqu	1232(%rsp), %xmm3               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm3, %rsi
-	imulq	$1000000000, %rsi, %rsi         # imm = 0x3B9ACA00
 	vpextrq	$1, %xmm0, %r15
+	imulq	$1000000000, %rsi, %rsi         # imm = 0x3B9ACA00
 	addq	%rax, %r15
 	vpextrq	$1, %xmm1, %r13
 	vpextrq	$1, %xmm2, %rbx
@@ -17246,30 +17275,30 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vmovdqu	1216(%rsp), %xmm0               # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
 	vmovq	%xmm0, %rax
-	vpextrq	$1, %xmm0, %r14
 	imulq	$1000000000, %rax, %rax         # imm = 0x3B9ACA00
+	vpextrq	$1, %xmm0, %r14
 	addq	%rax, %r14
 	movq	768(%rsp), %rdi
 	testq	%rdi, %rdi
 	je	.LBB22_11
-# %bb.304:                              #   in Loop: Header=BB22_12 Depth=1
+# %bb.301:                              #   in Loop: Header=BB22_12 Depth=1
 	callq	_ZdlPv
 	jmp	.LBB22_11
-.LBB22_305:
+.LBB22_302:
 	vpxor	%xmm0, %xmm0, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vxorpd	%xmm5, %xmm5, %xmm5
-	jmp	.LBB22_307
-.LBB22_306:
+	jmp	.LBB22_304
+.LBB22_303:
 	vunpcklpd	%xmm1, %xmm2, %xmm0     # xmm0 = xmm2[0],xmm1[0]
-	vmovupd	752(%rsp), %xmm1                # 16-byte Reload
+	vmovupd	736(%rsp), %xmm1                # 16-byte Reload
                                         # AlignMOV convert to UnAlignMOV 
-	vunpcklpd	736(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
+	vunpcklpd	720(%rsp), %xmm1, %xmm1 # 16-byte Folded Reload
                                         # xmm1 = xmm1[0],mem[0]
 	vinsertf128	$1, %xmm3, %ymm1, %ymm1
 	movq	32(%rsp), %r14                  # 8-byte Reload
 	movq	24(%rsp), %r15                  # 8-byte Reload
-.LBB22_307:
+.LBB22_304:
 	movq	376(%rsp), %rcx                 # 8-byte Reload
 	leal	(%rcx,%rcx,4), %eax
 	vmovd	%eax, %xmm2
@@ -17284,9 +17313,9 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	vpermilpd	$1, %xmm2, %xmm2        # xmm2 = xmm2[1,0]
 	vmulpd	%ymm3, %ymm1, %ymm1
 	vmovupd	%ymm1, (%rax)
+	vdivsd	%xmm2, %xmm5, %xmm1
 	vmovupd	%xmm0, 32(%rax)
-	vdivsd	%xmm2, %xmm5, %xmm0
-	vmovsd	%xmm0, 48(%rax)
+	vmovsd	%xmm1, 48(%rax)
 	movslq	%ecx, %rbx
 .Ltmp1236:
 	leaq	992(%rsp), %rdi
@@ -17297,7 +17326,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	callq	mpfr_div_si
 .Ltmp1237:
 	movq	808(%rsp), %rbp                 # 8-byte Reload
-# %bb.308:
+# %bb.305:
 .Ltmp1238:
 	leaq	1184(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17305,7 +17334,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1239:
-# %bb.309:
+# %bb.306:
 .Ltmp1240:
 	leaq	1152(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17313,7 +17342,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1241:
-# %bb.310:
+# %bb.307:
 .Ltmp1242:
 	leaq	1120(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17321,7 +17350,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1243:
-# %bb.311:
+# %bb.308:
 .Ltmp1244:
 	leaq	1088(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17329,7 +17358,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1245:
-# %bb.312:
+# %bb.309:
 .Ltmp1246:
 	leaq	1056(%rsp), %rdi
 	movq	%rdi, %rsi
@@ -17337,14 +17366,14 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%ecx, %ecx
 	callq	mpfr_div_si
 .Ltmp1247:
-# %bb.313:
+# %bb.310:
 	movq	(%rbp), %rdi
 .Ltmp1248:
 	vxorpd	%xmm0, %xmm0, %xmm0
 	xorl	%esi, %esi
 	callq	mpfr_set_d
 .Ltmp1249:
-# %bb.314:
+# %bb.311:
 	movq	(%rbp), %rdi
 	addq	$32, %rdi
 	movl	1000(%rsp), %ecx
@@ -17353,7 +17382,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1251:
-# %bb.315:
+# %bb.312:
 	movq	(%rbp), %rdi
 	addq	$64, %rdi
 	movl	1192(%rsp), %ecx
@@ -17362,7 +17391,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1253:
-# %bb.316:
+# %bb.313:
 	movq	(%rbp), %rdi
 	addq	$96, %rdi
 	movl	1160(%rsp), %ecx
@@ -17371,7 +17400,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1255:
-# %bb.317:
+# %bb.314:
 	movq	(%rbp), %rdi
 	subq	$-128, %rdi
 	movl	1128(%rsp), %ecx
@@ -17380,7 +17409,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1257:
-# %bb.318:
+# %bb.315:
 	movl	$160, %edi
 	addq	(%rbp), %rdi
 	movl	1096(%rsp), %ecx
@@ -17389,7 +17418,7 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1259:
-# %bb.319:
+# %bb.316:
 	movl	$192, %edi
 	addq	(%rbp), %rdi
 	movl	1064(%rsp), %ecx
@@ -17398,19 +17427,19 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	xorl	%edx, %edx
 	callq	mpfr_set4
 .Ltmp1261:
-# %bb.320:
+# %bb.317:
 	testq	%r15, %r15
-	je	.LBB22_322
-# %bb.321:
+	je	.LBB22_319
+# %bb.318:
 	movq	%r15, %rdi
 	callq	_ZdlPv
-.LBB22_322:
+.LBB22_319:
 	testq	%r14, %r14
-	je	.LBB22_324
-# %bb.323:
+	je	.LBB22_321
+# %bb.320:
 	movq	%r14, %rdi
 	callq	_ZdlPv
-.LBB22_324:
+.LBB22_321:
 	addq	$1688, %rsp                     # imm = 0x698
 	.cfi_def_cfa_offset 56
 	popq	%rbx
@@ -17426,215 +17455,215 @@ _Z20compare_dot_prod_vecIdEvididRSt6vectorIT_SaIS1_EERS0_IA1_13__mpfr_structSaIS
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
-.LBB22_325:
+.LBB22_322:
 	.cfi_def_cfa_offset 1744
 .Ltmp1097:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1098:
-# %bb.326:
-.LBB22_327:
+# %bb.323:
+.LBB22_324:
 .Ltmp1103:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1104:
-# %bb.328:
-.LBB22_329:
+# %bb.325:
+.LBB22_326:
 .Ltmp1151:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1152:
-# %bb.330:
-.LBB22_331:
+# %bb.327:
+.LBB22_328:
 .Ltmp1157:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1158:
-# %bb.332:
-.LBB22_333:
+# %bb.329:
+.LBB22_330:
 .Ltmp1082:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1083:
-# %bb.334:
-.LBB22_335:
+# %bb.331:
+.LBB22_332:
 .Ltmp1088:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1089:
-# %bb.336:
-.LBB22_337:
+# %bb.333:
+.LBB22_334:
 .Ltmp1112:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1113:
-# %bb.338:
-.LBB22_339:
+# %bb.335:
+.LBB22_336:
 .Ltmp1118:
 	callq	_ZSt28__throw_bad_array_new_lengthv
 .Ltmp1119:
-# %bb.340:
-.LBB22_341:
+# %bb.337:
+.LBB22_338:
 	movl	$.L.str, %edi
 	callq	_ZSt20__throw_length_errorPKc
-.LBB22_342:
+.LBB22_339:
 .Ltmp1049:
 	movq	%rax, %rbx
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_392
-	jmp	.LBB22_394
-.LBB22_343:
+	je	.LBB22_389
+	jmp	.LBB22_391
+.LBB22_340:
 .Ltmp1117:
-	jmp	.LBB22_367
-.LBB22_344:
+	jmp	.LBB22_364
+.LBB22_341:
 .Ltmp1111:
-	jmp	.LBB22_386
-.LBB22_345:
+	jmp	.LBB22_383
+.LBB22_342:
 .Ltmp1087:
-	jmp	.LBB22_372
-.LBB22_346:
+	jmp	.LBB22_369
+.LBB22_343:
 .Ltmp1081:
-	jmp	.LBB22_386
-.LBB22_347:
+	jmp	.LBB22_383
+.LBB22_344:
 .Ltmp1262:
 	movq	%rax, %rbx
-	jmp	.LBB22_390
-.LBB22_348:
+	jmp	.LBB22_387
+.LBB22_345:
 .Ltmp1123:
 	movq	%rax, %rbx
-	movq	448(%rsp), %rdi
+	movq	432(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_368
-# %bb.349:
+	je	.LBB22_365
+# %bb.346:
 	callq	_ZdlPv
-	jmp	.LBB22_368
-.LBB22_350:
+	jmp	.LBB22_365
+.LBB22_347:
 .Ltmp1093:
 	movq	%rax, %rbx
-	movq	576(%rsp), %rdi
+	movq	560(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_373
-# %bb.351:
+	je	.LBB22_370
+# %bb.348:
 	callq	_ZdlPv
-	jmp	.LBB22_373
-.LBB22_352:
+	jmp	.LBB22_370
+.LBB22_349:
 .Ltmp1052:
-	jmp	.LBB22_386
-.LBB22_353:
+	jmp	.LBB22_383
+.LBB22_350:
 .Ltmp1055:
-	jmp	.LBB22_386
-.LBB22_354:
+	jmp	.LBB22_383
+.LBB22_351:
 .Ltmp1156:
-	jmp	.LBB22_377
-.LBB22_355:
+	jmp	.LBB22_374
+.LBB22_352:
 .Ltmp1150:
-	jmp	.LBB22_386
-.LBB22_356:
+	jmp	.LBB22_383
+.LBB22_353:
 .Ltmp1073:
-	jmp	.LBB22_386
-.LBB22_357:
+	jmp	.LBB22_383
+.LBB22_354:
 .Ltmp1162:
 	movq	%rax, %rbx
 	movq	48(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_378
-# %bb.358:
+	je	.LBB22_375
+# %bb.355:
 	callq	_ZdlPv
-	jmp	.LBB22_378
-.LBB22_359:
+	jmp	.LBB22_375
+.LBB22_356:
 .Ltmp1102:
-	jmp	.LBB22_382
-.LBB22_360:
+	jmp	.LBB22_379
+.LBB22_357:
 .Ltmp1096:
-	jmp	.LBB22_386
-.LBB22_361:
+	jmp	.LBB22_383
+.LBB22_358:
 .Ltmp1108:
 	movq	%rax, %rbx
-	movq	512(%rsp), %rdi
+	movq	496(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_383
-# %bb.362:
+	je	.LBB22_380
+# %bb.359:
 	callq	_ZdlPv
+	jmp	.LBB22_380
+.LBB22_360:
+.Ltmp1235:
+	jmp	.LBB22_383
+.LBB22_361:
+.Ltmp1078:
+	jmp	.LBB22_383
+.LBB22_362:
+.Ltmp1066:
 	jmp	.LBB22_383
 .LBB22_363:
-.Ltmp1235:
-	jmp	.LBB22_386
-.LBB22_364:
-.Ltmp1078:
-	jmp	.LBB22_386
-.LBB22_365:
-.Ltmp1066:
-	jmp	.LBB22_386
-.LBB22_366:
 .Ltmp1120:
+.LBB22_364:
+	movq	%rax, %rbx
+.LBB22_365:
+	movq	464(%rsp), %rdi
+	testq	%rdi, %rdi
+	jne	.LBB22_371
+	jmp	.LBB22_384
 .LBB22_367:
-	movq	%rax, %rbx
-.LBB22_368:
-	movq	480(%rsp), %rdi
-	testq	%rdi, %rdi
-	jne	.LBB22_374
-	jmp	.LBB22_387
-.LBB22_370:
 .Ltmp1114:
-	jmp	.LBB22_386
-.LBB22_371:
+	jmp	.LBB22_383
+.LBB22_368:
 .Ltmp1090:
-.LBB22_372:
+.LBB22_369:
 	movq	%rax, %rbx
-.LBB22_373:
-	movq	608(%rsp), %rdi
+.LBB22_370:
+	movq	592(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_387
-	jmp	.LBB22_374
-.LBB22_375:
+	je	.LBB22_384
+	jmp	.LBB22_371
+.LBB22_372:
 .Ltmp1084:
-	jmp	.LBB22_386
-.LBB22_376:
+	jmp	.LBB22_383
+.LBB22_373:
 .Ltmp1159:
-.LBB22_377:
+.LBB22_374:
 	movq	%rax, %rbx
-.LBB22_378:
+.LBB22_375:
 	movq	80(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB22_374
-	jmp	.LBB22_387
-.LBB22_380:
+	jne	.LBB22_371
+	jmp	.LBB22_384
+.LBB22_377:
 .Ltmp1153:
-	jmp	.LBB22_386
-.LBB22_381:
+	jmp	.LBB22_383
+.LBB22_378:
 .Ltmp1105:
-.LBB22_382:
+.LBB22_379:
 	movq	%rax, %rbx
-.LBB22_383:
-	movq	544(%rsp), %rdi
+.LBB22_380:
+	movq	528(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_387
-.LBB22_374:
+	je	.LBB22_384
+.LBB22_371:
 	callq	_ZdlPv
-	jmp	.LBB22_387
-.LBB22_385:
+	jmp	.LBB22_384
+.LBB22_382:
 .Ltmp1099:
-.LBB22_386:
+.LBB22_383:
 	movq	%rax, %rbx
-.LBB22_387:
+.LBB22_384:
 	movq	768(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_389
-# %bb.388:
+	je	.LBB22_386
+# %bb.385:
 	callq	_ZdlPv
-.LBB22_389:
+.LBB22_386:
 	movq	320(%rsp), %r15
-.LBB22_390:
+.LBB22_387:
 	testq	%r15, %r15
-	jne	.LBB22_393
-# %bb.391:
+	jne	.LBB22_390
+# %bb.388:
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	jne	.LBB22_394
-.LBB22_392:
+	jne	.LBB22_391
+.LBB22_389:
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
-.LBB22_393:
+.LBB22_390:
 	movq	%r15, %rdi
 	callq	_ZdlPv
 	movq	208(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.LBB22_392
-.LBB22_394:
+	je	.LBB22_389
+.LBB22_391:
 	callq	_ZdlPv
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
@@ -17909,11 +17938,17 @@ GCC_except_table22:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -17921,9 +17956,9 @@ GCC_except_table22:
 	testl	%ebp, %ebp
 	je	.LBB23_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -17951,40 +17986,37 @@ GCC_except_table22:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB23_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB23_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB23_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB23_13
 # %bb.16:
@@ -17992,7 +18024,7 @@ GCC_except_table22:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB23_17:                              # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -18002,14 +18034,12 @@ GCC_except_table22:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB23_14
 	jmp	.LBB23_19
 .LBB23_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB23_5:                               # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -18022,7 +18052,6 @@ GCC_except_table22:
 .LBB23_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB23_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -18041,11 +18070,11 @@ GCC_except_table22:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.22, %r9d
@@ -18063,8 +18092,8 @@ GCC_except_table22:
 	jne	.LBB23_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -18072,19 +18101,23 @@ GCC_except_table22:
 	jmp	.LBB23_11
 .LBB23_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB23_10:                              # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB23_10
 .LBB23_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24
@@ -18123,11 +18156,17 @@ GCC_except_table22:
 	.cfi_def_cfa_offset 24
 	pushq	%r14
 	.cfi_def_cfa_offset 32
-	pushq	%rbx
+	pushq	%r13
 	.cfi_def_cfa_offset 40
-	subq	$56, %rsp
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$40, %rsp
 	.cfi_def_cfa_offset 96
-	.cfi_offset %rbx, -40
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
@@ -18135,9 +18174,9 @@ GCC_except_table22:
 	testl	%ebp, %ebp
 	je	.LBB25_11
 # %bb.1:
-	movq	%rcx, %rbx
-	movq	%r8, 32(%rsp)                   # 8-byte Spill
-	movq	%r9, 40(%rsp)                   # 8-byte Spill
+	movq	%r9, %r15
+	movq	%r8, %r12
+	movq	%rcx, %r13
 	decl	%ebp
 	movl	$0, 20(%rsp)
 	movl	%ebp, 16(%rsp)
@@ -18165,40 +18204,37 @@ GCC_except_table22:
 	.cfi_adjust_cfa_offset -32
 	movl	16(%rsp), %eax
 	cmpl	%ebp, %eax
-	cmovbel	%eax, %ebp
+	cmovbl	%eax, %ebp
 	movl	20(%rsp), %esi
 	cmpl	%ebp, %esi
 	ja	.LBB25_6
 # %bb.2:
-	movq	%rbx, %r8
-	movq	32(%rsp), %rax                  # 8-byte Reload
-	movq	(%rax), %rax
-	movq	40(%rsp), %rcx                  # 8-byte Reload
-	movq	(%rcx), %rcx
+	movq	(%r12), %rax
+	movq	(%r15), %rcx
 	movl	%ebp, %edx
 	leaq	(%rcx,%rdx,8), %rdi
 	leaq	8(%rsp), %rbp
 	cmpq	%rbp, %rdi
+	setae	%r10b
+	leaq	(%rcx,%rsi,8), %r9
+	cmpq	%r9, %rbp
 	setae	%r11b
-	leaq	(%rcx,%rsi,8), %r10
-	cmpq	%r10, %rbp
-	setae	%r15b
 	leaq	(%rax,%rdx,8), %rdi
 	cmpq	%rbp, %rdi
 	setb	%dil
 	leaq	(%rax,%rsi,8), %rbx
 	cmpq	%rbx, %rbp
-	setb	%r9b
-	testb	%r15b, %r11b
+	setb	%r8b
+	testb	%r11b, %r10b
 	jne	.LBB25_4
 # %bb.3:
-	orb	%r9b, %dil
+	orb	%r8b, %dil
 	je	.LBB25_4
 # %bb.12:
-	movq	%rdx, %r9
-	subq	%rsi, %r9
-	incq	%r9
-	movq	%r9, %rdi
+	movq	%rdx, %r8
+	subq	%rsi, %r8
+	incq	%r8
+	movq	%r8, %rdi
 	andq	$-4, %rdi
 	je	.LBB25_13
 # %bb.16:
@@ -18206,7 +18242,7 @@ GCC_except_table22:
 	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB25_17:                              # =>This Inner Loop Header: Depth=1
-	vmovupd	(%r10,%rbp,8), %ymm1
+	vmovupd	(%r9,%rbp,8), %ymm1
 	vfmadd231pd	(%rbx,%rbp,8), %ymm1, %ymm0 # ymm0 = (ymm1 * mem) + ymm0
 	addq	$4, %rbp
 	cmpq	%rdi, %rbp
@@ -18216,14 +18252,12 @@ GCC_except_table22:
 	vaddpd	%xmm1, %xmm0, %xmm0
 	vpermilpd	$1, %xmm0, %xmm1        # xmm1 = xmm0[1,0]
 	vaddsd	%xmm1, %xmm0, %xmm0
-	cmpq	%rdi, %r9
-	movq	%r8, %rbx
+	cmpq	%rdi, %r8
 	jne	.LBB25_14
 	jmp	.LBB25_19
 .LBB25_4:
 	incq	%rdx
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 	.p2align	4, 0x90
 .LBB25_5:                               # =>This Inner Loop Header: Depth=1
 	vmovsd	(%rcx,%rsi,8), %xmm1            # xmm1 = mem[0],zero
@@ -18236,7 +18270,6 @@ GCC_except_table22:
 .LBB25_13:
 	xorl	%edi, %edi
 	vxorpd	%xmm0, %xmm0, %xmm0
-	movq	%r8, %rbx
 .LBB25_14:
 	incq	%rdx
 	addq	%rsi, %rdi
@@ -18255,11 +18288,11 @@ GCC_except_table22:
 	vzeroupper
 	callq	__kmpc_for_static_fini@PLT
 	leaq	8(%rsp), %rax
-	movq	%rax, 48(%rsp)
+	movq	%rax, 32(%rsp)
 	subq	$8, %rsp
 	.cfi_adjust_cfa_offset 8
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rax
-	leaq	56(%rsp), %r8
+	leaq	40(%rsp), %r8
 	movl	$.L__unnamed_3, %edi
 	movl	$8, %ecx
 	movl	$.omp.reduction.reduction_func.24, %r9d
@@ -18277,8 +18310,8 @@ GCC_except_table22:
 	jne	.LBB25_11
 # %bb.8:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vaddsd	(%rbx), %xmm0, %xmm0
-	vmovsd	%xmm0, (%rbx)
+	vaddsd	(%r13), %xmm0, %xmm0
+	vmovsd	%xmm0, (%r13)
 	movq	.gomp_critical_user_.reduction.var@GOTPCREL(%rip), %rdx
 	movl	$.L__unnamed_3, %edi
 	movl	%r14d, %esi
@@ -18286,19 +18319,23 @@ GCC_except_table22:
 	jmp	.LBB25_11
 .LBB25_9:
 	vmovsd	8(%rsp), %xmm0                  # xmm0 = mem[0],zero
-	vmovsd	(%rbx), %xmm1                   # xmm1 = mem[0],zero
+	vmovsd	(%r13), %xmm1                   # xmm1 = mem[0],zero
 	.p2align	4, 0x90
 .LBB25_10:                              # =>This Inner Loop Header: Depth=1
 	vaddsd	%xmm0, %xmm1, %xmm2
 	vmovq	%xmm2, %rcx
 	vmovq	%xmm1, %rax
-	lock		cmpxchgq	%rcx, (%rbx)
+	lock		cmpxchgq	%rcx, (%r13)
 	vmovq	%rax, %xmm1
 	jne	.LBB25_10
 .LBB25_11:
-	addq	$56, %rsp
-	.cfi_def_cfa_offset 40
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 56
 	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
 	.cfi_def_cfa_offset 32
 	popq	%r14
 	.cfi_def_cfa_offset 24

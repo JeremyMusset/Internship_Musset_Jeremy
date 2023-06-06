@@ -203,7 +203,7 @@ cudaMalloc((void **)&deviceOutput2, sizeof(double));
     if (w==0){
       Min_Time_cuda_par = time_tmp;
     }
-      if (time_tmp < Min_Time_cuda_par){
+    if (time_tmp < Min_Time_cuda_par){
       Min_Time_cuda_par = time_tmp;
     }
   }
