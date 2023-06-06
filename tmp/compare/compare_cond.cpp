@@ -26,12 +26,13 @@ int main() {
     class std::vector<double> Error_par_common(sz_err*nb_gen);
     class std::vector<double> Error_mkl(sz_err*nb_gen);
     class std::vector<double> Error_blaspp(sz_err*nb_gen);
+    class std::vector<double> tmp(sz_err*nb_gen);
 
     // Real conditioning
     class std::vector<double> RCond(nb_gen * sz_err);
 
     
-    int nb_threads =4;
+    int nb_threads = 8;
     int alpha;
     int i = 0;
     vector<double>::iterator k;
@@ -39,7 +40,10 @@ int main() {
         printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
-        compare_dot_prod_cond(size, *k, nb_gen,sum,Error_standard,Error_common,Error_par_standard,Error_par_common,Error_mkl,Error_blaspp,1,i,nb_threads);    
+        compare_dot_prod_cond(size, *k, nb_gen,sum,Error_standard,Error_common,Error_par_standard,Error_par_common,Error_mkl,Error_blaspp,1,i,nb_threads); 
+
+        
+        compare_dot_prod_cond_fma(size, *k, nb_gen,sum,Error_par_standard,Error_common,tmp,Error_par_common,Error_mkl,Error_blaspp,1,i,nb_threads);   
         i += 1;
         printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);
         printf("Err sequential common dot prod   : %.30f \n",Error_common[i*nb_gen-1]);
@@ -47,6 +51,7 @@ int main() {
         printf("Err sequential BLASPP            : %.30f\n\n",Error_blaspp[i*nb_gen-1]);
         printf("Err parallel standard dot prod   : %.30f \n",Error_par_standard[i*nb_gen-1]);
         printf("Err parallel common dot prod     : %.30f \n",Error_par_common[i*nb_gen-1]);
+        
        
     }
 
@@ -76,6 +81,41 @@ int main() {
                 temp = Error_blaspp[j];
                 Error_blaspp[j] = Error_blaspp[j + 1];
                 Error_blaspp[j + 1] = temp;
+
+                 temp = Error_par_standard[j];
+                Error_par_standard[j] = Error_par_standard[j + 1];
+                Error_par_standard[j + 1] = temp;
+
+                temp = Error_par_common[j];
+                Error_par_common[j] = Error_par_common[j + 1];
+                Error_par_common[j + 1] = temp;
+            }
+        }
+    }
+
+
+    // Quartile sort 
+    class std::vector<double> QError_standard(sz_err*nb_gen);
+    class std::vector<double> QError_par_standard(sz_err*nb_gen);
+
+    for (int i = 0; i < nb_gen*sz_err; i++) {
+        QError_standard[i] = Error_standard[i];
+        QError_standard[i] = Error_standard[i];
+    }
+
+    for (int i = 0; i < nb_gen*sz_err - 1; i++) {
+        for (int j = 0; j < nb_gen*sz_err - i - 1; j++) {
+            if (QError_standard[j] > QError_standard[j + 1]) {
+                // Errors
+                temp = QError_standard[j];
+                QError_standard[j] = QError_standard[j + 1];
+                QError_standard[j + 1] = temp;
+            }
+            if (QError_par_standard[j] > QError_par_standard[j + 1]) {
+                temp = QError_standard[j];
+                QError_par_standard[j] = QError_par_standard[j + 1];
+                Error_standard[j + 1] = temp;
+             
             }
         }
     }
@@ -104,11 +144,11 @@ int main() {
     for (unsigned int i=0; i<nb_gen * sz_err;i++){
         moyenne_err += Error_standard[i];
     }
-    moyenne_err /= nb_gen * sz_err;
+    moyenne_err /= (nb_gen * sz_err);
 
-    prem_quart_err = Error_standard[(nb_gen * sz_err) / 4];
-    trois_quart_err = Error_standard[3*(nb_gen * sz_err) / 4];
-    medianne_err = Error_standard[(nb_gen * sz_err) / 2];
+    prem_quart_err = QError_standard[(nb_gen * sz_err) / 4];
+    trois_quart_err = QError_standard[3*(nb_gen * sz_err) / 4];
+    medianne_err = QError_standard[(nb_gen * sz_err) / 2];
     
 
 
@@ -126,14 +166,13 @@ int main() {
     for (unsigned int i=0; i<nb_gen * sz_err;i++){
         par_standard_moyenne += Error_par_standard[i];
         par_common_moyenne += Error_par_common[i];
-
     }
-    par_standard_moyenne /= nb_gen * sz_err;
+    par_standard_moyenne /= (nb_gen * sz_err);
     par_common_moyenne /= nb_gen * sz_err;
 
-    par_standard_prem_quart = Error_par_standard[(nb_gen * sz_err) / 4];
-    par_standard_trois_quart = Error_par_standard[3*(nb_gen * sz_err) / 4];
-    par_standard_medianne = Error_par_standard[(nb_gen * sz_err) / 2];
+    par_standard_prem_quart = QError_par_standard[(nb_gen * sz_err) / 4];
+    par_standard_trois_quart = QError_par_standard[3*(nb_gen * sz_err) / 4];
+    par_standard_medianne = QError_par_standard[(nb_gen * sz_err) / 2];
     par_common_prem_quart = Error_par_common[(nb_gen * sz_err) / 4];
     par_common_trois_quart = Error_par_common[3*(nb_gen * sz_err) / 4];
     par_common_medianne = Error_par_common[(nb_gen * sz_err) / 2];
@@ -198,18 +237,19 @@ int main() {
     y = {0.0000000000000005, 0.0005};
 
     // Scatter
-    plt::scatter(RCond, Error_standard,2,{{"label", "Error"},{"color", "#6BB0D8"}});
+    plt::scatter(RCond, Error_standard,2,{{"label", "Error without fma"},{"color", "#6BB0D8"}});
+    plt::scatter(RCond, Error_par_common,2,{{"label", "Error with fma"},{"color", "#F7AF30"}});
     // plt::scatter(RCond, Error_par_standard,6,{{"label", "parallel standard"},{"color", "#0D8A00"}});
-    // plt::scatter(RCond, Error_par_common,6,{{"label", "parallel common"},{"color", "#F7AF30"}});
+    // plt::scatter(RCond, Error_par_common,2,{{"label", "parallel common"},{"color", "#F7AF30"}});
 
     // Quartile
 
-    plt::scatter(quartile_cond, quartile_err,35,{{"color", "#068100"},{"label", "Quartiles"}});
-    // plt::scatter(quartile_cond, par_common_quartile,25,{{"color", "#FD2929"},{"label", "Quartile Parallel"}});
+    plt::scatter(quartile_cond, quartile_err,35,{{"color", "#068100"},{"label", "Quartiles without fma"}});
+    plt::scatter(quartile_cond, par_common_quartile,25,{{"color", "#FD2929"},{"label", "Quartile with fma"}});
 
     // Moyenne
-    plt::scatter(moy_cond, moy_err,35,{{"color", "#FF0000"},{"label", "Average"}});
-    // plt::scatter(moy_cond, par_standard_moy,60,{{"color", "#006C03"},{"label", "Average parallel standard"}});
+    plt::scatter(moy_cond, moy_err,35,{{"color", "b"},{"label", "Average without fma"}});
+    plt::scatter(moy_cond, par_standard_moy,35,{{"color", "#F700FF"},{"label", "Average with fma"}});
     // plt::scatter(moy_cond, moy_err,30,{{"color", "#B9E200"},{"label", "Average Serial"}});
     
     

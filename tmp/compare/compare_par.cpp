@@ -12,13 +12,13 @@ int main(){
     int f = 1;
     // while (k==1){
         // printf("Essai n°%d \n",f);
-    double *a;
-    a = (double *) malloc(n*sizeof(double)); 
-    double *b;
-    b = (double *) malloc(n*sizeof(double)); 
+    // double *a;
+    // a = (double *) malloc(n*sizeof(double)); 
+    // double *b;
+    // b = (double *) malloc(n*sizeof(double)); 
 
-    // class std::vector<double> a(n);
-    // class std::vector<double> b(n);
+    class std::vector<double> a(n);
+    class std::vector<double> b(n);
 
      for (unsigned int i = 0; i<n;i++){
         a[i] = 0.2;
@@ -46,10 +46,10 @@ int main(){
     ////////////////////////////////////////////////////////////////////
     ///////////////////// serial DOT PRODUCT ////////////////////////
     ////////////////////////////////////////////////////////////////////
-    // res_standard = 0;
-    // for (unsigned int j=0; j<n;j++){
-    //         res_standard += a[j]*b[j];
-    // }
+    res_standard = 0;
+    for (unsigned int j=0; j<n;j++){
+            res_standard += a[j]*b[j];
+    }
 
 
     ////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ int main(){
     ////////////////////////////////////////////////////////////////////
   
     
-    res_blaspp = blas::dot(n,a,1,b,1);
+    // res_blaspp = blas::dot(n,a,1,b,1);
 
 
     // res_standard = 0;
