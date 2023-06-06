@@ -62,7 +62,7 @@ int main() {
     for (k = VSize.begin(); k != VSize.end(); k++){  
         // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
-        compare_dot_prod_fma(*k, cond, nb_gen,sum,Time,Error,3,8);
+        compare_dot_prod_vec(*k, cond, nb_gen,sum,Time,Error,3,8);
 
         // Gbytes / s
         // double qtt;

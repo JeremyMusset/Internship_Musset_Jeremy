@@ -178,11 +178,11 @@ void generate_v(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_co
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-      double t = 1;
-      std::random_device rd;  // Initialise the distribution
-      std::mt19937 gen(rd()); // Generate random numbers
-      std::uniform_int_distribution<> dis(-1000, 1000); // Uniform distribution between -1000 and 1000
-      t = dis(gen)/100.0;
+    double t;
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150); // Uniform distribution between -1000 and 1000
+    t = dis(gen);
       // x = t.*c   y = 1/t
       for (int i = 0 ; i<nb_elem;i++) {
           x[i] = t*c[i];
@@ -444,15 +444,43 @@ void generate_v_print(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requi
     //  c = a.*b
     class std::vector<double> c(nb_elem);
     gen_fpnumber_print(c,nb_elem,required_cond,sum);
+
     // While conditionning isn't respect 
+    double t;
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150); // Uniform distribution between -1000 and 1000
+    t = dis(gen);
+    printf(" \n t = %.20f \n",t);
+    // x = t.*c   y = 1/t
+    for (int i = 0 ; i<nb_elem;i++) {
+        x[i] = t*c[i];
+        y[i] = (1/t);
+    }
+    // Compute conditioning
+    cond = 0.;
+    T b = log(required_cond)/log(2.);
+    T k = ceil(b/45.)+1.;
+    sum = SumK<T> (x,nb_elem,k);
+    for(i = 0; i < x.size() ; i++)
+      cond += fabs(x[i]);
+
+    if (sum != 0){
+      cond /= fabs(sum);    
+    }
+    else {
+      cond = 0;  
+    }
+
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-      double t = 1;
-      std::random_device rd;  // Initialise the distribution
-      std::mt19937 gen(rd()); // Generate random numbers
-      std::uniform_int_distribution<> dis(-1000, 1000); // Uniform distribution between -1000 and 1000
-      t = dis(gen)/100.0;
+    double t;
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150); // Uniform distribution between -1000 and 1000
+    t = dis(gen);
+      printf(" \n t = %.20f \n",t);
       // x = t.*c   y = 1/t
       for (int i = 0 ; i<nb_elem;i++) {
           x[i] = t*c[i];
@@ -489,14 +517,12 @@ void vec_gen_random(int nb_gen,int size,int q){
     data[0] = size;
 
     for (unsigned int i=1;i<2*size+1;i++) {
-      std::random_device rd;
-      std::mt19937 gen(rd());
-
-      // Définir la distribution des nombres aléatoires
-      std::uniform_real_distribution<double> dist(0.0, 4.0);
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150);
 
       // Générer un nombre aléatoire
-      data[i] = dist(gen) - 2;
+      data[i] = dist(gen);
     }  
 
     // for (unsigned int i = 0; i < size; i++){
@@ -536,6 +562,7 @@ template <class T>
 void vec_gen_cond(int nb_gen,int size, T cond,T sum,int q,std::vector<T> &RCond, int nb){
   // We generate "nb_gen" time
   for (unsigned int l=0;l<nb_gen;l++){
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~ GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
     int indice = nb * nb_gen + l;
     // Generate vectors
     class std::vector<double> a(size);
@@ -568,6 +595,7 @@ void vec_gen_cond(int nb_gen,int size, T cond,T sum,int q,std::vector<T> &RCond,
     std::ofstream file(name, std::ios::binary);
     file.write(reinterpret_cast<char*>(data.data()), data.size() * sizeof(double));
     file.close();
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~ END OF GENERATION OF DATA N°%d ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n",l);
   }
 
 }
@@ -582,23 +610,46 @@ void vec_gen_cond(int nb_gen,int size, T cond,T sum,int q,std::vector<T> &RCond,
 /// @param sum 
 template <class T>
 void generate_v_cond(std::vector<T> &x, std::vector<T> &y, int nb_elem, T required_cond, T &sum, T &conditioning){
-
-    
     T cond = 0;
     unsigned int i;
     //  c = a.*b
     class std::vector<double> c(nb_elem);
     gen_fpnumber(c,nb_elem,required_cond,sum);
 
+    double t;
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150); // Uniform distribution between -1000 and 1000
+    t = dis(gen);
+    printf(" \n t = %.20f \n",t);
+    // x = t.*c   y = 1/t
+    for (int i = 0 ; i<nb_elem;i++) {
+        x[i] = t*c[i];
+        y[i] = (1/t);
+    }
+    // Compute conditioning
+    cond = 0.;
+    T b = log(required_cond)/log(2.);
+    T k = ceil(b/45.)+1.;
+    sum = SumK<T> (x,nb_elem,k);
+    for(i = 0; i < x.size() ; i++)
+      cond += fabs(x[i]);
+
+    if (sum != 0){
+      cond /= fabs(sum);    
+    }
+    else {
+      cond = 0;  
+    }
     // While conditionning isn't respect 
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-      double t = 1;
-      std::random_device rd;  // Initialise the distribution
-      std::mt19937 gen(rd()); // Generate random numbers
-      std::uniform_int_distribution<> dis(-1000, 1000); // Uniform distribution between -1000 and 1000
-      t = dis(gen)/100.0;
+    double t;
+    std::random_device rd;  // Initialise the distribution
+    std::mt19937_64 gen(rd()); // Generate random numbers
+    std::uniform_real_distribution<double> dis(-1e150, 1e150); // Uniform distribution between -1000 and 1000
+    t = dis(gen);
       // x = t.*c   y = 1/t
       for (int i = 0 ; i<nb_elem;i++) {
           x[i] = t*c[i];

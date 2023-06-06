@@ -38,7 +38,7 @@ int main() {
 
 
     // Time / Size
-    int sz_time = 20;
+    int sz_time = 28;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_common(sz_time);
@@ -54,7 +54,7 @@ int main() {
     class std::vector<double> Time_par_standard16(sz_time);
     class std::vector<double> Time_par_common16(sz_time);
 
-    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
+    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000,5000000,10000000,20000000,35000000,50000000,60000000,80000000,100000000};
 
 
     int i = 0;
@@ -62,7 +62,7 @@ int main() {
     for (k = VSize.begin(); k != VSize.end(); k++){  
         // printf(" ___________ SIZE = %.20f ________________",*k);
         // Exec dot prod
-        compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
+        compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,1,8);
 
         // Gbytes / s
         // double qtt;
