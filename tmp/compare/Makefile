@@ -17,7 +17,7 @@ LIBS_MKL = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_ilp64 -lmkl_g
 # EXEC = compare_dot_product
 # EXEC = compare_par
 # EXEC = compare_time
-EXEC = compare_cond
+EXEC = Compare
 # EXEC = compare_bytes_flops
 # EXEC = compare_th
 
@@ -34,20 +34,26 @@ EXECROOF = roofline
 
 
 compile : 
-	$(COMP) $(INC) $(BIB) $(BIB_MKL) $(EXEC).cpp -o $(EXEC) $(FLAGS) $(LIBS) $(LIBS_MKL)
+	$(COMPG) $(INC) $(BIB) $(BIB_MKL) $(EXEC).cpp -o $(EXEC) $(FLAGS) $(LIBS) $(LIBS_MKL)
 
-comprun : compile 	
+comparea : compile 	
 	./$(EXEC)
 
 
 
-FLAGSS = -O3 -march=native -funsafe-math-optimizations
-FLAGS1 = -O3 -mavx512f -funsafe-math-optimizations
-FLAGS2 =
+FLAGSS = -O3 -march=native -funsafe-math-optimizations -ftree-vectorize
+FLAGS1 = 
+FLAGS2 = 
+# FLAGS3 = 
+# FLAGS4 = 
+# FLAGS5 =
+# FLAGS6 = 
+
+
 FLAGS3 = -O3 -xCORE-AVX2 -vec # -xCOMMON-AVX512 -xCOMMON-AVX2 -qopt-multiple-gather-scatter-by-shuffles -vec --qopt-dynamic-align -msve-vector-bits=<value> --mprefer-vector-width=<value> 
-FLAGS4 = -O3 -xCORE-AVX512 -qopt-zmm-usage=high -vec
-FLAGS5 = -O3 -xCORE-AVX2 -vec
-FLAGS6 = 
+FLAGS4 = -O3 -xCORE-AVX512 -vec
+FLAGS5 = 
+FLAGS6 = -O3 -march=native -ftree-vectorize -funsafe-math-optimizations
 
 compilenovec : 
 	$(COMPG) $(INC) $(BIB) $(BIB_MKL) $(EXECNOVEC).cpp -o $(EXECNOVEC) -w $(LIBS) $(LIBS_MKL)
@@ -92,7 +98,7 @@ comprunvec5 : compilevec5
 	./$(EXECVEC5)
 
 compilevec6 : 
-	$(COMP) $(INC) $(BIB) $(BIB_MKL) $(EXECVEC6).cpp -o $(EXECVEC6) -w $(FLAGS6) $(LIBS) $(LIBS_MKL)
+	$(COMPI) $(INC) $(BIB) $(BIB_MKL) $(EXECVEC6).cpp -S -w $(FLAGS6) $(LIBS) $(LIBS_MKL)
 
 comprunvec6 : compilevec6 	
 	./$(EXECVEC6)
@@ -105,8 +111,8 @@ comprunnovecic : compilenovec
 	./$(EXECNOVEC)
 
 
-test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4 compilevec5 compilevec6
-	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " && echo "//-------------- VEC : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " &&  echo " // --------------- VEC 2 : $(FLAGS2)-------------- " >> test.txt && ./$(EXECVEC2) >> test.txt && echo " " && echo " // -------------- VEC  1 : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " &&  echo " // --------------- VEC 4 : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " && echo " // -------------- VEC  5 : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " &&  echo " // --------------- VEC 6 : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
+test : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4 
+	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " >> test.txt && echo "//-------------- VEC : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " >> test.txt && echo " // -------------- VEC  1 : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " >> test.txt &&  echo " // --------------- VEC 2 : $(FLAGS2)-------------- " >> test.txt && ./$(EXECVEC2) >> test.txt && echo " " >> test.txt && echo " // -------------- VEC  3 : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " >> test.txt &&  echo " // --------------- VEC 4 : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt 
 
 testparvec : compilenovec compilevec4 
 	echo "//-------------- NO   -------------" > test.txt && ./$(EXECNOVEC) >> test.txt && echo " " &&  echo " // --------------- VEC : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt 
@@ -114,8 +120,8 @@ testparvec : compilenovec compilevec4
 testparin : compilenovec compilevec compilevec1 compilevec4 compilevec5 compilevec6
 	echo "//-------------- NO FLAGS  -------------" >> test.txt && ./$(EXECNOVEC) >> test.txt && echo " " >> test.txt &&  echo " " // --------------- $(FLAGSS)-------------- " >> test.txt && ./$(EXECVEC) >> test.txt  && echo " " >> test.txt &&  echo " // --------------- $(FLAGS1) -------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " >> test.txt &&  echo " // --------------- VEC INSIDE + $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt && echo " " >> test.txt echo "//-------------- VEC INSIDE + $(FLAGS5)  -------------" >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " >> test.txt &&  echo " // --------------- VEC INSIDE + $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt       
 
-testfma :  compilevec5 compilevec6
-	echo " // -------------- NO FMA : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " >> test.txt &&  echo " // --------------- FMA : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
+testfma :  compilevec3 compilevec4 compilevec5 compilevec6
+	echo " // -------------- NO FMA : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " >> test.txt &&  echo " // --------------- NO FMA : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt  && echo " " >>test.txt && echo " // -------------- FMA : $(FLAGS5)------------- " >> test.txt && ./$(EXECVEC5) >> test.txt && echo " " >> test.txt &&  echo " // --------------- FMA : $(FLAGS6)-------------- " >> test.txt && ./$(EXECVEC6) >> test.txt                                        
 
 testcomp : compilenovec compilevec compilevec1 compilevec2 compilevec3 compilevec4 
 	echo "//-------------- GCC + NO   -------------" >> test.txt && ./$(EXECNOVEC) >> test.txt && echo " " && echo "//-------------- GCC + YMM : $(FLAGSS)  -------------" >> test.txt &&./$(EXECVEC) >> test.txt && echo " " && echo " // -------------- GCC + ZMM : $(FLAGS1)------------- " >> test.txt && ./$(EXECVEC1) >> test.txt && echo " " &&  echo " // --------------- ICPX + NO -------------- " >> test.txt && ./$(EXECVEC2) >> test.txt && echo " " && echo " // -------------- ICPX + YMM : $(FLAGS3)------------- " >> test.txt && ./$(EXECVEC3) >> test.txt && echo " " &&  echo " // --------------- ICPX + ZMM : $(FLAGS4)-------------- " >> test.txt && ./$(EXECVEC4) >> test.txt 
@@ -138,7 +144,7 @@ compileroof :
 roof : compileroof
 	export OMP_NUM_THREADS=15 && ./$(EXECROOF)
 
-EXECSYCL = testsycl2
+EXECSYCL = testsycl3
 
 COMPSYCL = icpx 
 # COMPSYCL = dpcpp
@@ -147,10 +153,17 @@ INSYCL = -I/usr/include/c++/11/ -I/usr/include/x86_64-linux-gnu/c++/11/ -L/usr/l
 LIBSYCL = -fsycl -fsycl-targets=spir64
 
 compsycl : 
-	$(COMPSYCL) $(INSYCL) $(LIBSYCL) -g $(EXECSYCL).cpp -o $(EXECSYCL) -w
+	$(COMPSYCL) $(INSYCL) $(LIBSYCL) $(EXECSYCL).cpp -o $(EXECSYCL) -w -lm
 
 sycl : compsycl
-	echo "" && ./$(EXECSYCL)
+	./$(EXECSYCL)
+
+
+compilecompare : 
+	 g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ Compare.cpp -o Compare -w -lmpfr -fopenmp -lm 
+
+compare : compilecompare 	
+	./Compare
 
 
 

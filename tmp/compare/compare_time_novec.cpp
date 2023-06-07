@@ -29,12 +29,12 @@ int main() {
         mpfr_init2(Error[i], P);
     }
 
-    for (unsigned int i; i<2;i++){
-        mpfr_init2(Error4[i], P);
-        mpfr_init2(Error8[i], P);
-        mpfr_init2(Error16[i], P);
+    // for (unsigned int i; i<2;i++){
+    //     mpfr_init2(Error4[i], P);
+    //     mpfr_init2(Error8[i], P);
+    //     mpfr_init2(Error16[i], P);
         
-    }
+    // }
 
 
     // Time / Size
@@ -60,14 +60,14 @@ int main() {
     vector<double>::iterator k;
     for (k = VSize.begin(); k != VSize.end(); k++){  
         // Exec dot prod
-        compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,8);
+        compare_dot_prod(*k, cond, nb_gen,sum,Time,Error,3,1);
 
         // Gbytes / s
-        // double qtt;
-        // for (int j=1;j<7 ; j++) {
-        //     qtt = *k * 2 * 8 ;
-        //     Time[j] = qtt / Time[j] ;
-        // }
+        double qtt;
+        for (int j=1;j<7 ; j++) {
+            qtt = *k * 2 * 8 ;
+            Time[j] = qtt / Time[j] ;
+        }
 
         // Save result
         Time_standard[i] = Time[1];
@@ -81,29 +81,66 @@ int main() {
     }
 
 
-    int a;
-        printf("\nTime_gcc1_standard = \n {");
-        for (a=0; a<sz_time;a++){
-            if(a == sz_time-1){
-                printf("%.10f",Time_standard[a]);
-            }
-            else{
-                printf("%.10f, ",Time_standard[a]);
-            }
-        }
-        printf("};\n\n");
+    // int a;
+    //     printf("\nTime_gcc1_standard = \n {");
+    //     for (a=0; a<sz_time;a++){
+    //         if(a == sz_time-1){
+    //             printf("%.10f",Time_standard[a]);
+    //         }
+    //         else{
+    //             printf("%.10f, ",Time_standard[a]);
+    //         }
+    //     }
+    //     printf("};\n\n");
 
-        printf("\nTime_gcc1_par_standard = \n {");
-        for (a=0; a<sz_time;a++){
-            if(a == sz_time-1){
-                printf("%.10f",Time_par_standard[a]);
-            }
-            else{
-                printf("%.10f, ",Time_par_standard[a]);
-            }
-        }
-        printf("};\n");
+    //     printf("\nTime_gcc1_par_standard = \n {");
+    //     for (a=0; a<sz_time;a++){
+    //         if(a == sz_time-1){
+    //             printf("%.10f",Time_par_standard[a]);
+    //         }
+    //         else{
+    //             printf("%.10f, ",Time_par_standard[a]);
+    //         }
+    //     }
+    //     printf("};\n");
 
+    class std::vector<double> T1(2);
+    class std::vector<double> T2(2);
+    T1[0] = VSize[0];
+    T1[1] = VSize[sz_time - 1];
+    T2[0] = Time_standard[0];
+    T2[1] = Time_standard[sz_time -1];
+    plt::loglog(T1,T2,"w");
+
+    plt::plot(VSize,Time_standard,{{"label", "Standard"}});
+
+    plt::plot(VSize,Time_mkl,{{"label", "MKL"}});
+
+    plt::plot(VSize,Time_common,{{"label", "Common"}});
+
+    plt::plot(VSize,Time_blaspp,{{"label", "Blasspp"}});
+
+    std::vector<double> cachesL1 = {18000, 18000};
+    std::vector<double> cachesL2 = {468750, 468750};
+    std::vector<double> cachesL3 = {750000, 750000};
+    double height = 20;
+    std::vector<double> heights = {0,height};
+    
+
+    // Tracé des lignes verticales
+    plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
+    plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
+    plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
+    
+    plt::title("Throughput of different versions according to size");
+    // plt::title("Time of different versions according to size");
+    plt::xlabel("Size of vector");
+    plt::ylabel("Throughput (in GBytes/s)");
+    // plt::ylabel("Time (in ns)");
+
+
+    plt::legend();    
+    plt::show();
 
     return 0;
 }
