@@ -43,7 +43,7 @@ int main() {
     printf("Time parallel common dot prod : %.30f \n",Time[6]);
 
     // Error
-     printf("\n_________________________ TIME _________________________\n\n");
+     printf("\n_________________________ ERROR _________________________\n\n");
     mpfr_printf("Error sequential standard dot prod : %.30Rg \n",Error[1]);
     mpfr_printf("Error sequential common dot prod : %.30Rg \n",Error[2]);
     mpfr_printf("Error sequential mkl dot prod : %.30Rg \n",Error[3]);
