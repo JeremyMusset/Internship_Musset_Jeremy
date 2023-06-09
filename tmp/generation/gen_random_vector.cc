@@ -602,11 +602,11 @@ void generate_v_cond(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requir
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-    double t;
-    std::random_device rd;  // Initialise the distribution
-    std::mt19937_64 gen(rd()); // Generate random numbers
-    std::uniform_real_distribution<double> dis(-1e20, 1e20); // Uniform distribution between -1000 and 1000
-    t = dis(gen);
+    double t = 32;
+    // std::random_device rd;  // Initialise the distribution
+    // std::mt19937_64 gen(rd()); // Generate random numbers
+    // std::uniform_real_distribution<double> dis(-1e6, 1e6); // Uniform distribution between 
+    // t = dis(gen);
       // x = t.*c   y = 1/t
       for (int i = 0 ; i<nb_elem;i++) {
           x[i] = t*c[i];

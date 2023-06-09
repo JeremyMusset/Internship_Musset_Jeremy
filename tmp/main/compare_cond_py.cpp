@@ -174,7 +174,6 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     mpfr_div_si(Err_par_rare_blas,Err_par_rare_blas,nb_gen,MPFR_RNDN);
 
     int indice = nb*nb_gen + l;
-
     // Save result
     Error_standard[indice] = mpfr_get_d(Err_standard,MPFR_RNDN);
     Error_par_standard[indice] = mpfr_get_d(Err_par_standard,MPFR_RNDN);

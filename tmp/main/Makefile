@@ -25,6 +25,18 @@ compilepycond :
 pycond : compilepycond 	
 	./compare_cond_py
 
+compiledeb : 
+	g++ -O0 ../generation/*.cc ../dot_product/*.cc debog.cpp -o debog -w -lmpfr -fopenmp -lm 
+
+deb : compiledeb	
+	./debog
+
+
+compiledeb2 : 
+	g++ -O0 ../generation/*.cc ../dot_product/*.cc debog2.cpp -o debog2 -w -lmpfr -fopenmp -lm 
+
+deb2 : compiledeb2	
+	./debog2
 
 
 compiletest : 
