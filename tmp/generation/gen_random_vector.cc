@@ -602,7 +602,7 @@ void generate_v_cond(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requir
     while((cond < required_cond) || (fabs(sum)<FLT_MIN) || (fabs(sum)>FLT_MAX)){
 		
       // t random
-    double t = 32;
+    double t = 10;
     // std::random_device rd;  // Initialise the distribution
     // std::mt19937_64 gen(rd()); // Generate random numbers
     // std::uniform_real_distribution<double> dis(-1e6, 1e6); // Uniform distribution between 
@@ -628,5 +628,5 @@ void generate_v_cond(std::vector<T> &x, std::vector<T> &y, int nb_elem, T requir
       }
     }
   conditioning = cond;
-  printf("required cond = %lf               cond = %lf\n",required_cond,cond);
+  // printf("required cond = %lf               cond = %lf\n",required_cond,cond);
 }

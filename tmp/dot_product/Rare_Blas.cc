@@ -268,7 +268,17 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
     T error, result;
 
     // Step 1.1
+    printf("/////////// Start two prod /////////////\n");
     TwoProd(a,b,n,tp1,tp2);
+    
+    printf("tp1 = \n");
+    for (unsigned int i=0;i<n;i++){
+        printf("%.50f \n",tp1[i]);
+    }
+    printf("\ntp2 = \n");
+    for (unsigned int i=0;i<n;i++){
+        printf("%.50f \n",tp2[i]);
+    }
 
     // Step 1.2
     DoubleOnlineExact(tp1,tp2,n,Ch,Cl);

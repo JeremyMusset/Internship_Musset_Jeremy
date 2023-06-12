@@ -173,12 +173,14 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
     if (Err_rare_blas != 0) {
         printf("Vec number %d : err = %.30f \n",l,Err_rare_blas);
-        // printf("a = \n");
-        // for (unsigned int i=0;i<n;i++){
-        //     printf("%.50f \n",a[i]);
-        // }
-        // printf("\nb = \n");
-        // printf("%.50f \n",b[1]);
+        printf("a = \n");
+        for (unsigned int i=0;i<n;i++){
+            printf("%.50f \n",a[i]);
+        }
+        printf("\nb = \n");
+        for (unsigned int i=0;i<n;i++){
+            printf("%.50f \n",b[i]);
+        }
         
     }
     // Save result
@@ -199,7 +201,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 int main() {
     int nb_gen = 100;
     double sum = 20;
-    int size = 100;
+    int size = 3;
     double alpha = 0;
     int sz_err = 1;
     class std::vector<double> VCond(sz_err);
@@ -222,7 +224,7 @@ int main() {
     for (k = VCond.begin(); k != VCond.end(); k++){
         // printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
-        vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
+        // vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
         // printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);

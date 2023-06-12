@@ -32,7 +32,7 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
-    int l = 1;
+    int l = 48;
     //////////////////////////////////////////////////////////////////
     //////////////////////// Data importation ////////////////////////
     //////////////////////////////////////////////////////////////////
@@ -50,13 +50,9 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
         printf("%.50f \n",a[i]);
     }
     printf("\nb = \n");
-    printf("%.50f \n",b[1]);
-    // printf("a = \n");
-    // for (unsigned int i=0;i<n;i++){
-    //     printf("%.50f \n",a[i]);
-    // }
-    // printf("\nb = \n");
-    // printf("%.50f \n",b[1]);
+    for (unsigned int i=0;i<n;i++){
+        printf("%.50f \n",b[i]);
+    }
 
     double res_standard , res_rare_blas,res_par_rare_blas;
 
@@ -73,6 +69,16 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
         mpfr_init2(b_mpfr[i], P);
         mpfr_set_d(b_mpfr[i], b[i], MPFR_RNDN);
     } 
+    printf("a mpfr = \n");
+    for (unsigned int i=0;i<n;i++){
+        mpfr_printf ("%.50Rg \n", a_mpfr[i]);
+
+    }
+    printf("\nb mpfr = \n");
+    for (unsigned int i=0;i<n;i++){
+        mpfr_printf ("%.50Rg \n", b_mpfr[i]);
+
+    }
     mpfr_init2(res_mpfr,P);
     mpfr_set_d(res_mpfr,0,MPFR_RNDN);
  
@@ -143,7 +149,7 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
 int main() {
     int nb_gen = 100;
     double sum = 20;
-    int size = 100;
+    int size = 3;
     int sz_err = 1;
     class std::vector<double> VCond(sz_err);
     VCond = {500000000000}; 
