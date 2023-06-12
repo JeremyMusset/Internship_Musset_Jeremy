@@ -13,6 +13,7 @@
 #include "../../include/dot_product.h"
 
 #define PREC 53    // 53 in double 
+#define P 5000
 
 template double ulp<double>(double x);
 
@@ -268,29 +269,71 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
     T error, result;
 
     // Step 1.1
-    printf("/////////// Start two prod /////////////\n");
+    printf("\n/////////// Start two prod /////////////\n");
     TwoProd(a,b,n,tp1,tp2);
-    
-    printf("tp1 = \n");
-    for (unsigned int i=0;i<n;i++){
-        printf("%.50f \n",tp1[i]);
-    }
-    printf("\ntp2 = \n");
-    for (unsigned int i=0;i<n;i++){
-        printf("%.50f \n",tp2[i]);
-    }
+    mpfr_t tmp1,tmp2;
+    mpfr_t *a1 = new mpfr_t[3];
+    mpfr_t *b1 = new mpfr_t[3];
+    mpfr_init2(tmp1, P);
+    mpfr_init2(tmp2, P);
+    mpfr_set_d(tmp1, 0, MPFR_RNDN);
+    mpfr_set_d(tmp2,0, MPFR_RNDN);
+     for (unsigned int i = 0; i < 3; i++){
+        mpfr_init2(a1[i], P);
+        mpfr_set_d(a1[i], tp1[i], MPFR_RNDN);
+        mpfr_init2(b1[i], P);
+        mpfr_set_d(b1[i], tp2[i], MPFR_RNDN);
+    } 
+
+    for (unsigned int i = 0; i < 3; i++){ 
+        mpfr_add(tmp1,a1[i],tmp1,MPFR_RNDN);
+        mpfr_add(tmp2,b1[i],tmp2,MPFR_RNDN);
+    } 
+    mpfr_add(tmp1,tmp2,tmp1,MPFR_RNDN);
+    mpfr_printf("\nAFTER TWO PRO = %.50Rg \n",tmp1);
 
     // Step 1.2
+    printf("\n/////////// Start exponent accumulation /////////////\n");
+
     DoubleOnlineExact(tp1,tp2,n,Ch,Cl);
+
+    mpfr_t tmp3,tmp4;
+    mpfr_t *t1 = new mpfr_t[2048];
+    mpfr_t *t2 = new mpfr_t[2048];
+    mpfr_init2(tmp3, P);
+    mpfr_init2(tmp4, P);
+    mpfr_set_d(tmp3, 0, MPFR_RNDN);
+    mpfr_set_d(tmp4,0, MPFR_RNDN);
+     for (unsigned int i = 0; i < 2048; i++){
+        mpfr_init2(t1[i], P);
+        mpfr_set_d(t1[i], Ch[i], MPFR_RNDN);
+        mpfr_init2(t2[i], P);
+        mpfr_set_d(t2[i], Cl[i], MPFR_RNDN);
+    } 
+
+    for (unsigned int i = 0; i < 2048; i++){ 
+        mpfr_add(tmp3,t1[i],tmp3,MPFR_RNDN);
+        mpfr_add(tmp4,t2[i],tmp4,MPFR_RNDN);
+    } 
+    mpfr_printf("\nSum CH = %.50Rg \n",tmp3);
+    printf ("\n --------------------------------- \n Sum ch correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp3, MPFR_RNDN));
+    mpfr_printf("\nSum Cl = %.50Rg \n",tmp4);
+    printf ("\n --------------------------------- \n sum Cl correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp4, MPFR_RNDN) );
+    mpfr_add(tmp3,tmp4,tmp3,MPFR_RNDN);
+    mpfr_printf("\nAFTER EXP ACC = %.50Rg \n",tmp3);
 
     // Step 2
     result = SumK(Ch,2048,10);
     error = SumK(Cl,2048,10);
-    
+        
+
+
     // Sum result and error
     class std::vector<double> tabtmp(2);
     tabtmp[0] = result;
     tabtmp[1] = error;
+    printf("\nRESULT = %.50f \n",tabtmp[0]);
+    printf("ERROR = %.50f \n\n",tabtmp[1]);
     double EndReturn = SumK(tabtmp,2,10);
     return EndReturn;
 }

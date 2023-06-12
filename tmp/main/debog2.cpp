@@ -69,20 +69,21 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
         mpfr_init2(b_mpfr[i], P);
         mpfr_set_d(b_mpfr[i], b[i], MPFR_RNDN);
     } 
-    printf("a mpfr = \n");
-    for (unsigned int i=0;i<n;i++){
-        mpfr_printf ("%.50Rg \n", a_mpfr[i]);
+    // printf("a mpfr = \n");
+    // for (unsigned int i=0;i<n;i++){
+    //     mpfr_printf ("%.50Rg \n", a_mpfr[i]);
 
-    }
-    printf("\nb mpfr = \n");
-    for (unsigned int i=0;i<n;i++){
-        mpfr_printf ("%.50Rg \n", b_mpfr[i]);
+    // }
+    // printf("\nb mpfr = \n");
+    // for (unsigned int i=0;i<n;i++){
+    //     mpfr_printf ("%.50Rg \n", b_mpfr[i]);
 
-    }
+    // }
     mpfr_init2(res_mpfr,P);
     mpfr_set_d(res_mpfr,0,MPFR_RNDN);
  
     dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
+    mpfr_printf ("\nRESULT MPFR : %.50Rg \n", res_mpfr);
 
 
     ////////////////////////////////////////////////////////////////////
@@ -161,6 +162,42 @@ int main() {
     class std::vector<double> RCond(totsz);
     int nb_threads = 8;
     compare_cond_deb(size, 500000000000, Err_standard, Err_rare_blas,Err_par_rare_blas,1,nb_threads); 
+
+
+
+
+    //// ADD 
+    mpfr_t tmp1,tmp2;
+    mpfr_t *a1 = new mpfr_t[3];
+    mpfr_t *b1 = new mpfr_t[3];
+    mpfr_init2(tmp1, P);
+    mpfr_init2(tmp2, P);
+    mpfr_set_d(tmp1, 0, MPFR_RNDN);
+    mpfr_set_d(tmp2,0, MPFR_RNDN);
+     for (unsigned int i = 0; i < 3; i++){
+        mpfr_init2(a1[i], P);
+        mpfr_init2(b1[i], P);
+    } 
+
+    mpfr_set_d(a1[0], -1269212955881603.5, MPFR_RNDN);
+    mpfr_set_d(a1[1],12640012012.9432315826416015625, MPFR_RNDN);
+    mpfr_set_d(a1[2], -1199198895941203.25, MPFR_RNDN);
+
+    mpfr_set_d(b1[0], 0.1133082966130285473838057441753335297107696533203125, MPFR_RNDN);
+    mpfr_set_d(b1[1],0.00000008460203336559346827387174949652859368143253959715366363525390625, MPFR_RNDN);
+    mpfr_set_d(b1[2], 0.0250467370904254860164428464486263692378997802734375, MPFR_RNDN);
+
+    for (unsigned int i = 0; i < 3; i++){ 
+        mpfr_add(tmp1,a1[i],tmp1,MPFR_RNDN);
+        mpfr_add(tmp2,b1[i],tmp2,MPFR_RNDN);
+    } 
+
+
+    // mpfr_printf("\n TWO PRO RES = %.50Rg \n",tmp1);
+    // mpfr_printf("TWO PROD ERR = %.50Rg \n\n",tmp2);
+
+    mpfr_add(tmp1,tmp2,tmp1,MPFR_RNDN);
+    // mpfr_printf("\n AFTER TWO PRO = %.50Rg \n",tmp1);
 
     return 0;
 }
