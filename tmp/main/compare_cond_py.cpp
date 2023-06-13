@@ -16,8 +16,6 @@ namespace plt = matplotlibcpp;
 ///////////////////////////////////////////////////////////////////// FONCTION /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 template
 void compare_cond<double>(int n,double required_cond, int nb_gen, double sum, std::vector<double> &Error_standard, std::vector<double> &Error_par_standard, std::vector<double> &Error_rare_blas, std::vector<double> &Error_par_rare_blas, int q, int nb, int nb_threads);
 
@@ -38,20 +36,24 @@ template < class T >
 void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vector<T> &Error_standard, std::vector<T> &Error_par_standard, std::vector<T> &Error_rare_blas, std::vector<T> &Error_par_rare_blas, int q, int nb, int nb_threads){
 
     // Error
-    mpfr_t Err_standard, Err_par_standard, Err_rare_blas ,Err_par_rare_blas;
-    mpfr_init2(Err_standard, P);
-    mpfr_init2(Err_par_standard, P);
-    mpfr_init2(Err_rare_blas, P);
-    mpfr_init2(Err_par_rare_blas, P);
-    mpfr_set_d(Err_standard, 0, MPFR_RNDN);
-    mpfr_set_d(Err_par_standard, 0, MPFR_RNDN);
-    mpfr_set_d(Err_rare_blas, 0, MPFR_RNDN);
-    mpfr_set_d(Err_par_rare_blas, 0, MPFR_RNDN);
+    // mpfr_t Err_standard, Err_par_standard, Err_rare_blas ,Err_par_rare_blas;
+    // mpfr_init2(Err_standard, P);
+    // mpfr_init2(Err_par_standard, P);
+    // mpfr_init2(Err_rare_blas, P);
+    // mpfr_init2(Err_par_rare_blas, P);
+    // mpfr_set_d(Err_standard, 0, MPFR_RNDN);
+    // mpfr_set_d(Err_par_standard, 0, MPFR_RNDN);
+    // mpfr_set_d(Err_rare_blas, 0, MPFR_RNDN);
+    // mpfr_set_d(Err_par_rare_blas, 0, MPFR_RNDN);
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
     // We execute dot product on the nb_gen files
     for (unsigned int l=0;l<nb_gen;l++){
+
+    double Err_standard, Err_par_standard, Err_rare_blas, Err_par_rare_blas;
+
+
 
     //////////////////////////////////////////////////////////////////
     //////////////////////// Data importation ////////////////////////
@@ -65,6 +67,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
         a[i] = vec[i+1];
         b[i] = vec[n+1+i]; 
     }
+    
 
     double res_standard ,res_par_standard, res_rare_blas,res_par_rare_blas;
 
@@ -126,59 +129,58 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     
     res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,8);
     
+    double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
     
-    
-    // Print results
-    mpfr_printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.30Rg \n --------------------------------- \n", res_mpfr);
-    printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
-    printf ("\n PARALLEL DOT PRODUCT : \n%.50f \n", res_par_standard);
-    printf ("\n SEQUENTIAL RARE BLAS : \n%.50f \n", res_rare_blas);  
-    printf ("\n SEQUENTIAL PAR RARE BLAS : \n%.50f \n\n", res_par_rare_blas);   
+    // // Print results
+    // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RESULT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
+    // printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.50f \n --------------------------------- \n", d_correct);
+    // // printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
+    // // printf ("\n PARALLEL DOT PRODUCT : \n%.50f \n", res_par_standard);
+    // printf ("\n SEQUENTIAL RARE BLAS : \n%.50f \n", res_rare_blas);  
+    // // printf ("\n PARALLEL RARE BLAS : \n%.50f \n\n", res_par_rare_blas);   
+    // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
+    // // printf ("\n ERROR STANDARD DOT PRODUCT : \n%.50f \n", abs(res_standard - d_correct) );
+    // // printf ("\n ERROR PARALLEL DOT PRODUCT : \n%.50f \n", abs(res_par_standard - d_correct));
+    // printf ("\n ERROR SEQUENTIAL RARE BLAS : \n%.50f \n", abs(res_rare_blas - d_correct) );  
+    // // printf ("\n ERROR PARALLEL RARE BLAS : \n%.50f \n\n", abs(res_par_rare_blas- d_correct));
 
     // Error
-    mpfr_t tmp,tmp2,tmp3,tmp4,tmp5,tmp6;
-    mpfr_init2(tmp, P);
-    mpfr_init2(tmp2, P);
-    mpfr_init2(tmp3, P);
-    mpfr_init2(tmp4, P);
-
-    mpfr_sub_d(tmp,res_mpfr,res_standard,MPFR_RNDN);
-    mpfr_div(tmp, tmp,res_mpfr,MPFR_RNDN);
-    mpfr_abs(tmp,tmp,MPFR_RNDN);
-    mpfr_add(Err_standard, Err_standard,tmp,MPFR_RNDN);
-
-    mpfr_sub_d(tmp2,res_mpfr,res_par_standard,MPFR_RNDN);
-    mpfr_div(tmp2,tmp2,res_mpfr,MPFR_RNDN);
-    mpfr_abs(tmp2,tmp2,MPFR_RNDN);
-    mpfr_add(Err_par_standard, Err_par_standard,tmp2,MPFR_RNDN);
-
-    mpfr_sub_d(tmp3,res_mpfr,res_rare_blas,MPFR_RNDN);
-    mpfr_div(tmp3,tmp3,res_mpfr,MPFR_RNDN);
-    mpfr_abs(tmp3,tmp3,MPFR_RNDN);
-    mpfr_add(Err_rare_blas, Err_rare_blas,tmp3,MPFR_RNDN);
-
-    mpfr_sub_d(tmp4,res_mpfr,res_par_rare_blas,MPFR_RNDN);
-    mpfr_div(tmp4,tmp4,res_mpfr,MPFR_RNDN);
-    mpfr_abs(tmp4,tmp4,MPFR_RNDN);
-    mpfr_add(Err_par_rare_blas, Err_par_rare_blas,tmp4,MPFR_RNDN);
-
-    mpfr_clear(tmp);
-    mpfr_clear(tmp2);
-    mpfr_clear(tmp3);
-    mpfr_clear(tmp4);
-
-
-    mpfr_div_si(Err_standard,Err_standard,nb_gen,MPFR_RNDN);
-    mpfr_div_si(Err_par_standard,Err_par_standard,nb_gen,MPFR_RNDN);
-    mpfr_div_si(Err_rare_blas,Err_rare_blas,nb_gen,MPFR_RNDN);
-    mpfr_div_si(Err_par_rare_blas,Err_par_rare_blas,nb_gen,MPFR_RNDN);
 
     int indice = nb*nb_gen + l;
+
+    Err_standard = d_correct - res_standard;
+    Err_standard = Err_standard/d_correct;
+    Err_standard = abs(Err_standard);
+
+    Err_par_standard = d_correct - res_par_standard;
+    // Err_par_standard = Err_par_standard/d_correct;
+    // Err_par_standard = abs(Err_par_standard);
+
+    Err_rare_blas = d_correct - res_rare_blas;
+    Err_rare_blas = Err_rare_blas/d_correct;
+    Err_rare_blas = abs(Err_rare_blas);
+
+    Err_par_rare_blas = d_correct - res_par_rare_blas;
+    Err_par_rare_blas = Err_par_rare_blas/d_correct;
+    Err_par_rare_blas = abs(Err_par_rare_blas);
+
+    // mpfr_t tmp1,tmp2,restmp;
+    // mpfr_init2(tmp1, P);
+    // mpfr_set_d(tmp1, d_correct, MPFR_RNDN);
+    // mpfr_init2(tmp2, P);
+    // mpfr_set_d(tmp2, res_rare_blas, MPFR_RNDN);
+    // mpfr_sub(restmp,tmp1,tmp2,MPFR_RNDN);
+    // mpfr_printf("TEEESSSTTT : %.30Rg \n",restmp);
+
+    if (Err_rare_blas != 0) {
+        printf("\nVec number %d : err = %.30f \n",l,Err_rare_blas);
+        
+    }
     // Save result
-    Error_standard[indice] = mpfr_get_d(Err_standard,MPFR_RNDN);
-    Error_par_standard[indice] = mpfr_get_d(Err_par_standard,MPFR_RNDN);
-    Error_rare_blas[indice] = mpfr_get_d(Err_rare_blas,MPFR_RNDN);
-    Error_par_rare_blas[indice] = mpfr_get_d(Err_par_rare_blas,MPFR_RNDN);
+    Error_standard[indice] = Err_standard;
+    Error_par_standard[indice] = Err_par_standard;
+    Error_rare_blas[indice] = Err_rare_blas;
+    Error_par_rare_blas[indice] = Err_par_rare_blas;
     }
 }
 
@@ -222,10 +224,6 @@ int main() {
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
-        printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);
-        printf("Err parallel standard dot prod   : %.30f \n",Error_par_standard[i*nb_gen-1]);
-        printf("Err sequential RARE              : %.30f\n",Error_rare_blas[i*nb_gen-1]);
-        printf("Err parallel  RARE               : %.30f\n\n",Error_par_rare_blas[i*nb_gen-1]);
        
     }
 
@@ -429,10 +427,10 @@ int main() {
     printf("\nError_rare_blas = [");
     for (a=0; a<totsz;a++){
         if(a == totsz-1){
-            printf("%.30f",Error_rare_blas[a]);
+            printf("%.70f",Error_rare_blas[a]);
         }
         else{
-            printf("%.30f, ",Error_rare_blas[a]);
+            printf("%.70f, ",Error_rare_blas[a]);
         }
     }
     printf("]\n");

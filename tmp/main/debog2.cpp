@@ -32,7 +32,7 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
-    int l = 48;
+    int l = 80;
     //////////////////////////////////////////////////////////////////
     //////////////////////// Data importation ////////////////////////
     //////////////////////////////////////////////////////////////////
@@ -45,14 +45,14 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
         a[i] = vec[i+1];
         b[i] = vec[n+1+i]; 
     }
-    printf("a = \n");
-    for (unsigned int i=0;i<n;i++){
-        printf("%.50f \n",a[i]);
-    }
-    printf("\nb = \n");
-    for (unsigned int i=0;i<n;i++){
-        printf("%.50f \n",b[i]);
-    }
+    // printf("a = \n");
+    // for (unsigned int i=0;i<n;i++){
+    //     printf("%.50f \n",a[i]);
+    // }
+    // printf("\nb = \n");
+    // for (unsigned int i=0;i<n;i++){
+    //     printf("%.50f \n",b[i]);
+    // }
 
     double res_standard , res_rare_blas,res_par_rare_blas;
 
@@ -150,10 +150,10 @@ void compare_cond_deb(int n,double required_cond, double &Err_standard, double &
 int main() {
     int nb_gen = 100;
     double sum = 20;
-    int size = 3;
+    int size = 100;
     int sz_err = 1;
     class std::vector<double> VCond(sz_err);
-    VCond = {500000000000}; 
+    VCond = {5000}; 
 
     double Err_standard, Err_rare_blas,Err_par_rare_blas;
 

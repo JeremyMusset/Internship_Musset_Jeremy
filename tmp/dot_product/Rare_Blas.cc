@@ -265,11 +265,11 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
     class std::vector<T> tp2(n);
     class std::vector<T> Ch(2048);
     class std::vector<T> Cl(2048);
-    class std::vector<T> qres(L);
+    class std::vector<T> Res(4096);
     T error, result;
 
     // Step 1.1
-    printf("\n/////////// Start two prod /////////////\n");
+    // printf("\n/////////// Start two prod /////////////\n");
     TwoProd(a,b,n,tp1,tp2);
     mpfr_t tmp1,tmp2;
     mpfr_t *a1 = new mpfr_t[3];
@@ -290,10 +290,10 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
         mpfr_add(tmp2,b1[i],tmp2,MPFR_RNDN);
     } 
     mpfr_add(tmp1,tmp2,tmp1,MPFR_RNDN);
-    mpfr_printf("\nAFTER TWO PRO = %.50Rg \n",tmp1);
+    // mpfr_printf("\nAFTER TWO PRO = %.50Rg \n",tmp1);
 
     // Step 1.2
-    printf("\n/////////// Start exponent accumulation /////////////\n");
+    // printf("\n/////////// Start exponent accumulation /////////////\n");
 
     DoubleOnlineExact(tp1,tp2,n,Ch,Cl);
 
@@ -315,26 +315,31 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
         mpfr_add(tmp3,t1[i],tmp3,MPFR_RNDN);
         mpfr_add(tmp4,t2[i],tmp4,MPFR_RNDN);
     } 
-    mpfr_printf("\nSum CH = %.50Rg \n",tmp3);
-    printf ("\n --------------------------------- \n Sum ch correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp3, MPFR_RNDN));
-    mpfr_printf("\nSum Cl = %.50Rg \n",tmp4);
-    printf ("\n --------------------------------- \n sum Cl correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp4, MPFR_RNDN) );
+    // mpfr_printf("\nSum CH = %.50Rg \n",tmp3);
+    // printf ("\n --------------------------------- \n Sum ch correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp3, MPFR_RNDN));
+    // mpfr_printf("\nSum Cl = %.50Rg \n",tmp4);
+    // printf ("\n --------------------------------- \n sum Cl correct rounding : \n %.70f \n --------------------------------- \n", mpfr_get_d(tmp4, MPFR_RNDN) );
     mpfr_add(tmp3,tmp4,tmp3,MPFR_RNDN);
-    mpfr_printf("\nAFTER EXP ACC = %.50Rg \n",tmp3);
+    // mpfr_printf("\nAFTER EXP ACC = %.50Rg \n",tmp3);
 
     // Step 2
     result = SumK(Ch,2048,10);
     error = SumK(Cl,2048,10);
-        
+    for (unsigned int i=0;i<2048;i++){
+        Res[i] = Ch[i];
+        Res[2048+i] = Cl[i];
+    }
 
 
     // Sum result and error
     class std::vector<double> tabtmp(2);
     tabtmp[0] = result;
     tabtmp[1] = error;
-    printf("\nRESULT = %.50f \n",tabtmp[0]);
-    printf("ERROR = %.50f \n\n",tabtmp[1]);
-    double EndReturn = SumK(tabtmp,2,10);
+    // printf("\nRESULT = %.50f \n",tabtmp[0]);
+    // printf("ERROR = %.50f \n\n",tabtmp[1]);
+    // double EndReturn = SumK(tabtmp,2,10);
+    double EndReturn = SumK(Res,4096,10);
+    // printf("Final = %.50f \n\n",EndReturn);
     return EndReturn;
 }
 

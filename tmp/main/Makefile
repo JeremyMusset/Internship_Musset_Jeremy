@@ -1,5 +1,5 @@
 compilecomparetime : 
-	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ compare_time.cpp -o compare_time -w -lmpfr -fopenmp -lm 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time.cpp -o compare_time -w -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
 
 comparetime : compilecomparetime 	
 	./compare_time
@@ -44,3 +44,9 @@ compiletest :
 
 testgen : compiletest
 	./testgen
+
+compileptime : 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 print_time.cpp -o print_time -w -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
+
+ptime : compileptime 	
+	./print_time

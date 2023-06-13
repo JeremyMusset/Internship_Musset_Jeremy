@@ -156,8 +156,8 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     // Err_par_standard = abs(Err_par_standard);
 
     Err_rare_blas = d_correct - res_rare_blas;
-        // Err_rare_blas = Err_rare_blas/d_correct;
-        // Err_rare_blas = abs(Err_rare_blas);
+    Err_rare_blas = Err_rare_blas/d_correct;
+    Err_rare_blas = abs(Err_rare_blas);
 
     Err_par_rare_blas = d_correct - res_par_rare_blas;
         // Err_par_rare_blas = Err_par_rare_blas/d_correct;
@@ -172,18 +172,21 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     // mpfr_printf("TEEESSSTTT : %.30Rg \n",restmp);
 
     if (Err_rare_blas != 0) {
-        printf("Vec number %d : err = %.30f \n",l,Err_rare_blas);
-        printf("a = \n");
-        for (unsigned int i=0;i<n;i++){
-            printf("%.50f \n",a[i]);
-        }
-        printf("\nb = \n");
-        for (unsigned int i=0;i<n;i++){
-            printf("%.50f \n",b[i]);
-        }
+        printf("\nVec number %d : err = %.30f \n",l,Err_rare_blas);
+        // printf("Correct rounding = %.70f \n",d_correct);
+        // printf("Res rare         = %.70f \n",l,res_rare_blas);
+        // printf("a = \n");
+        // for (unsigned int i=0;i<n;i++){
+        //     printf("%.50f \n",a[i]);
+        // }
+        // printf("\nb = \n");
+        // for (unsigned int i=0;i<n;i++){
+        //     printf("%.50f \n",b[i]);
+        // }
         
     }
     // Save result
+    printf("\nVec number %d => indice = %d : err = %.30f \n",l,indice,Err_rare_blas);
     Error_standard[indice] = Err_standard;
     Error_par_standard[indice] = Err_par_standard;
     Error_rare_blas[indice] = Err_rare_blas;
@@ -201,20 +204,21 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 int main() {
     int nb_gen = 100;
     double sum = 20;
-    int size = 3;
+    int size = 100;
     double alpha = 0;
-    int sz_err = 1;
+    int sz_err = 20;
+    int totsz = nb_gen * sz_err;
     class std::vector<double> VCond(sz_err);
-    VCond = {500000000000} ; 
+    VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
 
-    class std::vector<double> Error_standard(sz_err*nb_gen);
-    class std::vector<double> Error_par_standard(sz_err*nb_gen);
-    class std::vector<double> Error_rare_blas(sz_err*nb_gen);
-    class std::vector<double> Error_par_rare_blas(sz_err*nb_gen);
-    class std::vector<double> tmp(sz_err*nb_gen);
+    class std::vector<double> Error_standard(totsz);
+    class std::vector<double> Error_par_standard(totsz);
+    class std::vector<double> Error_rare_blas(totsz);
+    class std::vector<double> Error_par_rare_blas(totsz);
+    class std::vector<double> tmp(totsz);
 
     // Real conditioning
-    int totsz = nb_gen * sz_err;
+    
     class std::vector<double> RCond(totsz);
 
     
@@ -222,17 +226,24 @@ int main() {
     int i = 0;
     vector<double>::iterator k;
     for (k = VCond.begin(); k != VCond.end(); k++){
-        // printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
+        printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
-        // vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
+        vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
-        // printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);
-        // printf("Err parallel standard dot prod   : %.30f \n",Error_par_standard[i*nb_gen-1]);
-        // printf("Err sequential RARE              : %.30f\n",Error_rare_blas[i*nb_gen-1]);
-        // printf("Err parallel  RARE               : %.30f\n\n",Error_par_rare_blas[i*nb_gen-1]);
-       
     }
+    int a;
+    printf("\nError_rare_blas = [");
+    for (a=0; a<totsz;a++){
+        if(a == totsz-1){
+            printf("%.30f",Error_rare_blas[a]);
+        }
+        else{
+            printf("%.30f, ",Error_rare_blas[a]);
+        }
+    }
+    printf("]\n");
+
 
     // Sort the results 
     double temp;
@@ -267,7 +278,7 @@ int main() {
     }
 
     
-    int a;
+    // int a;
     // printf("\n # COND  \n");
     // printf("\nRCond = [");
     // for (a=0; a<totsz;a++){
