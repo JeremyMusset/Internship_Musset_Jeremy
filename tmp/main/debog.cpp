@@ -87,7 +87,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     mpfr_set_d(res_mpfr,0,MPFR_RNDN);
  
     dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
-
+    // mpfr_printf(" \n \n EXACT RESULT : %.50Rg",res_mpfr);
 
     ////////////////////////////////////////////////////////////////////
     /////////////////////// STANDARD DOT PRODUCT ///////////////////////
@@ -126,7 +126,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
     res_par_rare_blas = 0.0;
     
-    res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,8);
+    res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
     
     double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
     
@@ -160,8 +160,8 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     Err_rare_blas = abs(Err_rare_blas);
 
     Err_par_rare_blas = d_correct - res_par_rare_blas;
-        // Err_par_rare_blas = Err_par_rare_blas/d_correct;
-        // Err_par_rare_blas = abs(Err_par_rare_blas);
+    Err_par_rare_blas = Err_par_rare_blas/d_correct;
+    Err_par_rare_blas = abs(Err_par_rare_blas);
 
     // mpfr_t tmp1,tmp2,restmp;
     // mpfr_init2(tmp1, P);
@@ -171,10 +171,10 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     // mpfr_sub(restmp,tmp1,tmp2,MPFR_RNDN);
     // mpfr_printf("TEEESSSTTT : %.30Rg \n",restmp);
 
-    if (Err_rare_blas != 0) {
-        printf("\nVec number %d : err = %.30f \n",l,Err_rare_blas);
-        // printf("Correct rounding = %.70f \n",d_correct);
-        // printf("Res rare         = %.70f \n",l,res_rare_blas);
+    if (Err_par_rare_blas != 0) {
+        printf("\nVec number %d : err = %.30f \n",l,Err_par_rare_blas);
+        printf("Correct rounding = %.70f \n",d_correct);
+        printf("Res par rare     = %.70f \n",l,res_par_rare_blas);
         // printf("a = \n");
         // for (unsigned int i=0;i<n;i++){
         //     printf("%.50f \n",a[i]);
@@ -186,7 +186,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
         
     }
     // Save result
-    printf("\nVec number %d => indice = %d : err = %.30f \n",l,indice,Err_rare_blas);
+    // printf("\nVec number %d => indice = %d : err = %.50f \n",l,indice,Err_par_rare_blas);
     Error_standard[indice] = Err_standard;
     Error_par_standard[indice] = Err_par_standard;
     Error_rare_blas[indice] = Err_rare_blas;
@@ -209,6 +209,7 @@ int main() {
     int sz_err = 20;
     int totsz = nb_gen * sz_err;
     class std::vector<double> VCond(sz_err);
+    // VCond = {50000};
     VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
 
     class std::vector<double> Error_standard(totsz);
@@ -222,28 +223,16 @@ int main() {
     class std::vector<double> RCond(totsz);
 
     
-    int nb_threads = 8;
+    int nb_threads = 2;
     int i = 0;
     vector<double>::iterator k;
     for (k = VCond.begin(); k != VCond.end(); k++){
         printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
-        vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
+        // vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
     }
-    int a;
-    printf("\nError_rare_blas = [");
-    for (a=0; a<totsz;a++){
-        if(a == totsz-1){
-            printf("%.30f",Error_rare_blas[a]);
-        }
-        else{
-            printf("%.30f, ",Error_rare_blas[a]);
-        }
-    }
-    printf("]\n");
-
 
     // Sort the results 
     double temp;
@@ -278,7 +267,7 @@ int main() {
     }
 
     
-    // int a;
+    int a;
     // printf("\n # COND  \n");
     // printf("\nRCond = [");
     // for (a=0; a<totsz;a++){
@@ -325,15 +314,15 @@ int main() {
     // }
     // printf("]\n");
 
-    // printf("\nError_par_rare_blas = [");
-    // for (a=0; a<totsz;a++){
-    //     if(a == totsz-1){
-    //         printf("%.30f",Error_par_rare_blas[a]);
-    //     }
-    //     else{
-    //         printf("%.30f, ",Error_par_rare_blas[a]);
-    //     }
-    // }
-    // printf("]\n");
+    printf("\nError_par_rare_blas = [");
+    for (a=0; a<totsz;a++){
+        if(a == totsz-1){
+            printf("%.30f",Error_par_rare_blas[a]);
+        }
+        else{
+            printf("%.30f, ",Error_par_rare_blas[a]);
+        }
+    }
+    printf("]\n");
     return 0;
 }
