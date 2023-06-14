@@ -12,6 +12,7 @@
 #include "../../include/error_free.h"
 #include "../../include/dot_product.h"
 
+
 #define PREC 53    // 53 in double 
 #define P 5000
 
@@ -43,6 +44,8 @@ template double Rare_blas_dot_prod_hybrid<double>(std::vector<double> a, std::ve
 
 template double Par_rare_blas_dot_prod<double>(std::vector<double> a, std::vector<double> b, int n,int nb_threads);
 
+template double Par_rare_blas<double>(std::vector<double> a, std::vector<double> b, int n,int nb_threads);
+
 template double Rare_blas_dot_prod_online<double>(std::vector<double> a, std::vector<double> b, int n);
 
 template double Rare_blas_dot_prod_online_par<double>(std::vector<double> a, std::vector<double> b, int n,int nb_threads);
@@ -59,6 +62,220 @@ template void IFastSum<double>(std::vector<double> p, bool allowRec,double &res)
 /// @param n Size
 template < class T > 
 T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
+    int mod = n%nb_threads;
+    class std::vector<double> Result_global(nb_threads);
+    
+    #pragma omp parallel num_threads(nb_threads) shared(a,b)
+    {
+        int LT = omp_get_thread_num();
+        int size_local = ceil ((float)n/nb_threads);
+        int start = (floor((float)n/nb_threads)) * LT + std::min(mod,LT);
+        if ((LT >= mod) && (mod != 0)) {
+            size_local -= 1;
+        }
+        int end = start + size_local - 1 ;
+        // printf("Thread number %d    size : %d     start = %d        end = %d \n",LT,size_local,start,end);
+
+        double* tp1 = new double[size_local];
+        double* tp2 = new double[size_local];
+        double* ah = new double[size_local];
+        double* al = new double[size_local];
+        double* bh = new double[size_local];
+        double* bl = new double[size_local];
+        double* c = new double[size_local];
+        double* Ch = new double[2048];
+        double* Cl = new double[2048];
+        for (unsigned int k=0;k<2048;k++){
+            Ch[k] = 0;
+            Cl[k] =0;
+        }
+        double* C = new double[4096];
+        
+        double Res = 0.;
+        double Err = 0.;
+        double ph;
+        double pl;
+        int exp;
+        int E;
+        double error;
+        double tmpdb;
+        double f;
+        double p = 53;
+        
+        f = pow(2.0,ceil(p/2.0)) + 1;
+        double* a_ptr = a.data();
+        double* b_ptr = b.data();
+
+        #pragma omp task depend (in:tp1,tp2,a_ptr[start:end],b_ptr[start:end],c,ah,al,bh,bl) depend (out:tp1,tp2)  // Two Prod
+        {
+            int k = 0;
+            for (unsigned int i = start;i<=end;i++) {
+                // Result
+                tp1[k] = a[i] * b[i];
+                // Split a
+                c[k] = f*a[i];
+                ah[k] = c[k] - (c[k] - a[i]);
+                al[k] = a[i] - ah[k];
+
+                // Split b
+                c[k] = f*b[i];
+                bh[k] = c[k] - (c[k] - b[i]);
+                bl[k] = b[i] - bh[k];
+
+                // Error
+                tp2[k] = al[k] * bl[k] - ((( tp1[k] - ah[k] * bh[k] ) - al[k] * bh[k] ) - ah[k] * bl[k]);
+                k = k+1;
+
+                // Print
+                mpfr_t tmp1,tmp2;
+                mpfr_t *a1 = new mpfr_t[3];
+                mpfr_t *b1 = new mpfr_t[3];
+                mpfr_init2(tmp1, P);
+                mpfr_init2(tmp2, P);
+                mpfr_set_d(tmp1, 0, MPFR_RNDN);
+                mpfr_set_d(tmp2,0, MPFR_RNDN);
+                for (unsigned int i = 0; i < 3; i++){
+                    mpfr_init2(a1[i], P);
+                    mpfr_set_d(a1[i], tp1[i], MPFR_RNDN);
+                    mpfr_init2(b1[i], P);
+                    mpfr_set_d(b1[i], tp2[i], MPFR_RNDN);
+                } 
+
+                for (unsigned int i = 0; i < 3; i++){ 
+                    mpfr_add(tmp1,a1[i],tmp1,MPFR_RNDN);
+                    mpfr_add(tmp2,b1[i],tmp2,MPFR_RNDN);
+                } 
+                mpfr_add(tmp1,tmp2,tmp1,MPFR_RNDN);
+            }
+
+        } // End Two Prod
+
+        #pragma omp taskwait
+
+        #pragma omp task depend (in:tp1,tp2) depend(out:C)  // Exponent accumalation
+        {
+            for (unsigned int i = 0;i<size_local;i++) {
+                // Result
+                frexp(tp1[i],&exp);             // exp = E - bias
+                E = exp + 1024;
+                TwoSum(Ch[E], tp1[i],tmpdb,error);
+                Ch[E] = tmpdb;
+                Cl[E] += error;
+            
+                // Error 
+                frexp(tp2[i],&exp);             // exp = E - bias
+                E = exp + 1024;
+                TwoSum(Ch[E], tp2[i],tmpdb,error);
+                Ch[E] = tmpdb;
+                Cl[E] += error;
+            }
+            for (unsigned int i = 0;i<2048;i++) {
+                C[i] = Ch[i];
+                C[2048+i] = Cl[i];
+            }
+            
+            // Print
+            // for (unsigned int w = 0 ; w<2048;w++){
+            //     if (Cl[w] != 0) {
+            //         printf("Cl[%d] for thread number %d :  %.20f \n",w,LT,Cl[w]);
+            //     }
+            // }
+            // for (unsigned int w = 0 ; w<2048;w++){
+            //     if (Ch[w] != 0) {
+            //         printf("Ch[%d] for thread number %d :  %.20f \n",w,LT,Ch[w]);
+            //     }
+            // }
+            // for (unsigned int w = 0 ; w<4096;w++){
+            //     if (C[w] != 0) {
+            //         printf("C[%d] for thread number %d :  %.20f \n",w,LT,C[w]);
+            //     }
+            // }
+
+        } // End exponent accumulation
+
+        #pragma omp task depend (in:C,Res) depend(out:Res)  // Distillation
+        {
+       
+            // Res
+            int K = 10;
+            
+            double* tmp1 = C;	
+            for(unsigned int k = 1 ; k <= K-1 ; k++){
+                for(unsigned int i = 1; i < 4096 ; i++){
+                    double tmp_res = 0, tmp_err = 0;
+                    TwoSum<double> (tmp1[i], tmp1[i-1], tmp_res, tmp_err);
+                    tmp1[i] = tmp_res; 
+                    tmp1[i-1] = tmp_err;
+                }
+            }
+            for(unsigned int i = 0; i < 4096 ; i++){
+                Res += tmp1[i];
+            }
+
+            // Gather
+            Result_global[LT] = Res;
+
+
+            // Print
+            // printf("\nResult for thread number %d :  %.20f \n",omp_get_thread_num(),Res);
+            // printf("Error for thread number %d :  %.20f \n",omp_get_thread_num(),Err);
+            
+
+        } // End distillation
+
+        
+    } // End parrallel 
+
+    // Final Distillation
+    double final_result = SumK(Result_global,nb_threads,10);
+
+
+    return final_result;
+}
+
+
+/// @brief Rare blas dot product using online exact
+/// @tparam T Float or Double
+/// @param a Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
+/// @param b Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
+/// @param n Size
+/// @param res Result of a . b
+template < class T > 
+T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
+    int L=200;
+    class std::vector<T> tp1(n);
+    class std::vector<T> tp2(n);
+    class std::vector<T> Ch(2048);
+    class std::vector<T> Cl(2048);
+    class std::vector<T> Res(4096);
+    T error, result;
+
+    // Step 1.1
+    TwoProd(a,b,n,tp1,tp2);
+   
+    // Step 1.2
+    DoubleOnlineExact(tp1,tp2,n,Ch,Cl);
+
+    // Step 2
+    result = SumK(Ch,2048,10);
+    error = SumK(Cl,2048,10);
+    for (unsigned int i=0;i<2048;i++){
+        Res[i] = Ch[i];
+        Res[2048+i] = Cl[i];
+    }
+    double EndReturn = SumK(Res,4096,10);
+    return EndReturn;
+}
+
+
+
+/// @brief Parallel rare blas dot product 
+/// @tparam T Float or Double
+/// @param a Vector
+/// @param b Vector 
+/// @param n Size
+template < class T > 
+T Par_rare_blas(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
     int mod = n%nb_threads;
     class std::vector<double> Result_global(nb_threads);
     
@@ -228,43 +445,6 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
     double final_result = SumK(Result_global,nb_threads,10);
     return final_result;
 }
-
-
-/// @brief Rare blas dot product using online exact
-/// @tparam T Float or Double
-/// @param a Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
-/// @param b Vector of dimension( 1 + ( N - 1 )*abs( incb ) )
-/// @param n Size
-/// @param res Result of a . b
-template < class T > 
-T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
-    int L=200;
-    class std::vector<T> tp1(n);
-    class std::vector<T> tp2(n);
-    class std::vector<T> Ch(2048);
-    class std::vector<T> Cl(2048);
-    class std::vector<T> Res(4096);
-    T error, result;
-
-    // Step 1.1
-    TwoProd(a,b,n,tp1,tp2);
-   
-    // Step 1.2
-    DoubleOnlineExact(tp1,tp2,n,Ch,Cl);
-
-    // Step 2
-    result = SumK(Ch,2048,10);
-    error = SumK(Cl,2048,10);
-    for (unsigned int i=0;i<2048;i++){
-        Res[i] = Ch[i];
-        Res[2048+i] = Cl[i];
-    }
-    double EndReturn = SumK(Res,4096,10);
-    return EndReturn;
-}
-
-
-
 
 
 
