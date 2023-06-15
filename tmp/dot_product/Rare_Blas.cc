@@ -75,8 +75,6 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
             size_local -= 1;
         }
         int end = start + size_local - 1 ;
-        // printf("Thread number %d    size : %d     start = %d        end = %d \n",LT,size_local,start,end);
-
         double* tp1 = new double[size_local];
         double* tp2 = new double[size_local];
         double* ah = new double[size_local];
@@ -92,10 +90,6 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
         }
         double* C = new double[4096];
         
-        double Res = 0.;
-        double Err = 0.;
-        double ph;
-        double pl;
         int exp;
         int E;
         double error;
@@ -127,9 +121,6 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
                 tp2[k] = al[k] * bl[k] - ((( tp1[k] - ah[k] * bh[k] ) - al[k] * bh[k] ) - ah[k] * bl[k]);
                 k = k+1;
             }
-                // Print
-            
-
         } // End Two Prod
 
         #pragma omp taskwait
@@ -152,31 +143,16 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
                 Cl[E] += error;
             }
             
-            // // Print
-            // for (unsigned int w = 0 ; w<2048;w++){
-            //     if (Cl[w] != 0) {
-            //         printf("Cl[%d] for thread number %d :  %.20f \n",w,LT,Cl[w]);
-            //     }
-            // }
-            // for (unsigned int w = 0 ; w<2048;w++){
-            //     if (Ch[w] != 0) {
-            //         printf("Ch[%d] for thread number %d :  %.20f \n",w,LT,Ch[w]);
-            //     }
-            // }
 
         } // End exponent accumulation
 
-        #pragma omp task depend (in:Cl,Ch) // Distillation and gather
+        #pragma omp task depend (in:Cl,Ch) // Gather
         {
             #pragma omp critical (gather)
             {
-            // printf("\n Thread %d \n",LT);
-            // Res
+
             for (unsigned int i = 0;i<2048;i++) {
                 // Result
-                // if ((Result_global[i] !=0) || (Ch[i] != 0 )){
-                // printf("Ch[%d] = %.40f et Res global[%d] = %.40f \n",i,Ch[i],i,Result_global[i]);
-                // }
                 TwoSum(Result_global[i], Ch[i],tmpdb,error);
                 Result_global[i] = tmpdb;
                 Error_global[i] += error;
