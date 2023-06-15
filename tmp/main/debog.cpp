@@ -87,7 +87,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     mpfr_set_d(res_mpfr,0,MPFR_RNDN);
  
     dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
-    // mpfr_printf(" \n \n EXACT RESULT : %.50Rg",res_mpfr);
+    mpfr_printf(" \n \nEXACT RESULT MPFR : %.70Rg\n",res_mpfr);
 
     ////////////////////////////////////////////////////////////////////
     /////////////////////// STANDARD DOT PRODUCT ///////////////////////
@@ -202,15 +202,15 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
 
 int main() {
-    int nb_gen = 100;
+    int nb_gen = 20;
     double sum = 20;
     int size = 100;
     double alpha = 0;
-    int sz_err = 20;
+    int sz_err = 1;
     int totsz = nb_gen * sz_err;
     class std::vector<double> VCond(sz_err);
-    // VCond = {50000};
-    VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
+    VCond = {50000};
+    // VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
 
     class std::vector<double> Error_standard(totsz);
     class std::vector<double> Error_par_standard(totsz);

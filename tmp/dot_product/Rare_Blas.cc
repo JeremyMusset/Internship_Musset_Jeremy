@@ -63,7 +63,8 @@ template void IFastSum<double>(std::vector<double> p, bool allowRec,double &res)
 template < class T > 
 T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
     int mod = n%nb_threads;
-    class std::vector<double> Result_global(nb_threads);
+    class std::vector<double> Result_global(4096);
+    class std::vector<double> Error_global(4096);
     
     #pragma omp parallel num_threads(nb_threads) shared(a,b)
     {
@@ -125,28 +126,9 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
                 // Error
                 tp2[k] = al[k] * bl[k] - ((( tp1[k] - ah[k] * bh[k] ) - al[k] * bh[k] ) - ah[k] * bl[k]);
                 k = k+1;
-
-                // Print
-                mpfr_t tmp1,tmp2;
-                mpfr_t *a1 = new mpfr_t[3];
-                mpfr_t *b1 = new mpfr_t[3];
-                mpfr_init2(tmp1, P);
-                mpfr_init2(tmp2, P);
-                mpfr_set_d(tmp1, 0, MPFR_RNDN);
-                mpfr_set_d(tmp2,0, MPFR_RNDN);
-                for (unsigned int i = 0; i < 3; i++){
-                    mpfr_init2(a1[i], P);
-                    mpfr_set_d(a1[i], tp1[i], MPFR_RNDN);
-                    mpfr_init2(b1[i], P);
-                    mpfr_set_d(b1[i], tp2[i], MPFR_RNDN);
-                } 
-
-                for (unsigned int i = 0; i < 3; i++){ 
-                    mpfr_add(tmp1,a1[i],tmp1,MPFR_RNDN);
-                    mpfr_add(tmp2,b1[i],tmp2,MPFR_RNDN);
-                } 
-                mpfr_add(tmp1,tmp2,tmp1,MPFR_RNDN);
             }
+                // Print
+            
 
         } // End Two Prod
 
@@ -169,12 +151,8 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
                 Ch[E] = tmpdb;
                 Cl[E] += error;
             }
-            for (unsigned int i = 0;i<2048;i++) {
-                C[i] = Ch[i];
-                C[2048+i] = Cl[i];
-            }
             
-            // Print
+            // // Print
             // for (unsigned int w = 0 ; w<2048;w++){
             //     if (Cl[w] != 0) {
             //         printf("Cl[%d] for thread number %d :  %.20f \n",w,LT,Cl[w]);
@@ -185,41 +163,30 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
             //         printf("Ch[%d] for thread number %d :  %.20f \n",w,LT,Ch[w]);
             //     }
             // }
-            // for (unsigned int w = 0 ; w<4096;w++){
-            //     if (C[w] != 0) {
-            //         printf("C[%d] for thread number %d :  %.20f \n",w,LT,C[w]);
-            //     }
-            // }
 
         } // End exponent accumulation
 
-        #pragma omp task depend (in:C,Res) depend(out:Res)  // Distillation
+        #pragma omp task depend (in:Cl,Ch) // Distillation and gather
         {
-       
+            #pragma omp critical (gather)
+            {
+            // printf("\n Thread %d \n",LT);
             // Res
-            int K = 10;
+            for (unsigned int i = 0;i<2048;i++) {
+                // Result
+                // if ((Result_global[i] !=0) || (Ch[i] != 0 )){
+                // printf("Ch[%d] = %.40f et Res global[%d] = %.40f \n",i,Ch[i],i,Result_global[i]);
+                // }
+                TwoSum(Result_global[i], Ch[i],tmpdb,error);
+                Result_global[i] = tmpdb;
+                Error_global[i] += error;
             
-            double* tmp1 = C;	
-            for(unsigned int k = 1 ; k <= K-1 ; k++){
-                for(unsigned int i = 1; i < 4096 ; i++){
-                    double tmp_res = 0, tmp_err = 0;
-                    TwoSum<double> (tmp1[i], tmp1[i-1], tmp_res, tmp_err);
-                    tmp1[i] = tmp_res; 
-                    tmp1[i-1] = tmp_err;
-                }
+                // Error 
+                TwoSum(Result_global[i], Cl[i],tmpdb,error);
+                Result_global[i] = tmpdb;
+                Error_global[i] += error;
+            }            
             }
-            for(unsigned int i = 0; i < 4096 ; i++){
-                Res += tmp1[i];
-            }
-
-            // Gather
-            Result_global[LT] = Res;
-
-
-            // Print
-            // printf("\nResult for thread number %d :  %.20f \n",omp_get_thread_num(),Res);
-            // printf("Error for thread number %d :  %.20f \n",omp_get_thread_num(),Err);
-            
 
         } // End distillation
 
@@ -227,8 +194,12 @@ T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threa
     } // End parrallel 
 
     // Final Distillation
-    double final_result = SumK(Result_global,nb_threads,10);
-
+    class std::vector<T> Res(8192);
+    for (unsigned int i=0;i<4096;i++){
+        Res[i] = Result_global[i];
+        Res[4096+i] = Error_global[i];
+    }
+    double final_result = SumK(Res,8192,10);
 
     return final_result;
 }
@@ -257,8 +228,6 @@ T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n){
     DoubleOnlineExact(tp1,tp2,n,Ch,Cl);
 
     // Step 2
-    result = SumK(Ch,2048,10);
-    error = SumK(Cl,2048,10);
     for (unsigned int i=0;i<2048;i++){
         Res[i] = Ch[i];
         Res[2048+i] = Cl[i];
