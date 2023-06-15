@@ -197,12 +197,12 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     struct timespec start_par_rare_blas, end_par_rare_blas,Min_start_par_rare_blas, Min_end_par_rare_blas;
     res_par_rare_blas = 0.0;
     // Cache warmup
-    res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
+    // res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
     for (unsigned int t=0; t<NB_EXEC;t++){
 
         clock_gettime(CLOCK_REALTIME,&Min_start_par_rare_blas); 
 
-        res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
+        // res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
 
         clock_gettime(CLOCK_REALTIME,&Min_end_par_rare_blas); 
         
@@ -263,14 +263,14 @@ int main() {
     class std::vector<double> Time(sz);
 
     // Time / Size
-    int sz_time = 14;
+    int sz_time = 20;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_par_standard(sz_time);
     class std::vector<double> Time_rare_blas(sz_time);
     class std::vector<double> Time_par_rare_blas(sz_time);
 
-    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000}; // 5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000  //,625000,750000,875000,1000000,1500000,2000000};
+    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000}; // 5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000  //,625000,750000,875000,1000000,1500000,2000000};
 
 
     int i = 0;
