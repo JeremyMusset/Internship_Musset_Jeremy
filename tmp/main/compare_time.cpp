@@ -115,7 +115,6 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
         }
         clock_gettime(CLOCK_REALTIME,&Min_end_standard); 
         time_tmp = ((Min_end_standard.tv_sec - Min_start_standard.tv_sec) * 1000000000 + (Min_end_standard.tv_nsec - Min_start_standard.tv_nsec) );
-        // printf("Vec %d / Exec %d : Time standard : %.20f \n",l,t,time_tmp);
         if (t==0){
             Min_Time_standard = time_tmp;
         }
@@ -179,7 +178,6 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
         clock_gettime(CLOCK_REALTIME,&Min_end_rare_blas); 
         
         time_tmp = ((Min_end_rare_blas.tv_sec - Min_start_rare_blas.tv_sec) * 1000000000 + (Min_end_rare_blas.tv_nsec - Min_start_rare_blas.tv_nsec) );
-        // printf("Vec %d / Exec %d : Time rare : %.20f \n",l,t,time_tmp);
         if (t==0){
             Min_Time_rare_blas = time_tmp;
         }
@@ -202,7 +200,7 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
 
         clock_gettime(CLOCK_REALTIME,&Min_start_par_rare_blas); 
 
-        // res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
+        res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,nb_threads);
 
         clock_gettime(CLOCK_REALTIME,&Min_end_par_rare_blas); 
         
@@ -263,14 +261,19 @@ int main() {
     class std::vector<double> Time(sz);
 
     // Time / Size
-    int sz_time = 20;
+    // int sz_time = 10;
+    int sz_time = 1;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_par_standard(sz_time);
     class std::vector<double> Time_rare_blas(sz_time);
     class std::vector<double> Time_par_rare_blas(sz_time);
 
-    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000}; // 5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000  //,625000,750000,875000,1000000,1500000,2000000};
+    // VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000}; 
+
+    VSize = {1750000};
+
+    // VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
 
 
     int i = 0;
@@ -318,49 +321,49 @@ int main() {
 
 
     int a;
-    printf("\nTime_standard = \n {");
+        // printf("\nTime_standard = \n {");
+        // for (a=0; a<sz_time;a++){
+        //     if(a == sz_time-1){
+        //         printf("%.10f",Time_standard[a]);
+        //     }
+        //     else{
+        //         printf("%.10f, ",Time_standard[a]);
+        //     }
+        // }
+        // printf("};\n");
+
+    printf("\nTime_par_standard = \n {");
     for (a=0; a<sz_time;a++){
         if(a == sz_time-1){
-            printf("%.10f",Time_standard[a]);
+            printf("%.10f",Time_par_standard[a]);
         }
         else{
-            printf("%.10f, ",Time_standard[a]);
+            printf("%.10f, ",Time_par_standard[a]);
         }
     }
     printf("};\n");
 
-    // printf("\nTime_par_standard = \n {");
+    // printf("\nTime_rare_blas = \n {");
     // for (a=0; a<sz_time;a++){
     //     if(a == sz_time-1){
-    //         printf("%.10f",Time_par_standard[a]);
+    //         printf("%.10f",Time_rare_blas[a]);
     //     }
     //     else{
-    //         printf("%.10f, ",Time_par_standard[a]);
+    //         printf("%.10f, ",Time_rare_blas[a]);
     //     }
     // }
     // printf("};\n");
 
-    printf("\nTime_rare_blas = \n {");
+    printf("\nTime_par_rare_blas = \n {");
     for (a=0; a<sz_time;a++){
         if(a == sz_time-1){
-            printf("%.10f",Time_rare_blas[a]);
+            printf("%.10f",Time_par_rare_blas[a]);
         }
         else{
-            printf("%.10f, ",Time_rare_blas[a]);
+            printf("%.10f, ",Time_par_rare_blas[a]);
         }
     }
     printf("};\n");
-
-    // printf("\nTime_par_rare_blas = \n {");
-    // for (a=0; a<sz_time;a++){
-    //     if(a == sz_time-1){
-    //         printf("%.10f",Time_par_rare_blas[a]);
-    //     }
-    //     else{
-    //         printf("%.10f, ",Time_par_rare_blas[a]);
-    //     }
-    // }
-    // printf("};\n");
 
 
     return 0;

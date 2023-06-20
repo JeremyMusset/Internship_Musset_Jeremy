@@ -87,7 +87,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     mpfr_set_d(res_mpfr,0,MPFR_RNDN);
  
     dot_prod_mpfr(n,a_mpfr,b_mpfr,res_mpfr);
-    mpfr_printf(" \n \nEXACT RESULT MPFR : %.70Rg\n",res_mpfr);
+    // mpfr_printf(" \n \nEXACT RESULT MPFR : %.70Rg\n",res_mpfr);
 
     ////////////////////////////////////////////////////////////////////
     /////////////////////// STANDARD DOT PRODUCT ///////////////////////
@@ -175,14 +175,12 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
         printf("\nVec number %d : err = %.30f \n",l,Err_par_rare_blas);
         printf("Correct rounding = %.70f \n",d_correct);
         printf("Res par rare     = %.70f \n",l,res_par_rare_blas);
-        // printf("a = \n");
-        // for (unsigned int i=0;i<n;i++){
-        //     printf("%.50f \n",a[i]);
-        // }
-        // printf("\nb = \n");
-        // for (unsigned int i=0;i<n;i++){
-        //     printf("%.50f \n",b[i]);
-        // }
+        
+    }
+    if (Err_rare_blas != 0) {
+        printf("\nVec number %d : err = %.30f \n",l,Err_par_rare_blas);
+        printf("Correct rounding = %.70f \n",d_correct);
+        printf("Res rare         = %.70f \n",l,res_rare_blas);
         
     }
     // Save result
@@ -206,11 +204,11 @@ int main() {
     double sum = 20;
     int size = 100;
     double alpha = 0;
-    int sz_err = 1;
+    int sz_err = 20;
     int totsz = nb_gen * sz_err;
     class std::vector<double> VCond(sz_err);
-    VCond = {50000};
-    // VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
+    // VCond = {50000};
+    VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
 
     class std::vector<double> Error_standard(totsz);
     class std::vector<double> Error_par_standard(totsz);
@@ -229,7 +227,7 @@ int main() {
     for (k = VCond.begin(); k != VCond.end(); k++){
         printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
-        // vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
+        vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);                             
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
     }

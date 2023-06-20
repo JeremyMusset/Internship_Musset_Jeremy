@@ -63,8 +63,8 @@ template void IFastSum<double>(std::vector<double> p, bool allowRec,double &res)
 template < class T > 
 T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
     int mod = n%nb_threads;
-    class std::vector<double> Result_global(4096);
-    class std::vector<double> Error_global(4096);
+    double* Result_global = new double[4096];
+    double* Error_global = new double [4096];
     
     #pragma omp parallel num_threads(nb_threads) shared(a,b)
     {

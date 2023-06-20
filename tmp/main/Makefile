@@ -1,5 +1,5 @@
 compilecomparetime : 
-	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time.cpp -o compare_time -w -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time.cpp -o compare_time -w  -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
 
 comparetime : compilecomparetime 	
 	./compare_time
@@ -26,7 +26,7 @@ pycond : compilepycond
 	./compare_cond_py
 
 compiledeb : 
-	g++ -O0 ../generation/*.cc ../dot_product/*.cc debog.cpp -o debog -w -lmpfr -fopenmp -lm 
+	g++ -O0 ../generation/*.cc ../dot_product/*.cc debog.cpp -o debog -w -O3 -lmpfr -fopenmp -lm 
 
 deb : compiledeb	
 	./debog
