@@ -11,6 +11,12 @@
 #include <time.h>
 
 template < class T > 
+T Ozaki(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+
+template < class T > 
+void Split_Ozaki(std::vector<T> x,int n, int &sx, std::vector<std::vector<T>> &xsplit);
+
+template < class T > 
 T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
 
 template < class T > 

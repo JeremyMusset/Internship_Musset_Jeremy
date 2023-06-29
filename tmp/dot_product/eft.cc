@@ -184,3 +184,42 @@ void TwoMultFMA(T a, T b, T &p, T &e)
   p = a*b;
   e = FMA(a,b,-p);
 }
+
+
+// Fast two sum
+/// @brief Function Fast two sum
+/// @tparam T Float or Double
+/// @param a T
+/// @param b T
+/// @param n Size
+/// @param s solution
+/// @param err error
+template < class T >
+void Transform(std::vector<T> p,T q, T &t1, T &t2, T &pm, std::vector<T> &si , T &M)
+{
+  double phi = 1;
+
+  auto maxElement = std::max_element(x.begin(), x.end());
+  double maxValue = *maxElement;
+  double mu  = std::abs(maxValue); 
+
+  if (mu == 0){
+    t1 = q;
+    t2 = 0;
+    pm = 0;
+    si = 0;
+    return ;
+  }
+
+  M = log2(p.size() + 2);
+  
+  si[0] = std::pow(2,M + std::ceil(log2(u)));
+
+  std::vector<T> t;
+  int m = 0;
+  whyle (std::abs(t[m]) >= 
+
+
+
+
+}

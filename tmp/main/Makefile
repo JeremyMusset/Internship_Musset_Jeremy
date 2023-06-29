@@ -1,7 +1,7 @@
 compilecomparetime : 
-	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time.cpp -o compare_time -w  -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time.cpp -o compare_time -w -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
 
-comparetime : compilecomparetime 	
+time : compilecomparetime 	
 	./compare_time
 
 compilecomparecond : 
@@ -50,3 +50,11 @@ compileptime :
 
 ptime : compileptime 	
 	./print_time
+
+
+
+compilepycondo : 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_cond_o.cpp -o compare_cond_o -w -lpython3.10 -lQt5Widgets -lmpfr -fopenmp -lm 
+
+condo : compilepycondo
+	./compare_cond_o

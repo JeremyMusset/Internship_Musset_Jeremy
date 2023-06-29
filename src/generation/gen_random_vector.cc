@@ -522,7 +522,7 @@ void vec_gen_random(int nb_gen,int size,int q){
     std::uniform_real_distribution<double> dis(-1e150, 1e150);
 
       // Générer un nombre aléatoire
-      data[i] = dist(gen);
+      data[i] = dis(gen);
     }  
 
     // for (unsigned int i = 0; i < size; i++){

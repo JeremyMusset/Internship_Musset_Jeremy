@@ -115,52 +115,61 @@ int main() {
     }
 
 
-    // Log
-    class std::vector<double> T1(2);
-    class std::vector<double> T2(2);
-    T1[0] = VSize[0];
-    T1[1] = VSize[sz_time - 1];
-    T2[0] = Time_standard[0];
-    T2[1] = Time_standard[sz_time -1];
-    plt::loglog(T1,T2,"white");
+    // // Log
+    // class std::vector<double> T1(2);
+    // class std::vector<double> T2(2);
+    // T1[0] = VSize[0];
+    // T1[1] = VSize[sz_time - 1];
+    // T2[0] = Time_standard[0];
+    // T2[1] = Time_standard[sz_time -1];
+    // plt::loglog(T1,T2,"white");
 
-    plt::plot(VSize,Time_standard,{{"color", "#09ED1A"},{"label", "Standard"}});
-    // plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
-    // plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
-    // plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
-    plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
-    plt::plot(VSize,Time_blaspp,{{"color", "y"},{"label", "BLASPP"}});
+    // // plt::plot(VSize,Time_standard,{{"color", "#09ED1A"},{"label", "Standard"}});
+    // // plt::plot(VSize,Time_common,{{"color", "#00A1FF"},{"label", "Common"}});
+    // // plt::plot(VSize,Time_par_standard,{{"color", "#126A09"},{"label", "Parallel standard "}});      // #A4F99B
+    // // plt::plot(VSize,Time_par_common,{{"color", "#2F1AB5"},{"label", "Parallel common "}});          // #9BADF9
+    // // plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "MKL"}});
+    // // plt::plot(VSize,Time_blaspp,{{"color", "y"},{"label", "BLASPP"}});
 
-    // plt::plot(VSize,Time_par_standard4,{{"color", "#1FEC18"},{"label", "Parallel standard 4 threads"}});
-    // plt::plot(VSize,Time_par_common4,{{"color", "#318FED"},{"label", "Parallel common 4 threads"}});
-    // plt::plot(VSize,Time_par_standard8,{{"color", "#1D9B18"},{"label", "Parallel standard 8 threads"}});
-    // plt::plot(VSize,Time_par_common8,{{"color", "#2B67A4"},{"label", "Parallel common 8 threads"}});
-    // plt::plot(VSize,Time_par_standard16,{{"color", "#176414"},{"label", "Parallel standard 16 threads"}});
-    // plt::plot(VSize,Time_par_common16,{{"color", "#00197E"},{"label", "Parallel common 16 threads"}});
+    // // plt::plot(VSize,Time_par_standard4,{{"color", "#1FEC18"},{"label", "Parallel standard 4 threads"}});
+    // // plt::plot(VSize,Time_par_common4,{{"color", "#318FED"},{"label", "Parallel common 4 threads"}});
+    // // plt::plot(VSize,Time_par_standard8,{{"color", "#1D9B18"},{"label", "Parallel standard 8 threads"}});
+    // // plt::plot(VSize,Time_par_common8,{{"color", "#2B67A4"},{"label", "Parallel common 8 threads"}});
+    // // plt::plot(VSize,Time_par_standard16,{{"color", "#176414"},{"label", "Parallel standard 16 threads"}});
+    // // plt::plot(VSize,Time_par_common16,{{"color", "#00197E"},{"label", "Parallel common 16 threads"}});
     
     
-    // Caches
-    std::vector<double> cachesL1 = {18000, 18000};
-    std::vector<double> cachesL2 = {468750, 468750};
-    std::vector<double> cachesL3 = {750000, 750000};
-    std::vector<double> heights = {0,20};
-    double height = 20;
+    // // Caches
+    // std::vector<double> cachesL1 = {18000, 18000};
+    // std::vector<double> cachesL2 = {468750, 468750};
+    // std::vector<double> cachesL3 = {750000, 750000};
+    // std::vector<double> heights = {0,20};
+    // double height = 20;
 
-    // Tracé des lignes verticales
-    // plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
-    // plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
-    // plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
-
-
-    plt::title("Time of execution according to size");
-    plt::xlabel("Size of vector");
-    plt::ylabel("Time (in ns)");
+    // // Tracé des lignes verticales
+    // // plt::plot(cachesL1,heights,{{"linestyle","--"},{"label", "L1d Cache"}});
+    // // plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
+    // // plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
 
 
-    plt::legend();    
-    plt::show();
+    // plt::title("Time of execution according to size");
+    // plt::xlabel("Size of vector");
+    // plt::ylabel("Time (in ns)");
 
-    
 
+    // plt::legend();    
+    // plt::show();
+
+    int a;
+printf("\nTime_mkl= \n {");
+    for (a=0; a<sz_time;a++){
+        if(a == sz_time-1){
+            printf("%.10f",Time_mkl[a]);
+        }
+        else{
+            printf("%.10f, ",Time_mkl[a]);
+        }
+    }
+    printf("};\n");
     return 0;
 }
