@@ -21,7 +21,7 @@ template < class T >
 void compare_dot_prod_fma(int n,double required_cond, int nb_gen, double sum, class std::vector<T> &Time, class std::vector<mpfr_t> &Error, int q, int nb_threads);
 
 template < class T >
-void compare_cond_o(int n, double required_cond, int nb_gen, double sum, std::vector<T> &Error_standard, std::vector<T> &Error_par_standard, std::vector<T> &Error_ozaki, int q, int nb, int nb_threads);
+void compare_cond_o(int n, double required_cond, int nb_gen, double sum, std::vector<T> &Error_standard, std::vector<T> &Error_par_standard, std::vector<T> &Error_ozaki, std::vector<T> &Error_par_ozaki, int q, int nb, int nb_threads);
 
 
 template < class T >

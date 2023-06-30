@@ -380,7 +380,7 @@ T Par_rare_blas(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
             // printf("Error for thread number %d :  %.20f \n",omp_get_thread_num(),Err);
             
 
-        } // End distillation
+        } // End gather
 
         
     } // End parrallel 

@@ -14,7 +14,11 @@ template < class T >
 T Ozaki(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
 
 template < class T > 
+T Ozaki_par(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+
+template < class T > 
 void Split_Ozaki(std::vector<T> x,int n, int &sx, std::vector<std::vector<T>> &xsplit);
+
 
 template < class T > 
 T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
@@ -84,4 +88,20 @@ T magn(T f);
 
 template < class T >
 bool half_ulp(T val);
+
+template < class T > 
+void Transform(std::vector<std::vector<T>> p,T g, T &T1, T &T2, std::vector<T> &p2, T &sigma , T &M);
+
+template < class T > 
+void TransformK(std::vector<std::vector<T>> p,T g, T &res, T &R, std::vector<T> &p2);
+
+template < class T > 
+void NearSum(std::vector<T> p, T &resN);
+
+template < class T > 
+void Extract_vector(std::vector<T> p,T sigma, std::vector<T> &p2, T &Tau);
+
+template < class T > 
+T pred(T f);
+
 

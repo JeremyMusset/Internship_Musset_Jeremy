@@ -17,7 +17,7 @@ namespace plt = matplotlibcpp;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template
-void compare_cond_o<double>(int n, double required_cond, int nb_gen, double sum, std::vector<double> &Error_standard, std::vector<double> &Error_par_standard, std::vector<double> &Error_ozaki, int q, int nb, int nb_threads);
+void compare_cond_o<double>(int n, double required_cond, int nb_gen, double sum, std::vector<double> &Error_standard, std::vector<double> &Error_par_standard, std::vector<double> &Error_ozaki, std::vector<double> &Error_par_ozaki, int q, int nb, int nb_threads);
 
 
 /// @brief give error according to the cond
@@ -32,14 +32,14 @@ void compare_cond_o<double>(int n, double required_cond, int nb_gen, double sum,
 /// @param q position of program
 /// @param nb position into cond vector
 template < class T >
-void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::vector<T> &Error_standard, std::vector<T> &Error_par_standard, std::vector<T> &Error_ozaki, int q, int nb, int nb_threads){
+void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::vector<T> &Error_standard, std::vector<T> &Error_par_standard, std::vector<T> &Error_ozaki, std::vector<T> &Error_par_ozaki, int q, int nb, int nb_threads){
 
     class std::vector<double> a(n);
     class std::vector<double> b(n);
 
     // We execute dot product on the nb_gen files
     for (unsigned int l=0;l<nb_gen;l++){
-    double Err_standard, Err_par_standard, Err_ozaki;
+    double Err_standard, Err_par_standard, Err_ozaki, Err_par_ozaki;
 
 
 
@@ -54,10 +54,12 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
     for (unsigned int i=0;i<n;i++){
         a[i] = vec[i+1];
         b[i] = vec[n+1+i]; 
+         printf("%.20f \n",a[i]);
     }
+    printf("\n\n");
     
 
-    double res_standard ,res_par_standard, res_ozaki;
+    double res_standard ,res_par_standard, res_ozaki,res_par_ozaki;
 
     //////////////////////////////////////////////////////////////////
     //////////////////////// MPFR_dot product ////////////////////////
@@ -106,6 +108,13 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
 
     res_ozaki = 0.0;
     res_ozaki = Ozaki(a,b,n,nb_threads);
+
+    ////////////////////////////////////////////////////////////////////
+    ////////////////// PARALLEL OZAKI DOT PRODUCT //////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    res_par_ozaki = 0.0;
+    res_par_ozaki = Ozaki_par(a,b,n,nb_threads);
     
     double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
     
@@ -136,6 +145,10 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
     Err_ozaki = Err_ozaki/d_correct;
     Err_ozaki = abs(Err_ozaki);
 
+    Err_par_ozaki = d_correct - res_par_ozaki;
+    Err_par_ozaki = Err_par_ozaki/d_correct;
+    Err_par_ozaki = abs(Err_par_ozaki);
+
     // mpfr_t tmp1,tmp2,restmp;
     // mpfr_init2(tmp1, P);
     // mpfr_set_d(tmp1, d_correct, MPFR_RNDN);
@@ -144,12 +157,13 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
     // mpfr_sub(restmp,tmp1,tmp2,MPFR_RNDN);
     // mpfr_printf("TEEESSSTTT : %.30Rg \n",restmp);
 
-    printf("\n !!! Vec number %d :\nres   = %.30f\nOzaki = %.30f\nerr = %.30f \n\n",l,d_correct,res_ozaki,Err_ozaki);
+    printf("\n !!! Vec number %d :\nres   = %.30f\nParallel Ozaki = %.30f\nerr = %.30f \n\n",l,d_correct,res_par_ozaki,Err_par_ozaki);
     
     // Save result
     Error_standard[indice] = Err_standard;
     Error_par_standard[indice] = Err_par_standard;
     Error_ozaki[indice] = Err_ozaki;
+    Error_par_ozaki[indice] = Err_par_ozaki;
     }
 }
 
@@ -165,7 +179,7 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
 int main() {
     int nb_gen = 2;
     double sum = 200;
-    int size = 10;
+    int size = 4;
 
 
     int sz_err = 1;
@@ -175,13 +189,14 @@ int main() {
     class std::vector<double> Error_standard(sz_err*nb_gen);
     class std::vector<double> Error_par_standard(sz_err*nb_gen);
     class std::vector<double> Error_ozaki(sz_err*nb_gen);
+    class std::vector<double> Error_par_ozaki(sz_err*nb_gen);
     class std::vector<double> tmp(sz_err*nb_gen);
 
     // Real conditioning
     int totsz = nb_gen * sz_err;
     class std::vector<double> RCond(totsz);
     
-    int nb_threads = 8;
+    int nb_threads = 2;
     int alpha;
     int i = 0;
     vector<double>::iterator k;
@@ -189,7 +204,7 @@ int main() {
         printf("\n __________________________________________ COND = %f __________________________________________\n",*k);
         // Exec dot prod
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
-        compare_cond_o(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_ozaki,1,i,nb_threads); 
+        compare_cond_o(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_ozaki,Error_par_ozaki,1,i,nb_threads); 
         i += 1;
        
     }
@@ -349,10 +364,21 @@ int main() {
     printf("\nError_ozaki    = [");
     for (a=0; a<totsz;a++){
         if(a == totsz-1){
-            printf("%.30f",Error_ozaki[a]);
+            printf("%.50f",Error_ozaki[a]);
         }
         else{
-            printf("%.30f, ",Error_ozaki[a]);
+            printf("%.50f, ",Error_ozaki[a]);
+        }
+    }
+    printf("]\n\n");
+
+    printf("\nError_par_ozaki    = [");
+    for (a=0; a<totsz;a++){
+        if(a == totsz-1){
+            printf("%.50f",Error_par_ozaki[a]);
+        }
+        else{
+            printf("%.50f, ",Error_par_ozaki[a]);
         }
     }
     printf("]\n\n");
@@ -367,6 +393,10 @@ int main() {
     // printf("\nmoy_ozaki = [ %.30f]\n",ozaki_moyenne);
 
 
-
+    // std::vector<double> t1 = {0,1,2,5};
+    // double resnear;
+    // NearSum(t1,resnear);
+    // printf("Result near : %.20f\n",resnear);
+    
     return 0;
 }

@@ -32,7 +32,17 @@ double FMA<double>(double a, double b, double c);
 template
 void TwoMultFMA<double>(double a, double b, double &p, double &e);
 
+template
+void Transform<double>(std::vector<std::vector<double>> p, double g, double& T1, double& T2,std::vector<double> &p2, double& sigma, double& M);
 
+template
+void TransformK<double>(std::vector<std::vector<double>> p, double g, double& res, double& R,std::vector<double> &p2);
+
+template
+void NearSum<double>(std::vector<double> p,double &resN);
+
+template
+double pred<double>(double f);
 
 template < class T >
 T inline round(T x){
@@ -186,40 +196,175 @@ void TwoMultFMA(T a, T b, T &p, T &e)
 }
 
 
-// Fast two sum
-/// @brief Function Fast two sum
-/// @tparam T Float or Double
-/// @param a T
-/// @param b T
-/// @param n Size
-/// @param s solution
-/// @param err error
-template < class T >
-void Transform(std::vector<T> p,T q, T &t1, T &t2, T &pm, std::vector<T> &si , T &M)
-{
-  double phi = 1;
 
-  auto maxElement = std::max_element(x.begin(), x.end());
+template void Extract_vector<double>(std::vector<double> p,double sigma, std::vector<double> &p2, double &Tau);
+
+// Extract vector
+/// @brief Function Extract vector
+/// @tparam T Float or Double
+/// @param p vector
+/// @param sigma double
+/// @param p return vector
+/// @param Tau double return
+template < class T >
+void Extract_vector(std::vector<T> p,T sigma, std::vector<T> &p2, T &Tau)
+{
+  std::vector<T> q;
+  Tau = 0;
+  int n = p.size();
+  for (unsigned int i = 0;i<n;i++) {
+    q[i] = sigma + p[i] - sigma;
+    p2[i] = p[i] - q[i];
+    Tau += q[i];
+  }
+}
+
+
+
+// Transform
+/// @brief Function Transform
+/// @tparam T Float or Double
+/// @param p vector
+/// @param g double
+/// @param T1 return
+/// @param T2 return
+/// @param sigma return
+/// @param M return
+template < class T >
+void Transform(std::vector<std::vector<T>> p,T g, T &T1, T &T2, std::vector<T> &p2, T &sigma , T &M)
+{
+  double eps = std::pow(2,-53);
+  double eta = std::pow(2,-1074);
+  double n = p[0].size();
+  auto maxElement = std::max_element(p[0].begin(), p[0].end());
   double maxValue = *maxElement;
   double mu  = std::abs(maxValue); 
 
   if (mu == 0){
-    t1 = q;
-    t2 = 0;
-    pm = 0;
-    si = 0;
+    T1 = g;
+    T2 = 0;
+    sigma = 0;
+    for (unsigned int i =0;i<n;i++) {
+      p[0][i] = 0;
+    }
     return ;
   }
 
-  M = log2(p.size() + 2);
-  
-  si[0] = std::pow(2,M + std::ceil(log2(u)));
+  M = log2(n + 2);
+  double phi = std::pow(2,2*M) * eps;
 
   std::vector<T> t;
+  std::vector<T> si;
+  std::vector<T> Tau;
+  t[0] = g;
+  si[0] = std::pow(2,M + std::ceil(log2(mu)));
   int m = 0;
-  whyle (std::abs(t[m]) >= 
+  while ((std::abs(t[m]) < phi*si[m] || si[m] > 0.5*eta/eps) ){
+    p.push_back(std::vector<double>(n));
+    m = m + 1;
+    Extract_vector(p[m-1],si[m-1],p[m],Tau[m]);
+    t[m] = t[m-1] + Tau[m];
+    si[m] = pow(2,M) * eps * si[m-1];
+  }
+  sigma = si[m-1];
+  FastTwoSum(t[m-1],Tau[m],T1,T2);
+}
 
 
 
 
+// TransformK
+/// @brief Function TransformK
+/// @tparam T Float or Double
+/// @param p vector
+/// @param g double
+/// @param res return double
+/// @param R return double
+/// @param p2 return vector
+template < class T >
+void TransformK(std::vector<std::vector<T>> p,T g, T &res, T &R, std::vector<T> &p2)
+{
+  int n = p[0].size();
+  double T1, T2, sigma,M;
+  Transform(p,g,T1,T2,p2,sigma,M);
+  res = 0.0;
+  for (unsigned int i = 0;i<n;i++){
+    res += p2[i];
+  }
+  res += T2;
+  res += T1;
+  R = T2 - (res - T1);
+}
+
+
+
+
+// NearSum function
+/// @brief Function Fast two sum
+/// @tparam T Float or Double
+/// @param p vector
+/// @param resN result
+template < class T >
+void NearSum(std::vector<T> p,T &resN)
+{
+  double eps = std::pow(2,-53);
+  double eta = std::pow(2,-1074);
+  double T1, T2, res, delta, delta1, delta2, gamma, R, sigma,M;
+  std::vector<std::vector<T>> pp;
+  pp[0] = p;
+  std::vector<T> p2;
+  Transform(pp,0.0,T1,T2,p2,sigma,M);
+  double T2p = T2;
+  int n = p.size();
+  for (unsigned int i=0; i<n;i++){
+    T2p += p2[i];
+  }
+
+  FastTwoSum(T1,T2p,res,delta);
+
+  if (delta == 0) {
+    resN = res;
+    return ;
+  }
+  T tmp;
+  std::vector<T> vtmp;
+  std::vector<std::vector<T>> ptmp;
+  R = T2 - (res-T1);
+  if (delta < 0){
+    gamma = pred(res) - res;
+    if (gamma == -1 * eta){
+      resN = res;
+      return ;
+    }
+    delta1 = gamma / 2;
+    ptmp[0] = p2;
+    TransformK(ptmp,R-delta1,delta2,tmp,vtmp);
+    if (delta2 > 0){
+      resN = res;
+    }
+    else {
+      if (delta2 > 0){
+        resN=pred(res);
+      }
+      else{
+        resN = res + delta1;
+      }
+    }
+  
+  
+  }
+
+}
+
+
+
+// pred
+/// @brief give the float pred 
+/// @tparam T Float or Double
+/// @param f argumennt
+template < class T >
+T pred(T f)
+{
+  T previous = std::nextafter(f, -std::numeric_limits<T>::infinity());
+  return previous;
 }

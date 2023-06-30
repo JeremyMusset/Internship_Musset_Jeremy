@@ -65,6 +65,7 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     for (unsigned int i=0;i<n;i++){
         a[i] = vec[i+1];
         b[i] = vec[n+1+i]; 
+       
     }
     double res_standard, res_par_standard, res_rare_blas, res_par_rare_blas, res_ozaki, res_par_ozaki;
 
@@ -250,12 +251,12 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     struct timespec start_par_ozaki, end_par_ozaki,Min_start_par_ozaki, Min_end_par_ozaki;
     res_par_ozaki = 0.0;
     // Cache warmup
-    res_par_ozaki = Ozaki(a,b,n,nb_threads);
+    res_par_ozaki = Ozaki_par(a,b,n,nb_threads);
     for (unsigned int t=0; t<NB_EXEC;t++){
 
         clock_gettime(CLOCK_REALTIME,&Min_start_par_ozaki); 
 
-        res_par_ozaki = Ozaki(a,b,n,nb_threads);
+        res_par_ozaki = Ozaki_par(a,b,n,nb_threads);
 
         clock_gettime(CLOCK_REALTIME,&Min_end_par_ozaki); 
         
@@ -332,7 +333,7 @@ int main() {
     class std::vector<double> Time(sz);
 
     // Time / Size
-    int sz_time = 14;
+    int sz_time = 9;
     // int sz_time = 1;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
@@ -342,7 +343,7 @@ int main() {
     class std::vector<double> Time_ozaki(sz_time);
     class std::vector<double> Time_par_ozaki(sz_time);
 
-    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000}; 
+    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000}; // 100000,200000,300000,400000,500000}; 
 
     // VSize = {175000};
 
@@ -434,16 +435,16 @@ int main() {
     }
     printf("};\n");
 
-    // printf("\nTime_par_ozaki = \n {");
-    // for (a=0; a<sz_time;a++){
-    //     if(a == sz_time-1){
-    //         printf("%.10f",Time_par_ozaki[a]);
-    //     }
-    //     else{
-    //         printf("%.10f, ",Time_par_ozaki[a]);
-    //     }
-    // }
-    // printf("};\n");
+    printf("\nTime_par_ozaki = \n {");
+    for (a=0; a<sz_time;a++){
+        if(a == sz_time-1){
+            printf("%.10f",Time_par_ozaki[a]);
+        }
+        else{
+            printf("%.10f, ",Time_par_ozaki[a]);
+        }
+    }
+    printf("};\n");
 
 
     return 0;
