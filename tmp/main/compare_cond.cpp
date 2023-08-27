@@ -226,10 +226,10 @@ int main() {
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
-        printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);
-        printf("Err parallel standard dot prod   : %.30f \n",Error_par_standard[i*nb_gen-1]);
-        printf("Err sequential RARE              : %.30f\n",Error_rare_blas[i*nb_gen-1]);
-        printf("Err parallel  RARE          : %.30f\n\n",Error_par_rare_blas[i*nb_gen-1]);
+        // printf("Err sequential standard dot prod : %.30f \n",Error_standard[i*nb_gen-1]);
+        // printf("Err parallel standard dot prod   : %.30f \n",Error_par_standard[i*nb_gen-1]);
+        // printf("Err sequential RARE              : %.30f\n",Error_rare_blas[i*nb_gen-1]);
+        // printf("Err parallel  RARE          : %.30f\n\n",Error_par_rare_blas[i*nb_gen-1]);
        
     }
 
@@ -393,20 +393,20 @@ int main() {
 
 
 
-    printf("\n\n########################## Conditionning ##########################  \n\n");
+    // printf("\n\n########################## Conditionning ##########################  \n\n");
 
-    printf("Average conditioning : %.30f\n",moyenne_cond);
-    printf("First quartile conditioning : %.30f\n",prem_quart_cond);
-    printf("Medianne conditioning : %.30f\n",medianne_cond);
-    printf("Third quartile conditioning : %.30f\n",trois_quart_cond);
+    // printf("Average conditioning : %.30f\n",moyenne_cond);
+    // printf("First quartile conditioning : %.30f\n",prem_quart_cond);
+    // printf("Medianne conditioning : %.30f\n",medianne_cond);
+    // printf("Third quartile conditioning : %.30f\n",trois_quart_cond);
 
-    printf("\n\n########################## Error ##########################  \n\n");
+    // printf("\n\n########################## Error ##########################  \n\n");
 
-    printf("Average error : %.30f\n",moyenne_err);
-    printf("Average par error : %.30f\n",par_standard_moyenne);
-    printf("First quartile error : %.30f\n",prem_quart_err);
-    printf("Medianne error : %.30f\n",medianne_err);
-    printf("Third quartile error : %.30f\n",trois_quart_err);
+    // printf("Average error : %.30f\n",moyenne_err);
+    // printf("Average par error : %.30f\n",par_standard_moyenne);
+    // printf("First quartile error : %.30f\n",prem_quart_err);
+    // printf("Medianne error : %.30f\n",medianne_err);
+    // printf("Third quartile error : %.30f\n",trois_quart_err);
  /*
     // Log
     class std::vector<double> T1(2);
@@ -479,19 +479,19 @@ int main() {
 */
     printf("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n ");
     int a;
-    printf("\n // COND  \n");
-    printf("\nRCond = \n {");
-    for (a=0; a<totsz;a++){
-        if(a == totsz-1){
-            printf("%.30f",RCond[a]);
-        }
-        else{
-            printf("%.30f, ",RCond[a]);
-        }
-    }
-    printf("};\n");
-    printf("\nquartile_cond = \n { %.30f, %.30f, %.30f};\n",prem_quart_cond, medianne_cond, trois_quart_cond);
-    printf("\n\nmoy_cond = \n { %.30f};\n",moyenne_cond);
+    // printf("\n // COND  \n");
+    // printf("\nRCond = \n {");
+    // for (a=0; a<totsz;a++){
+    //     if(a == totsz-1){
+    //         printf("%.30f",RCond[a]);
+    //     }
+    //     else{
+    //         printf("%.30f, ",RCond[a]);
+    //     }
+    // }
+    // printf("};\n");
+    // printf("\nquartile_cond = \n { %.30f, %.30f, %.30f};\n",prem_quart_cond, medianne_cond, trois_quart_cond);
+    // printf("\n\nmoy_cond = \n { %.30f};\n",moyenne_cond);
 
 
     printf("\n // ERROR \n");
@@ -537,17 +537,17 @@ int main() {
             printf("%.30f, ",Error_par_rare_blas[a]);
         }
     }
-    printf("};\n");
-    printf("\n // QUARTILE \n");
-    printf("\nquartile_err = \n { %.30f, %.30f, %.30f};\n",prem_quart_err, medianne_err, trois_quart_err);
-    printf("\nquartile_par_standard = \n { %.30f, %.30f, %.30f};\n",par_standard_prem_quart, par_standard_medianne, par_standard_trois_quart);
-    printf("\nquartile_rare_blas = \n { %.30f, %.30f, %.30f};\n",rare_blas_prem_quart, rare_blas_medianne, rare_blas_trois_quart);
-    printf("\nquartile_par_rare_blas = \n { %.30f, %.30f, %.30f};\n",par_rare_blas_prem_quart, par_rare_blas_medianne, par_rare_blas_trois_quart);
-    printf("\n // MOYENNE \n");
-    printf("\n\nmoy_err= \n { %.30f};\n",moyenne_err);
-    printf("\nmoy_par_standard = \n { %.30f};\n",par_standard_moyenne);
-    printf("\nmoy_rare = \n { %.30f};\n",rare_blas_moyenne);
-    printf("\nmoy_par_rare= \n { %.30f};\n",par_rare_blas_moyenne);
+    // printf("};\n");
+    // printf("\n // QUARTILE \n");
+    // printf("\nquartile_err = \n { %.30f, %.30f, %.30f};\n",prem_quart_err, medianne_err, trois_quart_err);
+    // printf("\nquartile_par_standard = \n { %.30f, %.30f, %.30f};\n",par_standard_prem_quart, par_standard_medianne, par_standard_trois_quart);
+    // printf("\nquartile_rare_blas = \n { %.30f, %.30f, %.30f};\n",rare_blas_prem_quart, rare_blas_medianne, rare_blas_trois_quart);
+    // printf("\nquartile_par_rare_blas = \n { %.30f, %.30f, %.30f};\n",par_rare_blas_prem_quart, par_rare_blas_medianne, par_rare_blas_trois_quart);
+    // printf("\n // MOYENNE \n");
+    // printf("\n\nmoy_err= \n { %.30f};\n",moyenne_err);
+    // printf("\nmoy_par_standard = \n { %.30f};\n",par_standard_moyenne);
+    // printf("\nmoy_rare = \n { %.30f};\n",rare_blas_moyenne);
+    // printf("\nmoy_par_rare= \n { %.30f};\n",par_rare_blas_moyenne);
 
 
 

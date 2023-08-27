@@ -14,17 +14,21 @@ template < class T >
 T Ozaki(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
 
 template < class T > 
-T Ozaki_par(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+T Ozaki_par_t(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+
+template < class T > 
+T Ozaki_par_e(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
 
 template < class T > 
 void Split_Ozaki(std::vector<T> x,int n, int &sx, std::vector<std::vector<T>> &xsplit);
 
 
 template < class T > 
-T Par_rare_blas_dot_prod(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
+T Par_rare_blas_2(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
+
 
 template < class T > 
-T Par_rare_blas(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
+T Par_Rare_blas(std::vector<T> a, std::vector<T> b, int n,int nb_threads);
 
 template < class T > 
 void common_dot_prod_thread(std::vector<T> a, std::vector<T> b, int n, int incx, int incy, double &sdot);
@@ -40,6 +44,9 @@ T Rare_blas_dot_prod_hybrid(std::vector<T> a, std::vector<T> b, int n);
 
 template < class T > 
 T Rare_blas_dot_prod_online(std::vector<T> a, std::vector<T> b, int n);
+
+template < class T > 
+T Seq_Rare_blas(std::vector<T> a, std::vector<T> b, int n);
 
 template < class T > 
 T Rare_blas_dot_prod_online_par(std::vector<T> a, std::vector<T> b,int n, int nb_threads);

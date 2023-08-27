@@ -114,7 +114,7 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
     ////////////////////////////////////////////////////////////////////
 
     res_par_ozaki = 0.0;
-    res_par_ozaki = Ozaki_par(a,b,n,nb_threads);
+    res_par_ozaki = Ozaki_par_e(a,b,n,nb_threads);
     
     double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
     

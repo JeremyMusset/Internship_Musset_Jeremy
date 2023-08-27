@@ -70,17 +70,23 @@ Time_ozaki =
             Time_par_ozaki_th[j] = qtt / Time_par_ozaki[j] * 1000000 ;
             Time_mkl[j] = qtt / Time_mkl[j];
     }
-    
+    class std::vector<double> VSize2(18);
+    class std::vector<double> Time_diff2(18);
+    class std::vector<double> Time2(18);
+    Time2 = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    VSize2 =  {5000.0000000000, 10000.0000000000, 15000.0000000000, 20000.0000000000, 25000.0000000000, 30000.0000000000, 40000.0000000000, 50000.0000000000, 75000.0000000000, 100000.0000000000, 200000.0000000000, 300000.0000000000, 400000.0000000000, 500000.0000000000,700000,850000,1000000,2000000};
+Time_diff2 =  {80,50,47,45,44,43,42,41,38,35,32,30,29,28,27,26,25.5,25};
+
     // Log
     class std::vector<double> T1(2);
     class std::vector<double> T2(2);
     T1[0] = VSize[0];
     T1[1] = VSize[sz_time - 1];
-    T2[0] = Time_par_standard[0];
-    T2[1] = Time_par_standard[sz_time -1];
+    T2[0] = Time_diff[0];
+    T2[1] = Time_diff[sz_time -1];
     // T2[0] = 0;
     // T2[1] = 1000;
-    plt::loglog(T1,T2,"w");
+    plt::semilogx(T1,T2,"w");
 
     // Cache
     std::vector<double> cachesL1 = {18000, 18000};
@@ -94,19 +100,19 @@ Time_ozaki =
     // plt::plot(cachesL2,heights,{{"linestyle","--"},{"label", "L2 Cache"}});
     // plt::plot(cachesL3,heights,{{"linestyle","--"},{"label", "L3 Cache"}});
 
-    plt::plot(VSize,Time_standard,{{"color", "b"},{"label", "Standard dot product"}});
-    plt::plot(VSize,Time_rare_blas,{{"color", "r"},{"label", "Rare Blas"}});
-    plt::plot(VSize,Time_ozaki,{{"color", "g"},{"label", "Ozaki"}});
+    // plt::plot(VSize,Time_standard,{{"color", "b"},{"label", "Standard dot product"}});
+    // plt::plot(VSize,Time_rare_blas,{{"color", "r"},{"label", "Rare Blas"}});
+    // plt::plot(VSize,Time_ozaki,{{"color", "g"},{"label", "Ozaki"}});
     // plt::plot(VSize,Time_diff,{{"color", "r"},{"label", "Rare Blas"}});
 
     // plt::plot(VSize,Time_par_standard,{{"color", "b"},{"label", "Standard dot product"}});
     // plt::plot(VSize,Time_par_rare_blas,{{"color", "r"},{"label", "Rare Blas"}});
     // plt::plot(VSize,Time_par_ozaki,{{"color", "r"},{"label", "Ozaki"}});
-    // plt::plot(VSize,Time_diff,{{"color", "r"},{"label", "Serial Rare Blas"}});
+    plt::plot(VSize2,Time_diff2,{{"color", "r"},{"label", "Serial RARE BLAS"}});
     // plt::plot(VSize,Time_par_diff,{{"color", "r"},{"label", "Parallel Rare Blas"}});
     // plt::plot(VSize,Time_diff_o,{{"color", "r"},{"label", "Serial Ozaki"}});
     // plt::plot(VSize,Time_par_diff_o,{{"color", "r"},{"label", "Parallel Ozaki"}});
-    // plt::plot(VSize,Time,{{"color", "b"},{"label", "Serial standard dot product"}});
+    plt::plot(VSize2,Time2,{{"color", "b"},{"label", "Serial standard dot product"}});
 
 
     // plt::plot(VSize,Time_rare_blas_th,{{"color", "b"},{"label", "Sequentiel Rare Blas"}});
@@ -116,12 +122,12 @@ Time_ozaki =
 
     // plt::plot(VSize,Time_mkl,{{"color", "r"},{"label", "Rare Blas"}});
 
-    plt::title("Time of differents dot products according to size");
+    // plt::title("Time of differents dot products according to size");
     // plt::title("Throughput of differents dot product according to size");
     plt::xlabel("Size of vector");
     // plt::ylabel("Throughput (in KBytes/s)");
-    // plt::ylabel("Time (in Cycles) / Standard");
-    plt::ylabel("Time (in ns)");
+    plt::ylabel("Time (in Cycles) / Standard");
+    // plt::ylabel("Time (in ns)");
 
 
     plt::legend();    

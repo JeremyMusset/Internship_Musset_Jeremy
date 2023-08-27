@@ -118,7 +118,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
     res_rare_blas = 0.0;
 
-    res_rare_blas = Rare_blas_dot_prod_online(a,b,n);
+    res_rare_blas = Seq_Rare_blas(a,b,n);
 
     
     ////////////////////////////////////////////////////////////////////
@@ -127,17 +127,16 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
     res_par_rare_blas = 0.0;
     
-    res_par_rare_blas = Par_rare_blas_dot_prod(a,b,n,8);
+    res_par_rare_blas = Par_Rare_blas(a,b,n,nb_threads);
     
     double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
-    
     // // Print results
     // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RESULT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
-    // printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.50f \n --------------------------------- \n", d_correct);
+    printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.50f \n --------------------------------- \n", d_correct);
     // // printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
     // // printf ("\n PARALLEL DOT PRODUCT : \n%.50f \n", res_par_standard);
     // printf ("\n SEQUENTIAL RARE BLAS : \n%.50f \n", res_rare_blas);  
-    // // printf ("\n PARALLEL RARE BLAS : \n%.50f \n\n", res_par_rare_blas);   
+    printf ("\n PARALLEL RARE BLAS : \n%.50f \n\n", res_par_rare_blas); 
     // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
     // // printf ("\n ERROR STANDARD DOT PRODUCT : \n%.50f \n", abs(res_standard - d_correct) );
     // // printf ("\n ERROR PARALLEL DOT PRODUCT : \n%.50f \n", abs(res_par_standard - d_correct));
@@ -153,8 +152,8 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     Err_standard = abs(Err_standard);
 
     Err_par_standard = d_correct - res_par_standard;
-    // Err_par_standard = Err_par_standard/d_correct;
-    // Err_par_standard = abs(Err_par_standard);
+    Err_par_standard = Err_par_standard/d_correct;
+    Err_par_standard = abs(Err_par_standard);
 
     Err_rare_blas = d_correct - res_rare_blas;
     Err_rare_blas = Err_rare_blas/d_correct;
@@ -164,13 +163,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     Err_par_rare_blas = Err_par_rare_blas/d_correct;
     Err_par_rare_blas = abs(Err_par_rare_blas);
 
-    // mpfr_t tmp1,tmp2,restmp;
-    // mpfr_init2(tmp1, P);
-    // mpfr_set_d(tmp1, d_correct, MPFR_RNDN);
-    // mpfr_init2(tmp2, P);
-    // mpfr_set_d(tmp2, res_rare_blas, MPFR_RNDN);
-    // mpfr_sub(restmp,tmp1,tmp2,MPFR_RNDN);
-    // mpfr_printf("TEEESSSTTT : %.30Rg \n",restmp);
+   
 
     if (Err_rare_blas != 0) {
         printf("\nVec number %d : err = %.30f \n",l,Err_rare_blas);
@@ -181,6 +174,7 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
     Error_par_standard[indice] = Err_par_standard;
     Error_rare_blas[indice] = Err_rare_blas;
     Error_par_rare_blas[indice] = Err_par_rare_blas;
+     printf ("\n ERROR PARALLEL RARE BLAS : \n%.50f \n\n", Error_par_rare_blas[indice]);
     }
 }
 
@@ -194,15 +188,15 @@ void compare_cond(int n,double required_cond, int nb_gen,  double sum, std::vect
 
 
 int main() {
-    int nb_gen = 20;
+    int nb_gen = 2;
     double sum = 200;
-    int size = 1000;
+    int size = 10000;
 
 
-    int sz_err = 20;
+    int sz_err = 1;
     class std::vector<double> VCond(sz_err);
-    VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
-
+    // VCond = {1, 5, 10, 50, 100, 1000, 5000, 10000,50000, 100000, 500000, 1000000, 5000000, 10000000, 100000000,5000000000, 10000000000,50000000000,500000000000, 1000000000000} ; 
+    VCond = {50000};
     class std::vector<double> Error_standard(sz_err*nb_gen);
     class std::vector<double> Error_par_standard(sz_err*nb_gen);
     class std::vector<double> Error_rare_blas(sz_err*nb_gen);
@@ -214,7 +208,7 @@ int main() {
     class std::vector<double> RCond(totsz);
 
     
-    int nb_threads = 8;
+    int nb_threads = 2;
     int alpha;
     int i = 0;
     vector<double>::iterator k;
@@ -224,9 +218,20 @@ int main() {
         vec_gen_cond(nb_gen,size,*k,sum,1,RCond,i);
         compare_cond(size, *k, nb_gen,sum,Error_standard, Error_par_standard, Error_rare_blas,Error_par_rare_blas,1,i,nb_threads); 
         i += 1;
+        
        
     }
-
+    int a;
+    printf("\nError_par_rare_blas = [");
+    for (a=0; a<totsz;a++){
+        if(a == totsz-1){
+            printf("%.30f",Error_par_rare_blas[a]);
+        }
+        else{
+            printf("%.30f, ",Error_par_rare_blas[a]);
+        }
+    }
+    printf("]\n");
     // Sort the results 
     double temp;
     for (int i = 0; i < nb_gen*sz_err - 1; i++) {
@@ -385,20 +390,20 @@ int main() {
     par_rare_blas_medianne = QError_par_rare_blas[(totsz) / 2];
 
 
-    int a;
-    printf("\n # COND  \n");
-    printf("\nRCond = [");
-    for (a=0; a<totsz;a++){
-        if(a == totsz-1){
-            printf("%.30f",RCond[a]);
-        }
-        else{
-            printf("%.30f, ",RCond[a]);
-        }
-    }
-    printf("]\n");
-    printf("\nquartile_cond = [ %.30f, %.30f, %.30f]\n",prem_quart_cond, medianne_cond, trois_quart_cond);
-    printf("\n\nmoy_cond = [ %.30f]\n",moyenne_cond);
+    // int a;
+    // printf("\n # COND  \n");
+    // printf("\nRCond = [");
+    // for (a=0; a<totsz;a++){
+    //     if(a == totsz-1){
+    //         printf("%.30f",RCond[a]);
+    //     }
+    //     else{
+    //         printf("%.30f, ",RCond[a]);
+    //     }
+    // }
+    // printf("]\n");
+    // printf("\nquartile_cond = [ %.30f, %.30f, %.30f]\n",prem_quart_cond, medianne_cond, trois_quart_cond);
+    // printf("\n\nmoy_cond = [ %.30f]\n",moyenne_cond);
 
 
     printf("\n # ERROR \n");
@@ -413,16 +418,16 @@ int main() {
     }
     printf("]\n");
 
-    printf("\nError_par_standard = [");
-    for (a=0; a<totsz;a++){
-        if(a == totsz-1){
-            printf("%.30f",Error_par_standard[a]);
-        }
-        else{
-            printf("%.30f, ",Error_par_standard[a]);
-        }
-    }
-    printf("]\n");
+    // printf("\nError_par_standard = [");
+    // for (a=0; a<totsz;a++){
+    //     if(a == totsz-1){
+    //         printf("%.30f",Error_par_standard[a]);
+    //     }
+    //     else{
+    //         printf("%.30f, ",Error_par_standard[a]);
+    //     }
+    // }
+    // printf("]\n");
 
     printf("\nError_rare_blas = [");
     for (a=0; a<totsz;a++){
@@ -445,17 +450,16 @@ int main() {
         }
     }
     printf("]\n");
-    printf("\n # QUARTILE \n");
-    printf("\nquartile_err = [ %.30f, %.30f, %.30f]\n",prem_quart_err, medianne_err, trois_quart_err);
-    printf("\nquartile_par_standard = [ %.30f, %.30f, %.30f]\n",par_standard_prem_quart, par_standard_medianne, par_standard_trois_quart);
-    printf("\nquartile_rare_blas = [ %.30f, %.30f, %.30f]\n",rare_blas_prem_quart, rare_blas_medianne, rare_blas_trois_quart);
-    printf("\nquartile_par_rare_blas = [ %.30f, %.30f, %.30f]\n",par_rare_blas_prem_quart, par_rare_blas_medianne, par_rare_blas_trois_quart);
-    printf("\n # MOYENNE \n");
-    printf("\n\nmoy_err= [ %.30f]\n",moyenne_err);
-    printf("\nmoy_par_standard = [ %.30f]\n",par_standard_moyenne);
-    printf("\nmoy_rare = [ %.30f]\n",rare_blas_moyenne);
-    printf("\nmoy_par_rare = [ %.30f]\n",par_rare_blas_moyenne);
-
+    // printf("\n # QUARTILE \n");
+    // printf("\nquartile_err = [ %.30f, %.30f, %.30f]\n",prem_quart_err, medianne_err, trois_quart_err);
+    // printf("\nquartile_par_standard = [ %.30f, %.30f, %.30f]\n",par_standard_prem_quart, par_standard_medianne, par_standard_trois_quart);
+    // printf("\nquartile_rare_blas = [ %.30f, %.30f, %.30f]\n",rare_blas_prem_quart, rare_blas_medianne, rare_blas_trois_quart);
+    // printf("\nquartile_par_rare_blas = [ %.30f, %.30f, %.30f]\n",par_rare_blas_prem_quart, par_rare_blas_medianne, par_rare_blas_trois_quart);
+    // printf("\n # MOYENNE \n");
+    // printf("\n\nmoy_err= [ %.30f]\n",moyenne_err);
+    // printf("\nmoy_par_standard = [ %.30f]\n",par_standard_moyenne);
+    // printf("\nmoy_rare = [ %.30f]\n",rare_blas_moyenne);
+    // printf("\nmoy_par_rare = [ %.30f]\n",par_rare_blas_moyenne);
 
 
     return 0;
