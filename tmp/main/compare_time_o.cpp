@@ -21,7 +21,7 @@ using namespace std;
 /// @tparam T 
 /// @param n size of vector
 /// @param nb_gen number of vector which will be generate
-/// @param Time Output size 6
+/// @param Time Output size 4
 /// @param q file position (main/X/ = 2   main/X/Y/ = 1)
 /// @param nb_threads Number of threads for parallel
 template < class T >
@@ -32,19 +32,15 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     double Time_mpfr;
     Time_mpfr = 0;
 
-    double Min_Time_standard, Min_Time_par_standard ,Min_Time_rare_blas, Min_Time_par_rare_blas,Min_Time_ozaki, Min_Time_par_ozaki;
+    double Min_Time_standard, Min_Time_par_standard ,Min_Time_ozaki, Min_Time_par_ozaki;
     Min_Time_standard = 0;
     Min_Time_par_standard = 0;
-    Min_Time_rare_blas = 0;
-    Min_Time_par_rare_blas = 0;
     Min_Time_ozaki = 0;
     Min_Time_par_ozaki = 0;
 
-    double Final_Min_Time_standard, Final_Min_Time_par_standard, Final_Min_Time_rare_blas, Final_Min_Time_par_rare_blas, Final_Min_Time_ozaki, Final_Min_Time_par_ozaki;
+    double Final_Min_Time_standard, Final_Min_Time_par_standard, Final_Min_Time_ozaki, Final_Min_Time_par_ozaki;
     Final_Min_Time_standard = 0;
     Final_Min_Time_par_standard = 0;
-    Final_Min_Time_rare_blas = 0;
-    Final_Min_Time_par_rare_blas = 0;
     Final_Min_Time_ozaki = 0;
     Final_Min_Time_par_ozaki = 0;
 
@@ -67,7 +63,7 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
         b[i] = vec[n+1+i]; 
        
     }
-    double res_standard, res_par_standard, res_rare_blas, res_par_rare_blas, res_ozaki, res_par_ozaki;
+    double res_standard, res_par_standard, res_ozaki, res_par_ozaki;
 
     //////////////////////////////////////////////////////////////////
     //////////////////////// MPFR_dot product ////////////////////////
@@ -160,62 +156,6 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     }
     Final_Min_Time_par_standard += Min_Time_par_standard;
     
-    
-    ////////////////////////////////////////////////////////////////////
-    ///////////////// SERIAL RARE BLAS DOT PRODUCT /////////////////////
-    ////////////////////////////////////////////////////////////////////
-
-    struct timespec Min_start_rare_blas, Min_end_rare_blas;
-    res_rare_blas = 0.0;
-    // Cache warmup 
-    res_rare_blas = Rare_blas_dot_prod_online(a,b,n);
-
-    for (unsigned int t=0; t<NB_EXEC;t++){
-
-        clock_gettime(CLOCK_REALTIME,&Min_start_rare_blas); 
-
-        res_rare_blas = Rare_blas_dot_prod_online(a,b,n);
-
-        clock_gettime(CLOCK_REALTIME,&Min_end_rare_blas); 
-        
-        time_tmp = ((Min_end_rare_blas.tv_sec - Min_start_rare_blas.tv_sec) * 1000000000 + (Min_end_rare_blas.tv_nsec - Min_start_rare_blas.tv_nsec) );
-        if (t==0){
-            Min_Time_rare_blas = time_tmp;
-        }
-        if (time_tmp < Min_Time_rare_blas){
-            Min_Time_rare_blas = time_tmp;
-        }
-
-    }
-    Final_Min_Time_rare_blas += Min_Time_rare_blas;
-
-    ////////////////////////////////////////////////////////////////////
-    ///////////////// PARALLEL RARE BLAS DOT PRODUCT ///////////////////
-    ////////////////////////////////////////////////////////////////////
-
-    struct timespec start_par_rare_blas, end_par_rare_blas,Min_start_par_rare_blas, Min_end_par_rare_blas;
-    res_par_rare_blas = 0.0;
-    // Cache warmup
-    res_par_rare_blas = Par_Rare_blas(a,b,n,nb_threads);
-    for (unsigned int t=0; t<NB_EXEC;t++){
-
-        clock_gettime(CLOCK_REALTIME,&Min_start_par_rare_blas); 
-
-        res_par_rare_blas = Par_Rare_blas(a,b,n,nb_threads);
-
-        clock_gettime(CLOCK_REALTIME,&Min_end_par_rare_blas); 
-        
-        time_tmp = ((Min_end_par_rare_blas.tv_sec - Min_start_par_rare_blas.tv_sec) * 1000000000 + (Min_end_par_rare_blas.tv_nsec - Min_start_par_rare_blas.tv_nsec) );
-        if (t==0){
-            Min_Time_par_rare_blas = time_tmp;
-        }
-        if (time_tmp < Min_Time_par_rare_blas){
-            Min_Time_par_rare_blas = time_tmp;
-        }
-
-    }
-    Final_Min_Time_par_rare_blas += Min_Time_par_rare_blas;
-
     ////////////////////////////////////////////////////////////////////
     ///////////////// SERIAL OZAKI DOT PRODUCT /////////////////////
     ////////////////////////////////////////////////////////////////////
@@ -243,7 +183,6 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
 
     }
     Final_Min_Time_ozaki += Min_Time_ozaki;
-
     ////////////////////////////////////////////////////////////////////
     ///////////////// PARALLEL RARE BLAS DOT PRODUCT ///////////////////
     ////////////////////////////////////////////////////////////////////
@@ -251,24 +190,31 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     struct timespec start_par_ozaki, end_par_ozaki,Min_start_par_ozaki, Min_end_par_ozaki;
     res_par_ozaki = 0.0;
     // Cache warmup
-    res_par_ozaki = Ozaki_par_o(a,b,n,nb_threads);
-    for (unsigned int t=0; t<NB_EXEC;t++){
+    clock_gettime(CLOCK_REALTIME,&Min_start_par_ozaki); 
 
-        clock_gettime(CLOCK_REALTIME,&Min_start_par_ozaki); 
+    res_par_ozaki = Ozaki_par_t(a,b,n,nb_threads);
 
-        res_par_ozaki = Ozaki_par_o(a,b,n,nb_threads);
+    clock_gettime(CLOCK_REALTIME,&Min_end_par_ozaki); 
+    Min_Time_par_ozaki = ((Min_end_par_ozaki.tv_sec - Min_start_par_ozaki.tv_sec) * 1000000000 + (Min_end_par_ozaki.tv_nsec - Min_start_par_ozaki.tv_nsec) );
 
-        clock_gettime(CLOCK_REALTIME,&Min_end_par_ozaki); 
+
+    // for (unsigned int t=0; t<2;t++){
+    //     printf("t = %d \n",t);
+    //     clock_gettime(CLOCK_REALTIME,&Min_start_par_ozaki); 
+
+    //     res_par_ozaki = Ozaki_par_t(a,b,n,nb_threads);
+
+    //     clock_gettime(CLOCK_REALTIME,&Min_end_par_ozaki); 
         
-        time_tmp = ((Min_end_par_ozaki.tv_sec - Min_start_par_ozaki.tv_sec) * 1000000000 + (Min_end_par_ozaki.tv_nsec - Min_start_par_ozaki.tv_nsec) );
-        if (t==0){
-            Min_Time_par_ozaki = time_tmp;
-        }
-        if (time_tmp < Min_Time_par_ozaki){
-            Min_Time_par_ozaki = time_tmp;
-        }
+    //     time_tmp = ((Min_end_par_ozaki.tv_sec - Min_start_par_ozaki.tv_sec) * 1000000000 + (Min_end_par_ozaki.tv_nsec - Min_start_par_ozaki.tv_nsec) );
+    //     if (t==0){
+    //         Min_Time_par_ozaki = time_tmp;
+    //     }
+    //     if (time_tmp < Min_Time_par_ozaki){
+    //         Min_Time_par_ozaki = time_tmp;
+    //     }
 
-    }
+    // }
     Final_Min_Time_par_ozaki += Min_Time_par_ozaki;
 
 
@@ -277,11 +223,9 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     // Print results
     // mpfr_printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.30Rg \n --------------------------------- \n", res_mpfr);
     // printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
-    // printf ("\n PARALLEL STANDARD DOT PRODUCT : \n%.50f \n", res_par_standard);
-    // printf ("\n SEQUENTIAL RARE : \n%.50f \n", res_rare_blas);  
-    // printf ("\n PARALLEL RARE : \n%.50f \n\n", res_par_rare_blas);   
-    // printf ("\n SEQUENTIAL OZAKI : \n%.50f \n", res_ozaki);  
-    // printf ("\n PARALLEL OZAKI : \n%.50f \n\n", res_par_ozaki);   
+    // printf ("\n PARALLEL STANDARD DOT PRODUCT : \n%.50f \n", res_par_standard); 
+    printf ("\n SEQUENTIAL OZAKI : \n%.50f \n", res_ozaki);  
+    printf ("\n PARALLEL OZAKI : \n%.50f \n\n", res_par_ozaki);   
 
     }
     // Final_Min_Time standard
@@ -293,19 +237,11 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     // printf("Final_Min_Time STANDARD DOT PRODUCT : %.45f \n",Final_Min_Time_par_standard);
 
 
-    // Final_Min_Time rare blas
-    Final_Min_Time_rare_blas = Final_Min_Time_rare_blas / (nb_gen);
-    // printf("Final_Min_Time RARE BLAS : %.45f \n",Final_Min_Time_rare_blas);
-
-     // Final_Min_Time par rare blas
-    Final_Min_Time_par_rare_blas = Final_Min_Time_par_rare_blas / (nb_gen);
-    // printf("Final_Min_Time PARALLEL RARE BLAS : %.45f \n",Final_Min_Time_par_rare_blas);
-
-    // Final_Min_Time rare blas
+    // Final_Min_Time ozaki
     Final_Min_Time_ozaki = Final_Min_Time_ozaki / (nb_gen);
     // printf("Final_Min_Time OZAKI : %.45f \n",Final_Min_Time_ozaki);
 
-     // Final_Min_Time par rare blas
+     // Final_Min_Time par ozaki
     Final_Min_Time_par_ozaki = Final_Min_Time_par_ozaki/ (nb_gen);
     // printf("Final_Min_Time PARALLEL OZAKI : %.45f \n",Final_Min_Time_par_ozaki);
 
@@ -314,10 +250,8 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
     Time[0] = Time_mpfr;
     Time[1] = Final_Min_Time_standard;
     Time[2] = Final_Min_Time_par_standard;
-    Time[3] = Final_Min_Time_rare_blas;
-    Time[4] = Final_Min_Time_par_rare_blas;
-    Time[5] = Final_Min_Time_ozaki;
-    Time[6] = Final_Min_Time_par_ozaki;
+    Time[3] = Final_Min_Time_ozaki;
+    Time[4] = Final_Min_Time_par_ozaki;
 }
 
 
@@ -328,13 +262,13 @@ void compare(int n, int nb_gen, std::vector<T> &Time, int q,int nb_threads){
 
 
 int main() {
-    int nb_gen = 5;
-    int sz = 7;
+    int nb_gen = 1;
+    int sz = 5;
     class std::vector<double> Time(sz);
 
     // Time / Size
-    int sz_time = 9;
-    // int sz_time = 1;
+    // int sz_time = 9;
+    int sz_time = 1;
     class std::vector<double> VSize(sz_time);
     class std::vector<double> Time_standard(sz_time);
     class std::vector<double> Time_par_standard(sz_time);
@@ -343,11 +277,9 @@ int main() {
     class std::vector<double> Time_ozaki(sz_time);
     class std::vector<double> Time_par_ozaki(sz_time);
 
-    VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000}; // 100000,200000,300000,400000,500000}; 
+    VSize = {1000000};
 
-    // VSize = {175000};
-
-    // VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,300000,400000,500000,625000,750000,875000,1000000,1500000,2000000};
+    // VSize = {5000,10000,15000,20000,25000,30000,40000,50000,75000, 100000,200000,325000,500000,625000,775000,1000000,1500000,2000000};
 
 
     int i = 0;
@@ -360,10 +292,8 @@ int main() {
         // Save result
         Time_standard[i] = Time[1];
         Time_par_standard[i] = Time[2];
-        Time_rare_blas[i] = Time[3];
-        Time_par_rare_blas[i] = Time[4];
-        Time_ozaki[i] = Time[5];
-        Time_par_ozaki[i] = Time[6];
+        Time_ozaki[i] = Time[3];
+        Time_par_ozaki[i] = Time[4];
 
         i += 1;
     }
@@ -398,28 +328,6 @@ int main() {
         }
         else{
             printf("%.10f, ",Time_par_standard[a]);
-        }
-    }
-    printf("};\n");
-
-    printf("\nTime_rare_blas = \n {");
-    for (a=0; a<sz_time;a++){
-        if(a == sz_time-1){
-            printf("%.10f",Time_rare_blas[a]);
-        }
-        else{
-            printf("%.10f, ",Time_rare_blas[a]);
-        }
-    }
-    printf("};\n");
-
-    printf("\nTime_par_rare_blas = \n {");
-    for (a=0; a<sz_time;a++){
-        if(a == sz_time-1){
-            printf("%.10f",Time_par_rare_blas[a]);
-        }
-        else{
-            printf("%.10f, ",Time_par_rare_blas[a]);
         }
     }
     printf("};\n");

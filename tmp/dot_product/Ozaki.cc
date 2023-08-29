@@ -20,11 +20,107 @@
 
 template double Ozaki<double>(std::vector<double> a, std::vector<double> b, int n, int nb_threads);
 
+template double Ozaki_e<double>(std::vector<double> a, std::vector<double> b, int n, int nb_threads);
+
 template double Ozaki_par_t<double>(std::vector<double> a, std::vector<double> b, int n, int nb_threads);
 
 template double Ozaki_par_e<double>(std::vector<double> a, std::vector<double> b, int n, int nb_threads);
 
+template double Ozaki_par_o<double>(std::vector<double> a, std::vector<double> b, int n, int nb_threads);
+
 template void Split_Ozaki<double>(std::vector<double> x, int n, int &sx, std::vector<std::vector<double>> &xsplit);
+
+
+
+/// @brief Ozaki dot product 
+/// @tparam T Float or Double
+/// @param x Vector
+/// @param y Vector 
+/// @param n Size
+/// @param sx Number of split on x
+/// @param sy Number of split on y
+template < class T > 
+T Ozaki_par_o(std::vector<T> x, std::vector<T> y, int n, int nb_threads){
+    int mod = n%nb_threads;
+    class std::vector<double> Result_global;
+    if (n < nb_threads){
+        nb_threads = n;
+    }
+
+    #pragma omp parallel num_threads(nb_threads) shared(x,y)
+    {   
+        int LT = omp_get_thread_num();
+        int size_local = ceil ((float)n/nb_threads);
+        int start = (floor((float)n/nb_threads)) * LT + std::min(mod,LT);
+        if ((LT >= mod) && (mod != 0)) {
+            size_local -= 1;
+        }
+        int end = start + size_local - 1 ;
+        std::vector<T> x_local(size_local);
+        std::vector<T> y_local(size_local);
+        for (unsigned int i=start;i<end+1;i++){
+            x_local[i-start] = x[i];
+            y_local[i-start] = y[i];      
+        }
+        std::vector<std::vector<T>> xsplit;
+        std::vector<std::vector<T>> ysplit;
+        T res_local; 
+        double* x_ptr = x.data();
+        double* y_ptr = y.data();
+        int sx,sy;    
+        sx = 0;
+        sy = 0;    
+
+        // Split
+        Split_Ozaki(x_local,size_local,sx,xsplit);
+        Split_Ozaki(y_local,size_local,sy,ysplit);
+        // End split 
+        
+        printf("Thread number %d    sx : %d     sy = %d \n ",LT,sx,sy);   // ENLEVER
+
+
+        // Local dot products and Gather 
+    
+        for (unsigned int k = 0; k<sy;k++) {
+            for (unsigned int q = 0; q<sx;q++) {
+                res_local = 0;
+                for (unsigned int z = 0; z < n ; z++){
+                    res_local += xsplit[q][z] * ysplit[k][z];
+                } 
+                Result_global.push_back(res_local);
+            }
+        }
+        // End Local dot products and Gather 
+    } // End parallel
+        
+    double sz = Result_global.size();
+    printf("TAILLE : %.20f \n", sz);
+    double result = SumK(Result_global,sz,10);
+    // double result = 0;
+    printf("res = %.30f\n",result);
+    return result;
+    // return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /// @brief Ozaki dot product 
@@ -50,7 +146,7 @@ T Ozaki(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
     for (unsigned int k = 0; k<sy;k++) {
         for (unsigned int q = 0; q<sx;q++) {
             for (unsigned int z = 0; z < n ; z++){
-                res[k*sy + q] += xsplit[q][z] * ysplit[k][z];
+                res[k*sx + q] += xsplit[q][z] * ysplit[k][z];
             } 
         }
     }
@@ -126,8 +222,6 @@ T Ozaki_par_t(std::vector<T> x, std::vector<T> y, int n, int nb_threads){
             size_local -= 1;
         }
         int end = start + size_local - 1 ;
-        printf("Thread number %d    size : %d     start = %d        end = %d \n",LT,size_local,start,end);
-
         std::vector<std::vector<T>> xsplit;
         std::vector<std::vector<T>> ysplit;
         T res_local; 
@@ -149,9 +243,9 @@ T Ozaki_par_t(std::vector<T> x, std::vector<T> y, int n, int nb_threads){
         double u = pow(2,-53);
         std::vector<T> tmp(size_local);
         int i = 0;
-        for (unsigned int j=start;j<=end;j++) {
-            printf("th number %d %.20f \n",LT, x[j]);
-        }
+        // for (unsigned int j=start;j<=end;j++) {
+        //     printf("th number %d %.20f \n",LT, x[j]);
+        // }
         double c1, c2, t, r;
         c1 = ceil((log2(1/u) + log2(size_local))/2);
         auto maxElement = std::max_element(x.begin() + start , x.begin() + end + 1 );
@@ -251,19 +345,17 @@ T Ozaki_par_t(std::vector<T> x, std::vector<T> y, int n, int nb_threads){
     } // End parallel
     mpfr_add(loc2,loc2,loc1,MPFR_RNDN);
     double round = mpfr_get_d(loc2, MPFR_RNDN);
-    printf("Round = %.30f \n",round);
+    // printf("Round = %.30f \n",round);
     // mpfr_printf("Res = %.60Rg\n",loc2);
         
     double sz = Result_global.size();
     double result = SumK(Result_global,sz,10);
     double error = round - result;
-    printf("ERROR INSIDE = %.30f \n", error);
+    // printf("ERROR INSIDE = %.30f \n", error);
     // double result = 0;
-    printf("res = %.30f\n",result);
+    // printf("res = %.30f\n",result);
     return result;
 }
-
-
 
 /// @brief Ozaki dot product 
 /// @tparam T Float or Double
@@ -432,3 +524,33 @@ T Ozaki_par_e(std::vector<T> x, std::vector<T> y, int n, int nb_threads){
     return result;
 }
 
+
+/// @brief Ozaki dot product 
+/// @tparam T Float or Double
+/// @param a Vector
+/// @param b Vector 
+/// @param n Size
+/// @param sx Number of split on x
+/// @param sy Number of split on y
+template < class T > 
+T Ozaki_e(std::vector<T> a, std::vector<T> b, int n, int nb_threads){
+    std::vector<std::vector<T>> xsplit;
+    std::vector<std::vector<T>> ysplit;
+    int sx,sy;
+    sx = 0;
+    sy = 0;
+   
+    Split_Ozaki(a,n,sx,xsplit);
+    Split_Ozaki(b,n,sy,ysplit);
+    std::vector<T> res(sx*sy*n);
+    double result = 0;
+    for (unsigned int k = 0; k<sy;k++) {
+        for (unsigned int q = 0; q<sx;q++) {
+            for (unsigned int z = 0; z < n ; z++){
+                res[k*sx*n + q*n + z] = xsplit[q][z] * ysplit[k][z];
+            } 
+        }
+    }
+    result = SumK(res,sx*sy*n,100);
+    return result;
+}

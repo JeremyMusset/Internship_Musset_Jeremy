@@ -58,3 +58,9 @@ compilepycondo :
 
 condo : compilepycondo
 	./compare_cond_o
+
+compilecomparetime_o : 
+	g++ ../generation/*.cc ../dot_product/*.cc -I/home/jerem/app/matplotlib-cpp/ -I/usr/include/python3.10 compare_time_o.cpp -o compare_time_o -w -lmpfr -fopenmp -lpython3.10 -lQt5Widgets -lm 
+
+timeo : compilecomparetime_o 	
+	./compare_time_o

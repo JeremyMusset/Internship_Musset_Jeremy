@@ -107,23 +107,23 @@ void compare_cond_o(int n,double required_cond, int nb_gen,  double sum, std::ve
     ////////////////////////////////////////////////////////////////////
 
     res_ozaki = 0.0;
-    res_ozaki = Ozaki(a,b,n,nb_threads);
+    res_ozaki = Ozaki_e(a,b,n,nb_threads);
 
     ////////////////////////////////////////////////////////////////////
     ////////////////// PARALLEL OZAKI DOT PRODUCT //////////////////////
     ////////////////////////////////////////////////////////////////////
 
     res_par_ozaki = 0.0;
-    res_par_ozaki = Ozaki_par_e(a,b,n,nb_threads);
+    res_par_ozaki = Ozaki_par_o(a,b,n,nb_threads);
     
     double d_correct = mpfr_get_d(res_mpfr, MPFR_RNDN);
     
     // // Print results
     // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RESULT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
-    // printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.50f \n --------------------------------- \n", d_correct);
+    printf ("\n --------------------------------- \n SEQUENTIAL CORRECT ROUNDING : \n %.50f \n --------------------------------- \n", d_correct);
     // // printf ("\n STANDARD DOT PRODUCT : \n%.50f \n", res_standard);
     // // printf ("\n PARALLEL DOT PRODUCT : \n%.50f \n", res_par_standard);
-    // printf ("\n SEQUENTIAL OZAKI : \n%.50f \n", res_ozaki);  
+    printf ("\n SEQUENTIAL OZAKI : \n%.50f \n", res_ozaki);  
     // printf ("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \n");
     // // printf ("\n ERROR STANDARD DOT PRODUCT : \n%.50f \n", abs(res_standard - d_correct) );
     // // printf ("\n ERROR PARALLEL DOT PRODUCT : \n%.50f \n", abs(res_par_standard - d_correct));
@@ -196,7 +196,7 @@ int main() {
     int totsz = nb_gen * sz_err;
     class std::vector<double> RCond(totsz);
     
-    int nb_threads = 2;
+    int nb_threads = 3;
     int alpha;
     int i = 0;
     vector<double>::iterator k;

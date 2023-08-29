@@ -14,7 +14,13 @@ template < class T >
 T Ozaki(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
 
 template < class T > 
+T Ozaki_e(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+
+template < class T > 
 T Ozaki_par_t(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
+
+template < class T > 
+T Ozaki_par_o(std::vector<T> a, std::vector<T> b, int n, int nb_threads);
 
 template < class T > 
 T Ozaki_par_e(std::vector<T> a, std::vector<T> b, int n, int nb_threads);

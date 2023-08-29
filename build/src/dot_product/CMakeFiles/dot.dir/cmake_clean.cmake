@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/dot.dir/Rare_Blas.cc.o"
-  "CMakeFiles/dot.dir/Rare_Blas.cc.o.d"
   "CMakeFiles/dot.dir/__/generation/gen_random_vector.cc.o"
   "CMakeFiles/dot.dir/__/generation/gen_random_vector.cc.o.d"
   "CMakeFiles/dot.dir/common.cc.o"

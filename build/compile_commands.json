@@ -26,11 +26,6 @@
 },
 {
   "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
-  "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot.dir/Rare_Blas.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/Rare_Blas.cc",
-  "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/Rare_Blas.cc"
-},
-{
-  "directory": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/build/src/dot_product",
   "command": "/usr/bin/g++  -I/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/include -O3 -DNDEBUG -o CMakeFiles/dot.dir/common.cc.o -c /home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc",
   "file": "/home/jerem/Data/M2/Stage/git/Internship_Musset_Jeremy/src/dot_product/common.cc"
 },
